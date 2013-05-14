@@ -1,0 +1,15 @@
+# RNA PIPELINE 2.0
+
+## Basics
+Author: Chris Waltrip
+Created: 28 Feb 2013
+Modified: 14 May 2013
+
+## Description
+Rewrite of the RNA Sequencing Pipeline for Celeste Brown
+
+The original version of this program was written in bash's scripting language and perl.  The new version retains the original perl programs and will be rewriting the majority of the bash scripts in Python.
+
+The biggest advantage and reason for this rewrite is to:
+1.  Get the program to run on the cluster once again
+1.  Make use of job-dependencies in qsub instead of busy-waiting on the head node while waiting for the job to finish.
