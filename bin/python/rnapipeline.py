@@ -71,9 +71,18 @@ def which(program):         # Currently not being used.
 def configure(default_file, user_file, scriptdir, maindir):
     parser = ConfigParser.ConfigParser()
     parser.read([default_file,user_file])
-    
-    preferences = parser.items("Preferences")
-    programs = parser.items("Programs")
+    if parser.has_section("Preferences"):    
+        preferences = parser.items("Preferences")
+    else:
+        fatal_error_msg("No 'Notifications' section in configuration file.")
+    if parser.has_section("Programs"):     
+        programs = parser.items("Programs")
+    else:
+        fatal_error_msg("No 'Notifications' section in configuration file.")    
+    if parser.has_section("Notifications"):
+        notifications = parser.items("Notifications")
+    else:
+        fatal_error_msg("No 'Notifications' section in configuration file.")
     
     # Iterate through preferences and $scriptdir and $maindir with full paths.
     new_preferences = []
@@ -101,7 +110,10 @@ def configure(default_file, user_file, scriptdir, maindir):
             new_programs.append((prog,loc))
             
     # Return the preferences and programs.
-    return new_preferences, new_programs    
+    return new_preferences, new_programs, notifications
+def write_configuration(programs, preferences, notifications):
+    return None
+    
 def get_keys(tuple_list):
     key_list = []
     for (key,value) in tuple_list:
@@ -167,28 +179,42 @@ def main():
         parser.error("incorrect number of arguments")
     
     # Set up variables from options
-    bin_dir = expand_dir(options.script_dir)
-    root_dir = expand_dir(options.root_dir)
-    seq_dir = expand_dir(options.seq_dir)
-    pref_file = expand_file(options.pref_file)
-    conf_file = expand_file(options.conf_file)
+    
+    # Dictionaries to hold the directories and files
+    paths = {}
+    files = {}
+    
+    
+    paths["bin"] = expand_dir(options.script_dir)
+    paths["root"] = expand_dir(options.root_dir)
+    paths["seq"] = expand_dir(options.seq_dir)
+    
+    files["user_config"] = expand_file(options.pref_file)
+    files["default_config"] = expand_file(options.conf_file)
+    
     verbose = options.verbose
+    #bin_dir = expand_dir(options.script_dir)
+    #root_dir = expand_dir(options.root_dir)
+    #seq_dir = expand_dir(options.seq_dir)
+    #pref_file = expand_file(options.pref_file)
+    #conf_file = expand_file(options.conf_file)
+    #verbose = options.verbose
     
     # Set up the conditional variables  
     if options.results_dir != None:
-        results_dir = expand_dir(options.results_dir)
+        paths["results"] = expand_dir(options.results_dir)
     else:
-        results_dir = expand_dir(root_dir + "results/")
+        paths["results"] = expand_dir(options.script_dir + "../results/")
 
         
     # Set up other directory variables
-    etc_dir = expand_dir(root_dir + "etc/")     # More than likely won't be used.
-    working_dir = expand_dir(root_dir + "tmp/")  # Could also put in /results/tmp/
+    paths["etc"] = expand_dir(options.script_dir + "../etc/")     # More than likely won't be used.
+    paths["tmp"] = expand_dir(options.script_dir + "../tmp/")  # Could also put in /results/tmp/
     # Output directories:
-    backup_dir = expand_dir(results_dir + "references/")    
-    orig_dir = expand_dir(results_dir + "originals/")
-    output_dir = expand_dir(results_dir + "output/")
-    blast_dir = expand_dir(results_dir + "blast/")
+    paths["backup"] = expand_dir(paths["results"] + "references/")    
+    paths["originals"] = expand_dir(paths["results"] + "originals/")
+    paths["output"] = expand_dir(paths["results"] + "output/")
+    paths["blast"] = expand_dir(paths["results"] + "blast/")
     
     
     
@@ -197,30 +223,30 @@ def main():
     
     # Temporary printing of directories
     if verbose == True:
-        print "Main directory: \t\t" + root_dir
-        print "Script directory: \t\t" + bin_dir
-        print "Preferences File: \t\t" + pref_file
-        print "Configuration File: \t\t" + conf_file
+        print "Main directory: \t\t" + paths["root"]
+        print "Script directory: \t\t" + paths["bin"]
+        print "Preferences File: \t\t" + files["user_config"]
+        print "Configuration File: \t\t" + files["default_config"]
         print ""
-        print "Config (etc) directory: \t" + etc_dir
-        print "Results (results) directory: \t" + results_dir
-        print "Backup (references) directory: \t" + backup_dir
-        print "Working (tmp) directory: \t" + working_dir
+        print "Config (etc) directory: \t" + paths["etc"]
+        print "Results (results) directory: \t" + paths["results"]
+        print "Backup (references) directory: \t" + paths["backup"]
+        print "Working (tmp) directory: \t" + paths["tmp"]
         print ""
         #print "Concatenation  : \t" + path.abspath(bin_dir+"///..///etc/////defaults.conf")    
     # End of parser
     
     # Make sure all the files at least exist.
-    if path.exists(bin_dir) == False:
+    if path.exists(paths["bin"]) == False:
         fatal_error_msg("Script directory could not be found.")
-    if path.exists(root_dir) == False:
+    if path.exists(paths["root"]) == False:
         fatal_error_msg("Working/output directory could not be found.")
-    if path.exists(pref_file) == False:                                 # In the final version, this check should be removed.
+    if path.exists(files["user_config"]) == False:                                 # In the final version, this check should be removed.
         fatal_error_msg("Preferences file could not be found.") 
-    if path.exists(conf_file) == False:                                 # In the final version, this check could also be removed.
+    if path.exists(files["default_config"]) == False:                                 # In the final version, this check could also be removed.
         fatal_error_msg("Default configuration file could not be found.")
         
-    preferences, programs = configure(conf_file,pref_file,bin_dir,root_dir)
+    preferences, programs, notifications = configure(files["default_config"],files["user_config"],paths["bin"],paths["root"])
     
     # Make sure that all the requisite preferences have been defined.
     if set(get_keys(preferences)).issuperset(required_preferences()) == False:
@@ -234,21 +260,29 @@ def main():
         for item in (set(required_programs()) - set(get_keys(programs))):
             missing += item + ", "
         fatal_error_msg("Missing required programs(s): " + missing.rstrip(", ") + ".")
+
+    ## Remove traces of previous run, setup current run
+    # Remove previous run
+    shutil.rmtree(paths["results"], ignore_errors = True)
+    shutil.rmtree(paths["tmp"], True)
     
+    # Setup current run
+    mkdir(paths["results"])
+    mkdir(paths["backup"])
+    mkdir(paths["tmp"])
+    mkdir(paths["originals"])
+    mkdir(paths["blast"])
+    
+    
+    # Print out the settings and also save as a configuration file
     if verbose == True:
         print "Using the following settings:\n"
         for (key,value) in preferences:
             print '{0:25}{1:10}'.format(key, value) # Prints a crudely-formatted list
-        
-    ## Remove traces of previous run, setup current run
-    # Remove previous run
-    shutil.rmtree(results_dir, ignore_errors = True)
-    shutil.rmtree(working_dir, True)
     
-    # Setup current run
-    mkdir(results_dir)
-    mkdir(backup_dir)
-    mkdir(working_dir)
+    write_configuration(programs, preferences, notifications)
+        
+
     
     
     # Finally, if everything went well, exit with status 0.
