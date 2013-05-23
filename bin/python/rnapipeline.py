@@ -5,7 +5,7 @@ from os import listdir
 from os import unlink
 from os import mkdir
 from os import makedirs
-
+import os
 import sys
 #from subprocess import call
 import subprocess
@@ -132,23 +132,33 @@ def empty_directory(folder_path):                       # Currently not being us
 def main():
     
     # Set up the parser that will see what options are set.
-    parser = OptionParser(usage="%prog [options]", version="%prog 0.1", epilog="Last modified 11 April 2013")
-   
-    parser.add_option("-m", "--main", action="store", dest="main_dir", default="../../", help="set the working directory where all output is")
-    parser.add_option("-p", "--pref", action="store", dest="pref_file", default="../../usr/preferences/preferences.conf", help="file where the preferences are located") # Should this not have a default?
-    parser.add_option("-r", "--results", action="store", dest="results_dir", help="set the directory where results will be stored; default will be based on the main directory")
+    parser = OptionParser(usage="%prog [options] \n"
+                          "This program doesn't require any options to run "
+                          "if the default locations are used (based on where this program is being executed from):\n"
+                          "\tUser Preference file:\t " + expand_file("../../usr/preferences/preferences.conf") + "\n"
+                          "\tSequences directory:\t " + expand_dir("../../usr/sequences/"), version="%prog 0.2", epilog="Last modified 22 May 2013")
+
+    parser.add_option("-p", "--pref", action="store", dest="pref_file", default="../../usr/preferences/preferences.conf", help="file where the preferences are located")
+    parser.add_option("-s", "--seq", "--input", action="store", dest="seq_dir", default="../../usr/sequences/", help="set the directory where the input sequences are; default is inside usr directory")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose", default=True, help="if true, displays all standard output (errors will also be displayed)")
     parser.add_option("-q", "--quiet", action="store_false", dest="verbose", help="if true, hides all standard output (errors will still be displayed)")
 
+    dangerous_group = OptionGroup(parser, "Hazardous Options",
+                                        "These options can been overridden, "
+                                        "typically without consequence, but if errors arise, "
+                                        "using the default is recommended.")
+
+    dangerous_group.add_option("-m", "--main", "--root", action="store", dest="root_dir", default="../../", help="set the working directory where all output is")
+    dangerous_group.add_option("-r", "--results", action="store", dest="results_dir", help="set the directory where results will be stored; default will be based on the program's root directory")
+    
     adv_group = OptionGroup(parser, "Advanced Options",
                             "Use these options at your own risk.  "
                             "Changing these options can cause the program to fail.  "
                             "It is best to use the default in this case.")
-    adv_group.add_option("--script", action="store", dest="script_dir", default="../", help="set the directory where the scripts are located")
+    adv_group.add_option("--script", action="store", dest="script_dir", default="../", help="set the directory where the scripts are located\nWARNING: The default folders are based on where this directory is defined; changing this is NOT recommended!!")
     adv_group.add_option("--conf", action="store", dest="conf_file", default="../../etc/defaults.conf", help="specify the default configuration (preferences) file")
-    adv_group.add_option("--references", action="store", dest="references_dir", help="set where references will be stored; default will be based on the results directory")
-    adv_group.add_option("--input", action="store", dest="usr_dir", help="set the directory where user's input is; default will be based on the main directory") # May not need - may just specify the preferences file and sequences directory
-    #adv_group.add_option("--sequences", action="store", dest="seq_dir", help="set the directory where the input sequences are; this should be in the directory specified by input; default is inside the input directory") # May remove this option in the future
+
+    parser.add_option_group(dangerous_group)
     parser.add_option_group(adv_group)
 
     
@@ -158,29 +168,30 @@ def main():
     
     # Set up variables from options
     bin_dir = expand_dir(options.script_dir)
-    root_dir = expand_dir(options.main_dir)
+    root_dir = expand_dir(options.root_dir)
+    seq_dir = expand_dir(options.seq_dir)
     pref_file = expand_file(options.pref_file)
     conf_file = expand_file(options.conf_file)
     verbose = options.verbose
     
     # Set up the conditional variables  
-    if options.usr_dir != None:
-        usr_dir = expand_dir(options.usr_dir)
-    else:
-        usr_dir = expand_dir(root_dir + "usr/")    
     if options.results_dir != None:
         results_dir = expand_dir(options.results_dir)
     else:
         results_dir = expand_dir(root_dir + "results/")
-    if options.references_dir != None:
-        backup_dir = expand_dir(options.references_dir)
-    else:
-        backup_dir = expand_dir(results_dir + "references/")
+
         
     # Set up other directory variables
-    etc_dir = root_dir + "etc/"
-    working_dir = root_dir + "tmp/" # Could also put in /results/tmp/
-    blast_dir = working_dir + "blast"
+    etc_dir = expand_dir(root_dir + "etc/")     # More than likely won't be used.
+    working_dir = expand_dir(root_dir + "tmp/")  # Could also put in /results/tmp/
+    # Output directories:
+    backup_dir = expand_dir(results_dir + "references/")    
+    orig_dir = expand_dir(results_dir + "originals/")
+    output_dir = expand_dir(results_dir + "output/")
+    blast_dir = expand_dir(results_dir + "blast/")
+    
+    
+    
     
     
     
@@ -193,7 +204,6 @@ def main():
         print ""
         print "Config (etc) directory: \t" + etc_dir
         print "Results (results) directory: \t" + results_dir
-        print "User (usr) directory: \t\t" + usr_dir
         print "Backup (references) directory: \t" + backup_dir
         print "Working (tmp) directory: \t" + working_dir
         print ""
