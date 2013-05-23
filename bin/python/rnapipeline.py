@@ -85,7 +85,7 @@ def configure(default_file, user_file, scriptdir, maindir):
         fatal_error_msg("No 'Notifications' section in configuration file.")
     
     # Iterate through preferences and $scriptdir and $maindir with full paths.
-    new_preferences = []
+    new_preferences = {}
     for (pref,value) in preferences:
         #value = re.sub("$scriptdir/",path.abspath(scriptdir),value)
         #value = re.sub("$maindir/",path.abspath(maindir),value)
@@ -93,26 +93,45 @@ def configure(default_file, user_file, scriptdir, maindir):
             value = path.abspath(value.replace("$scriptdir",path.abspath(scriptdir)))
         if value.find("$maindir") != -1:    
             value = path.abspath(value.replace("$maindir",path.abspath(maindir)))
-        new_preferences.append((pref,value))
-            
+        #new_preferences.append((pref,value))
+        new_preferences[pref] = value    
         
         
     # Iterate through programs and verify each exists.
     # Need to test the case that a location is expanded by re.sub and fails the which
     # command, that it still removes the item from the list properly.
-    new_programs = []     
+    new_programs = {}     
     for (prog,loc) in programs:
         loc = re.sub("$scriptdir/",path.abspath(scriptdir),loc)
         loc = re.sub("$maindir/",path.abspath(maindir),loc)
         #print "(" + prog + "," + loc + ") = " + str(commands.getstatusoutput("which " + loc))
         if commands.getstatusoutput("which " + loc)[0] == 0: # [0] is the return value
         #if subprocess.call(["which",loc], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE, shell=False) == 0: # Accomplishes the same thing as commands.getstatusoutput.
-            new_programs.append((prog,loc))
+            #new_programs.append((prog,loc))
+            new_programs[prog] = loc
             
+    new_notifications = {}
+    for (key,value) in notifications:
+        new_notifications[key] = value        
     # Return the preferences and programs.
-    return new_preferences, new_programs, notifications
-def write_configuration(programs, preferences, notifications):
-    return None
+    return new_preferences, new_programs, new_notifications
+def write_configuration(programs, preferences, notifications, directory):
+    
+    parser = ConfigParser.ConfigParser()
+    parser.add_section("Programs")
+    parser.add_section("Preferences")
+    parser.add_section("Notifications")
+    
+    for key,value in programs.iteritems():
+        parser.set("Programs", key, value)
+    for key,value in preferences.iteritems():
+        parser.set("Preferences", key, value)
+    for key,value in notifications.iteritems():
+        parser.set("Notifications", key, value)
+        
+    fp = open(directory + "Preferences.conf","w")
+    parser.write(fp)
+    fp.close()
     
 def get_keys(tuple_list):
     key_list = []
@@ -249,13 +268,13 @@ def main():
     preferences, programs, notifications = configure(files["default_config"],files["user_config"],paths["bin"],paths["root"])
     
     # Make sure that all the requisite preferences have been defined.
-    if set(get_keys(preferences)).issuperset(required_preferences()) == False:
+    if set(preferences).issuperset(required_preferences()) == False:
         missing = "" 
         for item in (set(required_preferences()) - set(get_keys(preferences))):
             missing += item + ", "
         fatal_error_msg("Missing required preference(s): " + missing.rstrip(", ") + ".")
     # Make sure that all the requisite programs are set and exist.
-    if set(get_keys(programs)).issuperset(required_programs()) == False:
+    if set(programs).issuperset(required_programs()) == False:
         missing = "" 
         for item in (set(required_programs()) - set(get_keys(programs))):
             missing += item + ", "
@@ -277,13 +296,16 @@ def main():
     # Print out the settings and also save as a configuration file
     if verbose == True:
         print "Using the following settings:\n"
-        for (key,value) in preferences:
+        for key,value in preferences.iteritems():
             print '{0:25}{1:10}'.format(key, value) # Prints a crudely-formatted list
     
-    write_configuration(programs, preferences, notifications)
-        
-
-    
+    # Write the configuration options that we're using to file
+    # as a reference.
+    # Then copy the reference strains and blast sequences to the backup
+    # directory as well.
+    write_configuration(programs, preferences, notifications, paths["backup"])
+    shutil.copy2(preferences["referencestrains"], paths["backup"])
+    shutil.copy2(preferences["blastsequences"], paths["backup"])
     
     # Finally, if everything went well, exit with status 0.
     sys.exit(0)
