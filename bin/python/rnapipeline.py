@@ -162,6 +162,8 @@ def empty_directory(folder_path):                       # Currently not being us
 
 def execute_command(path_to,command):                           # Just a wrapper to make the call cleaner
     return subprocess.call(os.path.join(path_to,command), shell=False)
+def execute_command(path_to,command, options):
+    return subprocess.call(os.path.join(path_to,command) + " " + options, shell=False)
     
 
 def main():
@@ -171,7 +173,7 @@ def main():
                           "This program doesn't require any options to run "
                           "if the default locations are used (based on where this program is being executed from):\n"
                           "\tUser Preference file:\t " + expand_file("../../usr/preferences/preferences.conf") + "\n"
-                          "\tSequences directory:\t " + expand_dir("../../usr/sequences/"), version="%prog 0.2", epilog="Last modified 22 May 2013")
+                          "\tSequences directory:\t " + expand_dir("../../usr/sequences/"), version="%prog 0.2")#, epilog="Last modified 22 May 2013")
 
     parser.add_option("-p", "--pref", action="store", dest="pref_file", default="../../usr/preferences/preferences.conf", help="file where the preferences are located")
     parser.add_option("-s", "--seq", "--input", action="store", dest="seq_dir", default="../../usr/sequences/", help="set the directory where the input sequences are; default is inside usr directory")
@@ -304,7 +306,8 @@ def main():
     if verbose == True:
         print "Using the following settings:\n"
         for key,value in preferences.iteritems():
-            print '{0:25}{1:10}'.format(key, value) # Prints a crudely-formatted list
+            #print '{0:25}{1:10}'.format(key, value) # Prints a crudely-formatted list
+            print key + "\t\t\t\t" + value
     
     # Write the configuration options that we're using to file
     # as a reference.
@@ -314,8 +317,12 @@ def main():
     shutil.copy2(preferences["referencestrains"], paths["backup"])
     shutil.copy2(preferences["blastsequences"], paths["backup"])
     
-    
-    
+    #print "Attempting to execute:\t\t\t" + paths["bash"] + "prepare_fasta_files.bash " + paths["seq"] + " " + paths["perl"] + " " + paths["tmp"] + "preparefastalist " + paths["backup"] + " " + preferences["suffix"]
+    command = os.path.join(paths["bash"], "prepare_fasta_files.bash")
+    arg_list = [command, paths["seq"], paths["perl"], paths["tmp"]+"preparefastalist", paths["backup"], preferences["suffix"]]
+    success = subprocess.call(arg_list)
+    #success = execute_command(paths["bash"],"prepare_fasta_files.bash", paths["seq"] + " " + paths["perl"] + " " + paths["tmp"] + "preparefastalist " + paths["backup"] + " " + preferences["suffix"])
+    print "Prepare Fasta Files Script, Success = " + str(success)
     # Finally, if everything went well, exit with status 0.
     sys.exit(0)
 

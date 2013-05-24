@@ -16,7 +16,7 @@ LIST_FILE="$3"
 BACKUP_DIR="$4"
 SUFFIX="$5"
 
-echo "Collating all $SUFFIX files into list"
+echo "Collating all ${SUFFIX} files into list"
 find $SEQUENCE_DIR -maxdepth 1 -name "*$SUFFIX" -exec basename {} \; > $LIST_FILE
 
 ## Windows/Mac endlines to Unix endlines

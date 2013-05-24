@@ -1,3 +1,4 @@
+>configure.py
 import sys
 def main():
   
