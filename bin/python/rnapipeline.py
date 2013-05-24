@@ -307,6 +307,8 @@ def main():
     shutil.copy2(preferences["referencestrains"], paths["backup"])
     shutil.copy2(preferences["blastsequences"], paths["backup"])
     
+    
+    
     # Finally, if everything went well, exit with status 0.
     sys.exit(0)
 
