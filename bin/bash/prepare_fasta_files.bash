@@ -1,6 +1,6 @@
 #!/bin/bash
 ###########
-# Takes 4 variables:
+# Takes 5 variables:
 #	1.  The directory with the sequences
 #	2.  The perl script directory
 #	2.  The the location of where to store the list
