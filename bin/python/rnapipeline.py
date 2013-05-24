@@ -28,11 +28,11 @@ def expand_dir(m_path):
     # Returns a fully expanded absolute path.
     # Requires os.path
     return fix_directory(path.abspath(path.expanduser( m_path )))
-def expand_file(m_path):
+def expand_file(m_file):
     # Returns a fully expanded absolute path.
     # Requires os.path
     # Does not call fix directory.
-    return path.abspath(path.expanduser(m_path))
+    return path.abspath(path.expanduser(m_file))
 def source_file(m_path):
     # Runs the source command with the passed in parameter as the
     # file to source.
@@ -108,8 +108,8 @@ def configure(default_file, user_file, scriptdir, maindir):
         if commands.getstatusoutput("which " + loc)[0] == 0: # [0] is the return value
         #if subprocess.call(["which",loc], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE, shell=False) == 0: # Accomplishes the same thing as commands.getstatusoutput.
             #new_programs.append((prog,loc))
-            new_programs[prog] = loc
-            
+            new_programs[prog] = loc           
+               
     new_notifications = {}
     for (key,value) in notifications:
         new_notifications[key] = value        
@@ -159,6 +159,10 @@ def empty_directory(folder_path):                       # Currently not being us
             unlink(file_object_path)
         else:
             shutil.rmtree(file_object_path)
+
+def execute_command(path_to,command):                           # Just a wrapper to make the call cleaner
+    return subprocess.call(os.path.join(path_to,command), shell=False)
+    
 
 def main():
     
@@ -229,6 +233,9 @@ def main():
     # Set up other directory variables
     paths["etc"] = expand_dir(options.script_dir + "../etc/")     # More than likely won't be used.
     paths["tmp"] = expand_dir(options.script_dir + "../tmp/")  # Could also put in /results/tmp/
+    paths["bash"] = expand_dir(options.script_dir + "bash")
+    paths["perl"] = expand_dir(options.script_dir + "perl")
+    paths["python"] = expand_dir(options.script_dir + "python")
     # Output directories:
     paths["backup"] = expand_dir(paths["results"] + "references/")    
     paths["originals"] = expand_dir(paths["results"] + "originals/")
@@ -236,7 +243,7 @@ def main():
     paths["blast"] = expand_dir(paths["results"] + "blast/")
     
     
-    
+    #execute_command(paths["bash"],"load_modules.bash")
     
     
     
