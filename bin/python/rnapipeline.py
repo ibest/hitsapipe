@@ -260,6 +260,7 @@ def main():
         print "Results (results) directory: \t" + paths["results"]
         print "Backup (references) directory: \t" + paths["backup"]
         print "Working (tmp) directory: \t" + paths["tmp"]
+        print "Sequences (seq) directory: \t" + paths["seq"]
         print ""
         #print "Concatenation  : \t" + path.abspath(bin_dir+"///..///etc/////defaults.conf")    
     # End of parser
@@ -317,12 +318,19 @@ def main():
     shutil.copy2(preferences["referencestrains"], paths["backup"])
     shutil.copy2(preferences["blastsequences"], paths["backup"])
     
-    #print "Attempting to execute:\t\t\t" + paths["bash"] + "prepare_fasta_files.bash " + paths["seq"] + " " + paths["perl"] + " " + paths["tmp"] + "preparefastalist " + paths["backup"] + " " + preferences["suffix"]
     command = os.path.join(paths["bash"], "prepare_fasta_files.bash")
-    arg_list = [command, paths["seq"], paths["perl"], paths["tmp"]+"preparefastalist", paths["backup"], preferences["suffix"]]
+    arg_list = [command, paths["seq"], paths["perl"], paths["backup"]+"FilesList", paths["originals"], preferences["suffix"]] # FilesList is never used again
+    print "Command: " + command + "\n"
     success = subprocess.call(arg_list)
-    #success = execute_command(paths["bash"],"prepare_fasta_files.bash", paths["seq"] + " " + paths["perl"] + " " + paths["tmp"] + "preparefastalist " + paths["backup"] + " " + preferences["suffix"])
     print "Prepare Fasta Files Script, Success = " + str(success)
+    
+    command = os.path.join(paths["bash"], "good_sequences.bash")
+    arg_list = [command, paths["seq"], paths["perl"], paths["tmp"]+"InputSequences",paths["blast"],preferences["suffix"],preferences["direction"]]
+    success = subprocess.call(arg_list)
+    print "Get Good Sequences, Success = " + str(success)
+    
+    
+    
     # Finally, if everything went well, exit with status 0.
     sys.exit(0)
 

@@ -20,6 +20,8 @@ DIRECTION="$6"
 
 GOOD_SEQUENCES_FILE="${BLAST_DIR}good_sequences"
 
+echo "${SEQUENCE_DIR}\n"
+echo "${INPUT_SEQUENCES_FILE}\n"
 
 echo "Collating sequences..."
 find ${SEQEUNCE_DIR} -maxdepth 1 -name "*${SUFFIX}" -print0 | xargs -i -0 cat {} >> ${INPUT_SEQUENCES_FILE}
@@ -29,8 +31,10 @@ echo "Finding the good seqs and placing them in ${GOOD_SEQUENCES_FILE}"
 #This part tries to figure out whether a sequence is valid --
 #make the percentage cutoff for countN2 a parameter and whether to do this
 #a parameter as well
+CURR_DIR=$(pwd)
+cd ${SEQUENCE_DIR}
 $(${PERL_DIR}countN2.pl) $NPERCENT $PRIMER3 $PRIMER5 $MINSEQLENGTH < ${INPUT_SEQUENCES_FILE} > ${GOOD_SEQUENCES_FILE}
-
+cd ${CURR_DIR}
 if [ ! -e ${GOOD_SEQUENCE_FILE} ]
 then
   echo "No good sequences found!  Exiting."
