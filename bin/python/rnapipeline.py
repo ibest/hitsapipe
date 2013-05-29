@@ -243,11 +243,13 @@ def main():
     paths["originals"] = expand_dir(paths["results"] + "originals/")
     paths["output"] = expand_dir(paths["results"] + "output/")
     paths["blast"] = expand_dir(paths["results"] + "blast/")
+    paths["blasts_linear"] = expand_dir(paths["blast"] + "blasts_linear/")
+    paths["blasts_parallel"] = expand_dir(paths["blast"] + "blasts_parallel/")
     
     # Set up specific files that will be needed
-    files["good_sequences"] = expand_dir(paths["blast"] + "good_sequences")
-    files["input_sequences_list"] = expand_dir(paths["tmp"] + "input_files")
-    files["collated_list"] = expand_dir(paths["backup"] + "collated_list")
+    files["good_sequences"] = expand_file(paths["blast"] + "good_sequences")
+    files["input_sequences_list"] = expand_file(paths["tmp"] + "input_files")
+    files["collated_list"] = expand_file(paths["backup"] + "collated_list")
     
     
     #execute_command(paths["bash"],"load_modules.bash")
@@ -330,12 +332,19 @@ def main():
     print "Prepare Fasta Files Script, Success = " + str(success)
     
     command = os.path.join(paths["bash"], "good_sequences.bash")
-    arg_list = [command, paths["seq"], paths["perl"], files["input_sequences"],paths["blast"],preferences["suffix"],preferences["direction"], preferences["npercent"], preferences["primer3"], preferences["primer5"], preferences["minsequencelength"], paths["blast"]+"good_sequences"]
+    arg_list = [command, paths["seq"], paths["perl"], files["input_sequences_list"],paths["blast"],preferences["suffix"],preferences["direction"], preferences["npercent"], preferences["primer3"], preferences["primer5"], preferences["minsequencelength"], files["good_sequences"]]
     success = subprocess.call(arg_list)
     print "Get Good Sequences, Success = " + str(success)
     
+    command = os.path.join(paths["bash"], "prepare_for_blast.bash")
+    arg_list = [command, files["good_sequences"]]
+    success = subprocess.call(arg_list)
+    print "Prepare for Blast, Success = " + str(success)
     
-    
+    command = os.path.join(paths["bash"], "blast_direction.bash")
+    arg_list = [command, files["good_sequences"], preferences["blastsequences"]]
+    success = subprocess.call(arg_list)
+    print "Blast Direction, Success = " + str(success)        
     # Finally, if everything went well, exit with status 0.
     sys.exit(0)
 
