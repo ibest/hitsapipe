@@ -244,6 +244,11 @@ def main():
     paths["output"] = expand_dir(paths["results"] + "output/")
     paths["blast"] = expand_dir(paths["results"] + "blast/")
     
+    # Set up specific files that will be needed
+    files["good_sequences"] = expand_dir(paths["blast"] + "good_sequences")
+    files["input_sequences_list"] = expand_dir(paths["tmp"] + "input_files")
+    files["collated_list"] = expand_dir(paths["backup"] + "collated_list")
+    
     
     #execute_command(paths["bash"],"load_modules.bash")
     
@@ -319,13 +324,13 @@ def main():
     shutil.copy2(preferences["blastsequences"], paths["backup"])
     
     command = os.path.join(paths["bash"], "prepare_fasta_files.bash")
-    arg_list = [command, paths["seq"], paths["perl"], paths["backup"]+"FilesList", paths["originals"], preferences["suffix"]] # FilesList is never used again
-    print "Command: " + command + "\n"
+    arg_list = [command, paths["seq"], paths["perl"], files["collated_list"], paths["originals"], preferences["suffix"]] # collated_list is never used again
+    #print "Command: " + command + "\n"
     success = subprocess.call(arg_list)
     print "Prepare Fasta Files Script, Success = " + str(success)
     
     command = os.path.join(paths["bash"], "good_sequences.bash")
-    arg_list = [command, paths["seq"], paths["perl"], paths["tmp"]+"InputSequences",paths["blast"],preferences["suffix"],preferences["direction"]]
+    arg_list = [command, paths["seq"], paths["perl"], files["input_sequences"],paths["blast"],preferences["suffix"],preferences["direction"], preferences["npercent"], preferences["primer3"], preferences["primer5"], preferences["minsequencelength"], paths["blast"]+"good_sequences"]
     success = subprocess.call(arg_list)
     print "Get Good Sequences, Success = " + str(success)
     

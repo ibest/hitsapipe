@@ -22,6 +22,7 @@ my $Primer5 = shift(@ARGV);
 #Minimum length needed for a sequence to be accepted
 my $minlength = shift(@ARGV);
 
+
 while (<STDIN>) {
   chomp;
   next if( ! $_ );
