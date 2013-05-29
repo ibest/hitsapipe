@@ -86,4 +86,4 @@ then
   echo "No good sequences found!  Exiting."
 	exit 1
 fi
-#exit $?
+#exit $0
