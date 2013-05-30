@@ -328,20 +328,29 @@ def main():
     
     command = []
     command.append("qsub")
-    command.append("-oe testoutput.log")
+    command.append("-j")
+    command.append("oe")
+    command.append("-o")
+    command.append("testoutput.log")
+    #command.append('-j oe')
+    #command.append('-o "testoutput.log"')
     command.append(os.path.join(paths["bash"],"prepare_fasta_files.bash"))
-    command.append(paths["seq"])
-    command.append(paths["perl"])
-    command.append(files["collated_list"])
-    command.append(paths["originals"])
-    command.append(preferences["suffix"])
-    
-    #command = os.path.join(paths["bash"], "prepare_fasta_files.bash") + " " \
-    #                                + paths["seq"] + " " \
-    #                                + paths["perl"] + " " \
-    #                                + files["collated_list"] + " " \
-    #                                + paths["originals"] + " " \
-    #                                + preferences["suffix"]
+    command.append("-v 1="+paths["seq"] + " 2="+paths["perl"] + " 3="+files["collated_list"] + " 4="+paths["originals"] + " 5="+preferences["suffix"])
+#    command.append("1="+paths["seq"])
+#    command.append("2="+paths["perl"])
+#    command.append("3="+files["collated_list"])
+#    command.append("4="+paths["originals"])
+#    command.append("5="+preferences["suffix"])
+    #print command
+#    command = "qsub -o testoutput.log -j oe "
+#    command += os.path.join(paths["bash"], "prepare_fasta_files.bash") + " " \
+#                                    + paths["seq"] + " " \
+#                                    + paths["perl"] + " " \
+#                                    + files["collated_list"] + " " \
+#                                    + paths["originals"] + " " \
+#                                    + preferences["suffix"]
+    print command
+    #success = subprocess.call(command.rstrip(), shell=True)
     success = subprocess.call(command)
     print "Calling qsub for preparing fasta files, Success = " + str(success)
     
