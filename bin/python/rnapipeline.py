@@ -250,6 +250,7 @@ def main():
     files["good_sequences"] = expand_file(paths["blast"] + "good_sequences")
     files["input_sequences_list"] = expand_file(paths["tmp"] + "input_files")
     files["collated_list"] = expand_file(paths["backup"] + "collated_list")
+    files["blast_input"] = expand_file(paths["blast"] + "blast_input")
     
     
     #execute_command(paths["bash"],"load_modules.bash")
