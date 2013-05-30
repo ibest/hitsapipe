@@ -326,6 +326,29 @@ def main():
     shutil.copy2(preferences["referencestrains"], paths["backup"])
     shutil.copy2(preferences["blastsequences"], paths["backup"])
     
+    command = []
+    command.append("qsub")
+    command.append("-oe testoutput.log")
+    command.append(os.path.join(paths["bash"],"prepare_fasta_files.bash"))
+    command.append(paths["seq"])
+    command.append(paths["perl"])
+    command.append(files["collated_list"])
+    command.append(paths["originals"])
+    command.append(preferences["suffix"])
+    
+    #command = os.path.join(paths["bash"], "prepare_fasta_files.bash") + " " \
+    #                                + paths["seq"] + " " \
+    #                                + paths["perl"] + " " \
+    #                                + files["collated_list"] + " " \
+    #                                + paths["originals"] + " " \
+    #                                + preferences["suffix"]
+    success = subprocess.call(command)
+    print "Calling qsub for preparing fasta files, Success = " + str(success)
+    
+                                     
+    sys.exit(0)
+    
+    
     command = os.path.join(paths["bash"], "prepare_fasta_files.bash")
     arg_list = [command, paths["seq"], paths["perl"], files["collated_list"], paths["originals"], preferences["suffix"]] # collated_list is never used again
     #print "Command: " + command + "\n"
@@ -349,7 +372,11 @@ def main():
     # Finally, if everything went well, exit with status 0.
     sys.exit(0)
 
-
+    # Note to self:  The last qsub command should be (or whenever any of them fail?) should include appending all
+    # of the logs together unless there is an easy way to do that
+    
+    # Note to self:  Have this Python script make a list of options to supply to qsub and then call subprocess.call()
+    # The output of this should be captured (by a pipe?) in order to be used in the job dependency list. 
     
 if __name__ == '__main__':
     main()
