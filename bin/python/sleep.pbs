@@ -1,0 +1,3 @@
+echo "PBS_JOBID: $PBS_JOBID"
+echo "PBS_JOBNAME: $PBS_JOBNAME"
+sleep 120
