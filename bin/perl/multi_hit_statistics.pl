@@ -1,3 +1,4 @@
+>multi_hit_statistics.pl
 #!/usr/bin/env perl 
 
 # USAGE: multi_hit_statistics.pl <DIRECTORY> <OUTFILE>

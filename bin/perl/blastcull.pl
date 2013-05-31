@@ -1,3 +1,4 @@
+>blastcull.pl
 #!/usr/bin/env perl 
 
 #USAGE:  perl blastcull.pl < (INFILE) > (OUTFILE)

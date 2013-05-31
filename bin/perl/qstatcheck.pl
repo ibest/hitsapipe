@@ -1,3 +1,4 @@
+>qstatcheck.pl
 #!/usr/bin/env perl 
 
 #USAGE:  perl qstatcheck.pl < processlistfile

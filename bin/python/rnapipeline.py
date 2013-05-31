@@ -74,11 +74,11 @@ def configure(default_file, user_file, scriptdir, maindir):
     if parser.has_section("Preferences"):    
         preferences = parser.items("Preferences")
     else:
-        fatal_error_msg("No 'Notifications' section in configuration file.")
+        fatal_error_msg("No 'Preferences' section in configuration file.")
     if parser.has_section("Programs"):     
         programs = parser.items("Programs")
     else:
-        fatal_error_msg("No 'Notifications' section in configuration file.")    
+        fatal_error_msg("No 'Programs' section in configuration file.")    
     if parser.has_section("Notifications"):
         notifications = parser.items("Notifications")
     else:

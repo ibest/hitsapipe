@@ -1,3 +1,4 @@
+>namechange.pl
 #!/usr/bin/env perl 
 
 # USAGE: namechange.pl <SUFFIX>

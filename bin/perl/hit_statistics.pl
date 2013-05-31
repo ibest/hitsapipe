@@ -1,3 +1,4 @@
+>hit_statistics.pl
 #!/usr/bin/env perl 
 
 # USAGE: hit_statistics.pl <IN> <OUT>

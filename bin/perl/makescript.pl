@@ -1,3 +1,4 @@
+>makescript.pl
 #!/usr/bin/env perl 
 
 # USAGE:  makescript.pl <directory> <filetowrite> <preferences file to use>

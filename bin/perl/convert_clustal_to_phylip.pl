@@ -1,3 +1,4 @@
+>convert_clustal_to_phylip.pl
 #!/usr/bin/env perl 
 
 #######
