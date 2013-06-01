@@ -1,7 +1,0 @@
-#!/bin/bash
-#PBS -N varTest
-#PBS -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/newoutput.log
-#PBS -d /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging
-echo "PBS_JOBID: $PBS_JOBID"
-echo "PBS_JOBNAME: $PBS_JOBNAME"
-sleep 120

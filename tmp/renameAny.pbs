@@ -1,7 +1,0 @@
-#!/bin/bash
-#PBS -N renameAny
-#PBS -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/renameAny.log
-#PBS -d /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging
-$(echo "Running ${$PBS_JOBNAME}")
-#$(mv ${ORIG} ${NEW})
-sleep 20

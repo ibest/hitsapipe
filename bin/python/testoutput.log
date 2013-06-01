@@ -1,7 +1,0 @@
-base/1.0(21):ERROR:105: Unable to locate a modulefile for 'git'
-Collating all  files into list
-/var/spool/torque/mom_priv/jobs/1119965.fortytwo.ibest.uidaho.edu.SC: line 20: $LIST_FILE: ambiguous redirect
-Ensuring Unix endlines on all files
-Backing up original sequences
-Making sure all filenames are the FASTA sequences names
-/var/spool/torque/mom_priv/jobs/1119965.fortytwo.ibest.uidaho.edu.SC: line 38: namechange.pl: command not found
