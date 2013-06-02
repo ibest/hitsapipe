@@ -1,0 +1,15 @@
+PBS_O_HOST: fortytwo.ibest.uidaho.edu
+PBS_SERVER: fortytwo.ibest.uidaho.edu
+PBS_O_QUEUE: tiny
+PBS_O_HOME: /mnt/home/walt2178 || /mnt/home/walt2178
+PBS_O_WORKDIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/perl
+PBS_O_INITDIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/perl
+PBS_ARRAYID: 
+PBS_ENVIRONMENT: PBS_BATCH
+PBS_JOBID: 1121804.fortytwo.ibest.uidaho.edu
+PBS_JOBNAME: varDirTest
+PBS_NODEFILE: /var/spool/torque/aux//1121804.fortytwo.ibest.uidaho.edu
+PBS_QUEUE: tiny
+FOO: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/bash
+Something something...Danger Zone!
+Sun Jun  2 14:13:14 PDT 2013

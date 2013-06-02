@@ -139,12 +139,12 @@ def main():
         parser.error(error_message)
 
     paths, configs = setup_paths_and_files(options)
-    preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
+    #preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
     #prepare_directory_structure(paths)
-    backup_configuration_file(preferences, notifications, configs.backup_config)
+    #backup_configuration_file(preferences, notifications, configs.backup_config)
     #backup_file() # RefStrain
     #backup_file() # BlastSeq
-    sys.exit(0)
+    #sys.exit(0)
     
     
     
@@ -161,64 +161,66 @@ def main():
     
     
     
-    paths = main_paths(sys.argv[1], sys.argv[2], sys.argv[3])
+    #paths = main_paths(sys.argv[1], sys.argv[2], sys.argv[3])
     print "Paths:"
     print "bin: "+paths.bin
     print "root: "+paths.root
-    print "results: "+paths.results
+    print "results: "+paths.output
     print "bash: "+paths.bash
     print "perl: "+paths.perl
     print "python: "+paths.python
 
+    #sys.exit(0)
     
     pbs_directives = open(join(paths.tmp,"test.pbs"),"w")
-    pbs_directives.writelines(["#!/bin/bash\n","#PBS -N varTest\n","#PBS -o "+join(paths.results,"newoutput.log")+"\n","#PBS -d "+paths.root+"\n"]) # accepts a list of strings.  remember to newline each of them
-
-    with open (join(paths.python,"sleep.pbs"), "r") as myfile:
+    #pbs_directives.writelines(["#!/bin/bash\n","#PBS -N varDirTest\n","#PBS -j oe\n","#PBS -o "+join(paths.output,"newoutput.log")+"\n","#PBS -D "+paths.perl+"\n","#PBS -d "+paths.root+"\n"]) # accepts a list of strings.  remember to newline each of them
+    pbs_directives.writelines(["#!/bin/bash\n","#PBS -N varDirTest\n","#PBS -j oe\n","#PBS -o "+join(paths.output,"newoutput.log")+"\n","#PBS -d "+paths.perl+"\n","#PBS -v FOO=\""+paths.bash+"\",SOMETHING=\"Danger Zone!\"\n"]) # accepts a list of strings.  remember to newline each of them
+    with open (join(paths.python,"vars.pbs"), "r") as myfile:
         data = myfile.readlines()
         
     pbs_directives.writelines(data)
     pbs_directives.close()
     
-    renameoutput = open(join(paths.tmp,"renameSuccess.pbs"),"w")
-    renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameSuccess\n","#PBS -o "+join(paths.results,"renameSuccess.log")+"\n","#PBS -d "+paths.root+"\n"])
+    #renameoutput = open(join(paths.tmp,"renameSuccess.pbs"),"w")
+    #renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameSuccess\n","#PBS -o "+join(paths.results,"renameSuccess.log")+"\n","#PBS -d "+paths.root+"\n"])
     
-    with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
-        data = myfile.readlines()
+    #with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
+    #    data = myfile.readlines()
         
-    renameoutput.writelines(data)
-    renameoutput.close()
+    #renameoutput.writelines(data)
+    #renameoutput.close()
     
-    renameoutput = open(join(paths.tmp,"renameFail.pbs"),"w")
-    renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameFail\n","#PBS -o "+join(paths.results,"renameFail.log")+"\n","#PBS -d "+paths.root+"\n"])
+    #renameoutput = open(join(paths.tmp,"renameFail.pbs"),"w")
+    #renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameFail\n","#PBS -o "+join(paths.results,"renameFail.log")+"\n","#PBS -d "+paths.root+"\n"])
     
-    with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
-        data = myfile.readlines()
+    #with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
+    #    data = myfile.readlines()
         
-    renameoutput.writelines(data)
-    renameoutput.close()
+    #renameoutput.writelines(data)
+    #renameoutput.close()
     
-    renameoutput = open(join(paths.tmp,"renameAny.pbs"),"w")
-    renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameAny\n","#PBS -o "+join(paths.results,"renameAny.log")+"\n","#PBS -d "+paths.root+"\n"])
+    #renameoutput = open(join(paths.tmp,"renameAny.pbs"),"w")
+    #renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameAny\n","#PBS -o "+join(paths.results,"renameAny.log")+"\n","#PBS -d "+paths.root+"\n"])
     
-    with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
-        data = myfile.readlines()
+    #with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
+    #    data = myfile.readlines()
         
-    renameoutput.writelines(data)
-    renameoutput.close()
+    #renameoutput.writelines(data)
+    #renameoutput.close()
     
     #command = "qsub "+join(paths.tmp,"test.pbs")
-    command = "qsub -q tiny -t 0-3 "+join(paths.python,"array.pbs")
+    command = "qsub -q tiny "+join(paths.tmp,"test.pbs")
     #command = "qsub -N outsidePriority "+join(paths.tmp,"test.pbs") # The job name is now outsidePriority even if it was specified in a directive inside the file
+    print "executing: "+command
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     out, err = process.communicate()
     id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
+    print out
+    #command = "qsub -q tiny -W depend=afterokarray:"+str(out.rstrip())+" "+join(paths.tmp,"renameSuccess.pbs")
+    #subprocess.call(command, shell=True)
 
-    command = "qsub -q tiny -W depend=afterokarray:"+str(out.rstrip())+" "+join(paths.tmp,"renameSuccess.pbs")
-    subprocess.call(command, shell=True)
-
-    command = "qsub -q tiny -W depend=afterokarray:"+id+" "+join(paths.tmp,"renameFail.pbs")
-    subprocess.call(command, shell=True)
+    #command = "qsub -q tiny -W depend=afterokarray:"+id+" "+join(paths.tmp,"renameFail.pbs")
+    #subprocess.call(command, shell=True)
 
     sys.exit(0)
     

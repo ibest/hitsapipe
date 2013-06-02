@@ -1,3 +1,9 @@
+#!/bin/bash
+#PBS -N varDirTest
+#PBS -j oe
+#PBS -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/newoutput.log
+#PBS -d /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/perl
+#PBS -v FOO="/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/bash",SOMETHING="Danger Zone!"
 echo "PBS_O_HOST: $PBS_O_HOST"
 echo "PBS_SERVER: $PBS_SERVER"
 echo "PBS_O_QUEUE: $PBS_O_QUEUE"
