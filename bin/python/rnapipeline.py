@@ -162,13 +162,13 @@ def main():
     
     
     #paths = main_paths(sys.argv[1], sys.argv[2], sys.argv[3])
-    print "Paths:"
-    print "bin: "+paths.bin
-    print "root: "+paths.root
-    print "results: "+paths.output
-    print "bash: "+paths.bash
-    print "perl: "+paths.perl
-    print "python: "+paths.python
+    #print "Paths:"
+    #print "bin: "+paths.bin
+    #print "root: "+paths.root
+    #print "results: "+paths.output
+    #print "bash: "+paths.bash
+    #print "perl: "+paths.perl
+    #print "python: "+paths.python
 
     #sys.exit(0)
     
@@ -209,7 +209,8 @@ def main():
     #renameoutput.close()
     
     #command = "qsub "+join(paths.tmp,"test.pbs")
-    command = "qsub -q tiny "+join(paths.tmp,"test.pbs")
+    #command = "qsub -q tiny "+join(paths.tmp,"test.pbs")
+    command = "qsub -q tiny "+join(paths.python,"stagingTest.pbs")
     #command = "qsub -N outsidePriority "+join(paths.tmp,"test.pbs") # The job name is now outsidePriority even if it was specified in a directive inside the file
     print "executing: "+command
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)

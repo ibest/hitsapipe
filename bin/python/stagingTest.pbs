@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N staging-test
+#PBS -j oe
+#PBS -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/stagingtest.log
+#PBS -d /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/
+#PBS -v MBASHDIR="/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/bash",ECHOSTUFF=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/bash/echostuff.bash,SOMETHING="Danger Zone!"
+## #PBS -W stagein=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/bash/echostuff.bash
+echo "This is coming from stagingTest.pbs"
+echo "MBASHDIR: $MBASHDIR"
+echo "ECHOSTUFF: $ECHOSTUFF"
+echo "Attemping to call using MBASHDIR:"
+$(${MBASHDIR}/echostuff.bash)
+$($MBASHDIR/echostuff.bash)
+${MBASHDIR}/echostuff.bash "$SOMETHING"
+
+echo "Finished." 
+date
