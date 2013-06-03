@@ -220,14 +220,14 @@ def main():
     id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
     print id
     
-    get_good_seqeunces = ["#!/bin/bash\n"]
-    get_good_seqeunces.append("#PBS -N fasta_files_prep\n")
-    get_good_seqeunces.append("#PBS -j oe\n")
-    get_good_seqeunces.append("#PBS -o "+join(paths.tmplogs,"002.get_good_sequences.log")+"\n")
-    get_good_seqeunces.append("#PBS -m "+get_qsub_notifications(notifications, False, False)+"\n")
+    get_good_sequences = ["#!/bin/bash\n"]
+    get_good_sequences.append("#PBS -N fasta_files_prep\n")
+    get_good_sequences.append("#PBS -j oe\n")
+    get_good_sequences.append("#PBS -o "+join(paths.tmplogs,"002.get_good_sequences.log")+"\n")
+    get_good_sequences.append("#PBS -m "+get_qsub_notifications(notifications, False, False)+"\n")
     #fasta_files_pbs.append("#PBS -M "+notifications["email"]+"\n")
-    get_good_seqeunces.append("#PBS -d "+paths.root+"\n")
-    get_good_seqeunces.append("#PBS -q tiny\n")
+    get_good_sequences.append("#PBS -d "+paths.root+"\n")
+    get_good_sequences.append("#PBS -q tiny\n")
     pref_str = "SEQUENCE_DIR="+preferences["inputsequences"]+",PERL_DIR="+paths.perl+",INPUT_SEQUENCES_FILE="+files.input_seq_file+",BLAST_DIR="+paths.blast+",SUFFIX="+preferences["suffix"]+",DIRECTION="+preferences["direction"]+",NPERCENT="+preferences["npercent"]+",PRIMER3="+preferences["primer3"]+",PRIMER5="+preferences["primer5"]+",MINSEQLENGTH="+preferences["minsequencelength"]+",GOOD_SEQUENCES_FILE="+files.good_seq_file
     get_good_sequences.append("#PBS -v "+pref_str+"\n")
     get_good_sequences.append("#PBS -W afterok:"+id+"\n")
