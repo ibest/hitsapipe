@@ -58,12 +58,21 @@ class ConfigFiles:
         return [self.default_config,self.user_config]
 class Files:
     def __init__(self, paths, preferences):
+        # Files from config:
+        self.ref_strains = preferences["referencestrains"]
+        self.blast_seq = preferences["blastsequences"]
+        
+        # Files to be backed up:
+        self.ref_strains_backup = join(paths.backup,os.path.basename(self.ref_strains))
+        self.blast_seq_backup = join(paths.backup,os.path.basename(self.blast_seq))
+        
+        # Files to be created
         self.input_seq_file = join(paths.tmp,"input_sequences_list")
         self.input_seq_list = join(paths.backup,"input_sequences_list")
         self.good_seq_file = join(paths.blast,"good_sequences")
         self.blast_input_file = join(paths.output,"blast_input")
-def join(d,p):  # Just use from os import path.join instead.
-    return os.path.join(d,p)
+def join(src,dest):  # Just use from os import path.join instead.
+    return os.path.join(src,dest)
 def fatal_error(msg):
     print >> sys.stderr, os.path.basename(__file__)+": ERROR! "+msg+". Exiting."
     sys.exit(1)   
@@ -129,8 +138,8 @@ def prepare_directory_structure(m_paths):
     os.mkdir(m_paths.backup)
     os.mkdir(m_paths.originals)
     os.mkdir(m_paths.blast)
-def backup_file(source, destination):
-    shutil.copy2(source, destination)
+def backup_file(src, dest):
+    shutil.copy2(src, dest)
 def get_qsub_notifications(notifications_list, initial, final):
     notifyString = ""
     if initial == True:
@@ -279,10 +288,10 @@ def main():
     paths, configs = setup_paths_and_configs(options)
     preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
     files = setup_files(paths, preferences)
-    #prepare_directory_structure(paths)
-    #backup_configuration_file(preferences, notifications, configs.backup_config)
-    #backup_file() # RefStrain
-    #backup_file() # BlastSeq
+    prepare_directory_structure(paths)
+    backup_configuration_file(preferences, notifications, configs.backup_config)
+    backup_file(files.ref_strains,files.ref_strains_backup) # RefStrain
+    backup_file(files.blast_seq,files.blast_seq_backup) # BlastSeq
     #sys.exit(0)
 
     
