@@ -35,6 +35,9 @@ class Paths:
         # tmp subdirectories
         self.tmplogs = join(self.tmp,"logs")
         
+        # backup subdirectories
+        self.pbs = join(self.backup,"pbs_files")
+        
         # potentially unused directories
         
             
@@ -49,19 +52,28 @@ class ConfigFiles:
 
     # Utility functions
     def get_non_backup_config_files(self):
-        return [self.default_config,self.user_config]  
+        return [self.default_config,self.user_config]
+    
+class Files:
+    def __init__(self, paths, preferences):
+        self.input_seq_file = join(paths.tmp,"input_sequences_list")
+        self.good_seq_file = join(paths.blast,"good_sequences")
+        
+      
 def join(d,p):  # Just use from os import path.join instead.
     return os.path.join(d,p)
 def fatal_error(msg):
     print >> sys.stderr, os.path.basename(__file__)+": ERROR! "+msg+". Exiting."
     sys.exit(1)   
-def setup_paths_and_files(options):    
+def setup_paths_and_configs(options):    
     # bin and root directories
     # these look messy but it also makes sure that a full path is present
     m_paths = Paths(options.bin_dir,options.root_dir)
-    m_files = ConfigFiles(options.default_config_file,options.user_config_file,None)
-    m_files.backup_config = join(os.path.abspath(m_paths.backup),"used_preferences.conf")
-    return m_paths, m_files
+    m_configs = ConfigFiles(options.default_config_file,options.user_config_file,None)
+    m_configs.backup_config = join(os.path.abspath(m_paths.backup),"used_preferences.conf")
+    m_files = Files(m_paths,m_configs)
+    return m_paths, m_configs
+
 def setup_configuration_files(config_location_list, m_paths):
     parser = ConfigParser.ConfigParser()
     parser.read(config_location_list)
@@ -91,7 +103,11 @@ def setup_configuration_files(config_location_list, m_paths):
             notifications[note] = value
             
             
-    return preferences, notifications 
+    return preferences, notifications
+
+def setup_files(paths, preferences):
+    return Files(paths, preferences)
+ 
 def backup_configuration_file(preferences, notifications, backup_config_location):
     parser = ConfigParser.ConfigParser()
     parser.add_section("Preferences")
@@ -166,8 +182,9 @@ def main():
         error_message += "Please see the usage above and try again."
         parser.error(error_message)
 
-    paths, configs = setup_paths_and_files(options)
+    paths, configs = setup_paths_and_configs(options)
     preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
+    files = setup_files(paths, preferences)
     #prepare_directory_structure(paths)
     #backup_configuration_file(preferences, notifications, configs.backup_config)
     #backup_file() # RefStrain
@@ -187,7 +204,7 @@ def main():
     pref_str = "SEQUENCE_DIR="+preferences["inputsequences"]+",PERL_DIR="+paths.perl+",LIST_FILE="+join(paths.backup,"input_sequences_list")+",BACKUP_DIR="+paths.originals+",SUFFIX="+preferences["suffix"]
     fasta_files_pbs.append("#PBS -v "+pref_str+"\n")
     
-    file = open(join(paths.tmp,"fasta_files_prep.pbs"), "w")
+    file = open(join(paths.pbs,"fasta_files_prep.pbs"), "w")
     file.writelines(fasta_files_pbs)
     file.write("\n")
     
@@ -196,40 +213,45 @@ def main():
     file.writelines(data)
     file.close()
     
-    command = ["qsub",join(paths.tmp, "fasta_files_prep.pbs")]
+    command = ["qsub",join(paths.pbs, "fasta_files_prep.pbs")]
+    print "executing: "+command[0] + " " + command[1]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE)
+    out, err = process.communicate()
+    id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
+    print id
+    
+    get_good_seqeunces = ["#!/bin/bash\n"]
+    get_good_seqeunces.append("#PBS -N fasta_files_prep\n")
+    get_good_seqeunces.append("#PBS -j oe\n")
+    get_good_seqeunces.append("#PBS -o "+join(paths.tmplogs,"002.get_good_sequences.log")+"\n")
+    get_good_seqeunces.append("#PBS -m "+get_qsub_notifications(notifications, False, False)+"\n")
+    #fasta_files_pbs.append("#PBS -M "+notifications["email"]+"\n")
+    get_good_seqeunces.append("#PBS -d "+paths.root+"\n")
+    get_good_seqeunces.append("#PBS -q tiny\n")
+    pref_str = "SEQUENCE_DIR="+preferences["inputsequences"]+",PERL_DIR="+paths.perl+",INPUT_SEQUENCES_FILE="+files.input_seq_file+",BLAST_DIR="+paths.blast+",SUFFIX="+preferences["suffix"]+",DIRECTION="+preferences["direction"]+",NPERCENT="+preferences["npercent"]+",PRIMER3="+preferences["primer3"]+",PRIMER5="+preferences["primer5"]+",MINSEQLENGTH="+preferences["minsequencelength"]+",GOOD_SEQUENCES_FILE="+files.good_seq_file
+    get_good_sequences.append("#PBS -v "+pref_str+"\n")
+    get_good_sequences.append("#PBS -W afterok:"+id+"\n")
+    
+    file = open(join(paths.pbs,"get_good_sequences.pbs"), "w")
+    file.writelines(get_good_sequences)
+    file.write("\n")
+    
+    with open (join(paths.bash,"get_good_sequences.shell"), "r") as myfile:
+        data = myfile.readlines()
+    file.writelines(data)
+    file.close()    
+    
+    command = ["qsub",join(paths.pbs, "get_good_sequences.pbs")]
     print "executing: "+command[0] + " " + command[1]
     process = subprocess.Popen(command, stdout=subprocess.PIPE)
     out, err = process.communicate()
     id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
     print id    
     
-    sys.exit(0)
-
     
-    pbs_directives = open(join(paths.tmp,"test.pbs"),"w")
-    #pbs_directives.writelines(["#!/bin/bash\n","#PBS -N varDirTest\n","#PBS -j oe\n","#PBS -o "+join(paths.output,"newoutput.log")+"\n","#PBS -D "+paths.perl+"\n","#PBS -d "+paths.root+"\n"]) # accepts a list of strings.  remember to newline each of them
-    pbs_directives.writelines(["#!/bin/bash\n","#PBS -N varDirTest\n","#PBS -j oe\n","#PBS -o "+join(paths.output,"newoutput.log")+"\n","#PBS -d "+paths.perl+"\n","#PBS -v FOO=\""+paths.bash+"\",SOMETHING=\"Danger Zone!\"\n"]) # accepts a list of strings.  remember to newline each of them
-    with open (join(paths.python,"vars.pbs"), "r") as myfile:
-        data = myfile.readlines()
+    
         
-    pbs_directives.writelines(data)
-    pbs_directives.close()
     
-    #command = "qsub "+join(paths.tmp,"test.pbs")
-    #command = "qsub -q tiny "+join(paths.tmp,"test.pbs")
-    command = "qsub -q tiny "+join(paths.python,"stagingTest.pbs")
-    #command = "qsub -N outsidePriority "+join(paths.tmp,"test.pbs") # The job name is now outsidePriority even if it was specified in a directive inside the file
-    print "executing: "+command
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-    out, err = process.communicate()
-    id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
-    print out
-    #command = "qsub -q tiny -W depend=afterokarray:"+str(out.rstrip())+" "+join(paths.tmp,"renameSuccess.pbs")
-    #subprocess.call(command, shell=True)
-
-    #command = "qsub -q tiny -W depend=afterokarray:"+id+" "+join(paths.tmp,"renameFail.pbs")
-    #subprocess.call(command, shell=True)
-
     sys.exit(0)
     
 if __name__ == '__main__':
