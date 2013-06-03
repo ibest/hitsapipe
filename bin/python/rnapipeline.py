@@ -31,7 +31,12 @@ class Paths:
         self.backup = join(self.output,"references")
         self.blast = join(self.output,"blast")
         self.originals = join(self.output,"originals")                
+        
+        # tmp subdirectories
+        self.tmplogs = join(self.tmp,"logs")
+        
         # potentially unused directories
+        
             
 class ConfigFiles:
     # This is just an object that makes referencing the various files
@@ -78,7 +83,13 @@ def setup_configuration_files(config_location_list, m_paths):
         n = parser.items("Notifications")
         notifications = {}
         for (note,value) in n:
+            if (str(value)).find("True") != -1:
+                value = True
+            elif (str(value)).find("False") != -1:
+                value = False
+
             notifications[note] = value
+            
             
     return preferences, notifications 
 def backup_configuration_file(preferences, notifications, backup_config_location):
@@ -105,6 +116,23 @@ def prepare_directory_structure(m_paths):
     os.mkdir(m_paths.blast)
 def backup_file(source, destination):
     shutil.copy2(source, destination)
+def get_qsub_notifications(notifications_list, initial, final):
+    notifyString = ""
+    if initial == True:
+        if notifications_list["emailonbegin"] == True:
+            notifyString += "b"
+    if notifications_list["emailonabort"] == True:
+        notifyString += "a"
+    if final == True:
+        if notifications_list["emailonend"] == True:
+            notifyString += "e"
+    if not notifyString:
+        notifyString = "n"
+    return notifyString
+        
+    
+    
+    
 def main():    
     # Set up an OptionParser object to make the command line arguments easy.
     # NOTE:  optparse has been deprecated since Python 2.7, but as of May 2013,
@@ -139,38 +167,44 @@ def main():
         parser.error(error_message)
 
     paths, configs = setup_paths_and_files(options)
-    #preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
+    preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
     #prepare_directory_structure(paths)
     #backup_configuration_file(preferences, notifications, configs.backup_config)
     #backup_file() # RefStrain
     #backup_file() # BlastSeq
     #sys.exit(0)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    #paths = main_paths(sys.argv[1], sys.argv[2], sys.argv[3])
-    #print "Paths:"
-    #print "bin: "+paths.bin
-    #print "root: "+paths.root
-    #print "results: "+paths.output
-    #print "bash: "+paths.bash
-    #print "perl: "+paths.perl
-    #print "python: "+paths.python
 
-    #sys.exit(0)
+    
+    # Start forming the commands to call qsub with.
+    fasta_files_pbs = ["#!/bin/bash\n"]
+    fasta_files_pbs.append("#PBS -N fasta_files_prep\n")
+    fasta_files_pbs.append("#PBS -j oe\n")
+    fasta_files_pbs.append("#PBS -o "+join(paths.tmplogs,"001.fasta_files_prep.log")+"\n")
+    fasta_files_pbs.append("#PBS -m "+get_qsub_notifications(notifications, True, False)+"\n")
+    #fasta_files_pbs.append("#PBS -M "+notifications["email"]+"\n")
+    fasta_files_pbs.append("#PBS -d "+paths.root+"\n")
+    fasta_files_pbs.append("#PBS -q tiny\n")
+    pref_str = "SEQUENCE_DIR="+preferences["inputsequences"]+",PERL_DIR="+paths.perl+",LIST_FILE="+join(paths.backup,"input_sequences_list")+",BACKUP_DIR="+paths.originals+",SUFFIX="+preferences["suffix"]
+    fasta_files_pbs.append("#PBS -v "+pref_str+"\n")
+    
+    file = open(join(paths.tmp,"fasta_files_prep.pbs"), "w")
+    file.writelines(fasta_files_pbs)
+    file.write("\n")
+    
+    with open (join(paths.bash,"fasta_files_prep.shell"), "r") as myfile:
+        data = myfile.readlines()
+    file.writelines(data)
+    file.close()
+    
+    command = ["qsub",join(paths.tmp, "fasta_files_prep.pbs")]
+    print "executing: "+command[0] + " " + command[1]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE)
+    out, err = process.communicate()
+    id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
+    print id    
+    
+    sys.exit(0)
+
     
     pbs_directives = open(join(paths.tmp,"test.pbs"),"w")
     #pbs_directives.writelines(["#!/bin/bash\n","#PBS -N varDirTest\n","#PBS -j oe\n","#PBS -o "+join(paths.output,"newoutput.log")+"\n","#PBS -D "+paths.perl+"\n","#PBS -d "+paths.root+"\n"]) # accepts a list of strings.  remember to newline each of them
@@ -180,33 +214,6 @@ def main():
         
     pbs_directives.writelines(data)
     pbs_directives.close()
-    
-    #renameoutput = open(join(paths.tmp,"renameSuccess.pbs"),"w")
-    #renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameSuccess\n","#PBS -o "+join(paths.results,"renameSuccess.log")+"\n","#PBS -d "+paths.root+"\n"])
-    
-    #with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
-    #    data = myfile.readlines()
-        
-    #renameoutput.writelines(data)
-    #renameoutput.close()
-    
-    #renameoutput = open(join(paths.tmp,"renameFail.pbs"),"w")
-    #renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameFail\n","#PBS -o "+join(paths.results,"renameFail.log")+"\n","#PBS -d "+paths.root+"\n"])
-    
-    #with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
-    #    data = myfile.readlines()
-        
-    #renameoutput.writelines(data)
-    #renameoutput.close()
-    
-    #renameoutput = open(join(paths.tmp,"renameAny.pbs"),"w")
-    #renameoutput.writelines(["#!/bin/bash\n","#PBS -N renameAny\n","#PBS -o "+join(paths.results,"renameAny.log")+"\n","#PBS -d "+paths.root+"\n"])
-    
-    #with open (join(paths.python,"renameoutput.pbs"), "r") as myfile:
-    #    data = myfile.readlines()
-        
-    #renameoutput.writelines(data)
-    #renameoutput.close()
     
     #command = "qsub "+join(paths.tmp,"test.pbs")
     #command = "qsub -q tiny "+join(paths.tmp,"test.pbs")

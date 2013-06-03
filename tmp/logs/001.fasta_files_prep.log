@@ -1,0 +1,10 @@
+Collating all .fasta files into list
+Ensuring Unix endlines on all files
+Backing up original sequences
+Making sure all filenames are the FASTA sequences names
+la072.fasta 
+la084.fasta 
+la085.fasta 
+la090.fasta 
+la091.fasta 
+la094.fasta 
