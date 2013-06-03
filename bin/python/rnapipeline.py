@@ -230,7 +230,7 @@ def main():
     get_good_sequences.append("#PBS -q tiny\n")
     pref_str = "SEQUENCE_DIR="+preferences["inputsequences"]+",PERL_DIR="+paths.perl+",INPUT_SEQUENCES_FILE="+files.input_seq_file+",BLAST_DIR="+paths.blast+",SUFFIX="+preferences["suffix"]+",DIRECTION="+preferences["direction"]+",NPERCENT="+preferences["npercent"]+",PRIMER3="+preferences["primer3"]+",PRIMER5="+preferences["primer5"]+",MINSEQLENGTH="+preferences["minsequencelength"]+",GOOD_SEQUENCES_FILE="+files.good_seq_file
     get_good_sequences.append("#PBS -v "+pref_str+"\n")
-    get_good_sequences.append("#PBS -W afterok:"+id+"\n")
+    get_good_sequences.append("#PBS -W depend=afterok:"+id+"\n")
     
     file = open(join(paths.pbs,"get_good_sequences.pbs"), "w")
     file.writelines(get_good_sequences)
