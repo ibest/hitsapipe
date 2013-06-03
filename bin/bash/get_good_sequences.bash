@@ -1,14 +1,4 @@
 #!/bin/bash
-#PBS -N get_good_sequences
-#PBS -j oe
-#PBS -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/tmp/logs/002.get_good_sequences.log
-#PBS -m a
-#PBS -d /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging
-#PBS -q tiny
-#PBS -v SEQUENCE_DIR=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/usr/sequences,PERL_DIR=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/perl,INPUT_SEQUENCES_FILE=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/tmp/input_sequences_list,BLAST_DIR=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast,SUFFIX=.fasta,DIRECTION=Forward,NPERCENT=.05,PRIMER3=GACTCGGTCC,PRIMER5=CCTAGTGGAGG,MINSEQLENGTH=500,GOOD_SEQUENCES_FILE=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast/good_sequences
-#PBS -W depend=afterok:1121847
-
-#!/bin/bash
 ###########
 # Takes 11 variables
 #	1.  The directory with the sequences

@@ -1,4 +1,15 @@
 #!/bin/bash
+#PBS -N blast_direction_check
+#PBS -j oe
+#PBS -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/tmp/logs/005.blast_direction_check.log
+#PBS -m a
+#PBS -d /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging
+#PBS -q tiny
+#PBS -v PERL_DIR=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/perl,WORKING_DIR=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/tmp,BLAST_INPUT_FILE=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast_input,CUTOFF_LENGTH=0
+
+#PBS -W depend=afterok:1121850
+
+#!/bin/bash
 ###########
 # Takes 1 Variable
 #	1. File that contains the good sequences  

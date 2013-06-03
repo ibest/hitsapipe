@@ -5,8 +5,8 @@
 # Returns 0 on success
 ###########
 
-GOOD_SEQUENCES_FILE="${1}"
+#GOOD_SEQUENCES_FILE="${1}"
 
 # Format the good sequences into a database to blast against with our sample sequence
-$(formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T)
+formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T
 exit $?

@@ -1,0 +1,22 @@
+#!/bin/bash
+#PBS -N blast_direction_prep
+#PBS -j oe
+#PBS -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/tmp/logs/003.blast_direction_prep.log
+#PBS -m a
+#PBS -d /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging
+#PBS -q tiny
+#PBS -v GOOD_SEQUENCES_FILE=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast/good_sequences
+#PBS -W depend=afterok:1121848
+
+#!/bin/bash
+###########
+# Takes 1 Variable
+#	1. File that contains the good sequences  
+# Returns 0 on success
+###########
+
+#GOOD_SEQUENCES_FILE="${1}"
+
+# Format the good sequences into a database to blast against with our sample sequence
+formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T
+exit $?

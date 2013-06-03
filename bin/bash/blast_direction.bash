@@ -8,5 +8,5 @@
 GOOD_SEQUENCES_FILE="${1}"
 BLAST_SEQUENCES="${2}"
 
-$(blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQEUNCES} -S 1 -o directionblast -z 53,000,000 -b 10000)
+blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQEUNCES} -S 1 -o directionblast -z 53,000,000 -b 10000
 exit $?

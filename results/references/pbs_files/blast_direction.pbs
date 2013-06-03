@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -N blast_direction
+#PBS -j oe
+#PBS -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/tmp/logs/004.blast_direction.log
+#PBS -m a
+#PBS -d /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging
+#PBS -q tiny
+#PBS -v GOOD_SEQUENCES_FILE=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast/good_sequences,BLAST_SEQUENCES=/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/usr/af243169.for
+
+#PBS -W depend=afterok:1121849
+
+#!/bin/bash
+###########
+# Takes 1 Variable
+#	1. File that contains the good sequences  
+# Returns 0 on success
+###########
+
+GOOD_SEQUENCES_FILE="${1}"
+BLAST_SEQUENCES="${2}"
+
+blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQEUNCES} -S 1 -o directionblast -z 53,000,000 -b 10000
+exit $?
