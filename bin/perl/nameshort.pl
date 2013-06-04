@@ -1,4 +1,3 @@
->nameshort.pl
 #!/usr/bin/env perl 
 
 # USAGE:  perl nameshort.pl < INPUT > OUTPUT

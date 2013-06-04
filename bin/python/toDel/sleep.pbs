@@ -1,0 +1,4 @@
+echo "PBS_JOBID: $PBS_JOBID"
+echo "PBS_JOBNAME: $PBS_JOBNAME" 
+#echo "PBS_ROOTDIR: $
+sleep 120

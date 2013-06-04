@@ -1,4 +1,3 @@
->blastadd.pl
 #!/usr/bin/env perl
 
 ##########################

@@ -34,9 +34,13 @@ class Paths:
         
         # tmp subdirectories
         self.tmplogs = join(self.tmp,"logs")
+        self.tmpblasts_linear = join(self.tmp,"blast_fasta")
+        
+        # blast subdirectories
+        self.blastoutput = join(self.blast,"blasts")
         
         # backup subdirectories
-        self.pbs = join(self.backup,"pbs_files")
+        #self.pbs = join(self.backup,"pbs_files")
         
         # potentially unused directories
 class Module:
@@ -70,7 +74,9 @@ class Files:
         self.input_seq_file = join(paths.tmp,"input_sequences_list")
         self.input_seq_list = join(paths.backup,"input_sequences_list")
         self.good_seq_file = join(paths.blast,"good_sequences")
-        self.blast_input_file = join(paths.output,"blast_input")
+        self.blast_input_file = join(paths.tmp,"blast_input")
+        self.direction_blast = join(paths.tmp,"direction_blast")
+        self.final_log = join(paths.output,"pipeline.log")
 def join(src,dest):  # Just use from os import path.join instead.
     return os.path.join(src,dest)
 def fatal_error(msg):
@@ -82,7 +88,7 @@ def setup_paths_and_configs(options):
     m_paths = Paths(options.bin_dir,options.root_dir)
     m_configs = ConfigFiles(options.default_config_file,options.user_config_file,None)
     m_configs.backup_config = join(os.path.abspath(m_paths.backup),"used_preferences.conf")
-    m_files = Files(m_paths,m_configs)
+    #m_files = Files(m_paths,m_configs)
     return m_paths, m_configs
 def setup_configuration_files(config_location_list, m_paths):
     parser = ConfigParser.ConfigParser()
@@ -134,10 +140,15 @@ def prepare_directory_structure(m_paths):
     shutil.rmtree(m_paths.tmp, ignore_errors=True)
     
     os.mkdir(m_paths.output)
-    os.mkdir(m_paths.tmp)
     os.mkdir(m_paths.backup)
     os.mkdir(m_paths.originals)
     os.mkdir(m_paths.blast)
+    os.mkdir(m_paths.blastoutput)
+    os.mkdir(m_paths.tmp)
+    os.mkdir(m_paths.tmplogs)
+    os.mkdir(m_paths.tmpblasts_linear)
+    
+    
 def backup_file(src, dest):
     shutil.copy2(src, dest)
 def get_qsub_notifications(notifications_list, initial, final):
@@ -156,6 +167,8 @@ def get_qsub_notifications(notifications_list, initial, final):
 def module_list(pth,fil,prefs):
     # Returns a list of the modules and their required preferences
     # in the order that they need to be run.
+    # Need to figure out how to handle linear vs parallel (check the preference
+    # when appending the item to the list???).
     list = []
     list.append(Module("fasta_prep", 
                         [("SEQUENCE_DIR",prefs["inputsequences"]),
@@ -188,27 +201,53 @@ def module_list(pth,fil,prefs):
                 )
     list.append(Module("blast_dir",
                        [("GOOD_SEQUENCES_FILE",fil.good_seq_file),
-                        ("BLAST_SEQUENCES", prefs["blastsequences"])],
+                        ("BLAST_SEQUENCES", prefs["blastsequences"]),
+                        ("DIRECTION_BLAST_FILE", fil.direction_blast)],
                        join(pth.bash,"blast_direction.bash")                       
                        )
                 )
-    
     list.append(Module("blast_dir_check",
                        [("PERL_DIR",pth.perl),
-                        ("WORKING_DIR", pth.tmp),
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
+                        ("DIRECTION_BLAST_FILE", fil.direction_blast),
                         ("CUTOFF_LENGTH", prefs["cutofflength"])],
                        join(pth.bash,"blast_direction_check.bash")                       
                        )
                 )
+    list.append(Module("split_good_seq",
+                       [("PERL_DIR",pth.perl),
+                        ("GOOD_SEQUENCES_FILE",fil.good_seq_file)],
+                       join(pth.bash,"split_good_sequences.bash")
+                       )
+                )
+    list.append(Module("blast_lin_prep",
+                       [("BLAST_INPUT_FILE",fil.blast_input_file),
+                        ("BLAST_FASTA_DIR",pth.tmpblasts_linear)],
+                       join(pth.bash,"blastall_linear_prep.bash")
+                       )
+                )
+    list.append(Module("blastall",
+                       [("BLAST_FASTA_DIR", pth.tmpblasts_linear)],
+                       join(pth.bash,"blastall_linear.bash")
+                       )
+                )
+
+
+    list.append(Module("finalize",
+                       [("LOG_DIR",pth.tmplogs),
+                        ("FINAL_LOG",fil.final_log)],
+                       join(pth.bash,"final_cleanup.bash")
+                       )
+                )
+    
     
     return list
 def generate_qsub_command(module,index,paths,prefs,notes,
                           id=None,array=False,initial=False,final=False):
     
     cmd = ["qsub"]
-    #cmd.append("-N "+module.name)
-    #cmd.append("-j oe")
+    cmd.append("-N")
+    cmd.append(module.name)
     cmd.append("-j")
     cmd.append("oe")
     cmd.append("-o")
@@ -216,9 +255,12 @@ def generate_qsub_command(module,index,paths,prefs,notes,
     cmd.append("-m")
     cmd.append(get_qsub_notifications(notes,initial,final))
     cmd.append("-d")
-    cmd.append(paths.root)
+    cmd.append(paths.tmp)
     cmd.append("-q")
     cmd.append("tiny")
+    if module.name is "blastall":
+        cmd.append("-t")
+        cmd.append("0-1")
     
     if id is not None:
         if final:
@@ -287,16 +329,14 @@ def main():
 
     paths, configs = setup_paths_and_configs(options)
     preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
-    files = setup_files(paths, preferences)
+
+    files = setup_files(paths, preferences)   
     prepare_directory_structure(paths)
     backup_configuration_file(preferences, notifications, configs.backup_config)
     backup_file(files.ref_strains,files.ref_strains_backup) # RefStrain
     backup_file(files.blast_seq,files.blast_seq_backup) # BlastSeq
-    #sys.exit(0)
-
     
-    # Start forming the commands to call qsub with.
-    
+    # Start forming the commands to call qsub with.    
     m_modules = module_list(paths,files,preferences)
     id = None
     for (index,mod_item) in enumerate(m_modules):
@@ -305,18 +345,10 @@ def main():
         if index == 0:
             first = True
         if index == [len(m_modules)-1]:
-            last = True
-        cmd = generate_qsub_command(mod_item, index, paths, preferences, notifications, initial=first,final=last)
+            last = True # This needs to eventually be true to call the cleanup.
+        cmd = generate_qsub_command(mod_item, index, paths, preferences, notifications, id=id, initial=first, final=last)
         id = exec_qsub(cmd,verbose=True)
-    sys.exit(0)
-    #cmd = generate_qsub_command(m_modules[0], 0, paths, preferences, notifications,initial=True)
-    #id = exec_qsub(cmd,verbose=True)
-    #sys.exit(0)
-    
-    
-    
-    
-    
+    sys.exit(0) 
     
     
     

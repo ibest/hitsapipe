@@ -1,4 +1,3 @@
->splitgood.pl
 #!/usr/bin/env perl 
 
 #######

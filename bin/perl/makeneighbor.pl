@@ -1,4 +1,3 @@
->makeneighbor.pl
 #!/usr/bin/env perl 
 
 # makeneighbor.pl $maindir $rootspecies $libfolder $requiredlib

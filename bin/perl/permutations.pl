@@ -1,4 +1,3 @@
->permutations.pl
 sub getAllPermutations {
   
 }
