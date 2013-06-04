@@ -9,3 +9,7 @@ do
 	cat $i >> $FINAL_LOG
 	echo "" >> $FINAL_LOG
 done
+
+echo -n "Everything finished at: " >> $FINAL_LOG
+date >> $FINAL_LOG
+echo "" >> $FINAL_LOG

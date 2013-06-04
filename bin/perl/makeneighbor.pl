@@ -8,10 +8,10 @@ use strict;
 use lib "$ARGV[2]";
 require("$ARGV[3]");
 
-my $maindir = $ARGV[0];
+my $outputfile = $ARGV[0];
 my $rootspecies = $ARGV[1];
 
-open( NEIGHBOR, ">$maindir/8Fphylo/neighbor_script" );
+open( NEIGHBOR, ">$outputfile" );
 
 my $seqID = findseq( $maindir, $rootspecies);
 my $number = numseq( $maindir, $seqID );
