@@ -13,7 +13,6 @@ class Paths:
     # Everything except the bin directory and its subdirectories will be based
     # off of the root directory.
     
-    # bin and root directories
     def __init__(self,bin_dir, root_dir):
         self.bin = os.path.abspath(bin_dir)
         self.root = os.path.abspath(root_dir)
@@ -25,24 +24,17 @@ class Paths:
         
         # root subdirectories
         self.output = join(self.root,"results")
-        self.tmp = join(self.root, "tmp")
     
         # output subdirectories
         self.backup = join(self.output,"references")
         self.blast = join(self.output,"blast")
-        self.originals = join(self.output,"originals")                
-        
-        # tmp subdirectories
-        self.tmplogs = join(self.tmp,"logs")
-        self.tmpblasts_linear = join(self.tmp,"blast_fasta")
+        self.originals = join(self.output,"originals")
+        self.logs = join(self.output,"raw_logs")
+        self.tmp = join(self.output,"tmp")                
         
         # blast subdirectories
         self.blastoutput = join(self.blast,"blasts")
-        
-        # backup subdirectories
-        #self.pbs = join(self.backup,"pbs_files")
-        
-        # potentially unused directories
+        self.blasttmp = join(self.blast, "tmp")
 class Module:
     def __init__(self, name, req_vars, location):
         self.name = name
@@ -71,11 +63,11 @@ class Files:
         self.blast_seq_backup = join(paths.backup,os.path.basename(self.blast_seq))
         
         # Files to be created
-        self.input_seq_file = join(paths.tmp,"input_sequences_list")
-        self.input_seq_list = join(paths.backup,"input_sequences_list")
+        self.input_seq_file = join(paths.output,"input_sequences")
+        self.input_seq_list = join(paths.output, "input_sequences_list")
         self.good_seq_file = join(paths.blast,"good_sequences")
-        self.blast_input_file = join(paths.tmp,"blast_input")
-        self.direction_blast = join(paths.tmp,"direction_blast")
+        self.blast_input_file = join(paths.blast,"blast_input")
+        self.direction_blast = join(paths.blast,"direction_blast")
         self.final_log = join(paths.output,"pipeline.log")
 def join(src,dest):  # Just use from os import path.join instead.
     return os.path.join(src,dest)
@@ -144,11 +136,12 @@ def prepare_directory_structure(m_paths):
     os.mkdir(m_paths.originals)
     os.mkdir(m_paths.blast)
     os.mkdir(m_paths.blastoutput)
+    os.mkdir(m_paths.logs)
     os.mkdir(m_paths.tmp)
-    os.mkdir(m_paths.tmplogs)
-    os.mkdir(m_paths.tmpblasts_linear)
-    
-    
+    os.mkdir(m_paths.blasttmp)
+    #os.mkdir(m_paths.tmp)
+    #os.mkdir(m_paths.tmplogs)
+    #os.mkdir(m_paths.tmpblasts_linear)
 def backup_file(src, dest):
     shutil.copy2(src, dest)
 def get_qsub_notifications(notifications_list, initial, final):
@@ -173,8 +166,8 @@ def module_list(pth,fil,prefs):
     list.append(Module("fasta_prep", 
                         [("SEQUENCE_DIR",prefs["inputsequences"]),
                         ("PERL_DIR",pth.perl),
-                        ("LIST_FILE",fil.input_seq_list),
-                        ("BACKUP_DIR",pth.backup),
+                        ("ORIGINALS_DIR",pth.originals),
+                        ("INPUT_SEQUENCE_LIST",fil.input_seq_list),
                         ("SUFFIX",prefs["suffix"])],
                         join(pth.bash,"fasta_files_prep.bash")
                         )
@@ -194,47 +187,29 @@ def module_list(pth,fil,prefs):
                        join(pth.bash,"get_good_sequences.bash")                      
                        )
                 )
-    list.append(Module("blast_dir_prep",
-                       [("GOOD_SEQUENCES_FILE", fil.good_seq_file)],
-                       join(pth.bash,"blast_direction_prep.bash")
-                       )
-                )
     list.append(Module("blast_dir",
-                       [("GOOD_SEQUENCES_FILE",fil.good_seq_file),
-                        ("BLAST_SEQUENCES", prefs["blastsequences"]),
-                        ("DIRECTION_BLAST_FILE", fil.direction_blast)],
-                       join(pth.bash,"blast_direction.bash")                       
-                       )
-                )
-    list.append(Module("blast_dir_check",
-                       [("PERL_DIR",pth.perl),
-                        ("BLAST_INPUT_FILE", fil.blast_input_file),
+                       [("TEMP_DIR", pth.tmp),
+                        ("PERL_DIR", pth.perl),
+                        ("LOG_DIR",pth.logs),
+                        ("BLAST_TEMP_DIR",pth.blasttmp),
+                        ("GOOD_SEQUENCES_FILE", fil.good_seq_file),
                         ("DIRECTION_BLAST_FILE", fil.direction_blast),
+                        ("BLAST_INPUT_FILE", fil.blast_input_file),
+                        ("BLAST_SEQUENCES", prefs["blastsequences"]),
                         ("CUTOFF_LENGTH", prefs["cutofflength"])],
-                       join(pth.bash,"blast_direction_check.bash")                       
-                       )
-                )
-    list.append(Module("split_good_seq",
-                       [("PERL_DIR",pth.perl),
-                        ("GOOD_SEQUENCES_FILE",fil.good_seq_file)],
-                       join(pth.bash,"split_good_sequences.bash")
-                       )
-                )
-    list.append(Module("blast_lin_prep",
-                       [("BLAST_INPUT_FILE",fil.blast_input_file),
-                        ("BLAST_FASTA_DIR",pth.tmpblasts_linear)],
-                       join(pth.bash,"blastall_linear_prep.bash")
+                       join(pth.bash,"blast_direction.bash")
                        )
                 )
     list.append(Module("blastall",
-                       [("BLAST_FASTA_DIR", pth.tmpblasts_linear)],
-                       join(pth.bash,"blastall_linear.bash")
+                       [("BLAST_TEMP_DIR",pth.blasttmp),
+                        ("BLAST_INPUT_FILE", fil.blast_input_file)],
+                       join(pth.bash,"blastall.bash")
                        )
                 )
 
 
     list.append(Module("finalize",
-                       [("LOG_DIR",pth.tmplogs),
+                       [("LOG_DIR",pth.logs),
                         ("FINAL_LOG",fil.final_log)],
                        join(pth.bash,"final_cleanup.bash")
                        )
@@ -251,11 +226,11 @@ def generate_qsub_command(module,index,paths,prefs,notes,
     cmd.append("-j")
     cmd.append("oe")
     cmd.append("-o")
-    cmd.append(join(paths.tmplogs,str((index+1)).zfill(3)+"."+module.name+".log"))
+    cmd.append(join(paths.logs,str((index+1)).zfill(3)+"."+module.name+".log"))
     cmd.append("-m")
     cmd.append(get_qsub_notifications(notes,initial,final))
     cmd.append("-d")
-    cmd.append(paths.tmp)
+    cmd.append(paths.output)
     cmd.append("-q")
     cmd.append("tiny")
     if module.name is "blastall":
@@ -348,160 +323,13 @@ def main():
             last = True # This needs to eventually be true to call the cleanup.
         cmd = generate_qsub_command(mod_item, index, paths, preferences, notifications, id=id, initial=first, final=last)
         id = exec_qsub(cmd,verbose=True)
-    sys.exit(0) 
-    
-    
-    
-    # Prepare FASTA Files
-    fasta_files_prep = ["#!/bin/bash\n"]
-    fasta_files_prep.append("#PBS -N fasta_files_prep\n")
-    fasta_files_prep.append("#PBS -j oe\n")
-    fasta_files_prep.append("#PBS -o "+join(paths.tmplogs,"001.fasta_files_prep.log")+"\n")
-    fasta_files_prep.append("#PBS -m "+get_qsub_notifications(notifications, True, False)+"\n")
-    #fasta_files_prep.append("#PBS -M "+notifications["email"]+"\n")
-    fasta_files_prep.append("#PBS -d "+paths.root+"\n")
-    fasta_files_prep.append("#PBS -q tiny\n")
-    pref_str = "SEQUENCE_DIR="+preferences["inputsequences"]+",PERL_DIR="+paths.perl+",LIST_FILE="+join(paths.backup,"input_sequences_list")+",BACKUP_DIR="+paths.originals+",SUFFIX="+preferences["suffix"]
-    fasta_files_prep.append("#PBS -v "+pref_str+"\n")
-    
-    file = open(join(paths.pbs,"fasta_files_prep.pbs"), "w")
-    file.writelines(fasta_files_prep)
-    file.write("\n")
-    
-    with open (join(paths.bash,"fasta_files_prep.shell"), "r") as myfile:
-        data = myfile.readlines()
-    file.writelines(data)
-    file.close()
-    
-    command = ["qsub",join(paths.pbs, "fasta_files_prep.pbs")]
-    print "executing: "+command[0] + " " + command[1]
-    process = subprocess.Popen(command, stdout=subprocess.PIPE)
-    out, err = process.communicate()
-    id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
-    print id
-    
-    
-    # Get Good Sequences
-    get_good_sequences = ["#!/bin/bash\n"]
-    get_good_sequences.append("#PBS -N get_good_sequences\n")
-    get_good_sequences.append("#PBS -j oe\n")
-    get_good_sequences.append("#PBS -o "+join(paths.tmplogs,"002.get_good_sequences.log")+"\n")
-    get_good_sequences.append("#PBS -m "+get_qsub_notifications(notifications, False, False)+"\n")
-    #get_good_sequences.append("#PBS -M "+notifications["email"]+"\n")
-    get_good_sequences.append("#PBS -d "+paths.root+"\n")
-    get_good_sequences.append("#PBS -q tiny\n")
-    pref_str = "SEQUENCE_DIR="+preferences["inputsequences"]+",PERL_DIR="+paths.perl+",INPUT_SEQUENCES_FILE="+files.input_seq_file+",BLAST_DIR="+paths.blast+",SUFFIX="+preferences["suffix"]+",DIRECTION="+preferences["direction"]+",NPERCENT="+preferences["npercent"]+",PRIMER3="+preferences["primer3"]+",PRIMER5="+preferences["primer5"]+",MINSEQLENGTH="+preferences["minsequencelength"]+",GOOD_SEQUENCES_FILE="+files.good_seq_file
-    get_good_sequences.append("#PBS -v "+pref_str+"\n")
-    get_good_sequences.append("#PBS -W depend=afterok:"+id+"\n")
-    
-    file = open(join(paths.pbs,"get_good_sequences.pbs"), "w")
-    file.writelines(get_good_sequences)
-    file.write("\n")
-    
-    with open (join(paths.bash,"get_good_sequences.shell"), "r") as myfile:
-        data = myfile.readlines()
-    file.writelines(data)
-    file.close()    
-    
-    command = ["qsub",join(paths.pbs, "get_good_sequences.pbs")]
-    print "executing: "+command[0] + " " + command[1]
-    process = subprocess.Popen(command, stdout=subprocess.PIPE)
-    out, err = process.communicate()
-    id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
-    print id    
-    
-    # Blast direction prep
-    blast_dir_prep = ["#!/bin/bash\n"]
-    blast_dir_prep.append("#PBS -N blast_direction_prep\n")
-    blast_dir_prep.append("#PBS -j oe\n")
-    blast_dir_prep.append("#PBS -o "+join(paths.tmplogs,"003.blast_direction_prep.log")+"\n")
-    blast_dir_prep.append("#PBS -m "+get_qsub_notifications(notifications,False,False)+"\n")
-    #blast_dir_prep.append("#PBS -M "+notifications["email"]+"\n")
-    blast_dir_prep.append("#PBS -d "+paths.root+"\n")
-    blast_dir_prep.append("#PBS -q tiny\n")
-    pref_str = "GOOD_SEQUENCES_FILE="+files.good_seq_file
-    blast_dir_prep.append("#PBS -v "+pref_str+"\n")
-    blast_dir_prep.append("#PBS -W depend=afterok:"+id+"\n")
-    
-    file = open(join(paths.pbs,"blast_direction_prep.pbs"), "w")
-    file.writelines(blast_dir_prep)
-    file.write("\n")
-    
-    with open (join(paths.bash,"blast_direction_prep.shell"), "r") as myfile:
-        data = myfile.readlines()
-    file.writelines(data)
-    file.close()    
-    
-    command = ["qsub",join(paths.pbs, "blast_direction_prep.pbs")]
-    print "executing: "+command[0] + " " + command[1]
-    process = subprocess.Popen(command, stdout=subprocess.PIPE)
-    out, err = process.communicate()
-    id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
-    print id
-    
-    # Blast direction
-    blast_direction = ["#!/bin/bash\n"]
-    blast_direction.append("#PBS -N blast_direction\n")
-    blast_direction.append("#PBS -j oe\n")
-    blast_direction.append("#PBS -o "+join(paths.tmplogs,"004.blast_direction.log")+"\n")
-    blast_direction.append("#PBS -m "+get_qsub_notifications(notifications,False,False)+"\n")
-    #blast_direction.append("#PBS -M "+notifications["email"]+"\n")
-    blast_direction.append("#PBS -d "+paths.root+"\n")
-    blast_direction.append("#PBS -q tiny\n")
-    pref_str = "GOOD_SEQUENCES_FILE="+files.good_seq_file+",BLAST_SEQUENCES="+preferences["blastsequences"]+"\n"
-    blast_direction.append("#PBS -v "+pref_str+"\n")
-    blast_direction.append("#PBS -W depend=afterok:"+id+"\n")
-    
-    file = open(join(paths.pbs,"blast_direction.pbs"), "w")
-    file.writelines(blast_direction)
-    file.write("\n")
-    
-    with open (join(paths.bash,"blast_direction.shell"), "r") as myfile:
-        data = myfile.readlines()
-    file.writelines(data)
-    file.close()    
-    
-    command = ["qsub",join(paths.pbs, "blast_direction.pbs")]
-    print "executing: "+command[0] + " " + command[1]
-    process = subprocess.Popen(command, stdout=subprocess.PIPE)
-    out, err = process.communicate()
-    id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
-    print id        
-    
-    # Blast direction check
-
-    blast_dir_check = ["#!/bin/bash\n"]
-    blast_dir_check.append("#PBS -N blast_direction_check\n")
-    blast_dir_check.append("#PBS -j oe\n")
-    blast_dir_check.append("#PBS -o "+join(paths.tmplogs,"005.blast_direction_check.log")+"\n")
-    blast_dir_check.append("#PBS -m "+get_qsub_notifications(notifications,False,False)+"\n")
-    #blast_dir_check.append("#PBS -M "+notifications["email"]+"\n")
-    blast_dir_check.append("#PBS -d "+paths.root+"\n")
-    blast_dir_check.append("#PBS -q tiny\n")
-    pref_str = "PERL_DIR="+paths.perl+",WORKING_DIR="+paths.tmp+",BLAST_INPUT_FILE="+files.blast_input_file+",CUTOFF_LENGTH="+preferences["cutofflength"]+"\n"
-    blast_dir_check.append("#PBS -v "+pref_str+"\n")
-    blast_dir_check.append("#PBS -W depend=afterok:"+id+"\n")
-    
-    file = open(join(paths.pbs,"blast_direction_check.pbs"), "w")
-    file.writelines(blast_dir_check)
-    file.write("\n")
-    
-    with open (join(paths.bash,"blast_direction_check.shell"), "r") as myfile:
-        data = myfile.readlines()
-    file.writelines(data)
-    file.close()    
-    
-    command = ["qsub",join(paths.pbs, "blast_direction_check.pbs")]
-    print "executing: "+command[0] + " " + command[1]
-    process = subprocess.Popen(command, stdout=subprocess.PIPE)
-    out, err = process.communicate()
-    id = re.split('[\.]{1}',out)[0] # get the id number of the job or job array that was submitted
-    print id    
-    
-    
-    
+        snapshot = Module("snapshot-"+mod_item.name,
+                          [("SOURCE",paths.root),
+                           ("DEST", os.path.abspath(paths.root+"/../snapshots/snapshot-"+mod_item.name))],
+                          join(paths.bash,"snapshot.bash"))
+        cmd = generate_qsub_command(snapshot,index,paths,preferences,notifications,id=id,initial=False,final=False)         
+        id = exec_qsub(cmd,verbose=True)
         
-    
     sys.exit(0)
     
 if __name__ == '__main__':
