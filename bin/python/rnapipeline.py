@@ -36,10 +36,11 @@ class Paths:
         self.blastoutput = join(self.blast,"blasts")
         self.blasttmp = join(self.blast, "tmp")
 class Module:
-    def __init__(self, name, req_vars, location):
+    def __init__(self, name, req_vars, location, arr_job=False):
         self.name = name
         self.var_list = req_vars
-        self.location = location        
+        self.location = location
+        self.array_job = arr_job        
 class ConfigFiles:
     # This is just an object that makes referencing the various files
     # that are in use cleaner.
