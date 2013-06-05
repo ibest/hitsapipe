@@ -233,9 +233,6 @@ def generate_qsub_command(module,index,paths,prefs,notes,
     cmd.append(paths.output)
     cmd.append("-q")
     cmd.append("tiny")
-    if module.name is "blastall":
-        cmd.append("-t")
-        cmd.append("0-1")
     
     if id is not None:
         if final:
