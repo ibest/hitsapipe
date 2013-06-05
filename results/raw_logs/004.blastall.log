@@ -1,0 +1,2 @@
+DEBUG: Command: blastall -p blastn -d /mnt/home/data/db/rdp/species  -b 50 -v 50 -i la072.fasta -S 1 -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast/blasts/la072.fasta.blastn
+DEBUG: Command: blastall -p blastn -d /mnt/home/data/db/rdp/species  -b 50 -v 50 -i la091.fasta -S 1 -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast/blasts/la091.fasta.blastn

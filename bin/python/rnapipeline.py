@@ -202,7 +202,10 @@ def module_list(pth,fil,prefs):
                 )
     list.append(Module("blastall",
                        [("BLAST_TEMP_DIR",pth.blasttmp),
-                        ("BLAST_INPUT_FILE", fil.blast_input_file)],
+                        ("BLAST_INPUT_FILE", fil.blast_input_file),
+                        ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
+                        ("DATABASE", prefs["database"]),
+                        ("NHITS", prefs["nhits"])],
                        join(pth.bash,"blastall.bash")
                        )
                 )
@@ -217,7 +220,23 @@ def module_list(pth,fil,prefs):
     
     
     return list
-def generate_qsub_command(module,index,paths,prefs,notes,
+def generate_non_qsub_command(module,paths,files,prefs):
+    #cmd = ["PBS_O_WORKDIR="+paths.output]
+    
+    cmd = "PBS_O_WORKDIR="+paths.output+" "
+    if module.var_list:
+        for(key,value) in module.var_list:
+            #cmd.append(str(key+"="+value))
+            cmd += str(key+"="+value+" ")
+    
+    #cmd.append(module.location)
+    cmd += str(module.location)
+    #cmd += " "
+    #cmd += "> "+str(join(paths.logs,module.name+".log"))
+    
+    return cmd
+    
+def generate_qsub_command(module,index,paths,files,prefs,notes,
                           id=None,array=False,initial=False,final=False):
     
     cmd = ["qsub"]
@@ -231,8 +250,8 @@ def generate_qsub_command(module,index,paths,prefs,notes,
     cmd.append(get_qsub_notifications(notes,initial,final))
     cmd.append("-d")
     cmd.append(paths.output)
-    cmd.append("-q")
-    cmd.append("tiny")
+    #cmd.append("-q")
+    #cmd.append("tiny")
     
     if id is not None:
         if final:
@@ -240,11 +259,10 @@ def generate_qsub_command(module,index,paths,prefs,notes,
         elif not array:
             cmd.append("-W depend=afterok:"+id)
         else:
-            cmd.append("-W depend=afterokarray:"+id)
+            cmd.append("-W depend=afterokarray:"+id)            
                 
     if module.var_list:
         cmd.append("-v")
-        #var_list = "-v "
         var_list = ""
         for (key,value) in module.var_list:
             var_list += key+"="+value+","
@@ -311,22 +329,41 @@ def main():
     # Start forming the commands to call qsub with.    
     m_modules = module_list(paths,files,preferences)
     id = None
-    for (index,mod_item) in enumerate(m_modules):
-        first = False
-        last = False
-        if index == 0:
-            first = True
-        if index == [len(m_modules)-1]:
-            last = True # This needs to eventually be true to call the cleanup.
-        cmd = generate_qsub_command(mod_item, index, paths, preferences, notifications, id=id, initial=first, final=last)
-        id = exec_qsub(cmd,verbose=True)
-        snapshot = Module("snapshot-"+mod_item.name,
-                          [("SOURCE",paths.root),
-                           ("DEST", os.path.abspath(paths.root+"/../snapshots/snapshot-"+mod_item.name))],
-                          join(paths.bash,"snapshot.bash"))
-        cmd = generate_qsub_command(snapshot,index,paths,preferences,notifications,id=id,initial=False,final=False)         
-        id = exec_qsub(cmd,verbose=True)
-        
+    if subprocess.call(["which","qsub"]) == 0:
+        for (index,mod_item) in enumerate(m_modules):
+            first = False
+            last = False
+            if index == 0:
+                first = True
+            if index == [len(m_modules)-1]:
+                last = True # This needs to eventually be true to call the cleanup.
+            cmd = generate_qsub_command(mod_item, index, paths, files, preferences, notifications, id=id, initial=first, final=last)
+            id = exec_qsub(cmd,verbose=True)
+            snapshot = Module("snapshot-"+mod_item.name,
+                              [("SOURCE",paths.root),
+                               ("DEST", os.path.abspath(paths.root+"/../snapshots/snapshot-"+mod_item.name))],
+                              join(paths.bash,"snapshot.bash"))
+            cmd = generate_qsub_command(snapshot,index,paths, files, preferences,notifications,id=id,initial=False,final=False)         
+            id = exec_qsub(cmd,verbose=True)
+    else:
+         for (index,mod_item) in enumerate(m_modules):
+             cmd = generate_non_qsub_command(mod_item, paths, files, preferences)
+             process = subprocess.Popen(cmd,executable="/bin/bash", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+             
+             out, err = process.communicate()
+             
+             if out is not None:
+                 print str(out)
+             if err is not None:
+                 print str(err)
+                 
+             log = open(join(paths.logs,mod_item.name+".log"),"w")
+             log.writelines(out)
+             log.writelines(err)
+             log.close()
+             
+             if process.returncode is not 0:
+                 fatal_error("The module \""+mod_item.name+"\" failed")           
     sys.exit(0)
     
 if __name__ == '__main__':

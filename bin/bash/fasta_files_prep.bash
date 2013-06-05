@@ -29,7 +29,7 @@ cd ${SEQUENCE_DIR}
 EXITCODE=$(${PERL_DIR}/namechange.pl ${SUFFIX})$?
 cd ${PBS_O_WORKDIR}
 
-if [ ${EXITCODE} != 1 ]
+if [ ${EXITCODE} != 0 ]
 	then
 		echo "ERROR: Filenames could not be change to FASTA sequence names. Exiting."
 fi

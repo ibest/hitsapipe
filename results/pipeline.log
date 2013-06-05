@@ -4,7 +4,6 @@ Collating all .fasta files into list
 Ensuring Unix endlines on all files
 Backing up original sequences.
 Making sure all filenames are the FASTA sequences names.
-ERROR: Filenames could not be change to FASTA sequence names. Exiting.
 
 From 001.snapshot-fasta_prep.log:
 
@@ -20,7 +19,7 @@ From 002.snapshot-get_good_seq.log:
 From formatdb.log:
 
 
-========================[ Jun 4, 2013  6:43 PM ]========================
+========================[ Jun 5, 2013  3:38 PM ]========================
 Version 2.2.24 [Aug-08-2010]
 Started database file "/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast/good_sequences"
 Formatted 2 sequences in volume 0
@@ -39,5 +38,13 @@ Splitting up the good sequence file.
 From 003.snapshot-blast_dir.log:
 
 
-Everything finished at: Tue Jun  4 18:45:02 PDT 2013
+From 004.blastall.log:
+
+DEBUG: Command: blastall -p blastn -d /mnt/home/data/db/rdp/species  -b 50 -v 50 -i la072.fasta -S 1 -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast/blasts/la072.fasta.blastn
+DEBUG: Command: blastall -p blastn -d /mnt/home/data/db/rdp/species  -b 50 -v 50 -i la091.fasta -S 1 -o /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/results/blast/blasts/la091.fasta.blastn
+
+From 004.snapshot-blastall.log:
+
+
+Everything finished at: Wed Jun  5 15:42:18 PDT 2013
 
