@@ -1,9 +1,11 @@
+#!/usr/bin/env python
 import sys
 import os
 import subprocess
 import re
 import ConfigParser
 import shutil
+import time
 from optparse import OptionParser
 from optparse import OptionGroup
 
@@ -23,24 +25,26 @@ class Paths:
         self.python = join(self.bin,"python") 
         
         # root subdirectories
-        self.output = join(self.root,"results")
+        self.output = join(self.root,"output")
     
         # output subdirectories
         self.backup = join(self.output,"references")
         self.blast = join(self.output,"blast")
         self.originals = join(self.output,"originals")
         self.logs = join(self.output,"raw_logs")
-        self.tmp = join(self.output,"tmp")                
+        self.tmp = join(self.output,"tmp")
+        self.clustaloutput = self.hitoutput = join(self.output,"results")
+                        
         
         # blast subdirectories
         self.blastoutput = join(self.blast,"blasts")
         self.blasttmp = join(self.blast, "tmp")
 class Module:
-    def __init__(self, name, req_vars, location, arr_job=False):
+    def __init__(self, name, req_vars, location, array_job=False):
         self.name = name
         self.var_list = req_vars
         self.location = location
-        self.array_job = arr_job        
+        self.array_job = array_job        
 class ConfigFiles:
     # This is just an object that makes referencing the various files
     # that are in use cleaner.
@@ -70,6 +74,10 @@ class Files:
         self.blast_input_file = join(paths.blast,"blast_input")
         self.direction_blast = join(paths.blast,"direction_blast")
         self.final_log = join(paths.output,"pipeline.log")
+        self.numseqs_tmp = join(paths.tmp, "numseqs.tmp")
+        self.blastout5 = join(paths.blast,"blastout5")
+        self.hitseqs = join(paths.clustaloutput,"hitseqs")
+        self.hitfiles = join(paths.clustaloutput,"hitfiles")
 def join(src,dest):  # Just use from os import path.join instead.
     return os.path.join(src,dest)
 def fatal_error(msg):
@@ -96,6 +104,13 @@ def setup_configuration_files(config_location_list, m_paths):
             value = os.path.abspath(value.replace("$bin_dir",os.path.abspath(m_paths.bin))) 
         if value.find("$root_dir") != -1:
             value = os.path.abspath(value.replace("$root_dir",os.path.abspath(m_paths.root)))
+        if value.find("$output_dir") != -1:
+            value = os.path.abspath(value.replace("$output_dir",os.path.abspath(m_paths.output)))
+        if (str(value)).find("True") != -1:
+            value = True
+        elif (str(value)).find("False") != -1:
+            value = False
+
         preferences[pref] = value        
     
     # Notifications should not be mandatory
@@ -128,9 +143,12 @@ def backup_configuration_file(preferences, notifications, backup_config_location
     fp = open(backup_config_location,"w")
     parser.write(fp)
     fp.close()                
-def prepare_directory_structure(m_paths):
+def prepare_directory_structure(m_paths, m_prefs):
     shutil.rmtree(m_paths.output, ignore_errors=True)
     shutil.rmtree(m_paths.tmp, ignore_errors=True)
+    
+    if os.path.exists(m_prefs["arrayjoblogfile"]):
+        os.remove(m_prefs["arrayjoblogfile"])
     
     os.mkdir(m_paths.output)
     os.mkdir(m_paths.backup)
@@ -140,6 +158,7 @@ def prepare_directory_structure(m_paths):
     os.mkdir(m_paths.logs)
     os.mkdir(m_paths.tmp)
     os.mkdir(m_paths.blasttmp)
+    os.mkdir(m_paths.hitoutput)
     #os.mkdir(m_paths.tmp)
     #os.mkdir(m_paths.tmplogs)
     #os.mkdir(m_paths.tmpblasts_linear)
@@ -157,7 +176,8 @@ def get_qsub_notifications(notifications_list, initial, final):
             notifyString += "e"
     if not notifyString:
         notifyString = "n"
-    return notifyString
+    #return notifyString
+    return "abe" # Overriding settings
 def module_list(pth,fil,prefs):
     # Returns a list of the modules and their required preferences
     # in the order that they need to be run.
@@ -196,20 +216,110 @@ def module_list(pth,fil,prefs):
                         ("GOOD_SEQUENCES_FILE", fil.good_seq_file),
                         ("DIRECTION_BLAST_FILE", fil.direction_blast),
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
+                        ("NUMSEQS_TEMP_FILE", fil.numseqs_tmp),
                         ("BLAST_SEQUENCES", prefs["blastsequences"]),
                         ("CUTOFF_LENGTH", prefs["cutofflength"])],
                        join(pth.bash,"blast_direction.bash")
                        )
                 )
-    list.append(Module("blastall",
-                       [("BLAST_TEMP_DIR",pth.blasttmp),
+    list.append(Module("blast_arr_prep",
+                       [("BLAST_TEMP_DIR", pth.blasttmp),
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
+                        ("ARRAY_OUTPUT_FILE",prefs["arrayjoblogfile"])],
+                       join(pth.bash,"blastall_array_prep.bash")
+                       )
+                )
+    list.append(Module("blastall_array",
+                       [("BLAST_TEMP_DIR",pth.blasttmp),
                         ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
                         ("DATABASE", prefs["database"]),
                         ("NHITS", prefs["nhits"])],
-                       join(pth.bash,"blastall.bash")
+                       join(pth.bash,"blastall_array.bash"),
+                       array_job=True
                        )
                 )
+    list.append(Module("blastall_check",
+                       [("BLASTALL_OUTPUT_DIR", pth.blastoutput),
+                        ("BLAST_INPUT_FILE", fil.blast_input_file),
+                        ("NUMSEQS_TEMP_FILE", fil.numseqs_tmp)],
+                       join(pth.bash,"blastall_check.bash")
+                       )
+                )
+    
+    ##### Untested Modules here #####
+    
+    list.append(Module("blastall_hits",
+                       [("PERL_DIR", pth.perl),
+                        ("HIT_OUTPUT_DIR",pth.hitoutput),
+                        ("DATABASE", prefs["database"]),
+                        ("BLAST_OUT_5_FILE", fil.blastout5),
+                        ("HIT_SEQS_FILE", fil.hitseqs),
+                        ("HIT_FILE",fil.hitfiles)],
+                       join(pth.bash,"blastall_hits.bash")
+                       )
+                )
+    '''
+    list.append(Module("clustal_prep",
+                       [("PERL_DIR", pth.perl),
+                        ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
+                        ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
+                        ("REF_STRAINS_FILE", prefs["referencestrains"]),
+                        ("CLUSTAL_FILE", fil.clustal),
+                        ("CLUSTAL_ALL_FILE", fil.clustal_all),
+                        ("BLAST_INPUT_FILE", fil.blast_input_file),
+                        ("HIT_FILE", fil.hits)],
+                       join(pth.bash,"clustal_prep.bash")
+                       )
+                )
+    ###
+    ###
+    ### CLUSTAL SCRIPTS GO HERE ###
+    ###
+    ###
+    
+    
+    list.append(Module("clustal_check",
+                       [("CLUSTAL_ALIGNMENT_FILE", fil.clustal_alignment)],
+                       join(pth.bash,"clustal_check.bash")
+                       )
+                )
+    list.append(Module("alignment",
+                       [("PERL_DIR", pth.perl),
+                        ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
+                        ("CLUSTAL_ALIGNMENT_FILE", fil.clustal_alignment),
+                        ("PHYLIP_IN_FILE", fil.phylip_in)],
+                       join(pth.bash,"alignment.bash")
+                       )
+                )
+    list.append(Module("dist_matrix",
+                       [("DNADIST_SCRIPT", fil.dnadist),
+                        ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
+                        ("DISTANCES_FILE", fil.distances),
+                        ("PHYLIP_IN_FILE", fil.phylip_in)],
+                       join(pth.bash,"distance_matrix.bash")
+                       )
+                )
+    list.append(Module("neighbor",
+                       [("PERL_DIR", fil.dnadist),
+                        ("NEIGHBOR_DIR", pth.neighbor),
+                        ("NEIGHBOR_ROOT", prefs["root"]),
+                        ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput)],
+                       join(pth.bash,"neighbor_run.bash")
+                       )
+                )
+        
+    '''
+    
+    #list.append(Module("blastall",
+    #                   [("BLAST_TEMP_DIR",pth.blasttmp),
+    #                    ("BLAST_INPUT_FILE", fil.blast_input_file),
+    #                    ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
+    #                    ("DATABASE", prefs["database"]),
+    #                    ("NHITS", prefs["nhits"])],
+    #                   join(pth.bash,"blastall.bash"),
+    #                   array_job=True
+    #                   )
+    #            )
 
 
     list.append(Module("finalize",
@@ -237,8 +347,9 @@ def generate_non_qsub_command(module,paths,files,prefs):
     
     return cmd
     
-def generate_qsub_command(module,index,paths,files,prefs,notes,
-                          id=None,array=False,initial=False,final=False):
+def generate_qsub_command(module, index, paths, files, prefs, notes, 
+                          arr_count=None, id=None, previous_array=False,  
+                          initial=False,final=False):
     
     cmd = ["qsub"]
     cmd.append("-N")
@@ -251,16 +362,26 @@ def generate_qsub_command(module,index,paths,files,prefs,notes,
     cmd.append(get_qsub_notifications(notes,initial,final))
     cmd.append("-d")
     cmd.append(paths.output)
-    #cmd.append("-q")
-    #cmd.append("tiny")
-    
+    cmd.append("-q")
+    cmd.append("tiny")
+    if arr_count is not None:
+        arr_count -= 1
+        cmd.append("-t")
+        cmd.append("0-"+str(arr_count))
+        arr_count += 1 # This isn't necessary
+
+    # Eventually this should check if there's a job dependency.
     if id is not None:
-        if final:
-            cmd.append("-W depend=afterany:"+id)  # Final script is cleanup and we always want it to run.
-        elif not array:
-            cmd.append("-W depend=afterok:"+id)
+        if previous_array:
+            if final:
+                cmd.append("-W depend=afteranyarray:"+id)  # Final script is cleanup and we always want it to run.
+            else:
+                cmd.append("-W depend=afterokarray:"+id)  # Final script is cleanup and we always want it to run.
         else:
-            cmd.append("-W depend=afterokarray:"+id)            
+            if final:
+                cmd.append("-W depend=afterany:"+id)
+            else:
+                cmd.append("-W depend=afterok:"+id)            
                 
     if module.var_list:
         cmd.append("-v")
@@ -272,19 +393,34 @@ def generate_qsub_command(module,index,paths,files,prefs,notes,
     
     cmd.append(module.location)    
     return cmd
-def exec_qsub(cmd, verbose=False):
-    if verbose:
-        print "executing: "+str(cmd)
-    #sys.exit(0)
+def exec_qsub(cmd, mod_name=None, verbose=False):
     process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     out, err = process.communicate()
     id = re.split('[\.]{1}',out)[0]
+    #id = re.split('[\n]{1}',out)[0]
     if verbose:
-        print "qsub output:"
-        print out
-        print "id:"
-        print id
+        if mod_name is not None:
+            print mod_name + " started. ID: "+str(id)
+        else:
+            print "id:"+str(id)
     return id
+def wait_to_exec_array(filepath):
+    # Since we currently have no way of having a node call qsub itself,
+    # in the event that we want to create an array job and don't know the
+    # number of elements in the array until part of the job has finished,
+    # we need to wait until the process that determines the number of jobs
+    # in the array finishes and then create the array job.
+    while os.path.exists(filepath) is not True:
+        time.sleep(10)
+        
+    file = open(filepath, "r")
+    arr_count = file.readline()
+    arr_count = str(arr_count).strip()
+    
+    
+    os.remove(filepath)
+    
+    return int(arr_count) # If arr_count isn't an integer it will return 0.        
 def main():    
     # Set up an OptionParser object to make the command line arguments easy.
     # NOTE:  optparse has been deprecated since Python 2.7, but as of May 2013,
@@ -322,32 +458,75 @@ def main():
     preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
 
     files = setup_files(paths, preferences)   
-    prepare_directory_structure(paths)
+    prepare_directory_structure(paths, preferences)
     backup_configuration_file(preferences, notifications, configs.backup_config)
     backup_file(files.ref_strains,files.ref_strains_backup) # RefStrain
     backup_file(files.blast_seq,files.blast_seq_backup) # BlastSeq
     
     # Start forming the commands to call qsub with.    
+    qsub_process = subprocess.Popen(["which","qsub"], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
+    qsub_process.communicate()  # Don't assign to anything, don't care about output
+      
+    
     m_modules = module_list(paths,files,preferences)
     id = None
-    if subprocess.call(["which","qsub"]) == 0:
+    
+    
+    
+    if qsub_process.returncode == 0 and preferences["runstandaloneonly"] is False:
         for (index,mod_item) in enumerate(m_modules):
             first = False
             last = False
+            arr_count = None
+            is_prev_array = False
             if index == 0:
                 first = True
-            if index == [len(m_modules)-1]:
-                last = True # This needs to eventually be true to call the cleanup.
-            cmd = generate_qsub_command(mod_item, index, paths, files, preferences, notifications, id=id, initial=first, final=last)
-            id = exec_qsub(cmd,verbose=True)
-            snapshot = Module("snapshot-"+mod_item.name,
-                              [("SOURCE",paths.root),
-                               ("DEST", os.path.abspath(paths.root+"/../snapshots/snapshot-"+mod_item.name))],
-                              join(paths.bash,"snapshot.bash"))
-            cmd = generate_qsub_command(snapshot,index,paths, files, preferences,notifications,id=id,initial=False,final=False)         
-            id = exec_qsub(cmd,verbose=True)
+            if index == (len(m_modules)-1):
+                last = True # This needs to eventually be true for notifications
+            if mod_item.array_job is True:
+                # Then we need to wait until the array count is available in order
+                # to continue.
+                arr_count = wait_to_exec_array(preferences["arrayjoblogfile"])
+                if arr_count <= 0:
+                    fatal_error("Something went wrong when trying to create an array job")
+            if index > 0:
+                if m_modules[index - 1].array_job is True:
+                    is_prev_array = True
+                    
+            cmd = generate_qsub_command(mod_item, index, paths, files, 
+                                        preferences, notifications, 
+                                        arr_count=arr_count, id=id, 
+                                        previous_array=is_prev_array, 
+                                        initial=first, final=last)
+            
+            id = exec_qsub(cmd,mod_item.name,verbose=True)
+            
+            # Create a snapshot of the previous run
+            #snapshot = Module("snapshot-"+mod_item.name,
+            #                 [("SOURCE",paths.root),
+            #                   ("DEST", os.path.abspath(paths.root+"/../snapshots/snapshot-"+mod_item.name))],
+            #                  join(paths.bash,"snapshot.bash"))
+            #cmd = generate_qsub_command(snapshot,index,paths, files, 
+            #                            preferences,notifications, 
+            #                            arr_count=None, id=id, 
+            #                            initial=False,final=False)
+                     
+            #id = exec_qsub(cmd,verbose=True)
     else:
          for (index,mod_item) in enumerate(m_modules):
+             # Will need to test if something is an array job and somehow call it
+             # for every job.
+             # For now just halt.
+             #first = False
+             #last = False
+             
+             #if index == 0:
+             #    first = True
+             #if index == (len(m_modules)-1):
+             #    last = True             
+             #print "Index: "+str(index)+"| is first? "+str(first)+"| is last? "+str(last)
+             if mod_item.array_job is True:
+                 fatal_error("Cannot handle array jobs currently")
              cmd = generate_non_qsub_command(mod_item, paths, files, preferences)
              process = subprocess.Popen(cmd,executable="/bin/bash", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
              
