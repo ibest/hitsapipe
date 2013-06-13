@@ -1,0 +1,5 @@
+Running clustalw2
+	Input File: 	/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results/clustal_all
+	Output File: 	
+Error: parameter required for -outfile
+/var/spool/torque/mom_priv/jobs/1122814.fortytwo.ibest.uidaho.edu.SC: line 13: [: too many arguments

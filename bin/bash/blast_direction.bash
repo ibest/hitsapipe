@@ -8,6 +8,7 @@
 #	GOOD_SEQUENCES_FILE: 	File that contains the good sequences.
 #	DIRECTION_BLAST_FILE: 	File that contains blastall's output for direction.
 #	BLAST_INPUT_FILE: 		File to store the matched names.
+#	NUMSEQS_TEMP_FILE: 		Holds the number of good sequences for later comparison
 #	BLAST_SEQUENCES: 		Sequences to be blasted against.
 #	CUTOFF_LENGTH: 			
 #####
@@ -63,6 +64,11 @@ then
 else
 	echo "${NUMSEQS} good sequences were found."
 fi
+
+# Store the number of sequences in a temporary file so that after the blasting
+# has been completed we can compare it to the number of blasts.
+echo "${NUMSEQS}" > ${NUMSEQS_TEMP_FILE}
+
 
 #pulls match names
 echo "Pulling match names and placing in ${BLAST_INPUT_FILE}"

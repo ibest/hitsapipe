@@ -34,6 +34,7 @@ class Paths:
         self.logs = join(self.output,"raw_logs")
         self.tmp = join(self.output,"tmp")
         self.clustaloutput = self.hitoutput = join(self.output,"results")
+        self.clustaltmp = join(self.clustaloutput,"tmp")
                         
         
         # blast subdirectories
@@ -78,6 +79,9 @@ class Files:
         self.blastout5 = join(paths.blast,"blastout5")
         self.hitseqs = join(paths.clustaloutput,"hitseqs")
         self.hitfiles = join(paths.clustaloutput,"hitfiles")
+        self.clustal = join(paths.clustaloutput,"clustal")
+        self.clustal_all = join(paths.clustaloutput,"clustal_all")
+        self.clustal_align = join(paths.clustaloutput,"clustal_all.aln")
 def join(src,dest):  # Just use from os import path.join instead.
     return os.path.join(src,dest)
 def fatal_error(msg):
@@ -158,7 +162,9 @@ def prepare_directory_structure(m_paths, m_prefs):
     os.mkdir(m_paths.logs)
     os.mkdir(m_paths.tmp)
     os.mkdir(m_paths.blasttmp)
-    os.mkdir(m_paths.hitoutput)
+    os.mkdir(m_paths.clustaloutput)
+    
+    #os.mkdir(m_paths.clustaltmp)
     #os.mkdir(m_paths.tmp)
     #os.mkdir(m_paths.tmplogs)
     #os.mkdir(m_paths.tmpblasts_linear)
@@ -177,7 +183,7 @@ def get_qsub_notifications(notifications_list, initial, final):
     if not notifyString:
         notifyString = "n"
     #return notifyString
-    return "abe" # Overriding settings
+    return "n" # Overriding settings
 def module_list(pth,fil,prefs):
     # Returns a list of the modules and their required preferences
     # in the order that they need to be run.
@@ -245,11 +251,9 @@ def module_list(pth,fil,prefs):
                        join(pth.bash,"blastall_check.bash")
                        )
                 )
-    
-    ##### Untested Modules here #####
-    
     list.append(Module("blastall_hits",
                        [("PERL_DIR", pth.perl),
+                        ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
                         ("HIT_OUTPUT_DIR",pth.hitoutput),
                         ("DATABASE", prefs["database"]),
                         ("BLAST_OUT_5_FILE", fil.blastout5),
@@ -257,32 +261,38 @@ def module_list(pth,fil,prefs):
                         ("HIT_FILE",fil.hitfiles)],
                        join(pth.bash,"blastall_hits.bash")
                        )
-                )
-    '''
+                )    
+    
+    ##### Untested Modules here #####
+    
+
+
     list.append(Module("clustal_prep",
                        [("PERL_DIR", pth.perl),
                         ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
-                        ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
+                        ("BLAST_TEMP_DIR", pth.blasttmp),
+                        ("CLUSTAL_TEMP_DIR", pth.clustaltmp),
+                        ("ARRAY_OUTPUT_FILE",prefs["arrayjoblogfile"]),
                         ("REF_STRAINS_FILE", prefs["referencestrains"]),
                         ("CLUSTAL_FILE", fil.clustal),
                         ("CLUSTAL_ALL_FILE", fil.clustal_all),
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
-                        ("HIT_FILE", fil.hits)],
+                        ("HIT_FILE", fil.hitfiles)],
                        join(pth.bash,"clustal_prep.bash")
                        )
                 )
-    ###
-    ###
-    ### CLUSTAL SCRIPTS GO HERE ###
-    ###
-    ###
-    
-    
+    list.append(Module("clustal",
+                       [("CLUSTAL_ALL_FILE", fil.clustal_all),
+                        ("CLUSTAL_ALIGNMENT_FILE", fil.clustal_align)],
+                       join(pth.bash,"clustal_run.bash")
+                       )
+                )
     list.append(Module("clustal_check",
-                       [("CLUSTAL_ALIGNMENT_FILE", fil.clustal_alignment)],
+                       [("CLUSTAL_ALIGNMENT_FILE", fil.clustal_align)],
                        join(pth.bash,"clustal_check.bash")
                        )
                 )
+    '''
     list.append(Module("alignment",
                        [("PERL_DIR", pth.perl),
                         ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
@@ -309,17 +319,6 @@ def module_list(pth,fil,prefs):
                 )
         
     '''
-    
-    #list.append(Module("blastall",
-    #                   [("BLAST_TEMP_DIR",pth.blasttmp),
-    #                    ("BLAST_INPUT_FILE", fil.blast_input_file),
-    #                    ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
-    #                    ("DATABASE", prefs["database"]),
-    #                    ("NHITS", prefs["nhits"])],
-    #                   join(pth.bash,"blastall.bash"),
-    #                   array_job=True
-    #                   )
-    #            )
 
 
     list.append(Module("finalize",
@@ -400,7 +399,7 @@ def exec_qsub(cmd, mod_name=None, verbose=False):
     #id = re.split('[\n]{1}',out)[0]
     if verbose:
         if mod_name is not None:
-            print mod_name + " started. ID: "+str(id)
+            print mod_name + " submitted. ID: "+str(id)
         else:
             print "id:"+str(id)
     return id
@@ -421,6 +420,41 @@ def wait_to_exec_array(filepath):
     os.remove(filepath)
     
     return int(arr_count) # If arr_count isn't an integer it will return 0.        
+
+def finish_exec_array(arr_count, base_id):
+    # A job following an array job must have an array dependency as well.
+    # So instead, we wait for the job to finish and then move on to the next
+    # job.
+    # First make a list of the values to check.
+    # Then, iterate over that list.
+    # Loop this action until all processes are completed.
+    
+    devnull = open('/dev/null', 'w')
+    completed_list = [False]*(arr_count)
+    done = False
+    
+    print "Waiting for array job to finish before continuing..."
+    time.sleep(2) # This sleep is to prevent a qstat output error from appearing.
+    while(done is False):
+        for (index,value) in enumerate(completed_list):
+            cmd = "qstat -f " + str(base_id) + "[" + str(index) + "] | grep \"job_state = C\""
+            #print "finish_exec cmd: " + str(cmd) 
+            retval = subprocess.call(cmd, shell=True, stdout=devnull)
+            if retval == 0:
+                completed_list[index] = True
+            else:
+                time.sleep(10)
+                break
+        for (index,value) in enumerate(completed_list):
+            done = True
+            if completed_list[index] is False:
+                done = False
+                break
+    devnull.close()
+    
+    print "Array job completed.  Continuing."
+    return True
+
 def main():    
     # Set up an OptionParser object to make the command line arguments easy.
     # NOTE:  optparse has been deprecated since Python 2.7, but as of May 2013,
@@ -487,31 +521,41 @@ def main():
                 # Then we need to wait until the array count is available in order
                 # to continue.
                 arr_count = wait_to_exec_array(preferences["arrayjoblogfile"])
+                id = None # Set this to none, because the previous job will be done before this gets called.
                 if arr_count <= 0:
                     fatal_error("Something went wrong when trying to create an array job")
-            if index > 0:
-                if m_modules[index - 1].array_job is True:
-                    is_prev_array = True
                     
-            cmd = generate_qsub_command(mod_item, index, paths, files, 
-                                        preferences, notifications, 
-                                        arr_count=arr_count, id=id, 
-                                        previous_array=is_prev_array, 
-                                        initial=first, final=last)
-            
-            id = exec_qsub(cmd,mod_item.name,verbose=True)
-            
-            # Create a snapshot of the previous run
-            #snapshot = Module("snapshot-"+mod_item.name,
-            #                 [("SOURCE",paths.root),
-            #                   ("DEST", os.path.abspath(paths.root+"/../snapshots/snapshot-"+mod_item.name))],
-            #                  join(paths.bash,"snapshot.bash"))
-            #cmd = generate_qsub_command(snapshot,index,paths, files, 
-            #                            preferences,notifications, 
-            #                            arr_count=None, id=id, 
-            #                            initial=False,final=False)
-                     
-            #id = exec_qsub(cmd,verbose=True)
+                if index > 0:
+                    if m_modules[index - 1].array_job is True:
+                        is_prev_array = True
+                
+                cmd = generate_qsub_command(mod_item, index, paths, files, 
+                            preferences, notifications, 
+                            arr_count=arr_count, id=id, 
+                            previous_array=is_prev_array, 
+                            initial=first, final=last)
+                
+                id = exec_qsub(cmd,mod_item.name,verbose=True)
+                id = re.split('[[\.]{1}',id)[0]
+                
+                # Need to wait here for job to finish before starting next one.
+                #array_wait_cmd = [join(paths.bash,"test_output.sh"),id , (arr_count - 1)]
+                #array_wait_cmd = str(join(paths.bash,"test_output.sh")) + " " + str(id) + " " + str((arr_count - 1))
+                finish_exec_array(arr_count, id)
+                id = None # We don't want to have a job dependency.
+
+            if mod_item.array_job is not True:  
+                if index > 0:
+                    if m_modules[index - 1].array_job is True:
+                        is_prev_array = True
+                
+                cmd = generate_qsub_command(mod_item, index, paths, files, 
+                                            preferences, notifications, 
+                                            arr_count=arr_count, id=id, 
+                                            previous_array=is_prev_array, 
+                                            initial=first, final=last)
+                
+                id = exec_qsub(cmd,mod_item.name,verbose=True)
     else:
          for (index,mod_item) in enumerate(m_modules):
              # Will need to test if something is an array job and somehow call it
@@ -526,6 +570,8 @@ def main():
              #    last = True             
              #print "Index: "+str(index)+"| is first? "+str(first)+"| is last? "+str(last)
              if mod_item.array_job is True:
+                 # Here just call the module over and over again with $PBS_ARRAYID
+                 # set as the index that it should be.
                  fatal_error("Cannot handle array jobs currently")
              cmd = generate_non_qsub_command(mod_item, paths, files, preferences)
              process = subprocess.Popen(cmd,executable="/bin/bash", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)

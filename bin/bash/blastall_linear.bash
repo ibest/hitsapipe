@@ -11,8 +11,6 @@
 #	FILE: 						The filename without ".PBS_ARRAYID" attached to it
 #####
 
-#TMP=$(find ${BLAST_TEMP_DIR) -maxdepth 1 "*.${PBS_ARRAYID}")
-#FILE=$(echo "${TMP%.*}")
 
 for FILE in 
 

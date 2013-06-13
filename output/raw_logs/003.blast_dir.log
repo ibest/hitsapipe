@@ -1,0 +1,7 @@
+Running formatdb to format the good sequences into a database to blast
+against with our sample sequence.
+
+BLASTing /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/usr/af243169.for against sequences to find direction.
+2 good sequences were found.
+Pulling match names and placing in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blast_input
+Splitting up the good sequence file.

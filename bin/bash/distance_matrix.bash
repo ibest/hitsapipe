@@ -2,9 +2,9 @@
 #####
 # Requires:
 #	DNADIST_SCRIPT
-#	OUTPUT_DIR
+#	CLUSTAL_OUTPUT_DIR
 #	DISTANCES_FILE
-#	IN_FILE
+#	PHYLIP_IN_FILE
 #####
 
 # Use dnadist to create the distance matrix.
@@ -12,8 +12,8 @@
 # Then, rename the IN_FILE so that the next script doesn't have
 # any issues.
 
-cd ${OUTPUT_DIR}
+cd ${CLUSTAL_OUTPUT_DIR}
 echo "Making the distance matrix:"
 dnadist < {DNADIST_SCRIPT}
 mv outfile ${DISTANCES_FILE}
-mv {IN_FILE} {IN_FILE}.dnadist
+mv {PHYLIP_IN_FILE} {PHYLIP_IN_FILE}.dnadist
