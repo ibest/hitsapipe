@@ -6,9 +6,9 @@
 #####
 echo "Running clustalw2"
 echo -e "\tInput File: \t${CLUSTAL_ALL_FILE}"
-echo -e "\tOutput File: \t${CLUSTAL_ALIGNMNET_FILE}"
+echo -e "\tOutput File: \t${CLUSTAL_ALIGNMENT_FILE}"
 
-RETVAL=$(clustalw2 ${CLUSTAL_ALL_FILE} -align -type=DNA -outfile=${CLUSTAL_ALIGNMNET_FILE})$?
+RETVAL=$(clustalw2  -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}")$?
 
 if [ ${RETVAL} != 0 ]
 	then

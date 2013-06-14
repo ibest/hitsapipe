@@ -13,7 +13,7 @@ Finding the good seqs and placing them in /mnt/lfs/walt2178/Projects/rna-pipelin
 From formatdb.log:
 
 
-========================[ Jun 13, 2013  4:24 PM ]========================
+========================[ Jun 13, 2013  4:39 PM ]========================
 Version 2.2.24 [Aug-08-2010]
 Started database file "/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/good_sequences"
 Formatted 2 sequences in volume 0
@@ -67,14 +67,14 @@ From 009.clustal.log:
 
 Running clustalw2
 	Input File: 	/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results/clustal_all
-	Output File: 	
-Error: parameter required for -outfile
-/var/spool/torque/mom_priv/jobs/1122814.fortytwo.ibest.uidaho.edu.SC: line 13: [: too many arguments
+	Output File: 	/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results/clustal_all.aln
+Error: unknown option -mnt/lfs/walt2178/projects/rna-pipeline-python-qsub-staging/output/results/clustal_all
+/var/spool/torque/mom_priv/jobs/1122829.fortytwo.ibest.uidaho.edu.SC: line 13: [: too many arguments
 
 From 010.clustal_check.log:
 
 Cannot find /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results/clustal_all.aln!
 ClustalW did not make an alignment!  Quitting.
 
-Everything finished at: Thu Jun 13 16:33:01 PDT 2013
+Everything finished at: Thu Jun 13 16:47:15 PDT 2013
 
