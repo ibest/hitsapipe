@@ -323,10 +323,11 @@ def module_list(pth,fil,prefs):
                        )
                 )
     return list
-def generate_non_qsub_command(module,paths,files,prefs):
-    #cmd = ["PBS_O_WORKDIR="+paths.output]
-    
-    cmd = "PBS_O_WORKDIR="+paths.output+" "
+def generate_non_qsub_command(module,paths,files,prefs, arr_id=None):
+    cmd = ""
+    if arr_id is not None:
+        cmd += "PBS_ARRAYID="+str(arr_id)+" "    
+    cmd += "PBS_O_WORKDIR="+paths.output+" "
     if module.var_list:
         for(key,value) in module.var_list:
             #cmd.append(str(key+"="+value))
@@ -385,6 +386,12 @@ def generate_qsub_command(module, index, paths, files, prefs, notes,
     
     cmd.append(module.location)    
     return cmd
+def get_non_qsub_array_count(filepath):
+    file = open(filepath, "r")
+    arr_count = file.readline()
+    arr_count = str(arr_count).strip()
+    os.remove(filepath)
+    return int(arr_count) # If arr_count isn't an integer it will return 0.
 def exec_qsub(cmd, mod_name=None, verbose=False):
     process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     out, err = process.communicate()
@@ -566,26 +573,43 @@ def main():
              #    last = True             
              #print "Index: "+str(index)+"| is first? "+str(first)+"| is last? "+str(last)
              if mod_item.array_job is True:
-                 # Here just call the module over and over again with $PBS_ARRAYID
-                 # set as the index that it should be.
-                 fatal_error("Cannot handle array jobs currently")
-             cmd = generate_non_qsub_command(mod_item, paths, files, preferences)
-             process = subprocess.Popen(cmd,executable="/bin/bash", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-             
-             out, err = process.communicate()
-             
-             if out is not None:
-                 print str(out)
-             if err is not None:
-                 print str(err)
+                 arr_count = get_non_qsub_array_count(preferences["arrayjoblogfile"])
+                 for i in xrange(arr_count):
+                     cmd = generate_non_qsub_command(mod_item, paths, files, preferences, arr_id=i)
+                     process = subprocess.Popen(cmd, executable="/bin/bash", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                     out, err = process.communicate()
+                     
+                     if out is not None:
+                        print str(out)
+                     if err is not None:
+                        print str(err)
                  
-             log = open(join(paths.logs,mod_item.name+".log"),"w")
-             log.writelines(out)
-             log.writelines(err)
-             log.close()
-             
-             if process.returncode is not 0:
-                 fatal_error("The module \""+mod_item.name+"\" failed")           
+                     log = open(join(paths.logs,mod_item.name+".log"),"w")
+                     log.writelines(out)
+                     log.writelines(err)
+                     log.close()
+                     
+                     if process.returncode is not 0:
+                         fatal_error("The module \""+mod_item.name+"\" failed")
+             else:
+                     
+                 cmd = generate_non_qsub_command(mod_item, paths, files, preferences)
+                 process = subprocess.Popen(cmd,executable="/bin/bash", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                 
+                 out, err = process.communicate()
+                 
+                 if out is not None:
+                     print str(out)
+                 if err is not None:
+                     print str(err)
+                     
+                 log = open(join(paths.logs,mod_item.name+".log"),"w")
+                 log.writelines(out)
+                 log.writelines(err)
+                 log.close()
+                 
+                 if process.returncode is not 0:
+                     fatal_error("The module \""+mod_item.name+"\" failed")           
     sys.exit(0)
     
 if __name__ == '__main__':
