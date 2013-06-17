@@ -1,4 +1,4 @@
 Running clustalw2
 	Input File: 	/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results/clustal_all
 	Output File: 	/mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results/clustal_all.aln
-/var/spool/torque/mom_priv/jobs/1123010.fortytwo.ibest.uidaho.edu.SC: line 13: [: too many arguments
+/var/spool/torque/mom_priv/jobs/1123074.fortytwo.ibest.uidaho.edu.SC: line 13: [: too many arguments

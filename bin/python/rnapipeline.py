@@ -291,8 +291,6 @@ def module_list(pth,fil,prefs):
                        join(pth.bash,"clustal_check.bash")
                        )
                 )
-    
-    ##### Untested Modules here #####
     list.append(Module("alignment",
                        [("PERL_DIR", pth.perl),
                         ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
@@ -324,8 +322,6 @@ def module_list(pth,fil,prefs):
                        join(pth.bash,"final_cleanup.bash")
                        )
                 )
-    
-    
     return list
 def generate_non_qsub_command(module,paths,files,prefs):
     #cmd = ["PBS_O_WORKDIR="+paths.output]
@@ -406,7 +402,7 @@ def wait_to_exec_array(job_name, filepath):
     # number of elements in the array until part of the job has finished,
     # we need to wait until the process that determines the number of jobs
     # in the array finishes and then create the array job.
-    print "\""+job_name+"\" is an array job and will not be submitted until previous job is complete." 
+    print "\""+job_name+"\" is an array job and will not be submitted until the previous job is complete." 
     while os.path.exists(filepath) is not True:
         time.sleep(10)
         
