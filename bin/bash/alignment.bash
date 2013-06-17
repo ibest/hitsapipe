@@ -7,6 +7,15 @@
 #	PHYLIP_IN_FILE
 #####
 
+CLUSTAL_PHYLIP_FILE="${CLUSTAL_OUTPUT_DIR}/clustal_all.phy"
+
+echo "Debug start..."
+echo -e "\tCLUSTAL_ALIGNMENT_FILE: ${CLUSTAL_ALIGNMENT_FILE}"
+echo -e "\tCLUSTAL_PHYLIP_FILE: ${CLUSTAL_PHYLIP_FILE}"
+echo -e "\tPHYLIP_IN_FILE: ${PHYLIP_IN_FILE}"
+echo "Debug end..."
+
+
 # Find the alignment start and end
 echo "Getting alignment start and end"
 ${PERL_DIR}/findalign.pl < ${CLUSTAL_ALIGNMENT_FILE} > ${CLUSTAL_OUTPUT_DIR}/alignmentpoints

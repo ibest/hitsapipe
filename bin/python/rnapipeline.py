@@ -82,6 +82,10 @@ class Files:
         self.clustal = join(paths.clustaloutput,"clustal")
         self.clustal_all = join(paths.clustaloutput,"clustal_all")
         self.clustal_align = join(paths.clustaloutput,"clustal_all.aln")
+        self.phylip_in = join(paths.clustaloutput,"infile") # Must be named 'infile'
+        self.dnadist = join(paths.bash,"dnadist_script")
+        self.distances = join(paths.clustaloutput,"distances")
+        
 def join(src,dest):  # Just use from os import path.join instead.
     return os.path.join(src,dest)
 def fatal_error(msg):
@@ -262,11 +266,6 @@ def module_list(pth,fil,prefs):
                        join(pth.bash,"blastall_hits.bash")
                        )
                 )    
-    
-    ##### Untested Modules here #####
-    
-
-
     list.append(Module("clustal_prep",
                        [("PERL_DIR", pth.perl),
                         ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
@@ -292,15 +291,17 @@ def module_list(pth,fil,prefs):
                        join(pth.bash,"clustal_check.bash")
                        )
                 )
-    '''
+    
+    ##### Untested Modules here #####
     list.append(Module("alignment",
                        [("PERL_DIR", pth.perl),
                         ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
-                        ("CLUSTAL_ALIGNMENT_FILE", fil.clustal_alignment),
+                        ("CLUSTAL_ALIGNMENT_FILE", fil.clustal_align),
                         ("PHYLIP_IN_FILE", fil.phylip_in)],
                        join(pth.bash,"alignment.bash")
                        )
                 )
+    
     list.append(Module("dist_matrix",
                        [("DNADIST_SCRIPT", fil.dnadist),
                         ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput),
@@ -308,19 +309,15 @@ def module_list(pth,fil,prefs):
                         ("PHYLIP_IN_FILE", fil.phylip_in)],
                        join(pth.bash,"distance_matrix.bash")
                        )
-                )
+                )   
     list.append(Module("neighbor",
-                       [("PERL_DIR", fil.dnadist),
-                        ("NEIGHBOR_DIR", pth.neighbor),
+                       [("PERL_DIR", pth.perl),
+                        ("NEIGHBOR_DIR", pth.clustaloutput),
                         ("NEIGHBOR_ROOT", prefs["root"]),
                         ("CLUSTAL_OUTPUT_DIR", pth.clustaloutput)],
                        join(pth.bash,"neighbor_run.bash")
                        )
                 )
-        
-    '''
-
-
     list.append(Module("finalize",
                        [("LOG_DIR",pth.logs),
                         ("FINAL_LOG",fil.final_log)],
@@ -401,14 +398,15 @@ def exec_qsub(cmd, mod_name=None, verbose=False):
         if mod_name is not None:
             print mod_name + " submitted. ID: "+str(id)
         else:
-            print "id:"+str(id)
+            print "job submitted. ID: "+str(id)
     return id
-def wait_to_exec_array(filepath):
+def wait_to_exec_array(job_name, filepath):
     # Since we currently have no way of having a node call qsub itself,
     # in the event that we want to create an array job and don't know the
     # number of elements in the array until part of the job has finished,
     # we need to wait until the process that determines the number of jobs
     # in the array finishes and then create the array job.
+    print "\""+job_name+"\" is an array job and will not be submitted until previous job is complete." 
     while os.path.exists(filepath) is not True:
         time.sleep(10)
         
@@ -421,7 +419,7 @@ def wait_to_exec_array(filepath):
     
     return int(arr_count) # If arr_count isn't an integer it will return 0.        
 
-def finish_exec_array(arr_count, base_id):
+def finish_exec_array(job_name, arr_count, base_id):
     # A job following an array job must have an array dependency as well.
     # So instead, we wait for the job to finish and then move on to the next
     # job.
@@ -433,7 +431,7 @@ def finish_exec_array(arr_count, base_id):
     completed_list = [False]*(arr_count)
     done = False
     
-    print "Waiting for array job to finish before continuing..."
+    print "Waiting for \""+job_name+"\" to finish before continuing..."
     time.sleep(2) # This sleep is to prevent a qstat output error from appearing.
     while(done is False):
         for (index,value) in enumerate(completed_list):
@@ -452,7 +450,9 @@ def finish_exec_array(arr_count, base_id):
                 break
     devnull.close()
     
-    print "Array job completed.  Continuing."
+    #===========================================================================
+    # print "Job completed.  Continuing."
+    #===========================================================================
     return True
 
 def main():    
@@ -520,7 +520,7 @@ def main():
             if mod_item.array_job is True:
                 # Then we need to wait until the array count is available in order
                 # to continue.
-                arr_count = wait_to_exec_array(preferences["arrayjoblogfile"])
+                arr_count = wait_to_exec_array(mod_item.name, preferences["arrayjoblogfile"])
                 id = None # Set this to none, because the previous job will be done before this gets called.
                 if arr_count <= 0:
                     fatal_error("Something went wrong when trying to create an array job")
@@ -541,7 +541,7 @@ def main():
                 # Need to wait here for job to finish before starting next one.
                 #array_wait_cmd = [join(paths.bash,"test_output.sh"),id , (arr_count - 1)]
                 #array_wait_cmd = str(join(paths.bash,"test_output.sh")) + " " + str(id) + " " + str((arr_count - 1))
-                finish_exec_array(arr_count, id)
+                finish_exec_array(mod_item.name, arr_count, id)
                 id = None # We don't want to have a job dependency.
 
             if mod_item.array_job is not True:  

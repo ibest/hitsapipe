@@ -35,6 +35,7 @@ for FILE in `cat ${HIT_FILE}`
 # can be replaced with a real name later, otherwise
 # the names are truncated by some of the following
 # programs in a bad way!
+cd ${CLUSTAL_OUTPUT_DIR}
 echo "Shortening names to 10 characters"
 ${PERL_DIR}/nameshort.pl < ${CLUSTAL_FILE} > ${CLUSTAL_ALL_FILE}
 

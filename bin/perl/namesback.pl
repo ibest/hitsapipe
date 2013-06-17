@@ -12,9 +12,9 @@ use warnings;
 use strict;
 
 my $count = 0;
-my $maindir = $ARGV[0];
+my $outputdir = $ARGV[0];
 
-open( NAMES, "$maindir/8Fphylo/namereport" );
+open( NAMES, "$outputdir/namereport" );
 
 my %names = ();
 
@@ -28,8 +28,8 @@ while( <NAMES> )
 
 close( NAMES );
 
-open( TREEFILE, "$maindir/8Fphylo/outtree" );
-open( TREEFINAL, ">$maindir/8Fphylo/finaltree.txt" );
+open( TREEFILE, "$outputdir/outtree" );
+open( TREEFINAL, ">$outputdir/finaltree.txt" );
 
 #replace the names in the outfile
 my %treenames = %names;
@@ -52,8 +52,8 @@ while( <TREEFILE> )
 close( TREEFILE );
 close( TREEFINAL );
 
-open( OUTFILE, "$maindir/8Fphylo/outfile");
-open( OUTFILEFINAL, ">$maindir/8Fphylo/finaloutfile.txt");
+open( OUTFILE, "$outputdir/outfile");
+open( OUTFILEFINAL, ">$outputdir/finaloutfile.txt");
 
 while( <OUTFILE> )
 {
@@ -69,8 +69,8 @@ while( <OUTFILE> )
   print OUTFILEFINAL;
 }
 
-open( MATRIXFILE, "$maindir/8Fphylo/distances" );
-open( MATRIXFINAL, ">$maindir/8Fphylo/finaldistances" ); 
+open( MATRIXFILE, "$outputdir/distances" );
+open( MATRIXFINAL, ">$outputdir/finaldistances" ); 
 
 #replace the names in the matrix file
 while( <MATRIXFILE> )

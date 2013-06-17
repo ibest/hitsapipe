@@ -8,21 +8,19 @@ use strict;
 use lib "$ARGV[2]";
 require("$ARGV[3]");
 
-my $outputfile = $ARGV[0];
+my $outputdir = $ARGV[0];
 my $rootspecies = $ARGV[1];
 
-open( NEIGHBOR, ">$outputfile" );
+open( NEIGHBOR, ">$outputdir/neighbor_script" ) or die "makeneighbor couldn't open: $!";
 
-my $seqID = findseq( $maindir, $rootspecies);
-my $number = numseq( $maindir, $seqID );
+my $seqID = findseq( $outputdir, $rootspecies);
+my $number = numseq( $outputdir, $seqID );
 
-print "Number of $rootspecies in $maindir/8Fphylo/distances: $number for $seqID\n";
+print "Number of $rootspecies in $outputdir/distances: $number for $seqID\n";
 
 print NEIGHBOR "distances\n";
 print NEIGHBOR "O\n";
 print NEIGHBOR "$number\n";
 print NEIGHBOR "Y\n";
 
-
-
-
+close( NEIGHBOR );

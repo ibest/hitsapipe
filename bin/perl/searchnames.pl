@@ -11,9 +11,10 @@ use strict;
 #finds the SEQ ID of the name given
 sub findseq {
 
-  my $maindir = $_[0];
+  my $outputdir = $_[0];
   my $name = $_[1];
-  open( REPORT, "$maindir/8Fphylo/namereport" );
+  print("Outputdir: $outputdir\n");
+  open( REPORT, "$outputdir/namereport" ) or die "findseq couldn't open: $!";
   
   while( <REPORT> )
   {
@@ -27,16 +28,16 @@ sub findseq {
 
   }
 
-  print("WARNING!  COULD NOT FIND $name IN $maindir/8Fphylo/namereport\n" );
+  print("WARNING!  COULD NOT FIND $name IN $outputdir/namereport\n" );
   return "";
 }
 
 #finds the species name given the SEQ ID
 sub findspec {
    
-  my $maindir = $_[0];
+  my $outputdir = $_[0];
   my $seq = $_[1];
-  open( REPORT, "$maindir/8Fphylo/namereport" );
+  open( REPORT, "$outputdir/namereport" ) or die "findspec couldn't open: $!";
 
   while( <REPORT> )
   {
@@ -50,15 +51,15 @@ sub findspec {
 
   }
   
-  print("WARNING!  COULD NOT FIND $seq IN $maindir/8Fphylo/namereport\n" );
+  print("WARNING!  COULD NOT FIND $seq IN $outputdir/namereport\n" );
   return "";
 }
 
 #returns the SEQ ID on a given line number for the distances file
 sub seqnum{
-  my $maindir = $_[0];
+  my $outputdir = $_[0];
   my $num = $_[1];
-  open( DISTANCES, "$maindir/8Fphylo/distances" );
+  open( DISTANCES, "$outputdir/distances" ) or die "seqnum couldn't open: $!";
   
   my $numSeq = 0;
 
@@ -69,24 +70,24 @@ sub seqnum{
       $numSeq++;
       if( $numSeq == $num )
       {
-        my $name = findspec( $maindir, $1 );
+        my $name = findspec( $outputdir, $1 );
         return $name;
       }
     }
   }
 
-  print("WARNING!  Could not find sequence $num in $maindir/8Fphylo/distances\n" );
+  print("WARNING!  Could not find sequence $num in $outputdir/distances\n" );
   return "";
 }
 
 #returns the line number in a distances file for the given SEQ ID
 sub numseq{
 
-  my $maindir = $_[0];
+  my $outputdir = $_[0];
   my $seq = $_[1];
-  open( DISTANCES, "$maindir/8Fphylo/distances" );
+  open( DISTANCES, "$outputdir/distances" ) or die "numseq couldn't open: $!";
 
-  my $seqID = findseq( $maindir, $seq );
+  my $seqID = findseq( $outputdir, $seq );
   my $numSeq = 0;
 
   while( <DISTANCES> )
@@ -102,7 +103,7 @@ sub numseq{
     }
   }
   
-  print("WARNING!  Could not find sequence $seq in $maindir/8Fphylo/distances\n" );
+  print("WARNING!  Could not find sequence $seq in $outputdir/distances\n" );
 
   return -1;
 }

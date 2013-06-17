@@ -1,0 +1,13 @@
+Debug start...
+	NEIGHBOR_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results
+	NEIGHBOR_SCRIPT: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results/neighbor_script
+	NEIGHBOR_ROOT: Methanococcus_jannaschii
+Debug end...
+makeneighbor command: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/perl/makeneighbor.pl /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results Methanococcus_jannaschii /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/perl /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/perl/searchnames.pl
+/var/spool/torque/mom_priv/jobs/1123014.fortytwo.ibest.uidaho.edu.SC: line 24: [: too many arguments
+Making the tree
+neighbor command: neighbor < /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/results/neighbor_script
+/var/spool/torque/mom_priv/jobs/1123014.fortytwo.ibest.uidaho.edu.SC: line 38: [: too many arguments
+Changing back to full names
+/var/spool/torque/mom_priv/jobs/1123014.fortytwo.ibest.uidaho.edu.SC: line 52: unexpected EOF while looking for matching `"'
+/var/spool/torque/mom_priv/jobs/1123014.fortytwo.ibest.uidaho.edu.SC: line 55: syntax error: unexpected end of file

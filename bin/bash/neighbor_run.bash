@@ -4,42 +4,51 @@
 #	PERL_DIR
 #	NEIGHBOR_DIR
 #	NEIGHBOR_ROOT
-#	OUTPUT_DIR
+#	CLUSTAL_OUTPUT_DIR
 #####
 # Additional:
 #	NEIGHBOR_SCRIPT
 #####
 
-# Need to modify makeneighbor.pl to let us specify the name of the output file.
-
+NEIGHBOR_SCRIPT=${NEIGHBOR_DIR}/neighbor_script
+echo -e "Debug start..."
+echo -e "\tNEIGHBOR_DIR: ${NEIGHBOR_DIR}"
+echo -e "\tNEIGHBOR_SCRIPT: ${NEIGHBOR_SCRIPT}"
+echo -e "\tNEIGHBOR_ROOT: ${NEIGHBOR_ROOT}"
+echo -e "Debug end..."
 
 # Make a script for neighbor based on the root we give
-EXITCODE=$(${PERL_DIR}/makeneighbor.pl ${NEIGHBOR_DIR} ${NEIGHBOR_ROOT} ${PERL_DIR} ${PERL_DIR}/searchnames.pl)$?
-exit ${EXITCODE}
+echo "makeneighbor command: ${PERL_DIR}/makeneighbor.pl ${NEIGHBOR_DIR} ${NEIGHBOR_ROOT} ${PERL_DIR} ${PERL_DIR}/searchnames.pl"
+RETVAL=$(${PERL_DIR}/makeneighbor.pl ${NEIGHBOR_DIR} ${NEIGHBOR_ROOT} ${PERL_DIR} ${PERL_DIR}/searchnames.pl)$?
 
-
-
-#!/bin/bash
-#####
-# Requires:
-#	NEIGHBOR_DIR
-#	NEIGHBOR_SCRIPT
-#####
+if [ ${RETVAL} != 0 ]
+	then
+		echo -e "\nERROR: Unknown makeneighbor error."
+		echo -e "\tmakeneighbor exit code: ${RETVAL}"
+		exit 1
+fi
 
 # Generate the final tree given neighbor_script, which was created
 # by makeneighbor.pl
 cd ${NEIGHBOR_DIR}
 echo "Making the tree"
-EXITCODE=$(neighbor < ${NEIGHBOR_SCRIPT})$?
-exit ${EXITCODE}
+echo "neighbor command: neighbor < ${NEIGHBOR_SCRIPT}"
+RETVAL=$(neighbor < ${NEIGHBOR_SCRIPT})$?
 
-#!/bin/bash
-#####
-# Requires:
-#	PERL_DIR
-
-#####
+if [ ${RETVAL} != 0 ]
+	then
+		echo -e "\nERROR: Unknown neighbor error."
+		echo -e "\tneighbor exit code: ${RETVAL}"
+		exit 1
+fi
 
 echo "Changing back to full names"
-EXITCODE=$(${PERL_DIR}/namesback.pl $OUTPUT_DIR)$?
-exit ${EXITCODE}
+echo namesback command: ${PERL_DIR}/namesback.pl ${CLUSTAL_OUTPUT_DIR}"
+RETVAL=$(${PERL_DIR}/namesback.pl ${CLUSTAL_OUTPUT_DIR})$?
+
+if [ ${RETVAL} != 0 ]
+	then
+		echo -e "\nERROR: Unknown namesback error."
+		echo -e "\tnamesback exit code: ${RETVAL}"
+		exit 1
+fi
