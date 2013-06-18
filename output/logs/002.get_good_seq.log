@@ -1,15 +1,2 @@
-### DEBUG OUTPUT START ###
-	SEQUENCE_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/sequences
-	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
-	BLAST_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast
-	INPUT_SEQUENCES_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/input_sequences
-	GOOD_SEQUENCES_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/good_sequences
-	SUFFIX: .fasta
-	DIRECTION: Forward
-	NPERCENT: .05
-	PRIMER3: GACTCGGTCC
-	PRIMER5: CCTAGTGGAGG
-	MINSEQLENGTH: 500
-### DEBUG OUTPUT END ###
 Collating sequences...
 Finding the good seqs and placing them in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/good_sequences

@@ -1,11 +1,4 @@
-Debug option is: True
-### DEBUG OUTPUT START ###
-	SEQUENCE_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/sequences
-	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
-	ORIGINALS_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/references/original_input
-	INPUT_SEQUENCE_LIST: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/input_sequences_list
-	SUFFIX: .fasta
-### DEBUG OUTPUT END ###
+Debug option is: False
 Collating all .fasta files into list
 Ensuring Unix endlines on all files
 Backing up original sequences.

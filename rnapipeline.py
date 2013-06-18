@@ -41,11 +41,12 @@ class Paths:
         # clustal subdirectories
         self.clustaltmp = join(self.clustal,"tmp")
 class Module:
-    def __init__(self, name, req_vars, location, array_job=False):
+    def __init__(self, name, req_vars, location, array_job=False, parallel=False):
         self.name = name
         self.var_list = req_vars
         self.location = location
-        self.array_job = array_job        
+        self.array_job = array_job
+        self.parallel = parallel        
 class ConfigFiles:
     # This is just an object that makes referencing the various files
     # that are in use cleaner.
@@ -198,7 +199,7 @@ def module_list(pth,fil,prefs):
                         ("ORIGINALS_DIR",pth.originals),
                         ("INPUT_SEQUENCE_LIST",fil.input_seq_list),
                         ("SUFFIX",prefs["suffix"])],
-                        join(pth.scripts,"fasta_files_prep.bash")
+                        join(pth.scripts,"fasta_files_prep.sh")
                         )
                 )
     list.append(Module("get_good_seq",
@@ -213,7 +214,7 @@ def module_list(pth,fil,prefs):
                         ("PRIMER3", prefs["primer3"]),
                         ("PRIMER5", prefs["primer5"]),
                         ("MINSEQLENGTH", prefs["minsequencelength"])],
-                       join(pth.scripts,"get_good_sequences.bash")                      
+                       join(pth.scripts,"get_good_sequences.sh")                      
                        )
                 )
     list.append(Module("blast_dir",
@@ -226,14 +227,15 @@ def module_list(pth,fil,prefs):
                         ("NUMSEQS_TEMP_FILE", fil.numseqs_tmp),
                         ("BLAST_SEQUENCES", prefs["blastsequences"]),
                         ("CUTOFF_LENGTH", prefs["cutofflength"])],
-                       join(pth.scripts,"blast_direction.bash")
+                       join(pth.scripts,"blast_direction.sh"),
+                       parallel=True
                        )
                 )
     list.append(Module("blast_arr_prep",
                        [("BLAST_TEMP_DIR", pth.blasttmp),
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
                         ("ARRAY_OUTPUT_FILE",prefs["arrayjoblogfile"])],
-                       join(pth.scripts,"blastall_array_prep.bash")
+                       join(pth.scripts,"blastall_array_prep.sh")
                        )
                 )
     list.append(Module("blastall_array",
@@ -241,7 +243,7 @@ def module_list(pth,fil,prefs):
                         ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
                         ("DATABASE", prefs["database"]),
                         ("NHITS", prefs["nhits"])],
-                       join(pth.scripts,"blastall_array.bash"),
+                       join(pth.scripts,"blastall_array.sh"),
                        array_job=True
                        )
                 )
@@ -249,7 +251,7 @@ def module_list(pth,fil,prefs):
                        [("BLASTALL_OUTPUT_DIR", pth.blastoutput),
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
                         ("NUMSEQS_TEMP_FILE", fil.numseqs_tmp)],
-                       join(pth.scripts,"blastall_check.bash")
+                       join(pth.scripts,"blastall_check.sh")
                        )
                 )
     list.append(Module("blastall_hits",
@@ -260,7 +262,7 @@ def module_list(pth,fil,prefs):
                         ("BLAST_OUT_5_FILE", fil.blastout5),
                         ("HIT_SEQS_FILE", fil.hitseqs),
                         ("HIT_FILE",fil.hitfiles)],
-                       join(pth.scripts,"blastall_hits.bash")
+                       join(pth.scripts,"blastall_hits.sh")
                        )
                 )    
     list.append(Module("clustal_prep",
@@ -273,18 +275,18 @@ def module_list(pth,fil,prefs):
                         ("CLUSTAL_ALL_FILE", fil.clustal_all),
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
                         ("HIT_FILE", fil.hitfiles)],
-                       join(pth.scripts,"clustal_prep.bash")
+                       join(pth.scripts,"clustal_prep.sh")
                        )
                 )
     list.append(Module("clustal",
                        [("CLUSTAL_ALL_FILE", fil.clustal_all),
                         ("CLUSTAL_ALIGNMENT_FILE", fil.clustal_align)],
-                       join(pth.scripts,"clustal_run.bash")
+                       join(pth.scripts,"clustal_run.sh")
                        )
                 )
     list.append(Module("clustal_check",
                        [("CLUSTAL_ALIGNMENT_FILE", fil.clustal_align)],
-                       join(pth.scripts,"clustal_check.bash")
+                       join(pth.scripts,"clustal_check.sh")
                        )
                 )
     list.append(Module("alignment",
@@ -292,7 +294,7 @@ def module_list(pth,fil,prefs):
                         ("CLUSTAL_OUTPUT_DIR", pth.clustal),
                         ("CLUSTAL_ALIGNMENT_FILE", fil.clustal_align),
                         ("PHYLIP_IN_FILE", fil.phylip_in)],
-                       join(pth.scripts,"alignment.bash")
+                       join(pth.scripts,"alignment.sh")
                        )
                 )   
     list.append(Module("dist_matrix",
@@ -300,7 +302,7 @@ def module_list(pth,fil,prefs):
                         ("CLUSTAL_OUTPUT_DIR", pth.clustal),
                         ("DISTANCES_FILE", fil.distances),
                         ("PHYLIP_IN_FILE", fil.phylip_in)],
-                       join(pth.scripts,"distance_matrix.bash")
+                       join(pth.scripts,"distance_matrix.sh")
                        )
                 )   
     list.append(Module("neighbor",
@@ -309,13 +311,13 @@ def module_list(pth,fil,prefs):
                         ("NEIGHBOR_ROOT", prefs["root"]),
                         ("CLUSTAL_OUTPUT_DIR", pth.clustal),
                         ("TREE_DIR", pth.tree)],
-                       join(pth.scripts,"neighbor_run.bash")
+                       join(pth.scripts,"neighbor_run.sh")
                        )
                 )
     list.append(Module("finalize",
                        [("LOG_DIR",pth.logs),
                         ("FINAL_LOG",fil.final_log)],
-                       join(pth.scripts,"final_cleanup.bash")
+                       join(pth.scripts,"final_cleanup.sh")
                        )
                 )
     return list
@@ -328,6 +330,7 @@ def generate_non_qsub_command(module,paths,files,prefs, arr_id=None, debug=False
         cmd += "DEBUG=True "
     else:
         cmd += "DEBUG=False "
+    cmd += "PARALLEL=False "
     if module.var_list:
         for(key,value) in module.var_list:
             cmd += str(key+"="+value+" ")    
@@ -350,6 +353,9 @@ def generate_qsub_command(module, index, paths, files, prefs, notes,
     cmd.append(paths.output)
     cmd.append("-q")
     cmd.append("tiny")
+    if module.parallel:
+        cmd.append("-l")
+        cmd.append("nodes="+str(prefs["nnodes"]))        
     if arr_count is not None:
         arr_count -= 1
         cmd.append("-t")
@@ -369,13 +375,18 @@ def generate_qsub_command(module, index, paths, files, prefs, notes,
             else:
                 cmd.append("-W depend=afterok:"+id)            
                 
-    if module.var_list or debug == True:
+    if module.var_list or debug or parallel:
         cmd.append("-v")
         var_list = ""
         if debug == True:
             var_list += "DEBUG=True,"
         else:
             var_list += "DEBUG=False,"
+        if module.parallel:
+            var_list += "NNODES="+str(prefs["nnodes"])+","
+            var_list += "PARALLEL=True,"
+        else:
+            var_list += "PARALLEL=False,"
         if module.var_list:
             for (key,value) in module.var_list:
                 var_list += key+"="+value+","

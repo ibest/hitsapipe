@@ -11,11 +11,14 @@
 #	NUMSEQS_TEMP_FILE: 		Holds the number of good sequences for later comparison
 #	BLAST_SEQUENCES: 		Sequences to be blasted against.
 #	CUTOFF_LENGTH: 			
+#	PARALLEL: 				Determines if we are running in parallel or not
+#	NNODES: 				If parallel, how many nodes to run on
 #####
 # Additional:
 #	NUMSEQS: 				Number of good sequences that are found.
 #	STRAND_IN_FILE: 		Temporary file for blastpicks/blastadd.
 #	STRAND_FILE: 			Temporary file for blastpicks/blastadd.
+#	MPINODES: 				If parallel, how many nodes mpiformatdb should use.
 #####
 
 if [ ${DEBUG} == "True" ]
@@ -33,30 +36,65 @@ then
 	echo -e "### DEBUG OUTPUT END ###"
 fi
 
+
 # Format the good sequences into a database to blast against 
 # with our sample sequence.
+# If this is to be run in parallel, call mpiformatdb
+# If not, call formatdb
 
-echo "Running formatdb to format the good sequences into a database to blast"
-echo "against with our sample sequence."
-
-EXITCODE=$(formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb.log)$?
-
-if [ ${EXITCODE} != 0 ]
+if [ ${PARALLEL} == "True" ]
+then
+	MPINODES=$((NNODES - 2))
+	echo "Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence."
+	mpiformatdb -N ${MPINODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb.log
+	RETVAL=$?
+	
+	if [ ${RETVAL} != 0 ]
 	then
-		echo -e "\nERROR: Unknown formatdb error."
-		echo -e "\tformatdb exit code: ${EXITCODE}"
+		echo -e "\nERROR: Unknown mpiformatdb error."
+		echo -e "\tmpiformatdb exit code: ${RETVAL}"
 		exit 1
+	fi
+else
+	echo "Running formatdb to format the good sequences into a database to blast against with our sample sequence."
+	
+	EXITCODE=$(formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb.log)$?
+	
+	if [ ${EXITCODE} != 0 ]
+		then
+			echo -e "\nERROR: Unknown formatdb error."
+			echo -e "\tformatdb exit code: ${EXITCODE}"
+			exit 1
+	fi
 fi
 
-echo -e "\nBLASTing ${BLAST_SEQUENCES} against sequences to find direction."
-EXITCODE=$(blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000)$?
-
-if [ ${EXITCODE} != 0 ]
+if [ ${PARALLEL} == "True" ]
+then
+	echo -e "\nBLASTing ${BLAST_SEQUENCES} against sequences to find direction."
+	mpiexec -N ${NNODES} mpiblast -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000 
+	RETVAL=$?
+	
+	if [ ${RETVAL} != 0 ]
 	then
-		echo -e "\nERROR: blastall could not finish."
-		echo -e "\tblastall exit code: ${EXITCODE}"
+		echo -e "\nERROR: Unknown mpiexec/mpiblast error."
+		echo -e "\tmpiexec exit code: ${RETVAL}"
 		exit 1
+	fi
+
+else
+	echo -e "\nBLASTing ${BLAST_SEQUENCES} against sequences to find direction."
+	EXITCODE=$(blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000)$?
+	
+	if [ ${EXITCODE} != 0 ]
+		then
+			echo -e "\nERROR: blastall could not finish."
+			echo -e "\tblastall exit code: ${EXITCODE}"
+			exit 1
+	fi
 fi
+
+
+
 
 STRAND_FILE="${BLAST_TEMP_DIR}/strands"
 STRAND_IN_FILE="${BLAST_TEMP_DIR}/strandin"
