@@ -10,7 +10,7 @@ Query= af243169.for
          (1512 letters)
 
 Database: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-
-staging/output/blast/good_sequences 
+staging/output/blast/input/good_sequences 
            2 sequences; 2682 total letters
 
 Searching..................................................done
@@ -239,8 +239,8 @@ Sbjct: 20 atgcaagtcgagcg 33
 
 
   Database: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-
-  staging/output/blast/good_sequences
-    Posted date:  Jun 17, 2013  3:48 PM
+  staging/output/blast/input/good_sequences
+    Posted date:  Jun 17, 2013  8:11 PM
   Number of letters in database: 2682
   Number of sequences in database:  2
   

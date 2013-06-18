@@ -1,0 +1,4 @@
+for files in *.bash
+do
+ mv "$files" "${files%.bash}.sh"
+done

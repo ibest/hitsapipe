@@ -1,0 +1,6 @@
+### DEBUG OUTPUT START ###
+	BLASTALL_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blasts
+	BLAST_INPUT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/blast_input
+	NUMSEQS_TEMP_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp/numseqs.tmp
+### DEBUG OUTPUT END ###
+Checking to see that all blasts were found.

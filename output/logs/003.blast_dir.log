@@ -1,0 +1,18 @@
+### DEBUG OUTPUT START ###
+	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
+	LOG_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/logs
+	BLAST_TEMP_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp
+	GOOD_SEQUENCES_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/good_sequences
+	DIRECTION_BLAST_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/direction_blast
+	BLAST_INPUT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/blast_input
+	NUMSEQS_TEMP_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp/numseqs.tmp
+	BLAST_SEQUENCES: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/af243169.for
+	CUTOFF_LENGTH: 0
+### DEBUG OUTPUT END ###
+Running formatdb to format the good sequences into a database to blast
+against with our sample sequence.
+
+BLASTing /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/af243169.for against sequences to find direction.
+2 good sequences were found.
+Pulling match names and placing in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/blast_input
+Splitting up the good sequence file.
