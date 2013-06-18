@@ -15,7 +15,8 @@ fi
 if [ ! -f ${CLUSTAL_ALIGNMENT_FILE} ]
  then
   echo "Cannot find ${CLUSTAL_ALIGNMENT_FILE}!"
-  echo "ClustalW did not make an alignment!  Quitting."
+  echo "ClustalW did not make an alignment!  Exiting."
+  touch {ERROR_FILE}
   exit 1
 fi
 exit 0

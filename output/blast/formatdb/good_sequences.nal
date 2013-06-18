@@ -1,0 +1,12 @@
+#
+# Alias file created Tue Jun 18 15:21:06 2013
+#
+#
+TITLE /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb/good_sequences
+#
+DBLIST /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb/good_sequences.000 /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb/good_sequences.001 
+#
+#GILIST
+#
+#OIDLIST
+#

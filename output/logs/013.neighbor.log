@@ -1,11 +1,3 @@
-### DEBUG OUTPUT START ###
-	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
-	NEIGHBOR_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal
-	NEIGHBOR_ROOT: Methanococcus_jannaschii
-	NEIGHBOR_SCRIPT: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/neighbor_script
-	CLUSTAL_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal
-	TREE_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/tree
-### DEBUG OUTPUT END ###
 Number of Methanococcus_jannaschii in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/distances: 41 for SEQ0000001
 Created the script for neighbor to use.
 Making the tree...
@@ -51,49 +43,49 @@ Settings for this run:
 
   Y to accept these or type the letter for one to change
 
-Cycle  41: species 9 (   0.00000) joins species 10 (   0.00000)
-Cycle  40: species 20 (   0.02233) joins species 21 (   0.02390)
-Cycle  39: species 6 (   0.04829) joins species 7 (  -0.00325)
-Cycle  38: node 6 (   0.00415) joins species 8 (   0.00527)
-Cycle  37: species 18 (   0.03310) joins species 19 (   0.03216)
-Cycle  36: species 24 (   0.02509) joins species 25 (   0.02953)
-Cycle  35: species 41 (   0.23185) joins species 42 (   0.11435)
-Cycle  34: species 32 (   0.03481) joins species 33 (   0.04395)
-Cycle  33: node 6 (   0.03899) joins species 9 (   0.04993)
-Cycle  32: species 16 (   0.06384) joins species 17 (   0.06767)
-Cycle  31: node 24 (   0.03212) joins species 29 (   0.06139)
-Cycle  30: node 24 (   0.00195) joins species 28 (   0.09031)
-Cycle  29: node 24 (   0.00232) joins species 27 (   0.06627)
-Cycle  28: node 24 (   0.01454) joins species 26 (   0.06583)
-Cycle  27: node 41 (   0.03228) joins species 43 (   0.10378)
-Cycle  26: species 4 (   0.13568) joins species 5 (   0.12002)
-Cycle  25: node 32 (   0.03193) joins species 34 (   0.05966)
-Cycle  24: node 6 (   0.02587) joins species 11 (   0.09234)
-Cycle  23: node 41 (   0.00972) joins species 44 (   0.10287)
-Cycle  22: node 18 (   0.04701) joins node 20 (   0.06985)
-Cycle  21: species 14 (   0.07249) joins species 15 (   0.08177)
-Cycle  20: species 37 (   0.11130) joins species 38 (   0.14130)
-Cycle  19: node 32 (   0.02509) joins species 35 (   0.11830)
-Cycle  18: node 16 (   0.04536) joins node 18 (   0.01723)
-Cycle  17: species 30 (   0.16262) joins species 31 (   0.18901)
-Cycle  16: node 6 (   0.02781) joins species 12 (   0.08766)
-Cycle  15: species 1 (   0.18388) joins species 2 (   0.13461)
-Cycle  14: node 1 (   0.00507) joins species 3 (   0.12614)
-Cycle  13: node 37 (   0.02216) joins species 39 (   0.13885)
-Cycle  12: node 24 (   0.04609) joins node 30 (   0.02204)
-Cycle  11: node 6 (   0.01866) joins species 13 (   0.16072)
-Cycle  10: node 14 (   0.03167) joins node 16 (   0.02362)
-Cycle   9: node 14 (   0.00585) joins species 22 (   0.12378)
-Cycle   8: node 37 (   0.01074) joins node 41 (   0.04151)
-Cycle   7: node 14 (   0.00907) joins species 23 (   0.15668)
-Cycle   6: node 37 (   0.00739) joins species 40 (   0.14291)
-Cycle   5: node 32 (   0.03547) joins species 36 (   0.17700)
-Cycle   4: node 14 (   0.01012) joins node 37 (   0.00719)
-Cycle   3: node 14 (   0.00603) joins node 24 (   0.02026)
-Cycle   2: node 14 (   0.00362) joins node 32 (   0.00939)
-Cycle   1: node 1 (   0.02206) joins node 4 (   0.04929)
+Cycle  41: species 9 (  -0.00034) joins species 10 (   0.00034)
+Cycle  40: species 20 (   0.02221) joins species 21 (   0.02402)
+Cycle  39: species 6 (   0.04831) joins species 7 (  -0.00327)
+Cycle  38: node 6 (   0.00427) joins species 8 (   0.00515)
+Cycle  37: species 18 (   0.03306) joins species 19 (   0.03220)
+Cycle  36: species 24 (   0.02479) joins species 25 (   0.02983)
+Cycle  35: species 32 (   0.03506) joins species 33 (   0.04371)
+Cycle  34: species 41 (   0.22930) joins species 42 (   0.11691)
+Cycle  33: node 6 (   0.03637) joins species 9 (   0.04789)
+Cycle  32: species 16 (   0.06420) joins species 17 (   0.06731)
+Cycle  31: species 43 (   0.10265) joins species 44 (   0.09557)
+Cycle  30: node 24 (   0.03262) joins species 29 (   0.06089)
+Cycle  29: node 24 (   0.00181) joins species 28 (   0.09044)
+Cycle  28: node 24 (   0.00202) joins species 27 (   0.06657)
+Cycle  27: node 24 (   0.01465) joins species 26 (   0.06572)
+Cycle  26: species 4 (   0.13553) joins species 5 (   0.12016)
+Cycle  25: node 32 (   0.03207) joins species 34 (   0.05952)
+Cycle  24: node 6 (   0.02921) joins species 11 (   0.09299)
+Cycle  23: node 41 (   0.03728) joins node 43 (   0.01315)
+Cycle  22: node 18 (   0.04730) joins node 20 (   0.07005)
+Cycle  21: species 14 (   0.07169) joins species 15 (   0.08154)
+Cycle  20: species 37 (   0.11131) joins species 38 (   0.14129)
+Cycle  19: node 32 (   0.02527) joins species 35 (   0.11811)
+Cycle  18: node 16 (   0.04564) joins node 18 (   0.01701)
+Cycle  17: species 30 (   0.16291) joins species 31 (   0.18871)
+Cycle  16: node 6 (   0.02702) joins species 12 (   0.08762)
+Cycle  15: species 1 (   0.18332) joins species 2 (   0.13517)
+Cycle  14: node 1 (   0.00484) joins species 3 (   0.12637)
+Cycle  13: node 37 (   0.02195) joins species 39 (   0.13905)
+Cycle  12: node 6 (   0.01860) joins species 13 (   0.16101)
+Cycle  11: node 14 (   0.03209) joins node 16 (   0.02319)
+Cycle  10: node 24 (   0.04671) joins node 30 (   0.02147)
+Cycle   9: species 22 (   0.12327) joins species 23 (   0.14820)
+Cycle   8: node 1 (   0.01927) joins node 4 (   0.05208)
+Cycle   7: node 1 (   0.00424) joins node 6 (   0.01331)
+Cycle   6: node 14 (   0.01575) joins node 22 (   0.00905)
+Cycle   5: species 40 (   0.14290) joins node 41 (   0.04071)
+Cycle   4: node 14 (   0.00724) joins node 24 (   0.02030)
+Cycle   3: node 37 (   0.01665) joins node 40 (   0.00772)
+Cycle   2: node 1 (   0.00977) joins node 14 (   0.00633)
+Cycle   1: node 32 (   0.03408) joins species 36 (   0.17839)
 last cycle:
- node 1  (   0.00209) joins node 6  (   0.01557) joins node 14  (   0.00867)
+ node 1  (   0.00488) joins node 32  (   0.00457) joins node 37  (   0.00733)
 
 Output written on file "outfile"
 

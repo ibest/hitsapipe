@@ -46,7 +46,8 @@ cd ${PBS_O_WORKDIR}
 
 if [ ! -e ${GOOD_SEQUENCE_FILE} ]
 then
-  echo "No good sequences found!  Exiting."
+	echo "No good sequences found!  Exiting."
+	touch ${ERROR_FILE}
 	exit 1
 fi
 
@@ -68,7 +69,8 @@ esac
 
 if [ ! -e ${GOOD_SEQUENCES_FILE} ]
 then
-  echo "No good sequences found!  Exiting."
+	echo "No good sequences found!  Exiting."
+	touch ${ERROR_FILE}
 	exit 1
 fi
 

@@ -1,124 +1,139 @@
-BLASTN 2.2.24 [Aug-08-2010]
+BLASTN 2.2.15 [Oct-15-2006]
 
+Reference: 
+Aaron E. Darling, Lucas Carey, and Wu-chun Feng,
+"The design, implementation, and evaluation of mpiBLAST".
+In Proceedings of 4th International Conference on Linux Clusters: The HPC Revolution 2003, 
+June 24-26 2003, San Jose, CA
 
-Reference: Altschul, Stephen F., Thomas L. Madden, Alejandro A. Schaffer, 
-Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), 
-"Gapped BLAST and PSI-BLAST: a new generation of protein database search
-programs",  Nucleic Acids Res. 25:3389-3402.
+Heshan Lin, Xiaosong Ma, Praveen Chandramohan, Al Geist, and Nagiza Samatova,
+"Efficient Data Access for Parallel BLAST".
+In Proceedings of 19th International Parallel & Distributed Processing Symposium 2005, 
+April 3-8 2005, Denver, CO
 
 Query= af243169.for
          (1512 letters)
 
-Database: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-
-staging/output/blast/input/good_sequences 
+Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+staging/output/blast/formatdb/good_sequences 
            2 sequences; 2682 total letters
-
-Searching..................................................done
 
 
 
                                                                  Score    E
 Sequences producing significant alignments:                      (bits) Value
 
-la091.fasta                                                          1031   0.0  
-la072.fasta                                                           839   0.0  
+la091.fasta                                                           638   0.0  
+la072.fasta                                                           630   0.0  
 
 >la091.fasta 
           Length = 1549
 
- Score = 1031 bits (520), Expect = 0.0
- Identities = 933/1068 (87%), Gaps = 2/1068 (0%)
+ Score =  638 bits (322), Expect = 0.0
+ Identities = 460/506 (90%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 486 cagaaagtcacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgttg 545
+           ||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||| 
+Sbjct: 467 cagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtta 526
+
+                                                                       
+Query: 546 tccggatttattgggcgtaaagcgagcgcaggcggaagaataagtctgatgtgaaagccc 605
+           |||||| ||||||||||||||||| ||| ||||||     ||||||||||||||||||||
+Sbjct: 527 tccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagccc 586
+
+                                                                       
+Query: 606 tcggcttaaccgaggaactgcatcggaaactgtttttcttgagtgcagaagaggagagtg 665
+            ||||| ||||| |||    ||| ||||||||     |||||||||||||||||| ||||
+Sbjct: 587 acggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagtg 646
+
+                                                                       
+Query: 666 gaactccatgtgtagcggtggaatgcgtagatatatggaagaacaccagtggcgaaggcg 725
+           ||| |||||||||||||||| |||||| ||| ||||||| ||||||||||||||||||||
+Sbjct: 647 gaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggcg 706
+
+                                                                       
+Query: 726 gctctctggtctgcaactgacgctgaggctcgaaagcatgggtagcgaacaggattagat 785
+            || ||||||||| |||||||||||| |  ||||||| |||| | | |||||||||||||
+Sbjct: 707 actttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattagat 766
+
+                                                                       
+Query: 786 accctggtagtccatgccgtaaacgatgagtgctaagtgttgggaggtttccgcctctca 845
+           |||||||||||||| |||||||||||||||||||||||||| || |||||||||| || |
+Sbjct: 767 accctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctta 826
+
+                                                                       
+Query: 846 gtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaactc 905
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 827 gtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaactc 886
+
+                                                                       
+Query: 906 aaaggaattgacgggggcccgcacaagcggtggagcatgtggtttaattcgaagcaacgc 965
+           |||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 887 aaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacgc 946
+
+                                     
+Query: 966 gaagaaccttaccaagtcttgacatc 991
+           ||||||||||||||| ||||||||||
+Sbjct: 947 gaagaaccttaccaaatcttgacatc 972
+
+
+
+ Score =  299 bits (151), Expect = 4e-86
+ Identities = 235/263 (89%)
  Strand = Plus / Plus
 
                                                                         
-Query: 233  gcattagctagttggtaaggtaaaggcttaccaaggcgatgatgcatagccgagttgaga 292
-            ||||||||||||||||||||||| ||||||||||||| | ||||| |||||||  |||||
-Sbjct: 214  gcattagctagttggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgaga 273
+Query: 1036 gacaggtggtgcatggctgtcgtcagctcgtgtcgtgagatgttgggttaagtcccgcaa 1095
+            |||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1019 gacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttgggttaagtcccgcaa 1078
 
                                                                         
-Query: 293  gactgatcggccacattgggactgagacacggcccaaactcctacgggaggcagcagtag 352
-            |  |||||||||||| ||| |||||||||||| ||| |||||||||||||||||||||||
-Sbjct: 274  gggtgatcggccacactggaactgagacacggtccagactcctacgggaggcagcagtag 333
+Query: 1096 cgagcgcaacccttgttattagttgccagcattaagttgggcactctaatgagactgccg 1155
+            ||||||||||||||    |||||||||| ||||||||||||||||||||   ||||||||
+Sbjct: 1079 cgagcgcaacccttaagcttagttgccatcattaagttgggcactctaagttgactgccg 1138
 
                                                                         
-Query: 353  ggaatcttccacaatggacgcaagtctgatggagcaacgccgcgtgagtgaagaaggttt 412
-            |||||||||| |||||| || ||| |||| ||||||||||||||||||||| |||||| |
-Sbjct: 334  ggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgatgaaggtct 393
+Query: 1156 gtgacaaaccggaggaaggtggggatgacgtcaagtcatcatgccccttatgacctgggc 1215
+            |||||||||||||||||||||||||||||||||| ||||||||||||||||||  |||||
+Sbjct: 1139 gtgacaaaccggaggaaggtggggatgacgtcaaatcatcatgccccttatgatttgggc 1198
 
                                                                         
-Query: 413  tcggatcgtaaagctctgttgttggtgaagaaggatagaggtagtaactggcctttattt 472
-            |||||||||||| ||||||| || | ||||||  |  | |  |||||||   |     ||
-Sbjct: 394  tcggatcgtaaaactctgttattagggaagaacaaatgtgtaagtaactatgcacgtctt 453
+Query: 1216 tacacacgtgctacaatgggcagtacaacgagaagcgagcctgcgaaggcaagcgaatct 1275
+            ||| ||||||||||||||| || ||||| | | |||||  | |||| | ||||| |||| 
+Sbjct: 1199 tacccacgtgctacaatggacaatacaaagggtagcgaaaccgcgaggtcaagcaaatcc 1258
 
-                                                                        
-Query: 473  gacggtaatcaaccagaaagtcacggctaactacgtgccagcagccgcggtaatacgtag 532
-            |||||||   || ||||||| |||||||||||||||||||||||||||||||||||||||
-Sbjct: 454  gacggtacctaatcagaaagccacggctaactacgtgccagcagccgcggtaatacgtag 513
+                                   
+Query: 1276 ctgaaagctgttctcagttcgga 1298
+            |  |||| |||||||||||||||
+Sbjct: 1259 cataaagttgttctcagttcgga 1281
 
-                                                                        
-Query: 533  gtggcaagcgttgtccggatttattgggcgtaaagcgagcgcaggcggaagaataagtct 592
-            |||||||||||| |||||| ||||||||||||||||| ||| ||||||     |||||||
-Sbjct: 514  gtggcaagcgttatccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtct 573
 
-                                                                        
-Query: 593  gatgtgaaagccctcggcttaaccgaggaactgcatcggaaactgtttttcttgagtgca 652
-            ||||||||||||| ||||| ||||| |||    ||| ||||||||     ||||||||||
-Sbjct: 574  gatgtgaaagcccacggctcaaccgtggagggtcattggaaactggaaaacttgagtgca 633
 
-                                                                        
-Query: 653  gaagaggagagtggaactccatgtgtagcggtggaatgcgtagatatatggaagaacacc 712
-            |||||||| ||||||| |||||||||||||||| |||||| ||| ||||||| |||||||
-Sbjct: 634  gaagaggaaagtggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacacc 693
+ Score =  238 bits (120), Expect = 1e-67
+ Identities = 180/200 (90%)
+ Strand = Plus / Plus
 
-                                                                        
-Query: 713  agtggcgaaggcggctctctggtctgcaactgacgctgaggctcgaaagcatgggtagcg 772
-            ||||||||||||| || ||||||||| |||||||||||| |  ||||||| |||| | | 
-Sbjct: 694  agtggcgaaggcgactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatca 753
+                                                                       
+Query: 233 gcattagctagttggtaaggtaaaggcttaccaaggcgatgatgcatagccgagttgaga 292
+           ||||||||||||||||||||||| ||||||||||||| | ||||| |||||||  |||||
+Sbjct: 214 gcattagctagttggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgaga 273
 
-                                                                        
-Query: 773  aacaggattagataccctggtagtccatgccgtaaacgatgagtgctaagtgttgggagg 832
-            ||||||||||||||||||||||||||| |||||||||||||||||||||||||| || ||
-Sbjct: 754  aacaggattagataccctggtagtccacgccgtaaacgatgagtgctaagtgttaggggg 813
+                                                                       
+Query: 293 gactgatcggccacattgggactgagacacggcccaaactcctacgggaggcagcagtag 352
+           |  |||||||||||| ||| |||||||||||| ||| |||||||||||||||||||||||
+Sbjct: 274 gggtgatcggccacactggaactgagacacggtccagactcctacgggaggcagcagtag 333
 
-                                                                        
-Query: 833  tttccgcctctcagtgctgcagctaacgcattaagcactccgcctggggagtacgaccgc 892
-            |||||||| || ||||||||||||||||||||||||||||||||||||||||||||||||
-Sbjct: 814  tttccgccccttagtgctgcagctaacgcattaagcactccgcctggggagtacgaccgc 873
+                                                                       
+Query: 353 ggaatcttccacaatggacgcaagtctgatggagcaacgccgcgtgagtgaagaaggttt 412
+           |||||||||| |||||| || ||| |||| ||||||||||||||||||||| |||||| |
+Sbjct: 334 ggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgatgaaggtct 393
 
-                                                                        
-Query: 893  aaggttgaaactcaaaggaattgacgggggcccgcacaagcggtggagcatgtggtttaa 952
-            ||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||
-Sbjct: 874  aaggttgaaactcaaaggaattgacggggacccgcacaagcggtggagcatgtggtttaa 933
-
-                                                                        
-Query: 953  ttcgaagcaacgcgaagaaccttaccaagtcttgacatctagtgccatttgtagagatac 1012
-            |||||||||||||||||||||||||||| ||||||||||   || |   | |||||||| 
-Sbjct: 934  ttcgaagcaacgcgaagaaccttaccaaatcttgacatcctctgacccctctagagatag 993
-
-                                                                        
-Query: 1013 aaagtt-cccttc-ggggacgctaagacaggtggtgcatggctgtcgtcagctcgtgtcg 1070
-            |   || |||||| ||||||     |||||||||||||||| ||||||||||||||||||
-Sbjct: 994  agttttccccttcgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcg 1053
-
-                                                                        
-Query: 1071 tgagatgttgggttaagtcccgcaacgagcgcaacccttgttattagttgccagcattaa 1130
-            |||||||||||||||||||||||||||||||||||||||    |||||||||| ||||||
-Sbjct: 1054 tgagatgttgggttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaa 1113
-
-                                                                        
-Query: 1131 gttgggcactctaatgagactgccggtgacaaaccggaggaaggtggggatgacgtcaag 1190
-            ||||||||||||||   |||||||||||||||||||||||||||||||||||||||||| 
-Sbjct: 1114 gttgggcactctaagttgactgccggtgacaaaccggaggaaggtggggatgacgtcaaa 1173
-
-                                                                        
-Query: 1191 tcatcatgccccttatgacctgggctacacacgtgctacaatgggcagtacaacgagaag 1250
-            ||||||||||||||||||  |||||||| ||||||||||||||| || ||||| | | ||
-Sbjct: 1174 tcatcatgccccttatgatttgggctacccacgtgctacaatggacaatacaaagggtag 1233
-
-                                                            
-Query: 1251 cgagcctgcgaaggcaagcgaatctctgaaagctgttctcagttcgga 1298
-            |||  | |||| | ||||| |||| |  |||| |||||||||||||||
-Sbjct: 1234 cgaaaccgcgaggtcaagcaaatcccataaagttgttctcagttcgga 1281
+                               
+Query: 413 tcggatcgtaaagctctgtt 432
+           |||||||||||| |||||||
+Sbjct: 394 tcggatcgtaaaactctgtt 413
 
 
 
@@ -143,11 +158,84 @@ Query: 25 atgcaagtcgagcga 39
 Sbjct: 22 atgcaagtcgagcga 36
 
 
+
+ Score = 30.2 bits (15), Expect = 6e-05
+ Identities = 15/15 (100%)
+ Strand = Plus / Plus
+
+                           
+Query: 1325 agctggaatcgctag 1339
+            |||||||||||||||
+Sbjct: 1306 agctggaatcgctag 1320
+
+
+
+ Score = 24.3 bits (12), Expect = 0.004
+ Identities = 18/20 (90%)
+ Strand = Plus / Plus
+
+                                
+Query: 1365 gaatacgttcccgggccttg 1384
+            ||||||||||| ||| ||||
+Sbjct: 1345 gaatacgttccggggtcttg 1364
+
+
 >la072.fasta 
           Length = 1133
 
- Score =  839 bits (423), Expect = 0.0
- Identities = 688/775 (88%), Gaps = 1/775 (0%)
+ Score =  630 bits (318), Expect = 0.0
+ Identities = 462/510 (90%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 483 aaccagaaagtcacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcg 542
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 462 aaccagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcg 521
+
+                                                                       
+Query: 543 ttgtccggatttattgggcgtaaagcgagcgcaggcggaagaataagtctgatgtgaaag 602
+           ||||||||| ||||||||||||||| |  |||||||||     |||||||||||||||||
+Sbjct: 522 ttgtccggaattattgggcgtaaagggctcgcaggcggtttcttaagtctgatgtgaaag 581
+
+                                                                       
+Query: 603 ccctcggcttaaccgaggaactgcatcggaaactgtttttcttgagtgcagaagaggaga 662
+           ||| ||||| ||||| |||    ||| ||||||||     ||||||||||||||||||||
+Sbjct: 582 cccccggctcaaccggggagggtcattggaaactggggaacttgagtgcagaagaggaga 641
+
+                                                                       
+Query: 663 gtggaactccatgtgtagcggtggaatgcgtagatatatggaagaacaccagtggcgaag 722
+           |||||| |||| ||||||||||| |||||||||| || |||| |||||||||||||||||
+Sbjct: 642 gtggaattccacgtgtagcggtgaaatgcgtagagatgtggaggaacaccagtggcgaag 701
+
+                                                                       
+Query: 723 gcggctctctggtctgcaactgacgctgaggctcgaaagcatgggtagcgaacaggatta 782
+           ||| |||||||||||| ||||||||||||||  ||||||| |||| ||||||||||||||
+Sbjct: 702 gcgactctctggtctgtaactgacgctgaggagcgaaagcgtggggagcgaacaggatta 761
+
+                                                                       
+Query: 783 gataccctggtagtccatgccgtaaacgatgagtgctaagtgttgggaggtttccgcctc 842
+           ||||||||||||||||| |||||||||||||||||||||||||| || |||||||||| |
+Sbjct: 762 gataccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccc 821
+
+                                                                       
+Query: 843 tcagtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaa 902
+           | | |||||||||||||||||||||||||||||||||||||||||  ||||||  |||||
+Sbjct: 822 ttattgctgcagctaacgcattaagcactccgcctggggagtacggtcgcaagactgaaa 881
+
+                                                                       
+Query: 903 ctcaaaggaattgacgggggcccgcacaagcggtggagcatgtggtttaattcgaagcaa 962
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||
+Sbjct: 882 ctcaaaggaattgacgggggcccgcacaagcggtggagcatgtggtttaattctaagcaa 941
+
+                                         
+Query: 963 cgcgaagaaccttaccaagtcttgacatct 992
+           |||||| |||||||||| ||||||||||||
+Sbjct: 942 cgcgaataaccttaccaggtcttgacatct 971
+
+
+
+ Score =  297 bits (150), Expect = 2e-85
+ Identities = 207/226 (91%)
  Strand = Plus / Plus
 
                                                                        
@@ -165,66 +253,26 @@ Query: 339 ggaggcagcagtagggaatcttccacaatggacgcaagtctgatggagcaacgccgcgtg 398
            |||||||||||||||||||||||| ||||||||| |||||||| ||||||||||||||||
 Sbjct: 317 ggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgccgcgtg 376
 
-                                                                       
-Query: 399 agtgaagaaggttttcggatcgtaaagctctgttgttggtgaagaaggatagaggtagta 458
-           ||||| ||||||||||||||||||||||||||||||| | ||||||  |  |  ||   |
-Sbjct: 377 agtgatgaaggttttcggatcgtaaagctctgttgttagggaagaacaagtgccgttcaa 436
-
-                                                                       
-Query: 459 actggcctttat-ttgacggtaatcaaccagaaagtcacggctaactacgtgccagcagc 517
-           |  || |   |  |||||||||   |||||||||| ||||||||||||||||||||||||
-Sbjct: 437 atagggcggcaccttgacggtacctaaccagaaagccacggctaactacgtgccagcagc 496
-
-                                                                       
-Query: 518 cgcggtaatacgtaggtggcaagcgttgtccggatttattgggcgtaaagcgagcgcagg 577
-           |||||||||||||||||||||||||||||||||| ||||||||||||||| |  ||||||
-Sbjct: 497 cgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagggctcgcagg 556
-
-                                                                       
-Query: 578 cggaagaataagtctgatgtgaaagccctcggcttaaccgaggaactgcatcggaaactg 637
-           |||     |||||||||||||||||||| ||||| ||||| |||    ||| ||||||||
-Sbjct: 557 cggtttcttaagtctgatgtgaaagcccccggctcaaccggggagggtcattggaaactg 616
-
-                                                                       
-Query: 638 tttttcttgagtgcagaagaggagagtggaactccatgtgtagcggtggaatgcgtagat 697
-                |||||||||||||||||||||||||| |||| ||||||||||| |||||||||| 
-Sbjct: 617 gggaacttgagtgcagaagaggagagtggaattccacgtgtagcggtgaaatgcgtagag 676
-
-                                                                       
-Query: 698 atatggaagaacaccagtggcgaaggcggctctctggtctgcaactgacgctgaggctcg 757
-           || |||| |||||||||||||||||||| |||||||||||| ||||||||||||||  ||
-Sbjct: 677 atgtggaggaacaccagtggcgaaggcgactctctggtctgtaactgacgctgaggagcg 736
-
-                                                                       
-Query: 758 aaagcatgggtagcgaacaggattagataccctggtagtccatgccgtaaacgatgagtg 817
-           ||||| |||| ||||||||||||||||||||||||||||||| |||||||||||||||||
-Sbjct: 737 aaagcgtggggagcgaacaggattagataccctggtagtccacgccgtaaacgatgagtg 796
-
-                                                                       
-Query: 818 ctaagtgttgggaggtttccgcctctcagtgctgcagctaacgcattaagcactccgcct 877
-           ||||||||| || |||||||||| || | |||||||||||||||||||||||||||||||
-Sbjct: 797 ctaagtgttagggggtttccgccccttattgctgcagctaacgcattaagcactccgcct 856
-
-                                                                       
-Query: 878 ggggagtacgaccgcaaggttgaaactcaaaggaattgacgggggcccgcacaagcggtg 937
-           ||||||||||  ||||||  ||||||||||||||||||||||||||||||||||||||||
-Sbjct: 857 ggggagtacggtcgcaagactgaaactcaaaggaattgacgggggcccgcacaagcggtg 916
-
-                                                                  
-Query: 938 gagcatgtggtttaattcgaagcaacgcgaagaaccttaccaagtcttgacatct 992
-           |||||||||||||||||| |||||||||||| |||||||||| ||||||||||||
-Sbjct: 917 gagcatgtggtttaattctaagcaacgcgaataaccttaccaggtcttgacatct 971
+                                                         
+Query: 399 agtgaagaaggttttcggatcgtaaagctctgttgttggtgaagaa 444
+           ||||| ||||||||||||||||||||||||||||||| | ||||||
+Sbjct: 377 agtgatgaaggttttcggatcgtaaagctctgttgttagggaagaa 422
 
 
 
  Score = 58.0 bits (29), Expect = 3e-13
- Identities = 35/37 (94%)
+ Identities = 68/81 (83%)
  Strand = Plus / Plus
 
-                                                
-Query: 83  agcggcggatgggtgagtaacacgtggggaacctgcc 119
-           ||||||||| |||||||||||||||||| ||||||||
-Sbjct: 61  agcggcggacgggtgagtaacacgtgggtaacctgcc 97
+                                                                       
+Query: 83  agcggcggatgggtgagtaacacgtggggaacctgccccatagtctgggataccacttgg 142
+           ||||||||| |||||||||||||||||| ||||||||    || |||||||| | |  ||
+Sbjct: 61  agcggcggacgggtgagtaacacgtgggtaacctgcctgtaagactgggataactccggg 120
+
+                                
+Query: 143 aaacaggtgctaataccggat 163
+           |||| || |||||||||||||
+Sbjct: 121 aaaccggggctaataccggat 141
 
 
 
@@ -238,38 +286,15 @@ Query: 25 atgcaagtcgagcg 38
 Sbjct: 20 atgcaagtcgagcg 33
 
 
-  Database: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-
-  staging/output/blast/input/good_sequences
-    Posted date:  Jun 17, 2013  8:11 PM
-  Number of letters in database: 2682
-  Number of sequences in database:  2
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/good_sequences
+    Posted date:  Jun 18, 2013  3:21 PM
+  Number of letters in database: 1549
+  Number of sequences in database:  1
   
-Lambda     K      H
-    1.37    0.711     1.31 
-
-Gapped
-Lambda     K      H
-    1.37    0.711     1.31 
-
-
-Matrix: blastn matrix:1 -3
-Gap Penalties: Existence: 5, Extension: 2
-Number of Sequences: 2
-Number of Hits to DB: 262
-Number of extensions: 21
-Number of successful extensions: 21
-Number of sequences better than 10.0: 2
-Number of HSP's gapped: 15
-Number of HSP's successfully gapped: 14
-Length of query: 1512
-Length of database: 53
-Length adjustment: 8
-Effective length of query: 1504
-Effective length of database: 53
-Effective search space:    79712
-Effective search space used:    79712
-X1: 7 (13.9 bits)
-X2: 15 (29.7 bits)
-X3: 50 (99.1 bits)
-S1: 7 (14.4 bits)
-S2: 7 (14.4 bits)
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/good_sequences.001
+    Posted date:  Jun 18, 2013  3:21 PM
+  Number of letters in database: 1133
+  Number of sequences in database:  1
+  

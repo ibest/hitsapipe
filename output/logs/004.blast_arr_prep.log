@@ -1,7 +1,6 @@
-### DEBUG OUTPUT START ###
-	BLAST_TEMP_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp
-	BLAST_INPUT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/blast_input
-	ARRAY_OUTPUT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/arrayjob.tmp
-### DEBUG OUTPUT END ###
 mv la072.fasta la072.fasta.0
 mv la091.fasta la091.fasta.1
+DBNAME: species
+Breaking species into 28 fragments
+Executing: formatdb -t species -p F -l /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/logs/mpiformatdb_blastall.log -i stdin -N 28 -n /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb/species -o T 
+Created 28 fragments.

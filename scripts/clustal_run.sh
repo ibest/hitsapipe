@@ -16,13 +16,27 @@ fi
 echo "Running clustalw2"
 #echo -e "\tInput File: \t${CLUSTAL_ALL_FILE}"
 #echo -e "\tOutput File: \t${CLUSTAL_ALIGNMENT_FILE}"
-
-clustalw2  -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}"
-RETVAL=$?
-
-if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Unknown clustalw2 error."
-		echo -e "\tclustalw2 exit code: ${RETVAL}"
-		exit 1
+if [ ${PARALLEL} == "True" ]
+then
+	mpiexec -np ${NNODES} clustalw-mpi -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}"
+		RETVAL=$?
+	
+	if [ ${RETVAL} != 0 ]
+		then
+			echo -e "\nERROR: clustalw-mpi could not complete."
+			echo -e "\tclustalw-mpi exit code: ${RETVAL}"
+			touch {ERROR_FILE}
+			exit 1
+	fi
+else
+	clustalw2 -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}"
+	RETVAL=$?
+	
+	if [ ${RETVAL} != 0 ]
+		then
+			echo -e "\nERROR: Unknown clustalw2 error."
+			echo -e "\tclustalw2 exit code: ${RETVAL}"
+			touch {ERROR_FILE}
+			exit 1
+	fi
 fi

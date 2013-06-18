@@ -38,6 +38,9 @@ class Paths:
         self.blastoutput = join(self.blast,"blasts")
         self.blasttmp = join(self.blast, "tmp")
         
+        self.formatdb_shared = join(self.blast,"formatdb")
+        #self.formatdb_local = join(self.blast,"formatdb")
+        
         # clustal subdirectories
         self.clustaltmp = join(self.clustal,"tmp")
 class Module:
@@ -156,6 +159,9 @@ def prepare_directory_structure(m_paths, m_prefs):
     
     if os.path.exists(m_prefs["arrayjoblogfile"]):
         os.remove(m_prefs["arrayjoblogfile"])
+        
+    if os.path.exists(m_prefs["arrayjobabortearlyfile"]):
+        os.remove(m_prefs["arrayjobabortearlyfile"])
     
     os.mkdir(m_paths.output)
     
@@ -171,6 +177,9 @@ def prepare_directory_structure(m_paths, m_prefs):
     os.mkdir(m_paths.blastprep)
     os.mkdir(m_paths.blastoutput)
     os.mkdir(m_paths.blasttmp)
+    
+    os.mkdir(m_paths.formatdb_shared)
+    #os.mkdir(m_paths.formatdb_local)
 def backup_file(src, dest):
     shutil.copy2(src, dest)
 def get_qsub_notifications(notifications_list, initial, final):
@@ -226,25 +235,30 @@ def module_list(pth,fil,prefs):
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
                         ("NUMSEQS_TEMP_FILE", fil.numseqs_tmp),
                         ("BLAST_SEQUENCES", prefs["blastsequences"]),
+                        ("MPIBLAST_SHARED", pth.formatdb_shared),
                         ("CUTOFF_LENGTH", prefs["cutofflength"])],
                        join(pth.scripts,"blast_direction.sh"),
-                       parallel=True
+                       parallel=prefs["parallel"]
                        )
                 )
     list.append(Module("blast_arr_prep",
                        [("BLAST_TEMP_DIR", pth.blasttmp),
                         ("BLAST_INPUT_FILE", fil.blast_input_file),
+                        ("LOG_DIR", pth.logs),
+                        ("DATABASE", prefs["database"]),
                         ("ARRAY_OUTPUT_FILE",prefs["arrayjoblogfile"])],
-                       join(pth.scripts,"blastall_array_prep.sh")
+                       join(pth.scripts,"blastall_array_prep.sh"),
+                       parallel=prefs["parallel"]
                        )
                 )
     list.append(Module("blastall_array",
                        [("BLAST_TEMP_DIR",pth.blasttmp),
+                        ("LOG_DIR", pth.logs),
                         ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
                         ("DATABASE", prefs["database"]),
                         ("NHITS", prefs["nhits"])],
                        join(pth.scripts,"blastall_array.sh"),
-                       array_job=True
+                       array_job=True, parallel=prefs["parallel"]
                        )
                 )
     list.append(Module("blastall_check",
@@ -281,7 +295,8 @@ def module_list(pth,fil,prefs):
     list.append(Module("clustal",
                        [("CLUSTAL_ALL_FILE", fil.clustal_all),
                         ("CLUSTAL_ALIGNMENT_FILE", fil.clustal_align)],
-                       join(pth.scripts,"clustal_run.sh")
+                       join(pth.scripts,"clustal_run.sh"),
+                       parallel=prefs["parallel"]
                        )
                 )
     list.append(Module("clustal_check",
@@ -321,16 +336,18 @@ def module_list(pth,fil,prefs):
                        )
                 )
     return list
-def generate_non_qsub_command(module,paths,files,prefs, arr_id=None, debug=False):
+def generate_non_qsub_command(module,paths,files,prefs, arr_id=None, debug=False, error_file=True):
     cmd = ""
     if arr_id is not None:
         cmd += "PBS_ARRAYID="+str(arr_id)+" "    
     cmd += "PBS_O_WORKDIR="+paths.output+" "
-    if debug == True:
+    if debug:
         cmd += "DEBUG=True "
     else:
         cmd += "DEBUG=False "
     cmd += "PARALLEL=False "
+    if error_file:
+        cmd += "ERROR_FILE="+str(prefs["arrayjobabortearlyfile"])+" "
     if module.var_list:
         for(key,value) in module.var_list:
             cmd += str(key+"="+value+" ")    
@@ -338,7 +355,8 @@ def generate_non_qsub_command(module,paths,files,prefs, arr_id=None, debug=False
     return cmd
 def generate_qsub_command(module, index, paths, files, prefs, notes, 
                           arr_count=None, id=None, previous_array=False,  
-                          initial=False,final=False, debug=False):
+                          initial=False,final=False, debug=False,
+                          error_file=True):
     
     cmd = ["qsub"]
     cmd.append("-N")
@@ -375,7 +393,7 @@ def generate_qsub_command(module, index, paths, files, prefs, notes,
             else:
                 cmd.append("-W depend=afterok:"+id)            
                 
-    if module.var_list or debug or parallel:
+    if module.var_list or debug or parallel or error_file:
         cmd.append("-v")
         var_list = ""
         if debug == True:
@@ -387,6 +405,8 @@ def generate_qsub_command(module, index, paths, files, prefs, notes,
             var_list += "PARALLEL=True,"
         else:
             var_list += "PARALLEL=False,"
+        if error_file:
+            var_list += "ERROR_FILE="+str(prefs["arrayjobabortearlyfile"])+","
         if module.var_list:
             for (key,value) in module.var_list:
                 var_list += key+"="+value+","
@@ -412,7 +432,7 @@ def exec_qsub(cmd, mod_name=None, verbose=False):
         else:
             print "job submitted. ID: "+str(id)
     return id
-def wait_to_exec_array(job_name, filepath):
+def wait_to_exec_array(job_name, filepath, errorpath):
     # Since we currently have no way of having a node call qsub itself,
     # in the event that we want to create an array job and don't know the
     # number of elements in the array until part of the job has finished,
@@ -421,6 +441,9 @@ def wait_to_exec_array(job_name, filepath):
     print "\""+job_name+"\" is an array job and will not be submitted until the previous job is complete." 
     while os.path.exists(filepath) is not True:
         time.sleep(10)
+        if os.path.exists(errorpath):
+            os.remove(errorpath)
+            fatal_error("a job prior to the array failed and the pipeline cannot recover")
         
     file = open(filepath, "r")
     arr_count = file.readline()
@@ -535,7 +558,7 @@ def main():
             if mod_item.array_job is True:
                 # Then we need to wait until the array count is available in order
                 # to continue.
-                arr_count = wait_to_exec_array(mod_item.name, preferences["arrayjoblogfile"])
+                arr_count = wait_to_exec_array(mod_item.name, preferences["arrayjoblogfile"], preferences["arrayjobabortearlyfile"])
                 id = None # Set this to none, because the previous job will be done before this gets called.
                 if arr_count <= 0:
                     fatal_error("Something went wrong when trying to create an array job")

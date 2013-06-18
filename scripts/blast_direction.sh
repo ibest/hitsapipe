@@ -13,6 +13,7 @@
 #	CUTOFF_LENGTH: 			
 #	PARALLEL: 				Determines if we are running in parallel or not
 #	NNODES: 				If parallel, how many nodes to run on
+#	MPIBLAST_SHARED: 		Directory where the mpiformatdb places the database.
 #####
 # Additional:
 #	NUMSEQS: 				Number of good sequences that are found.
@@ -44,40 +45,50 @@ fi
 
 if [ ${PARALLEL} == "True" ]
 then
-	MPINODES=$((NNODES - 2))
+	DBNODES=$((NNODES - 2))
 	echo "Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence."
-	mpiformatdb -N ${MPINODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb.log
+	mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
 	RETVAL=$?
 	
 	if [ ${RETVAL} != 0 ]
 	then
 		echo -e "\nERROR: Unknown mpiformatdb error."
 		echo -e "\tmpiformatdb exit code: ${RETVAL}"
+		touch ${ERROR_FILE}
 		exit 1
 	fi
 else
 	echo "Running formatdb to format the good sequences into a database to blast against with our sample sequence."
 	
-	EXITCODE=$(formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb.log)$?
+	EXITCODE=$(formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb_direction.log)$?
 	
 	if [ ${EXITCODE} != 0 ]
 		then
 			echo -e "\nERROR: Unknown formatdb error."
 			echo -e "\tformatdb exit code: ${EXITCODE}"
+			touch ${ERROR_FILE}
 			exit 1
 	fi
 fi
 
 if [ ${PARALLEL} == "True" ]
 then
+	#GOOD_SEQUENCES_SHARED=$(echo "${MPIBLAST_SHARED}/${GOOD_SEQUENCES_FILE##*/}")
+	GOOD_SEQUENCES_SHARED=$(echo "${GOOD_SEQUENCES_FILE##*/}")
+	echo "GOOD_SEQ_SHARED: ${GOOD_SEQUENCES_SHARED}"
+
+	# Make sure there is read/write access to the shared folder and its contents
+	#chmod -R 777 ${MPIBLAST_SHARED}
+	cd ${MPIBLAST_SHARED}
 	echo -e "\nBLASTing ${BLAST_SEQUENCES} against sequences to find direction."
-	mpiexec -N ${NNODES} mpiblast -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000 
+	mpiexec -v -np ${NNODES} mpiblast -p blastn -d ${GOOD_SEQUENCES_SHARED} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000 --removedb
 	RETVAL=$?
 	
 	if [ ${RETVAL} != 0 ]
 	then
-		echo -e "\nERROR: Unknown mpiexec/mpiblast error."
+		echo -e "\nERROR: Unknown mpiexec/mpiBLAST error."
 		echo -e "\tmpiexec exit code: ${RETVAL}"
+		touch ${ERROR_FILE}
 		exit 1
 	fi
 
@@ -89,6 +100,7 @@ else
 		then
 			echo -e "\nERROR: blastall could not finish."
 			echo -e "\tblastall exit code: ${EXITCODE}"
+			touch ${ERROR_FILE}
 			exit 1
 	fi
 fi
@@ -138,6 +150,7 @@ if [ ${EXITCODE} != 0 ]
 	then
 		echo -e "\nERROR: Could not split up the good sequence file."
 		echo -e "\tsplitgood.pl exit code: ${EXITCODE}"
+		touch ${ERROR_FILE}
 		exit 1
 fi
 

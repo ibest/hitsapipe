@@ -33,15 +33,33 @@ BLAST_OUTPUT_NAME=$(echo "${BLAST_OUTPUT_NAME}.blastn")
 echo "Blasting file ${TO_BLAST} against the database ${DATABASE}"
 echo -e "\tStoring the output in ${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}"
 
-blastall -p blastn -d ${DATABASE}  -b ${NHITS} -v ${NHITS} -i "${TO_BLAST}" -S 1 -o "${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}"
-RETVAL=$?
-
-if [ ${RETVAL} != 0 ]
+if [ ${PARALLEL} == "True" ]
 then
-	echo -e "\nERROR: Blastall could not complete."
-	echo -e "\tblastall exit code: ${RETVAL}"
-	exit 1
+	DBNAME=$(echo "${DATABASE##*/}")  
+
+	mpiexec -np ${NNODES} mpiblast -p blastn -d ${DBNAME}  -b ${NHITS} -v ${NHITS} -i "${TO_BLAST}" -S 1 -o "${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}" --removedb
+	RETVAL=$?
+	
+	if [ ${RETVAL} != 0 ]
+	then
+		echo -e "\nERROR: mpiexec/mpiBLAST could not complete."
+		echo -e "\tmpiexec exit code: ${RETVAL}"
+		touch ${ERROR_FILE}
+		exit 1
+	fi
+else
+	blastall -p blastn -d ${DATABASE}  -b ${NHITS} -v ${NHITS} -i "${TO_BLAST}" -S 1 -o "${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}"
+	RETVAL=$?
+	
+	if [ ${RETVAL} != 0 ]
+	then
+		echo -e "\nERROR: Blastall could not complete."
+		echo -e "\tblastall exit code: ${RETVAL}"
+		touch ${ERROR_FILE}
+		exit 1
+	fi
 fi
+
 
 # Finally, change the name back of this file
 echo "Blast successful. Removing PBS array file extension."

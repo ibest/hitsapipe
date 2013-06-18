@@ -34,6 +34,7 @@ if [ ${RETVAL} != 0 ]
 	then
 		echo -e "\nERROR: Unknown makeneighbor error."
 		echo -e "\tmakeneighbor exit code: ${RETVAL}"
+		touch {ERROR_FILE}
 		exit 1
 fi
 echo "Created the script for neighbor to use."
@@ -51,6 +52,7 @@ if [ ${RETVAL} != 0 ]
 	then
 		echo -e "\nERROR: Unknown neighbor error."
 		echo -e "\tneighbor exit code: ${RETVAL}"
+		touch {ERROR_FILE}
 		exit 1
 fi
 
@@ -65,6 +67,7 @@ if [ ${RETVAL} != 0 ]
 	then
 		echo -e "\nERROR: Unknown namesback.pl error."
 		echo -e "\tnamesback.pl exit code: ${RETVAL}"
+		touch {ERROR_FILE}
 		exit 1
 fi
 
@@ -76,5 +79,6 @@ if [ ${RETVAL} != 0 ]
 	then
 		echo -e "\nERROR: Cannot move files to ${TREE_DIR}."
 		echo -e "\tmv exit code: ${RETVAL}"
+		touch {ERROR_FILE}
 		exit 1
 fi

@@ -1,9 +1,3 @@
-### DEBUG OUTPUT START ###
-	DNADIST_SCRIPT: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts/dnadist_script
-	CLUSTAL_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal
-	DISTANCES_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/distances
-	PHYLIP_IN_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/infile
-### DEBUG OUTPUT END ###
 Making the distance matrix...
 [2J[H[2J[H
 Nucleic acid sequence Distance Matrix program, version 3.68

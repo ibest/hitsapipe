@@ -1,13 +1,2 @@
-### DEBUG OUTPUT START ###
-	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
-	CLUSTAL_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal
-	BLAST_TEMP_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp
-	ARRAY_OUTPUT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/arrayjob.tmp
-	REF_STRAINS_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/RefStrains
-	CLUSTAL_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/clustal
-	CLUSTAL_ALL_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/clustal_all
-	BLAST_INPUT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/blast_input
-	HIT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/hitfiles
-### DEBUG OUTPUT END ###
 Collating all sequences
 Shortening names to 10 characters
