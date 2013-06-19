@@ -22,6 +22,9 @@ fi
 NUMSEQS=$(cat ${NUMSEQS_TEMP_FILE})
 NUMBLASTS=$(find ${BLASTALL_OUTPUT_DIR} -name "*.blastn" | wc -l)
 
+echo "Number of sequences: ${NUMSEQS}"
+echo "Number of blasts: ${NUMBLASTS}"
+
 echo "Checking to see that all blasts were found."
 # preliminary check that we have all the needed blasts
 if [ ${NUMBLASTS} == 0 ]

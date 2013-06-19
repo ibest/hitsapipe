@@ -28,6 +28,8 @@ echo "Concatenating the blast file"
 find ${BLASTALL_OUTPUT_DIR} -name "*.blastn" -print0 | xargs -i -0 cat {} > ${BLAST_OUT_5_FILE}
 
 echo "Parsing blast results"
+echo "blastparser cmd: ${PERL_DIR}/blastparser.pl ${BLAST_OUT_5_FILE} > ${HIT_OUTPUT_DIR}/output5.xls"
+echo "blastcull cmd: ${PERL_DIR}/blastcull.pl < ${HIT_OUTPUT_DIR}/output5.xls > ${HIT_OUTPUT_DIR}/output1.xls"
 ${PERL_DIR}/blastparser.pl ${BLAST_OUT_5_FILE} > ${HIT_OUTPUT_DIR}/output5.xls
 cd ${HIT_OUTPUT_DIR}
 ${PERL_DIR}/blastcull.pl < ${HIT_OUTPUT_DIR}/output5.xls > ${HIT_OUTPUT_DIR}/output1.xls
@@ -38,6 +40,7 @@ cut -f3,4 output5.xls > ${HIT_OUTPUT_DIR}/hitnames_long5.xls
 cut -f3,4 output1.xls > ${HIT_OUTPUT_DIR}/hitnames_long1.xls
 
 echo "Making hit statistics."
+echo "hit_statistics cmd: ${PERL_DIR}/hit_statistics.pl ${HIT_OUTPUT_DIR}/output1.xls ${HIT_OUTPUT_DIR}/hit_statistics.xls"
 cd ${HIT_OUTPUT_DIR}
 ${PERL_DIR}/hit_statistics.pl ${HIT_OUTPUT_DIR}/output1.xls ${HIT_OUTPUT_DIR}/hit_statistics.xls
 

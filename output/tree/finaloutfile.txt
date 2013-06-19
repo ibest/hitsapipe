@@ -1,5 +1,5 @@
 
-  44 Populations
+  42 Populations
 
 Neighbor-Joining/UPGMA method version 3.68
 
@@ -11,181 +11,173 @@ Neighbor-Joining/UPGMA method version 3.68
 
   +------Aquifex_aeolicus_VF5_VF5
   ! 
-  !     +-----Thermotoga_maritima_T
-  !  +-11  
-  !  !  +-----uc_Thermodesulfobacterium_sp._BSpN50
+  !  +-----Thermotoga_maritima_T
   !  !  
-  !  !                       +----------Bacteroides_fragilis
-  !  !                    +-27  
-  !  !                 +-28  +-------Chlorobium_limicola_M1
-  !  !                 !  !  
-  !  !              +-34  +------Helicobacter_pylori_T_ATCC_43504
-  !  !              !  !  
-  !  !              !  !  +-------Borrelia_burgdorferi_BbMS
-  !  !              !  +-16  
-  !  !              !     +------Treponema_sp._ovine_footrot
-  !  !              !  
-  !  !              !              +--la072.fasta
-  !  !              !            +-3 
-  !  !              !          +-4 +lcl|S000824899_EF423589_Bacillus_subtilis_subsp._subtilis_F121112
-  !  !           +-35          ! ! 
-  !  !           !  !        +-9 +Bacillus_subtilis_subsp._subtilis_str._168_168
-  !  !           !  !        ! ! 
-  !  !           !  !        ! !  +la091.fasta
-  !  !           !  !     +-18 +--1 
-  !  !           !  !     !  !    +lcl|S002440750_AB617573_Staphylococcus_epidermidis_T8-19M
-  !  !           !  !  +-26  !  
-  !  !           !  !  !  !  +-----Lactobacillus_jensenii_KC13
-  !  !           !  +-30  !  
-  !  !           !     !  +-----Clostridium_botulinum_E
-  !  !           !     !  
-  !  !           !     +---------Fusobacterium_nucleatum_subsp._nucleatum_ATCC_25586_ATCC_25586
-  !  !           !  
-  !  !           !           +---Agrobacterium_sanguineum_ATCC_25660
-  !  !           !        +-21  
-  !  !           !        !  +---Paracoccus_denitrificans_IAM12479
-  !  !        +-40        !  
-  !  !        !  !     +-31     +---Burkholderia_cepacia_DSM_50181
-  !  !        !  !     !  !  +-10  
-  !  !        !  !     !  !  !  +---Neisseria_meningitidis_MC58_MC58
-  8-19        !  !     !  !  !  
-  !  !        !  !     !  +-24     +-Pseudomonas_aeruginosa_T_DSM50071
-  !  !        !  !     !     !  +--5 
-  !  !        !  !  +-36     !  !  +-Pseudomonas_putida_IAM_1236
-  !  !        !  !  !  !     +-20  
-  !  !        !  !  !  !        !   +-Escherichia_coli_CFT073_CFT073
-  !  !        !  !  !  !        +---2 
-  !  !        !  !  !  !            +-Klebsiella_pneumoniae_F-5-2
-  !  !        !  !  !  !  
-  !  !        !  !  !  !  +-------Myxococcus_macrosporus_125-10-1
-  !  !        !  !  !  +-33  
-  !  !        !  !  !     +--------Leptospirillum_ferrooxidans_49879
-  !  !        !  !  !  
-  !  !        !  +-38                +-Anabaena_circinalis_123
-  !  !        !     !              +-6 
-  !  !        !     !           +-12 +-Nostoc_sp._TDI_AR94_TDI_AR94
-  !  !     +-42     !           !  !  
-  !  !     !  !     !        +-13  +---Planktothrix_agardhii_CCAP
-  !  !     !  !     !        !  !  
-  !  !     !  !     !     +-14  +-----Microcystis_aeruginosa_NIES98
-  !  !     !  !     !     !  !  
-  !  !     !  !     !  +-15  +---Oscillatoria_corallinae_CJ1_SAG8.92
-  !  !     !  !     !  !  !  
-  !  !     !  !     +-32  +---Synechococcus_sp._MW6C6_MW6C6
-  !  !     !  !        !  
-  !  !     !  !        !  +---------Chlamydophila_psittaci_6BC_ATCC_VR-125_M13mp8_M13mp9
-  !  !     !  !        +-25  
-  !  !     !  !           +----------Planctomyces_sp._282_282
-  !  !  +-39  !  
-  !  !  !  !  !          +-Rhodococcus_equi_T_DSM20307T
-  !  !  !  !  !        +-7 
-  !  !  !  !  !     +-17 +--Mycobacterium_sp._DhA-55
-  !  !  !  !  !     !  !  
-  !  !  !  !  !  +-23  +---Streptomyces_sp._EF-93_EF-93
-  !  !  !  !  !  !  !  
-  !  !  !  !  +-41  +------Bifidobacterium_breve_ATCC_15700
-  !  +-37  !     !  
-  !     !  !     +----------Fibrobacter_succinogenes_HM2
-  !     !  !  
-  !     !  !     +------Thermus_thermophilus_T
-  !     !  !  +-22  
-  !     !  +-29  +--------Chloroflexus_aurantiacus_Y-400-fl
-  !     !     !  
-  !     !     +-------Deinococcus_radiodurans_R1
-  !     !  
-  !     +-------Deferribacter_thermophilus_T_BMA1
+  !  !  +-----uc_Thermodesulfobacterium_sp._BSpN50
+  !  !  !  
+  !  !  !     +-------Deferribacter_thermophilus_T_BMA1
+  !  !  !     !  
+  !  !  !     !              +---------Bacteroides_fragilis
+  !  !  !     !           +-25  
+  !  !  !     !        +-27  +-------Chlorobium_limicola_M1
+  !  !  !     !        !  !  
+  !  !  !     !        !  +-------Helicobacter_pylori_T_ATCC_43504
+  !  !  !     !        !  
+  7-16  !     !        !     +------Borrelia_burgdorferi_BbMS
+  !  !  !     !     +-34  +-15  
+  !  !  !     !     !  !  !  +------Treponema_sp._ovine_footrot
+  !  !  !     !     !  !  !  
+  !  !  !     !     !  !  !            +--la219.fasta
+  !  !  !     !     !  !  !          +-2 
+  !  !  !     !     !  +-33        +-3 +lcl|S001588580_FJ763645_Bacillus_pumilus_X22
+  !  !  !     !     !     !        ! ! 
+  !  !  !     !     !     !     +-14 +Bacillus_subtilis_subsp._subtilis_str._168_168
+  !  !  !     !     !     !     !  !  
+  !  !  !     !     !     !  +-24  +----Lactobacillus_jensenii_KC13
+  !  !  !  +-36  +-38     !  !  !  
+  !  !  !  !  !  !  !     +-28  +----Clostridium_botulinum_E
+  !  +-18  !  !  !  !        !  
+  !     !  !  !  !  !        +--------Fusobacterium_nucleatum_subsp._nucleatum_ATCC_25586_ATCC_25586
+  !     !  !  !  !  !  
+  !     !  !  !  !  !          +-Rhodococcus_equi_T_DSM20307T
+  !     !  !  !  !  !        +-6 
+  !     !  !  !  !  !     +-13 +-Mycobacterium_sp._DhA-55
+  !     !  !  !  !  !     !  !  
+  !     !  !  !  !  !  +-21  +---Streptomyces_sp._EF-93_EF-93
+  !     !  !  !  !  !  !  !  
+  !     !  !  !  !  +-35  +------Bifidobacterium_breve_ATCC_15700
+  !     !  !  !  !     !  
+  !     !  !  !  !     +---------Fibrobacter_succinogenes_HM2
+  !     !  !  !  !  
+  !     !  !  !  !              +---Agrobacterium_sanguineum_ATCC_25660
+  !     !  !  !  !           +-20  
+  !     !  !  !  !           !  +---Paracoccus_denitrificans_IAM12479
+  !     !  !  !  !           !  
+  !     !  !  +-40        +-30    +---Burkholderia_cepacia_DSM_50181
+  !     !  !     !        !  !  +-8 
+  !     !  !     !        !  !  ! +---Neisseria_meningitidis_MC58_MC58
+  !     !  !     !        !  !  !  
+  !     !  !     !        !  +-22     +-Pseudomonas_aeruginosa_T_DSM50071
+  !     !  !     !        !     !  +--5 
+  !     !  !     !     +-31     !  !  +Pseudomonas_putida_IAM_1236
+  !     +-32     !     !  !     +-19  
+  !        !     !     !  !        !   +-Escherichia_coli_CFT073_CFT073
+  !        !     !     !  !        +---1 
+  !        !     !  +-37  !            +-Klebsiella_pneumoniae_F-5-2
+  !        !     !  !  !  !  
+  !        !     !  !  !  +------Myxococcus_macrosporus_125-10-1
+  !        !     !  !  !  
+  !        !     !  !  +--------Leptospirillum_ferrooxidans_49879
+  !        !     !  !  
+  !        !     !  !               +-Anabaena_circinalis_123
+  !        !     !  !             +-4 
+  !        !     +-39           +-9 +-Nostoc_sp._TDI_AR94_TDI_AR94
+  !        !        !           ! ! 
+  !        !        !        +-10 +-----Microcystis_aeruginosa_NIES98
+  !        !        !        !  !  
+  !        !        !     +-11  +---Planktothrix_agardhii_CCAP
+  !        !        !     !  !  
+  !        !        !  +-12  +---Oscillatoria_corallinae_CJ1_SAG8.92
+  !        !        !  !  !  
+  !        !        +-29  +---Synechococcus_sp._MW6C6_MW6C6
+  !        !           !  
+  !        !           !  +---------Chlamydophila_psittaci_6BC_ATCC_VR-125_M13mp8_M13mp9
+  !        !           +-26  
+  !        !              +----------Planctomyces_sp._282_282
+  !        !  
+  !        !     +-----Thermus_thermophilus_T
+  !        !  +-17  
+  !        +-23  +-------Chloroflexus_aurantiacus_Y-400-fl
+  !           !  
+  !           +-------Deinococcus_radiodurans_R1
   ! 
-  +-------------Methanococcus_jannaschii
+  +-----------Methanococcus_jannaschii
 
 
 remember: (although rooted by outgroup) this is an unrooted tree!
 
 Between        And            Length
 -------        ---            ------
-   8          Aquifex_aeolicus_VF5_VF5      0.11691
-   8            19            0.03728
-  19            11            0.01315
-  11          Thermotoga_maritima_T      0.10265
-  11          uc_Thermodesulfobacterium_sp._BSpN50      0.09557
-  19            37            0.04071
-  37            39            0.00772
-  39            42            0.00733
-  42            40            0.00488
-  40            35            0.00977
-  35            34            0.00424
-  34            28            0.01927
-  28            27            0.00484
-  27          Bacteroides_fragilis      0.18332
-  27          Chlorobium_limicola_M1      0.13517
-  28          Helicobacter_pylori_T_ATCC_43504      0.12637
-  34            16            0.05208
-  16          Borrelia_burgdorferi_BbMS      0.13553
-  16          Treponema_sp._ovine_footrot      0.12016
-  35            30            0.01331
-  30            26            0.01860
-  26            18            0.02702
-  18             9            0.02921
-   9             4            0.03637
-   4             3            0.00427
-   3          la072.fasta      0.04831
-   3          lcl|S000824899_EF423589_Bacillus_subtilis_subsp._subtilis_F121112     -0.00327
-   4          Bacillus_subtilis_subsp._subtilis_str._168_168      0.00515
-   9             1            0.04789
-   1          la091.fasta     -0.00034
-   1          lcl|S002440750_AB617573_Staphylococcus_epidermidis_T8-19M      0.00034
-  18          Lactobacillus_jensenii_KC13      0.09299
-  26          Clostridium_botulinum_E      0.08762
-  30          Fusobacterium_nucleatum_subsp._nucleatum_ATCC_25586_ATCC_25586      0.16101
-  40            38            0.00633
-  38            36            0.00724
-  36            31            0.01575
-  31            21            0.03209
-  21          Agrobacterium_sanguineum_ATCC_25660      0.07169
-  21          Paracoccus_denitrificans_IAM12479      0.08154
-  31            24            0.02319
-  24            10            0.04564
-  10          Burkholderia_cepacia_DSM_50181      0.06420
-  10          Neisseria_meningitidis_MC58_MC58      0.06731
-  24            20            0.01701
-  20             5            0.04730
-   5          Pseudomonas_aeruginosa_T_DSM50071      0.03306
-   5          Pseudomonas_putida_IAM_1236      0.03220
-  20             2            0.07005
-   2          Escherichia_coli_CFT073_CFT073      0.02221
-   2          Klebsiella_pneumoniae_F-5-2      0.02402
-  36            33            0.00905
-  33          Myxococcus_macrosporus_125-10-1      0.12327
-  33          Leptospirillum_ferrooxidans_49879      0.14820
-  38            32            0.02030
-  32            15            0.04671
-  15            14            0.01465
-  14            13            0.00202
-  13            12            0.00181
-  12             6            0.03262
-   6          Anabaena_circinalis_123      0.02479
-   6          Nostoc_sp._TDI_AR94_TDI_AR94      0.02983
-  12          Planktothrix_agardhii_CCAP      0.06089
-  13          Microcystis_aeruginosa_NIES98      0.09044
-  14          Oscillatoria_corallinae_CJ1_SAG8.92      0.06657
-  15          Synechococcus_sp._MW6C6_MW6C6      0.06572
-  32            25            0.02147
-  25          Chlamydophila_psittaci_6BC_ATCC_VR-125_M13mp8_M13mp9      0.16291
-  25          Planctomyces_sp._282_282      0.18871
-  42            41            0.00457
-  41            23            0.03408
-  23            17            0.02527
-  17             7            0.03207
-   7          Rhodococcus_equi_T_DSM20307T      0.03506
-   7          Mycobacterium_sp._DhA-55      0.04371
-  17          Streptomyces_sp._EF-93_EF-93      0.05952
-  23          Bifidobacterium_breve_ATCC_15700      0.11811
-  41          Fibrobacter_succinogenes_HM2      0.17839
-  39            29            0.01665
-  29            22            0.02195
-  22          Thermus_thermophilus_T      0.11131
-  22          Chloroflexus_aurantiacus_Y-400-fl      0.14129
-  29          Deinococcus_radiodurans_R1      0.13905
-  37          Deferribacter_thermophilus_T_BMA1      0.14290
-   8          Methanococcus_jannaschii      0.22930
+   7          Aquifex_aeolicus_VF5_VF5      0.11622
+   7            16            0.03842
+  16          Thermotoga_maritima_T      0.10120
+  16            18            0.01057
+  18          uc_Thermodesulfobacterium_sp._BSpN50      0.09856
+  18            32            0.03565
+  32            36            0.00867
+  36          Deferribacter_thermophilus_T_BMA1      0.13222
+  36            40            0.00872
+  40            38            0.00319
+  38            34            0.01056
+  34            27            0.01643
+  27            25            0.01080
+  25          Bacteroides_fragilis      0.17305
+  25          Chlorobium_limicola_M1      0.13969
+  27          Helicobacter_pylori_T_ATCC_43504      0.12949
+  34            33            0.00308
+  33            15            0.04573
+  15          Borrelia_burgdorferi_BbMS      0.12656
+  15          Treponema_sp._ovine_footrot      0.11168
+  33            28            0.01259
+  28            24            0.01150
+  24            14            0.03297
+  14             3            0.04505
+   3             2            0.01405
+   2          la219.fasta      0.04203
+   2          lcl|S001588580_FJ763645_Bacillus_pumilus_X22      0.00250
+   3          Bacillus_subtilis_subsp._subtilis_str._168_168      0.02035
+  14          Lactobacillus_jensenii_KC13      0.08728
+  24          Clostridium_botulinum_E      0.09246
+  28          Fusobacterium_nucleatum_subsp._nucleatum_ATCC_25586_ATCC_25586      0.15009
+  38            35            0.01010
+  35            21            0.03286
+  21            13            0.02403
+  13             6            0.03043
+   6          Rhodococcus_equi_T_DSM20307T      0.02868
+   6          Mycobacterium_sp._DhA-55      0.03623
+  13          Streptomyces_sp._EF-93_EF-93      0.05579
+  21          Bifidobacterium_breve_ATCC_15700      0.11068
+  35          Fibrobacter_succinogenes_HM2      0.17271
+  40            39            0.00203
+  39            37            0.00699
+  37            31            0.00953
+  31            30            0.00487
+  30            20            0.03457
+  20          Agrobacterium_sanguineum_ATCC_25660      0.07417
+  20          Paracoccus_denitrificans_IAM12479      0.07802
+  30            22            0.02311
+  22             8            0.04230
+   8          Burkholderia_cepacia_DSM_50181      0.06026
+   8          Neisseria_meningitidis_MC58_MC58      0.06559
+  22            19            0.01501
+  19             5            0.04552
+   5          Pseudomonas_aeruginosa_T_DSM50071      0.03362
+   5          Pseudomonas_putida_IAM_1236      0.02971
+  19             1            0.07546
+   1          Escherichia_coli_CFT073_CFT073      0.02010
+   1          Klebsiella_pneumoniae_F-5-2      0.02061
+  31          Myxococcus_macrosporus_125-10-1      0.11272
+  37          Leptospirillum_ferrooxidans_49879      0.15247
+  39            29            0.02090
+  29            12            0.05001
+  12            11            0.01282
+  11            10            0.00127
+  10             9            0.00073
+   9             4            0.03097
+   4          Anabaena_circinalis_123      0.03022
+   4          Nostoc_sp._TDI_AR94_TDI_AR94      0.03611
+   9          Microcystis_aeruginosa_NIES98      0.08968
+  10          Planktothrix_agardhii_CCAP      0.06264
+  11          Oscillatoria_corallinae_CJ1_SAG8.92      0.06076
+  12          Synechococcus_sp._MW6C6_MW6C6      0.06606
+  29            26            0.01211
+  26          Chlamydophila_psittaci_6BC_ATCC_VR-125_M13mp8_M13mp9      0.15656
+  26          Planctomyces_sp._282_282      0.18377
+  32            23            0.02083
+  23            17            0.02279
+  17          Thermus_thermophilus_T      0.10471
+  17          Chloroflexus_aurantiacus_Y-400-fl      0.13777
+  23          Deinococcus_radiodurans_R1      0.13097
+   7          Methanococcus_jannaschii      0.20831
 
 

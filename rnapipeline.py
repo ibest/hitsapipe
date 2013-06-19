@@ -251,7 +251,7 @@ def module_list(pth,fil,prefs):
                        parallel=prefs["parallel"]
                        )
                 )
-    list.append(Module("blastall_array",
+    list.append(Module("blast_arr",
                        [("BLAST_TEMP_DIR",pth.blasttmp),
                         ("LOG_DIR", pth.logs),
                         ("BLASTALL_OUTPUT_DIR", pth.blastoutput),
@@ -462,25 +462,24 @@ def finish_exec_array(job_name, arr_count, base_id):
     # Loop this action until all processes are completed.
     
     devnull = open('/dev/null', 'w')
-    completed_list = [False]*(arr_count)
-    done = False
+    completed_list = []
+    for i in xrange(arr_count):
+        completed_list.append(i)
+    #done = False
     
     print "Waiting for \""+job_name+"\" to finish before continuing..."
-    time.sleep(2) # This sleep is to prevent a qstat output error from appearing.
-    while(done is False):
+    while completed_list:
         for (index,value) in enumerate(completed_list):
-            cmd = "qstat -f " + str(base_id) + "[" + str(index) + "] | grep \"job_state = C\""
+            cmd = "qstat -f " + str(base_id) + "[" + str(value) + "] | grep \"job_state = C\""
             #print "finish_exec cmd: " + str(cmd) 
-            retval = subprocess.call(cmd, shell=True, stdout=devnull)
-            if retval == 0:
-                completed_list[index] = True
+            process = subprocess.Popen(cmd, shell=True, stdout=devnull, stderr=devnull)
+            out, err = process.communicate()
+            if process.returncode == 0:
+                #print "array["+str(value)+"] completed. removing..."
+                completed_list.remove(value)
+                #print completed_list
             else:
                 time.sleep(10)
-                break
-        for (index,value) in enumerate(completed_list):
-            done = True
-            if completed_list[index] is False:
-                done = False
                 break
     devnull.close()
     

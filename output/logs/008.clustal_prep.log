@@ -1,2 +1,3 @@
 Collating all sequences
 Shortening names to 10 characters
+nameshort cmd: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts/nameshort.pl < /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/clustal > /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/clustal_all

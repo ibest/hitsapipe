@@ -1,16 +1,17 @@
 Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence.
+mpiformatdb cmd: mpiformatdb -N 48 -i /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/good_sequences -p F -o T -l /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/logs/mpiformatdb_direction.log
 Reading input file
-1e+02%Done, read 6 lines
-WARNING: The database contains only 2 sequence entries and can't be broken into 28 fragments.  Some fragments will remain empty
-Reordering 2 sequence entries
-1e+02%Breaking good_sequences into 2 fragments
-Executing: formatdb -p F -l /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/logs/formatdb.log -i /tmp/reorderYt5UeR -N 2 -n /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb/good_sequences -o T 
-Removed /tmp/reorderYt5UeR
-Created 2 fragments.
+1e+02%Done, read 3 lines
+WARNING: The database contains only 1 sequence entries and can't be broken into 48 fragments.  Some fragments will remain empty
+Reordering 1 sequence entries
+1e+02%Breaking good_sequences into 1 fragments
+Executing: formatdb -p F -l /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/logs/mpiformatdb_direction.log -i /tmp/reorderKJwvJI -N 1 -n /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb/good_sequences -o T 
+Removed /tmp/reorderKJwvJI
+Created 1 fragments.
 GOOD_SEQ_SHARED: good_sequences
 
-BLASTing /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/af243169.for against sequences to find direction.
-Total Execution Time: 3.1497
-2 good sequences were found.
+BLASTing /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/af243169.for against good_sequences to find direction.
+Total Execution Time: 5.08923
+1 good sequences were found.
 Pulling match names and placing in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/blast_input
 Splitting up the good sequence file.

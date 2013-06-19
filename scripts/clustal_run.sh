@@ -14,10 +14,9 @@ then
 fi
 
 echo "Running clustalw2"
-#echo -e "\tInput File: \t${CLUSTAL_ALL_FILE}"
-#echo -e "\tOutput File: \t${CLUSTAL_ALIGNMENT_FILE}"
 if [ ${PARALLEL} == "True" ]
 then
+	echo "mpiexec/clustalw-mpi cmd: mpiexec -np ${NNODES} clustalw-mpi -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}""
 	mpiexec -np ${NNODES} clustalw-mpi -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}"
 		RETVAL=$?
 	
@@ -29,6 +28,7 @@ then
 			exit 1
 	fi
 else
+	echo "clustalw2 cmd: clustalw2 -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}""
 	clustalw2 -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}"
 	RETVAL=$?
 	

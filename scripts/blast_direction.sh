@@ -46,7 +46,10 @@ fi
 if [ ${PARALLEL} == "True" ]
 then
 	DBNODES=$((NNODES - 2))
+	DBNAME=$(echo "${GOOD_SEQUENCES_FILE##*/}")
 	echo "Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence."
+	#fastacmd -D 1 -d ${GOOD_SEQUENCES_FILE} | mpiformatdb -N ${DBNODES} -i stdin --skip-reorder -n ${DBNAME} -t ${DBNAME} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
+	echo "mpiformatdb cmd: mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log"
 	mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
 	RETVAL=$?
 	
@@ -60,12 +63,13 @@ then
 else
 	echo "Running formatdb to format the good sequences into a database to blast against with our sample sequence."
 	
-	EXITCODE=$(formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb_direction.log)$?
+	formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb_direction.log
+	RETVAL=$?
 	
-	if [ ${EXITCODE} != 0 ]
+	if [ ${RETVAL} != 0 ]
 		then
 			echo -e "\nERROR: Unknown formatdb error."
-			echo -e "\tformatdb exit code: ${EXITCODE}"
+			echo -e "\tformatdb exit code: ${RETVAL}"
 			touch ${ERROR_FILE}
 			exit 1
 	fi
@@ -80,7 +84,7 @@ then
 	# Make sure there is read/write access to the shared folder and its contents
 	#chmod -R 777 ${MPIBLAST_SHARED}
 	cd ${MPIBLAST_SHARED}
-	echo -e "\nBLASTing ${BLAST_SEQUENCES} against sequences to find direction."
+	echo -e "\nBLASTing ${BLAST_SEQUENCES} against ${GOOD_SEQUENCES_SHARED} to find direction."
 	mpiexec -v -np ${NNODES} mpiblast -p blastn -d ${GOOD_SEQUENCES_SHARED} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000 --removedb
 	RETVAL=$?
 	
@@ -94,12 +98,13 @@ then
 
 else
 	echo -e "\nBLASTing ${BLAST_SEQUENCES} against sequences to find direction."
-	EXITCODE=$(blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000)$?
+	blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000
+	RETVAL=$?
 	
-	if [ ${EXITCODE} != 0 ]
+	if [ ${RETVAL} != 0 ]
 		then
 			echo -e "\nERROR: blastall could not finish."
-			echo -e "\tblastall exit code: ${EXITCODE}"
+			echo -e "\tblastall exit code: ${RETVAL}"
 			touch ${ERROR_FILE}
 			exit 1
 	fi
@@ -117,6 +122,7 @@ ${PERL_DIR}/blastadd.pl ${CUTOFF_LENGTH} < ${STRAND_FILE} > ${STRAND_IN_FILE}
 if [ ! -e ${STRAND_IN_FILE} ]
 then
 	echo "Error: No sequences in the right direction found. Exiting."
+	touch ${ERROR_FILE}
 	exit 1
 fi
 
@@ -125,6 +131,7 @@ NUMSEQS=$(wc ${STRAND_IN_FILE} | awk '{print $1}')
 if [ ! ${NUMSEQS} ] || [ ${NUMSEQS} -eq 0 ]
 then
 	echo "Error: No sequences in the right direction found. Exiting."
+	touch ${ERROR_FILE}
 	exit 1
 else
 	echo "${NUMSEQS} good sequences were found."
@@ -144,12 +151,13 @@ awk '{ print $1 }' ${STRAND_IN_FILE} > ${BLAST_INPUT_FILE}
 # places the new fasta files.
 cd ${BLAST_TEMP_DIR}
 echo "Splitting up the good sequence file."
-EXITCODE=$(${PERL_DIR}/splitgood.pl < ${GOOD_SEQUENCES_FILE})$?
+${PERL_DIR}/splitgood.pl < ${GOOD_SEQUENCES_FILE}
+RETVAL=$?
 
-if [ ${EXITCODE} != 0 ]
+if [ ${RETVAL} != 0 ]
 	then
 		echo -e "\nERROR: Could not split up the good sequence file."
-		echo -e "\tsplitgood.pl exit code: ${EXITCODE}"
+		echo -e "\tsplitgood.pl exit code: ${RETVAL}"
 		touch ${ERROR_FILE}
 		exit 1
 fi

@@ -1,0 +1,25 @@
+Blasting file /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp/la219.fasta.0 against the database /mnt/home/cblair/rdp/species/species
+	Storing the output in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blasts/la219.fasta.blastn
+Total Execution Time: 6.94109
+Error opening /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb//mnt/home/cblair/rdp/species/species.mbf
+open: No such file or directory
+Fatal Error:
+Unable to access fragment list file
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD 
+with errorcode -1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpiexec has exited due to process rank 0 with PID 23954 on
+node n064.fortytwo.ibest.uidaho.edu exiting without calling "finalize". This may
+have caused other processes in the application to be
+terminated by signals sent by mpiexec (as reported here).
+--------------------------------------------------------------------------
+3	20.0308039	Bailing out with signal 15
+	1	0.0311389	Bailing out with signal 150.0302942	Bailing out with signal 15
+
+Blast successful. Removing PBS array file extension.

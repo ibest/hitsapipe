@@ -51,4 +51,5 @@ for FILE in `cat ${HIT_FILE}`
 # programs in a bad way!
 cd ${CLUSTAL_OUTPUT_DIR}
 echo "Shortening names to 10 characters"
+echo "nameshort cmd: ${PERL_DIR}/nameshort.pl < ${CLUSTAL_FILE} > ${CLUSTAL_ALL_FILE}"
 ${PERL_DIR}/nameshort.pl < ${CLUSTAL_FILE} > ${CLUSTAL_ALL_FILE}
