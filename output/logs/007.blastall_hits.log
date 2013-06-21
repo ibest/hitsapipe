@@ -7,7 +7,7 @@ Making hit statistics.
 hit_statistics cmd: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts/hit_statistics.pl /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/output1.xls /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/hit_statistics.xls
 Getting the unique hits:
 
-S001588580	FJ763645 Bacillus pumilus; X22
+S001588580	FJ763645 Bacillus pumilus; X22.
 
 
 Fetching the hit sequences from the database

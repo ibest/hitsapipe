@@ -43,24 +43,24 @@ fi
 # If this is to be run in parallel, call mpiformatdb
 # If not, call formatdb
 
-if [ ${PARALLEL} == "True" ]
-then
-	DBNODES=$((NNODES - 2))
-	DBNAME=$(echo "${GOOD_SEQUENCES_FILE##*/}")
-	echo "Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence."
-	#fastacmd -D 1 -d ${GOOD_SEQUENCES_FILE} | mpiformatdb -N ${DBNODES} -i stdin --skip-reorder -n ${DBNAME} -t ${DBNAME} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
-	echo "mpiformatdb cmd: mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log"
-	mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
-	RETVAL=$?
+# if [ ${PARALLEL} == "True" ]
+# then
+# 	DBNODES=$((NNODES - 2))
+# 	DBNAME=$(echo "${GOOD_SEQUENCES_FILE##*/}")
+# 	echo "Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence."
+# 	#fastacmd -D 1 -d ${GOOD_SEQUENCES_FILE} | mpiformatdb -N ${DBNODES} -i stdin --skip-reorder -n ${DBNAME} -t ${DBNAME} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
+# 	echo "mpiformatdb cmd: mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log"
+# 	mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
+# 	RETVAL=$?
 	
-	if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Unknown mpiformatdb error."
-		echo -e "\tmpiformatdb exit code: ${RETVAL}"
-		touch ${ERROR_FILE}
-		exit 1
-	fi
-else
+# 	if [ ${RETVAL} != 0 ]
+# 	then
+# 		echo -e "\nERROR: Unknown mpiformatdb error."
+# 		echo -e "\tmpiformatdb exit code: ${RETVAL}"
+# 		touch ${ERROR_FILE}
+# 		exit 1
+# 	fi
+# else
 	echo "Running formatdb to format the good sequences into a database to blast against with our sample sequence."
 	
 	formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb_direction.log
@@ -73,30 +73,30 @@ else
 			touch ${ERROR_FILE}
 			exit 1
 	fi
-fi
+#fi
 
-if [ ${PARALLEL} == "True" ]
-then
-	#GOOD_SEQUENCES_SHARED=$(echo "${MPIBLAST_SHARED}/${GOOD_SEQUENCES_FILE##*/}")
-	GOOD_SEQUENCES_SHARED=$(echo "${GOOD_SEQUENCES_FILE##*/}")
-	echo "GOOD_SEQ_SHARED: ${GOOD_SEQUENCES_SHARED}"
+# if [ ${PARALLEL} == "True" ]
+# then
+# 	#GOOD_SEQUENCES_SHARED=$(echo "${MPIBLAST_SHARED}/${GOOD_SEQUENCES_FILE##*/}")
+# 	GOOD_SEQUENCES_SHARED=$(echo "${GOOD_SEQUENCES_FILE##*/}")
+# 	echo "GOOD_SEQ_SHARED: ${GOOD_SEQUENCES_SHARED}"
 
-	# Make sure there is read/write access to the shared folder and its contents
-	#chmod -R 777 ${MPIBLAST_SHARED}
-	cd ${MPIBLAST_SHARED}
-	echo -e "\nBLASTing ${BLAST_SEQUENCES} against ${GOOD_SEQUENCES_SHARED} to find direction."
-	mpiexec -v -np ${NNODES} mpiblast -p blastn -d ${GOOD_SEQUENCES_SHARED} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000 --removedb
-	RETVAL=$?
+# 	# Make sure there is read/write access to the shared folder and its contents
+# 	#chmod -R 777 ${MPIBLAST_SHARED}
+# 	cd ${MPIBLAST_SHARED}
+# 	echo -e "\nBLASTing ${BLAST_SEQUENCES} against ${GOOD_SEQUENCES_SHARED} to find direction."
+# 	mpiexec -v -np ${NNODES} mpiblast -p blastn -d ${GOOD_SEQUENCES_SHARED} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000 --removedb
+# 	RETVAL=$?
 	
-	if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Unknown mpiexec/mpiBLAST error."
-		echo -e "\tmpiexec exit code: ${RETVAL}"
-		touch ${ERROR_FILE}
-		exit 1
-	fi
+# 	if [ ${RETVAL} != 0 ]
+# 	then
+# 		echo -e "\nERROR: Unknown mpiexec/mpiBLAST error."
+# 		echo -e "\tmpiexec exit code: ${RETVAL}"
+# 		touch ${ERROR_FILE}
+# 		exit 1
+# 	fi
 
-else
+#else
 	echo -e "\nBLASTing ${BLAST_SEQUENCES} against sequences to find direction."
 	blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000
 	RETVAL=$?
@@ -108,7 +108,7 @@ else
 			touch ${ERROR_FILE}
 			exit 1
 	fi
-fi
+#fi
 
 
 

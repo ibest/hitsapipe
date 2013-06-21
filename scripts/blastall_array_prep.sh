@@ -36,21 +36,21 @@ do
 	((ITER++))
 done
 
-if [ ${PARALLEL} == "True" ]
-then
-	DBNODES=$((NNODES - 2))
-	DBNAME=$(echo "${DATABASE##*/}")
-	echo "DBNAME: ${DBNAME}"
-	fastacmd -D 1 -d ${DATABASE} | mpiformatdb -N ${DBNODES} -i stdin -t ${DBNAME} -n ${DBNAME} --skip-reorder -p F -l "${LOG_DIR}/mpiformatdb_blastall.log"
-	RETVAL=$?
-	
-	if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: fastacmd/mpiformatdb could not complete."
-		echo -e "\tmpiformatdb exit code: ${RETVAL}"
-		touch ${ERROR_FILE}
-		exit 1
-	fi	
-fi
+#if [ ${PARALLEL} == "True" ]
+#then
+#	DBNODES=$((NNODES - 2))
+#	DBNAME=$(echo "${DATABASE##*/}")
+#	echo "DBNAME: ${DBNAME}"
+#	fastacmd -D 1 -d ${DATABASE} | mpiformatdb -N ${DBNODES} -i stdin -t ${DBNAME} -n ${DBNAME} --skip-reorder -p F -l "${LOG_DIR}/mpiformatdb_blastall.log"
+#	RETVAL=$?
+#	
+#	if [ ${RETVAL} != 0 ]
+#	then
+#		echo -e "\nERROR: fastacmd/mpiformatdb could not complete."
+#		echo -e "\tmpiformatdb exit code: ${RETVAL}"
+#		touch ${ERROR_FILE}
+#		exit 1
+#	fi	
+#fi
 
 echo "${ITER}" > ${ARRAY_OUTPUT_FILE}

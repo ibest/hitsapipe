@@ -1,5 +1,1 @@
 mv la219.fasta la219.fasta.0
-DBNAME: species
-Breaking species into 48 fragments
-Executing: formatdb -t species -p F -l /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/logs/mpiformatdb_blastall.log -i stdin -N 48 -n /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb/species -o T 
-Created 48 fragments.
