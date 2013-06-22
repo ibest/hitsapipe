@@ -528,7 +528,8 @@ def main():
     paths, configs = setup_paths_and_configs(options)
     preferences, notifications = setup_configuration_files(configs.get_non_backup_config_files(), paths)
 
-    files = setup_files(paths, preferences)   
+    files = setup_files(paths, preferences)
+    
     prepare_directory_structure(paths, preferences)
     backup_configuration_file(preferences, notifications, configs.backup_config)
     backup_file(files.ref_strains,files.ref_strains_backup) # RefStrain
