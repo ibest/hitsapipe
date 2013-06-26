@@ -4,7 +4,8 @@ import ConfigParser
 from optparse import OptionParser
 from optparse import OptionGroup
 import os
-
+import shutil
+import subprocess
 class Pipeline:
     '''
     This class will construct a pipeline object
@@ -12,128 +13,333 @@ class Pipeline:
     run() function to execute the script.
     
     '''
-    __fatal_error = False
-    #params = {} # By declaring this global, we can call params.update() from anywhere to add to the parameter list
-    def __init__(self, config_files, cli_options, debug=False):
-        self.params = self.__configure(config_files, cli_options)
-        self.__validate(self.params)
-        if not self.__check_for_fatal():
-            # All of the parameters are valid, so set them.
-            # Explicitly state the static variables to make
-            # passing them easier.
-            self.static = {
-                'database':                 self.params['database'],
-                'input sequences':          self.params['input sequences'],
-                'reference_strains':        self.params['reference strains'],
-                'blast sequences':          self.params['blast sequences'],
-                'suffix':                   self.params['suffix'],
-                'direction':                self.params['direction'],
-                'cutoff length':            self.params['cutoff length'],
-                'max blasts':               self.params['max blasts'],
-                'min sequence length':      self.params['min sequence length'],
-                'nhits':                    self.params['nhits'],
-                'npercent':                 self.params['npercent'],
-                'root':                     self.params['root'],
-                'primer3':                  self.params['primer3'],
-                'primer5':                  self.params['primer5']                 
-            }
-            self.directories = {
-                'work':                     self.params['work_dir'],
-                'scripts':                  self.params['scripts_dir'],
-                'output':                   self.params['output_dir'],
-                'logs':                     self.params['logs_dir'],
-                'backup':                   self.params['backup_dir'],
-                'blast':                    self.params['blast_dir'],
-                'clustal':                  self.params['clustal_dir'],
-                'tree':                     self.params['tree_dir'],
-                'blast_input':              self.params['blast_input_dir'],
-                'blast_temp':               self.params['blast_temp_dir'],
-                'blast_db':                 self.params['blast_db_dir'],
-                'blast_output':             self.params['blast_output_dir']
-            }            
-            
-    def __configure(self, config_files, cli_options):
+    #__fatal_error = False
+    def __init__(self, cli_options):
+        self.__fatal_error = False
+        self.params = {}
+        self.params = self.__configure(cli_options)
+        self.__validate()
+        self.directories = self.__get_directories()
+        self.static_vars = self.__get_static_vars()
+        self.qsub_options = self.__get_qsub_options()
+        self.type = self.static_vars['Execution']
+
+        if self.params['debug']:        
+            print "Directories:"
+            for (k,v) in self.directories.iteritems():
+                print "\t"+str(k)+": "+str(v)
+            print "Static Variables:"
+            for (k,v) in self.static_vars.iteritems():
+                print "\t"+str(k)+": "+str(v)
+                
+        self.__setup_directory_structure()
+    def __backup_configuration(self):
+        backup_list = {
+                       'qsub Options':              self.qsub_options,
+                       'Pipeline Preferences':      self.static_vars
+       }
         parser = ConfigParser.ConfigParser()
-        parser.read(config_files.values())
+        parser.optionxform = str
         
-        if parser.has_section("Pipeline Preferences") == False:
-            self.__set_fatal_error(True)
+        for (section,var) in backup_list.iteritems():
+            parser.add_section(section)
+            for (option, value) in var.iteritems():
+                parser.set(section, option, value)
         
-        params = {
-            'scripts_dir':      cli_options['scripts_dir'],
-            'work_dir':         cli_options['work_dir']
+        filename = os.path.join(self.directories['references'],
+                                'used_preferences.conf')
+        fp = open(filename,"w")
+        parser.write(fp)
+        fp.close()     
+    def __setup_directory_structure(self):
+        # This method removes the 'output' directory if it exists
+        # and then recreates the directory and any subdirectories
+        # that it needs.  Because the directories dictionary isn't
+        # an ordered dictionary (not avail in Python 2.6.6), we can't
+        # loop through the dictionary easily to create the subdirectories.
+        
+        shutil.rmtree(self.directories['output'])
+        
+        os.mkdir(self.directories['output'])
+        
+        # Subdirectories of 'output'
+        os.mkdir(self.directories['logs'])
+        os.mkdir(self.directories['references'])
+        os.mkdir(self.directories['blast'])
+        os.mkdir(self.directories['clustal'])
+        os.mkdir(self.directories['tree'])
+        
+        # Subdirectories of 'blast'
+        os.mkdir(self.directories['blast_input'])
+        os.mkdir(self.directories['blast_temp'])
+        os.mkdir(self.directories['blast_db'])
+        os.mkdir(self.directories['blast_output'])
+    def __get_directories(self):
+        # Return a dictionary of the directories, based on the parameters
+        # that were configured.
+        
+        d = {
+             'work':                    self.params['work_dir'],
+             'scripts':                 self.params['scripts_dir']
         }
-        params['output_dir'] =  os.path.join(cli_options['work_dir'],'output')
-        params['logs_dir'] =  os.path.join(params['output_dir'],'logs')
-        params['backup_dir'] =  os.path.join(params['output_dir'],'references')
-        params['blast_dir'] =  os.path.join(params['output_dir'],'blast')
-        params['clustal_dir'] =  os.path.join(params['output_dir'],'clustal')
-        params['tree_dir'] =  os.path.join(params['output_dir'],'tree')
+        d['output']         =           os.path.join(d['work'],'output')
+        d['logs']           =           os.path.join(d['output'],'logs')
+        d['references']     =           os.path.join(d['output'],'references')
+        d['blast']          =           os.path.join(d['output'],'blast')
+        d['clustal']        =           os.path.join(d['output'],'clustal')
+        d['tree']           =           os.path.join(d['output'],'tree')
         
-        params['blast_input_dir'] =  os.path.join(params['blast_dir'],'input')
-        params['blast_temp_dir'] =  os.path.join(params['blast_dir'],'tmp')
-        params['blast_db_dir'] =  os.path.join(params['blast_dir'],'formatdb')
-        params['blast_output_dir'] =  os.path.join(params['blast_dir'],'blasts')                
+        d['blast_input']    =           os.path.join(d['blast'],'input')
+        d['blast_temp']     =           os.path.join(d['blast'],'tmp')
+        d['blast_db']       =           os.path.join(d['blast'],'formatdb')
+        d['blast_output']   =           os.path.join(d['blast'],'blasts') 
         
+        return d
+    def __get_static_vars(self):
+        # Return a dictionary of the static variables, based on the
+        # parameters that were configured.
+        # If qsub isn't found on the system and the execution was
+        # set to be parallel, then execution is set
+        # to be forced into standalone.
+        s = {
+             'Execution':               self.params['Execution'],
+             'Database':                self.params['Database'],
+             'InputSequences':          self.params['InputSequences'],
+             'ReferenceStrains':        self.params['ReferenceStrains'],
+             'BlastSequences':          self.params['BlastSequences'],
+             'Suffix':                  self.params['Suffix'],
+             'Direction':               self.params['Direction'],
+             'CutoffLength':            self.params['CutoffLength'],
+             'MaxBlasts':               self.params['MaxBlasts'],
+             'MinSequenceLength':       self.params['MinSequenceLength'],
+             'NHits':                   self.params['NHits'],
+             'NPercent':                self.params['NPercent'],
+             'Root':                    self.params['Root'],
+             'Primer3':                 self.params['Primer3'],
+             'Primer5':                 self.params['Primer5'],                          
+        }
         
+        # Make sure qsub exists on the system
+        if s['Execution'] == 'Parallel':
+            does_qsub_exist = subprocess.Popen(["which","qsub"],
+                                               stdout=subprocess.PIPE,
+                                               stdin=subprocess.PIPE,
+                                               stderr=subprocess.PIPE,
+                                               shell=False)
+            does_qsub_exist.communicate() # Don't care about output.
+            if does_qsub_exist.returncode != 0:
+                s['Execution'] = "Forced Standalone"
+                
+        return s
+    def __get_qsub_options(self):
+        # Return a dictionary of the options to be passed to qsub, based
+        # on the parameters that were configured.
+        
+        q = {
+             'Email':                   self.params['Email'],
+             'NotifyOnAbort':           self.params['NotifyOnAbort'],
+             'NotifyOnBegin':           self.params['NotifyOnBegin'],
+             'NotifyOnEnd':             self.params['NotifyOnEnd'],
+             'Queue':                   self.params['Queue'],
+             'Nodes':                   self.params['Nodes']
+        }
+        return q
+    def __configure(self, cli_options):
+        # Given the location of the configuration file(s) and the
+        # options passed in from the command line, set up a
+        # a dictionary, 'p', with the parameters that will be used.
+        # This dictionary will be used to set up all of our
+        # variables that are used throughout the pipeline.
+         
+        options = {
+            'scripts_dir':      cli_options.scripts_dir,
+            'work_dir':         cli_options.work_dir,
+            'debug':            cli_options.debug
+        }
+        
+        default_qsub_options = {
+            "Email":                "None",
+            "NotifyOnAbort":        "True",
+            "NotifyOnBegin":        "True",
+            "NotifyOnEnd":          "True",
+            "Queue":                "tiny",
+            "Nodes":                "50"
+        }
+        default_pipeline_options = {
+            "Execution":            "Standalone",
+            "Database":             "/mnt/home/cblair/rdp/species/species",
+            "InputSequences":       "$work_dir/input/sequences",
+            "ReferenceStrains":     "$work_dir/input/RefStrains",
+            "BlastSequences":       "$work_dir/input/af243169.for",
+            "Suffix":               ".fasta",
+            "Direction":            "Forward",
+            "CutoffLength":         "50",
+            "MaxBlasts":            "50",
+            "MinSequenceLength":    "300",
+            "NHits":                "25",
+            "NPercent":             ".01",
+            "Root":                 "Methanococcus_jannaschii",
+            "Primer3":              "GACTCGGTCC",
+            "Primer5":              "CCTAGTGGAGG"
+        }
+        
+        # Default options
+        options = dict(options.items() + 
+                       default_qsub_options.items() + 
+                       default_pipeline_options.items())
+        parser = ConfigParser.ConfigParser()
+        parser.optionxform = str # Forces case sensitivity
+        parser.read(cli_options.config_file)
+        
+        # Parse the sections and add to parameters
         for sections in parser.sections():
             items = parser.items(sections)
             for (key, value) in items:
-                #print "(key,value) = ("+key+","+value+")"
-                if value.find("$scripts_dir") != -1:
-                    value = os.path.abspath(value.replace("$scripts_dir", params["scripts_dir"])) 
-                if value.find("$work_dir") != -1:
-                    value = os.path.abspath(value.replace("$work_dir", params["work_dir"]))
-                if (str(value)).find("None") != -1:
-                    value = None
-                if (str(value)).find("True") != -1:
-                    value = True
-                elif (str(value)).find("False") != -1:
-                    value = False
-                params[key] = value        
+                options[key] = value  
+                      
+        # Perform keyword substitution
+        for (key, value) in options.iteritems():        
+            if str(value).find("$scripts_dir") != -1:
+                value = os.path.abspath(
+                        value.replace("$scripts_dir", options['scripts_dir'])) 
+            if str(value).find("$work_dir") != -1:
+                value = os.path.abspath(
+                        value.replace("$work_dir", options['work_dir']))
+            if (str(value)).find("None") != -1:
+                value = None
+            if (str(value)).find("True") != -1:
+                value = True
+            elif (str(value)).find("False") != -1:
+                value = False
+            options[key] = value
                 
-        return params 
-    def __validate(self, params):
-        is_valid = set(params).issuperset(self.__required_params())
-        self.__set_fatal_error(not is_valid) # We want a false value if it's valid
-        return is_valid
+        return options
+    def __validate(self):
+        # Simple validation, just checks to see if the parameters that
+        # were given from the configure method contain at least the
+        # required parameters (given as a set by the __required_params()
+        # method. This shouldn't ever fail because the defaults are
+        # hard-coded in.
+        # Also checks that the scripts directory exists
+        is_valid = set(self.params).issuperset(self.__required_params())
+        self.__set_fatal_error(is_fatal=not is_valid,
+                               err_msg="A missing configuration was detected.")
+        is_valid = os.path.exists(self.params['scripts_dir'])
+        self.__set_fatal_error(is_fatal=not is_valid,
+                               err_msg="The scripts directory doesn't exist.")
     def __required_params(self):
         p = set([
-            'database',
-            'input sequences',
-            'reference strains',
-            'blast sequences',
-            'suffix',
-            'direction',
-            'cutoff length',
-            'max blasts',
-            'min sequence length',
-            'nhits',
-            'npercent',
-            'root',
-            'primer 3',
-            'primer 5',
+            'Execution',
+            'Database',
+            'InputSequences',
+            'ReferenceStrains',
+            'BlastSequences',
+            'Suffix',
+            'Direction',
+            'CutoffLength',
+            'MaxBlasts',
+            'MinSequenceLength',
+            'NHits',
+            'NPercent',
+            'Root',
+            'Primer3',
+            'Primer5',
         ])
         return p
     def __check_for_fatal(self):
         return self.__fatal_error
-    def __set_fatal_error(self, to_set):
+    def __set_fatal_error(self, is_fatal, err_msg=""):
         if not self.__check_for_fatal():
-            self.__fatal_error = to_set
+            self.__fatal_error = is_fatal
         if self.__check_for_fatal():
-            print >> sys.stderr, "Fatal error occurred while configuring pipeline. Exiting."
-            
+            print >> sys.stderr, "ERROR: "+err_msg+" Exiting."
+            sys.exit(1)
     def run(self):
         if not self.__check_for_fatal():
             print "Pipeline successfully configured."
-            print "Preparing to execute."
-            
+            print "Preparing to execute."      
+        
+        self.__backup_configuration()
+        
+        self.run_pipeline_prep()
+        
         return 0
     def run_pipeline_prep(self):
-        pass
+        variables = {
+            'REFERENCES_DIR':           self.directories['references']
+        }
+        
+        cmd_options = {
+            'variables':       variables,
+            'script_location': os.path.join(self.directories['scripts'], "pipeline_prep.sh")
+        }
+        
+        cmd = self.__get_command(cmd_options)
+        print "Command start"
+        for item in cmd:
+            print "\t"+str(item)
+        print "Command end"
+        
     def run_fasta_prep(self):
         pass
-
+    def __get_command(self, cmd_options):
+         if self.type != "Parallel":
+             # Execute in standalone
+             var_list = ""
+             for (key,value) in self.static_vars.iteritems():
+                 var_list += str(key).upper()+"=\""+str(value)+"\" "
+             for (key,value) in cmd_options['variables'].iteritems():
+                 var_list += str(key).upper()+"=\""+str(value)+"\" "
+             var_list += "PBS_O_WORKDIR=\""
+             var_list += str(self.directories['output'])+"\" "
+             
+             if cmd_options.has_key('array_id'):
+                 var_list += "PBS_ARRAYID=\""
+                 var_list += str(cmd_options['array_id'])+"\" "    
+             
+             var_list = var_list.rstrip()
+              
+             #cmd = ["("+var_list+"; "+str(cmd_options['script_location'])+")"]
+             cmd = var_list + " " + str(cmd_options['script_location'])
+             return cmd
+             
+         else:
+             # Execute in parallel
+             cmd = ["qsub"]
+             cmd.append("-N")
+             cmd.append(cmd_options['name'])
+             cmd.append("-j")
+             cmd.append("oe")
+             cmd.append("-o")
+             cmd.append(cmd_options['log'])
+             cmd.append("-d")
+             cmd.append(self.directories['output'])
+             cmd.append("-q")
+             cmd.append(self.qsub_options['Queue'])
+             
+             if cmd_options.has_key('parallel'):
+                 cmd.append("-l")
+                 cmd.append("nodes="+str(self.qsub_options['Nodes']))
+             if cmd_options.has_key('array'):
+                 cmd_options['array'] -= 1
+                 cmd.append("-t")
+                 cmd.append("0-"+str(cmd_options['array']))
+             if cmd_options.has_key('previous_id'):
+                 cmd.append("-W depend=afterokarray:"+
+                            str(cmd_options['previous_id']))
+             cmd.append("-v")
+             var_list = ""
+             for (key,value) in self.static_vars.iteritems():
+                 var_list += str(key).upper()+"="+str(value)+","
+             for (key,value) in cmd_options['variables'].iteritems():
+                 var_list += str(key).upper()+"="+str(value)+","
+             var_list = var_list.rstrip(", ")
+             cmd.append(var_list)
+             
+             cmd.append(cmd_options['script_location'])
+             
+             return cmd
+             
 def main():
     # Set up an OptionParser object to make the command line arguments easy.
     # NOTE:  optparse has been deprecated since Python 2.7, but as of May 2013,
@@ -141,10 +347,9 @@ def main():
     #        a newer version of Python is in use.
     parser = OptionParser(usage="%prog [options] \n"
                           "Put a better description of what is required here.")
-    parser.add_option("-p", "--pref", action="store", dest="user_config_file", help="the file where the your preferences are located (not the defaults) [default: %default]")
+    parser.add_option("-p", "--pref", action="store", dest="config_file", help="the file where the your preferences are located (not the defaults) [default: %default]")
     parser.add_option("-w", "--work", action="store", dest="work_dir", help="the working directory where all output will be stored [default: %default]")
     adv_group = OptionGroup(parser, "Advanced Options", "Use these options at your own risk. Changing these options could cause the program to fail.")
-    adv_group.add_option("-c", "--conf", action="store", dest="default_config_file", help="the file where the default preferences are located [default: %default]")
     adv_group.add_option("-s", "--scripts", action="store", dest="scripts_dir", help="the directory where the script directories are located [default: %default]")
     parser.add_option_group(adv_group)
     debug_group = OptionGroup(parser, "Debug Options", "Use this to get additional output about the variables used in each of the modules.")
@@ -154,8 +359,7 @@ def main():
     # Set up the defaults
     parser.set_default("scripts_dir", os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"scripts")))
     parser.set_default("work_dir", os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),".")))
-    parser.set_default("default_config_file", os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"./preferences/defaults/new_default_preferences.conf")))
-    parser.set_default("user_config_file", os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"./preferences/user/new_user_preferences.conf")))
+    parser.set_default("config_file", os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"./preferences/preferences.conf")))
     parser.set_default("debug", False)
     (options, remaining_arguments) = parser.parse_args()
     
@@ -171,17 +375,7 @@ def main():
         error_message += "Please see the usage above and try again."
         parser.error(error_message)
     
-    config_files = {
-        "default_config_file":      options.default_config_file,
-        "user_config_file":         options.user_config_file
-    }
-    cli_options = {
-        "scripts_dir":              options.scripts_dir,
-        "work_dir":                 options.work_dir
-    }
-    debug = options.debug 
-    
-    pipeline = Pipeline(config_files, cli_options, debug)
+    pipeline = Pipeline(options)
     sys.exit(pipeline.run())
     
 if __name__ == '__main__':

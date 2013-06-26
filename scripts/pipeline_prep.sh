@@ -1,4 +1,6 @@
 #!/bin/bash
 #####
 # Requires:
-#	OUTPUT_DIR
+#	REFSTRAINS_FILE: 				RefStrains File
+#	BLAST
+#	References directory
