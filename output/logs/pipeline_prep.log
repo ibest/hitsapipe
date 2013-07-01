@@ -1,0 +1,3 @@
+Copying the reference strains and blast sequences to backup directory.
+cp /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/RefStrains /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/references/
+cp /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/af243169.for /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/references/
