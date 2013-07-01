@@ -80,7 +80,7 @@ class Pipeline:
                                              "pipeline_prep.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_fasta_prep(self, id=None, options=None):
         variables = {
             'Input_Sequences_List':         os.path.join(
@@ -100,7 +100,7 @@ class Pipeline:
                                                 "fasta_files_prep.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_get_good_seqs(self, id=None, options=None):
         variables = {
 #            'Good_Sequences_File':              os.path.join(
@@ -123,7 +123,7 @@ class Pipeline:
                                                 "get_good_sequences.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_blast_dir(self, id=None, options=None):
         variables = {
             'Direction_Blast_File':         os.path.join(
@@ -144,7 +144,7 @@ class Pipeline:
                                                 "blast_direction.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_blast_arr_prep(self, id=None, options=None):
         if self.type != "Parallel":
             return id # Or return None
@@ -161,7 +161,7 @@ class Pipeline:
                                                 "blastall_array_prep.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_blast_arr(self, id=None, options=None):
         # No local variables to pass
         variables = {}
@@ -177,7 +177,7 @@ class Pipeline:
                                                 "blastall_array.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_blast_arr_check(self, id=None, options=None):
         # No local variables to pass
         variables = {}
@@ -191,7 +191,7 @@ class Pipeline:
                                                 "blastall_array_check.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_blastall_hits(self, id=None, options=None):
         variables = {
             'Blast_Out_5_File':     os.path.join(self.directories['blast'],
@@ -209,7 +209,7 @@ class Pipeline:
                                                 "blastall_hits.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_clustal_prep(self, id=None, options=None):
         variables = {
             'Clustal_File':         os.path.join(self.directories['clustal'],
@@ -225,7 +225,7 @@ class Pipeline:
                                                 "clustal_prep.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_clustal(self, id=None, options=None):
         # No local variables to pass
         variables = {}
@@ -240,7 +240,7 @@ class Pipeline:
                                                 "clustal_run.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_clustal_check(self, id=None, options=None):
         # No local variables to pass
         variables = {}
@@ -254,7 +254,7 @@ class Pipeline:
                                                 "clustal_check.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_alignment(self, id=None, options=None):
         variables = {}
         cmd_options = {
@@ -267,7 +267,7 @@ class Pipeline:
                                                 "alignment.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_dist_matrix(self, id=None, options=None):
         variables = {
             'DNADist_Script':       os.path.join(self.directories['scripts'],
@@ -285,7 +285,7 @@ class Pipeline:
                                                 "distance_matrix.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_neighbor(self, id=None, options=None):
         # No local variables to pass
         variables = {}
@@ -299,7 +299,7 @@ class Pipeline:
                                                 "neighbor_run.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def run_finalize(self, id=None, options=None):
         variables = {
             'Final_Log':            os.path.join(self.directories['output'],
@@ -315,7 +315,7 @@ class Pipeline:
                                                 "final_cleanup.sh")
         }
         cmd = self.__get_command(cmd_options)
-        return self.execute_job(cmd, cmd_options)
+        return self.execute_job(cmd_options)
     def execute_job_array_prep(self, job_name, hold_filepath, error_filepath):
         arr_count = -1
         if self.type == "Parallel":
@@ -339,30 +339,40 @@ class Pipeline:
     
         return int(arr_count)  
     def execute_job_array_check(self, job_name, array_count, base_id):
+        # This is not the best way to check the status of the job array
+        # because if any of the jobs leave qstat's scope before it is
+        # checked, this will cause a world of hurt.
         if self.type == "Parallel":
+            array_count += 1 # xrange is exclusive
             devnull = open('/dev/null', 'w')
             completed_list = []
             for i in xrange(array_count):
                 completed_list.append(i)
             
+            if self.params['debug']:
+                print "Number of jobs in list: "+str(array_count)
+                print "Printing completed_list[]:"
+                print "\t"+str(completed_list)+"\n"
+            
             print "Waiting for \""+job_name+"\" to finish before continuing..."
             while completed_list:
                 for (index,value) in enumerate(completed_list):
                     cmd = "qstat -f " + str(base_id) + "[" + str(value) + "] | grep \"job_state = C\""
-                    #print "finish_exec cmd: " + str(cmd) 
+                    #if self.params['debug']:
+                     #   print "finish_exec cmd: " + str(cmd) 
                     process = subprocess.Popen(cmd, shell=True, stdout=devnull, stderr=devnull)
                     out, err = process.communicate()
                     if process.returncode == 0:
-                        #print "array["+str(value)+"] completed. removing..."
+                        if self.params['debug']:
+                            print "array["+str(value)+"] completed. removing..."
                         completed_list.remove(value)
-                        #print completed_list
                     else:
                         time.sleep(10)
                         break
             devnull.close()
         return True
 
-    def execute_job(self, cmd, options=None):
+    def execute_job(self, options):
         # Calls subprocess.Popen to execute the command.
         # If in standalone mode, it directly outputs stdout
         # to the screen.  If running in parallel mode, it suppresses
@@ -379,16 +389,23 @@ class Pipeline:
                             "and will not be executed until the previous job "\
                             "is complete."
                     print msg
-                arr_count = self.execute_job_array_prep(options['name'], 
+                options['arr_count'] = self.execute_job_array_prep(
+                                        options['name'], 
                                         self.static_vars['Array_Output_File'], 
                                         self.static_vars['Error_File'])
+                # We know the job is complete and so we don't want to have
+                # a job dependency.
+                options['previous_id'] = None
                 if self.params['verbose'] or self.params['debug']:
-                    print "Number of array items in job: "+str(arr_count)
+                    msg = "Number of array items in job: "\
+                            +str(options['arr_count'])
+                    print msg
         else:
                 # Set the number of times to loop.
                 pass
         
-        if self.params['debug']:
+        cmd = self.__get_command(options)
+        if self.params['debug'] and options.has_key('arr_count'): # Only want to see this right now on array jobs.
             print "=====================Executing====================="
             print cmd
             print "==================================================="
@@ -401,15 +418,17 @@ class Pipeline:
             if out is not None:
                 print str(out)
         else:
-            id = re.split('[\.]{1}',out)[0]
+            id = re.split('[[\.]{1}',out)[0]
             if self.params['verbose'] or self.params['debug']:
                 print options['name'] + " submitted. ID: "+str(id)
-            if options.has_key('array') and arr_count >= 0:
+            if options.has_key('arr_count') and options['arr_count'] >= 0:
                 msg = "Waiting for the array job \""+str(options['name'])\
-                        +"\" to finish before continuing ("+str(arr_count)\
-                        +" jobs in array)."
+                        +"\" to finish before continuing ("\
+                        +str(options['arr_count'])+" jobs in array)."
                 print msg
-                self.execute_job_array_check(options['name'], arr_count, id)
+                self.execute_job_array_check(options['name'], 
+                                             options['arr_count'], 
+                                             id)
                 id = None # We don't want the next job to have a dependency
                                 
         return id
@@ -704,9 +723,9 @@ class Pipeline:
              
              if cmd_options.has_key('parallel'):
                  cmd += "-l nodes="+str(self.qsub_options['Nodes'])+" "
-             if cmd_options.has_key('array'):
-                 cmd_options['array'] -= 1
-                 cmd += "-t 0-"+str(cmd_options['array'])+" "
+             if cmd_options.has_key('arr_count'):
+                 cmd_options['arr_count'] -= 1
+                 cmd += "-t 0-"+str(cmd_options['arr_count'])+" "
              if cmd_options.has_key('previous_id'):
                  if cmd_options['previous_id'] is not None:
                      cmd += "-W depend=afterok:"

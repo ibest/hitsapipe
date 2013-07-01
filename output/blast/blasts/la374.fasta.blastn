@@ -1,0 +1,1412 @@
+BLASTN 2.2.15 [Oct-15-2006]
+
+Reference: 
+Aaron E. Darling, Lucas Carey, and Wu-chun Feng,
+"The design, implementation, and evaluation of mpiBLAST".
+In Proceedings of 4th International Conference on Linux Clusters: The HPC Revolution 2003, 
+June 24-26 2003, San Jose, CA
+
+Heshan Lin, Xiaosong Ma, Praveen Chandramohan, Al Geist, and Nagiza Samatova,
+"Efficient Data Access for Parallel BLAST".
+In Proceedings of 19th International Parallel & Distributed Processing Symposium 2005, 
+April 3-8 2005, Denver, CO
+
+Query= la374.fasta
+         (1382 letters)
+
+Database: species 
+           127,888 sequences; 184,271,921 total letters
+
+
+
+                                                                 Score    E
+Sequences producing significant alignments:                      (bits) Value
+
+S000995960 EU379307 Staphylococcus hominis subsp. hominis; 6R-J-7c.   737   0.0  
+S002233924 HQ141278 Staphylococcus sp. DAKA65.                        729   0.0  
+S001574870 FJ976576 bacterium BQN2Ps-LCR67.                           726   0.0  
+S000926546 EU071621 Staphylococcus hominis subsp. hominis; EHFS1...   724   0.0  
+S002235013 HQ246244 Staphylococcus sp. 6A18S5.                        724   0.0  
+S000926550 EU071625 Staphylococcus hominis subsp. hominis; EHFS2...   724   0.0  
+S000926544 EU071619 Staphylococcus hominis subsp. hominis; EHFS1...   724   0.0  
+S000926548 EU071623 Staphylococcus hominis subsp. hominis; EHFS2...   722   0.0  
+S000926549 EU071624 Staphylococcus hominis subsp. hominis; EHFS2...   722   0.0  
+S001417224 FJ768458 Staphylococcus hominis subsp. hominis; GPL6.      720   0.0  
+S001263946 FJ380976 bacterium BQN2N-01d.                              720   0.0  
+S000415358 AB177642 Staphylococcus sp. H292.                          720   0.0  
+S001263948 FJ380978 bacterium BQN2Ps-04d.                             720   0.0  
+S002221841 EU807748 Staphylococcus sp. VITG-7.                        720   0.0  
+S000434635 AY030318 Staphylococcus hominis subsp. hominis; JPL-5.     720   0.0  
+S002351843 HQ323413 Staphylococcus sp. A1(2011).                      720   0.0  
+S001418804 FN393799 Staphylococcus hominis subsp. hominis; ES-20...   720   0.0  
+S002411377 HQ908730 Staphylococcus hominis subsp. hominis; F71020.    720   0.0  
+S000995963 EU379310 Lysinibacillus sphaericus; 7N-3A.                 720   0.0  
+S001418809 FN393804 Staphylococcus hominis subsp. hominis; ES-30...   720   0.0  
+S001096298 EU520332 bacterium SE1.                                    720   0.0  
+S000003975 X86636 Staphylococcus sp.; 1F-09.                          720   0.0  
+S001418803 FN393798 Staphylococcus hominis subsp. hominis; ES-134.    720   0.0  
+S001350599 EU337115 Staphylococcus hominis subsp. hominis; 3A5.       720   0.0  
+S000607914 AM084016 Staphylococcus sp. R-25050.                       720   0.0  
+
+>S000995960 EU379307 Staphylococcus hominis subsp. hominis; 6R-J-7c.
+          Length = 1434
+
+ Score =  737 bits (372), Expect = 0.0
+ Identities = 372/372 (100%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 24  gcagtcgagcgacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaa 83
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1   gcagtcgagcgacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaa 60
+
+                                                                       
+Query: 84  cacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgga 143
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 61  cacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgga 120
+
+                                                                       
+Query: 144 taatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgg 203
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 121 taatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgg 180
+
+                                                                       
+Query: 204 acctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagcc 263
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 181 acctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagcc 240
+
+                                                                       
+Query: 264 gacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggagg 323
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 241 gacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggagg 300
+
+                                                                       
+Query: 324 cagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtga 383
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 301 cagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtga 360
+
+                       
+Query: 384 tgaaggtcttcg 395
+           ||||||||||||
+Sbjct: 361 tgaaggtcttcg 372
+
+
+>S002233924 HQ141278 Staphylococcus sp. DAKA65.
+          Length = 1320
+
+ Score =  729 bits (368), Expect = 0.0
+ Identities = 378/380 (99%), Gaps = 1/380 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 17  ctatactgcagtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgg 75
+           ||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||
+Sbjct: 2   ctatactgcagtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgg 61
+
+                                                                       
+Query: 76  gtgagtaacacgtaggtaacctacctataagactgggataacttcgggaaaccggagcta 135
+           ||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 62  gtgagtaacacgtgggtaacctacctataagactgggataacttcgggaaaccggagcta 121
+
+                                                                       
+Query: 136 ataccggataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcactt 195
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 122 ataccggataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcactt 181
+
+                                                                       
+Query: 196 atagatggacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgat 255
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 182 atagatggacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgat 241
+
+                                                                       
+Query: 256 acgtagccgacctgagagggtgatcggccacactggaactgagacacggtccagactcct 315
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 242 acgtagccgacctgagagggtgatcggccacactggaactgagacacggtccagactcct 301
+
+                                                                       
+Query: 316 acgggaggcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgc 375
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 302 acgggaggcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgc 361
+
+                               
+Query: 376 gtgagtgatgaaggtcttcg 395
+           ||||||||||||||||||||
+Sbjct: 362 gtgagtgatgaaggtcttcg 381
+
+
+>S001574870 FJ976576 bacterium BQN2Ps-LCR67.
+          Length = 1383
+
+ Score =  726 bits (366), Expect = 0.0
+ Identities = 373/374 (99%), Gaps = 1/374 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 23  tgcagtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagt 81
+           ||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 9   tgcagtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagt 68
+
+                                                                       
+Query: 82  aacacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccg 141
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 69  aacacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccg 128
+
+                                                                       
+Query: 142 gataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagat 201
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 129 gataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagat 188
+
+                                                                       
+Query: 202 ggacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtag 261
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 189 ggacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtag 248
+
+                                                                       
+Query: 262 ccgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacggga 321
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 249 ccgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacggga 308
+
+                                                                       
+Query: 322 ggcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagt 381
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 309 ggcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagt 368
+
+                         
+Query: 382 gatgaaggtcttcg 395
+           ||||||||||||||
+Sbjct: 369 gatgaaggtcttcg 382
+
+
+>S000926546 EU071621 Staphylococcus hominis subsp. hominis; EHFS1_S08Ha.
+          Length = 1419
+
+ Score =  724 bits (365), Expect = 0.0
+ Identities = 372/373 (99%), Gaps = 1/373 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 24  gcagtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagta 82
+           |||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1   gcagtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagta 60
+
+                                                                       
+Query: 83  acacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgg 142
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 61  acacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgg 120
+
+                                                                       
+Query: 143 ataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatg 202
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 121 ataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatg 180
+
+                                                                       
+Query: 203 gacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagc 262
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 181 gacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagc 240
+
+                                                                       
+Query: 263 cgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggag 322
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 241 cgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggag 300
+
+                                                                       
+Query: 323 gcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtg 382
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 301 gcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtg 360
+
+                        
+Query: 383 atgaaggtcttcg 395
+           |||||||||||||
+Sbjct: 361 atgaaggtcttcg 373
+
+
+>S002235013 HQ246244 Staphylococcus sp. 6A18S5.
+          Length = 1395
+
+ Score =  724 bits (365), Expect = 0.0
+ Identities = 372/373 (99%), Gaps = 1/373 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 24  gcagtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagta 82
+           |||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1   gcagtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagta 60
+
+                                                                       
+Query: 83  acacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgg 142
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 61  acacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgg 120
+
+                                                                       
+Query: 143 ataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatg 202
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 121 ataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatg 180
+
+                                                                       
+Query: 203 gacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagc 262
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 181 gacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagc 240
+
+                                                                       
+Query: 263 cgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggag 322
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 241 cgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggag 300
+
+                                                                       
+Query: 323 gcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtg 382
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 301 gcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtg 360
+
+                        
+Query: 383 atgaaggtcttcg 395
+           |||||||||||||
+Sbjct: 361 atgaaggtcttcg 373
+
+
+>S000926550 EU071625 Staphylococcus hominis subsp. hominis; EHFS2_AC2Hb.
+          Length = 1414
+
+ Score =  724 bits (365), Expect = 0.0
+ Identities = 372/373 (99%), Gaps = 1/373 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 24  gcagtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagta 82
+           |||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1   gcagtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagta 60
+
+                                                                       
+Query: 83  acacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgg 142
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 61  acacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgg 120
+
+                                                                       
+Query: 143 ataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatg 202
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 121 ataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatg 180
+
+                                                                       
+Query: 203 gacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagc 262
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 181 gacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagc 240
+
+                                                                       
+Query: 263 cgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggag 322
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 241 cgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggag 300
+
+                                                                       
+Query: 323 gcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtg 382
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 301 gcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtg 360
+
+                        
+Query: 383 atgaaggtcttcg 395
+           |||||||||||||
+Sbjct: 361 atgaaggtcttcg 373
+
+
+>S000926544 EU071619 Staphylococcus hominis subsp. hominis; EHFS1_S04Hc.
+          Length = 1412
+
+ Score =  724 bits (365), Expect = 0.0
+ Identities = 372/373 (99%), Gaps = 1/373 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 24  gcagtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagta 82
+           |||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1   gcagtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagta 60
+
+                                                                       
+Query: 83  acacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgg 142
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 61  acacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgg 120
+
+                                                                       
+Query: 143 ataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatg 202
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 121 ataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatg 180
+
+                                                                       
+Query: 203 gacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagc 262
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 181 gacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagc 240
+
+                                                                       
+Query: 263 cgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggag 322
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 241 cgacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggag 300
+
+                                                                       
+Query: 323 gcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtg 382
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 301 gcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtg 360
+
+                        
+Query: 383 atgaaggtcttcg 395
+           |||||||||||||
+Sbjct: 361 atgaaggtcttcg 373
+
+
+>S000926548 EU071623 Staphylococcus hominis subsp. hominis; EHFS2_AU1Hd.
+          Length = 1425
+
+ Score =  722 bits (364), Expect = 0.0
+ Identities = 371/372 (99%), Gaps = 1/372 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 25  cagtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaa 83
+           ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1   cagtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaa 60
+
+                                                                       
+Query: 84  cacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgga 143
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 61  cacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgga 120
+
+                                                                       
+Query: 144 taatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgg 203
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 121 taatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgg 180
+
+                                                                       
+Query: 204 acctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagcc 263
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 181 acctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagcc 240
+
+                                                                       
+Query: 264 gacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggagg 323
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 241 gacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggagg 300
+
+                                                                       
+Query: 324 cagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtga 383
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 301 cagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtga 360
+
+                       
+Query: 384 tgaaggtcttcg 395
+           ||||||||||||
+Sbjct: 361 tgaaggtcttcg 372
+
+
+>S000926549 EU071624 Staphylococcus hominis subsp. hominis; EHFS2_AU1He.
+          Length = 1419
+
+ Score =  722 bits (364), Expect = 0.0
+ Identities = 371/372 (99%), Gaps = 1/372 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 25  cagtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaa 83
+           ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1   cagtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaa 60
+
+                                                                       
+Query: 84  cacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgga 143
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 61  cacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccgga 120
+
+                                                                       
+Query: 144 taatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgg 203
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 121 taatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgg 180
+
+                                                                       
+Query: 204 acctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagcc 263
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 181 acctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagcc 240
+
+                                                                       
+Query: 264 gacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggagg 323
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 241 gacctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggagg 300
+
+                                                                       
+Query: 324 cagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtga 383
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 301 cagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtga 360
+
+                       
+Query: 384 tgaaggtcttcg 395
+           ||||||||||||
+Sbjct: 361 tgaaggtcttcg 372
+
+
+>S001417224 FJ768458 Staphylococcus hominis subsp. hominis; GPL6.
+          Length = 1515
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 53  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 112
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 113 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 172
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 173 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 232
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 233 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 292
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 293 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 352
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 353 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 412
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 413 gaaggtcttcg 423
+
+
+>S001263946 FJ380976 bacterium BQN2N-01d.
+          Length = 1428
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 9   agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 68
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 69  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 128
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 129 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 188
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 189 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 248
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 249 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 308
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 309 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 368
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 369 gaaggtcttcg 379
+
+
+>S000415358 AB177642 Staphylococcus sp. H292.
+          Length = 1542
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 52  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 111
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 112 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 171
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 172 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 231
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 232 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 291
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 292 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 351
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 352 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 411
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 412 gaaggtcttcg 422
+
+
+>S001263948 FJ380978 bacterium BQN2Ps-04d.
+          Length = 1437
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 17  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 76
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 77  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 136
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 137 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 196
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 197 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 256
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 257 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 316
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 317 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 376
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 377 gaaggtcttcg 387
+
+
+>S002221841 EU807748 Staphylococcus sp. VITG-7.
+          Length = 1450
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 23  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 82
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 83  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 142
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 143 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 202
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 203 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 262
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 263 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 322
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 323 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 382
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 383 gaaggtcttcg 393
+
+
+>S000434635 AY030318 Staphylococcus hominis subsp. hominis; JPL-5.
+          Length = 1475
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 37  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 96
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 97  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 156
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 157 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 216
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 217 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 276
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 277 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 336
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 337 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 396
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 397 gaaggtcttcg 407
+
+
+>S002351843 HQ323413 Staphylococcus sp. A1(2011).
+          Length = 1516
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 53  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 112
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 113 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 172
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 173 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 232
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 233 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 292
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 293 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 352
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 353 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 412
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 413 gaaggtcttcg 423
+
+
+>S001418804 FN393799 Staphylococcus hominis subsp. hominis; ES-209-2.
+          Length = 1387
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 47  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 106
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 107 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 166
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 167 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 226
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 227 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 286
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 287 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 346
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 347 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 406
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 407 gaaggtcttcg 417
+
+
+>S002411377 HQ908730 Staphylococcus hominis subsp. hominis; F71020.
+          Length = 1472
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 375/379 (98%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 17  ctatactgcagtcgagcgacagacgaggagcttgctcctttgacgttagcggcggacggg 76
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 11  ctatactgcagtcgagcgacagacgaggagcttgctcctttgacgttagcggcggacggg 70
+
+                                                                       
+Query: 77  tgagtaacacgtaggtaacctacctataagactgggataacttcgggaaaccggagctaa 136
+           |||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 71  tgagtaacacgtgggtaacctacctataagactgggataacttcgggaaaccggagctaa 130
+
+                                                                       
+Query: 137 taccggataatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcactta 196
+           ||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||
+Sbjct: 131 taccggataatatttcgaaccgcatggttcgatagtgaaagatggctctgctatcactta 190
+
+                                                                       
+Query: 197 tagatggacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgata 256
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 191 tagatggacctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgata 250
+
+                                                                       
+Query: 257 cgtagccgacctgagagggtgatcggccacactggaactgagacacggtccagactccta 316
+           |||||||||||||||||||||||||||||||||||||||||||||||||||| |||| ||
+Sbjct: 251 cgtagccgacctgagagggtgatcggccacactggaactgagacacggtccaaactcata 310
+
+                                                                       
+Query: 317 cgggaggcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcg 376
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 311 cgggaggcagcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcg 370
+
+                              
+Query: 377 tgagtgatgaaggtcttcg 395
+           |||||||||||||||||||
+Sbjct: 371 tgagtgatgaaggtcttcg 389
+
+
+>S000995963 EU379310 Lysinibacillus sphaericus; 7N-3A.
+          Length = 1442
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcg-acagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 4   agtcgagcgnacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 63
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 64  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 123
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 124 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 183
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 184 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 243
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 244 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 303
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 304 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 363
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 364 gaaggtcttcg 374
+
+
+>S001418809 FN393804 Staphylococcus hominis subsp. hominis; ES-305-3.
+          Length = 1391
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 48  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 107
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 108 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 167
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 168 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 227
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 228 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 287
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 288 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 347
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 348 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 407
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 408 gaaggtcttcg 418
+
+
+>S001096298 EU520332 bacterium SE1.
+          Length = 1448
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 23  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 82
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 83  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 142
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 143 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 202
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 203 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 262
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 263 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 322
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 323 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 382
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 383 gaaggtcttcg 393
+
+
+>S000003975 X86636 Staphylococcus sp.; 1F-09.
+          Length = 1466
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 51  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 110
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 111 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 170
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 171 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 230
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 231 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 290
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 291 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 350
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 351 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 410
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 411 gaaggtcttcg 421
+
+
+>S001418803 FN393798 Staphylococcus hominis subsp. hominis; ES-134.
+          Length = 1386
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 47  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 106
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 107 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 166
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 167 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 226
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 227 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 286
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 287 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 346
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 347 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 406
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 407 gaaggtcttcg 417
+
+
+>S001350599 EU337115 Staphylococcus hominis subsp. hominis; 3A5.
+          Length = 1532
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 62  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 121
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 122 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 181
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 182 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 241
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 242 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 301
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 302 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 361
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 362 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 421
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 422 gaaggtcttcg 432
+
+
+>S000607914 AM084016 Staphylococcus sp. R-25050.
+          Length = 1532
+
+ Score =  720 bits (363), Expect = 0.0
+ Identities = 370/371 (99%), Gaps = 1/371 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 26  agtcgagcga-cagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 84
+           |||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 48  agtcgagcgaacagacgaggagcttgctcctttgacgttagcggcggacgggtgagtaac 107
+
+                                                                       
+Query: 85  acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 144
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 108 acgtaggtaacctacctataagactgggataacttcgggaaaccggagctaataccggat 167
+
+                                                                       
+Query: 145 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 204
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 168 aatatttcgaaccgcatggttcgatagtgaaagatggctttgctatcacttatagatgga 227
+
+                                                                       
+Query: 205 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 264
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 228 cctgcgccgtattagctagttggtaaggtaacggcttaccaaggcaacgatacgtagccg 287
+
+                                                                       
+Query: 265 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 324
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 288 acctgagagggtgatcggccacactggaactgagacacggtccagactcctacgggaggc 347
+
+                                                                       
+Query: 325 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 384
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 348 agcagtagggaatcttccgcaatgggcgaaagcctgacggagcaacgccgcgtgagtgat 407
+
+                      
+Query: 385 gaaggtcttcg 395
+           |||||||||||
+Sbjct: 408 gaaggtcttcg 418
+
+
+  Database: species
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,432
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.001
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,059
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.002
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,889
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.003
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,060
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.004
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,433
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.005
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,529
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.006
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,020
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.007
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,409
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.008
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,141
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.009
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,300
+  Number of sequences in database:  2668
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.010
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,315
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.011
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,161
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.012
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,882
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.013
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,873
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.014
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,709
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.015
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,095
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.016
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,466
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.017
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,869
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.018
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,506
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.019
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,954
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.020
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,447
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.021
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,046
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.022
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,435
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.023
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,076
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.024
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,039
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.025
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,781
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.026
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,993
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.027
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,807
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.028
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,879
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.029
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,410
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.030
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,454
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.031
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,095
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.032
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,892
+  Number of sequences in database:  2669
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.033
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,099
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.034
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,473
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.035
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,988
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.036
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,880
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.037
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,882
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.038
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,134
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.039
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,010
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.040
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,515
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.041
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,044
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.042
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,790
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.043
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,561
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.044
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,168
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.045
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,835
+  Number of sequences in database:  2668
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.046
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,916
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.047
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,170
+  Number of sequences in database:  2663
+  

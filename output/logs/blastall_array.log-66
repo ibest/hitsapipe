@@ -1,0 +1,11 @@
+### DEBUG OUTPUT START ###
+	BLAST_TEMP_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp
+	BLASTALL_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blasts
+	DATABASE: /mnt/home/cblair/rdp/species/species
+	NHITS: 25
+	ARRAY_ID: 66
+### DEBUG OUTPUT END ###
+Blasting file /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp/la223b.fasta.66 against the database /mnt/home/cblair/rdp/species/species
+	Storing the output in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blasts/la223b.fasta.blastn
+Total Execution Time: 3.69266
+Blast successful. Removing PBS array file extension.

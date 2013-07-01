@@ -1,0 +1,129 @@
+### DEBUG OUTPUT START ###
+	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
+	BLASTALL_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blasts
+	HIT_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal
+	DATABASE: /mnt/home/cblair/rdp/species/species
+	BLAST_OUT_5_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blastout5
+	HIT_SEQS_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/hitseqs
+	HIT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/hitfiles
+### DEBUG OUTPUT END ###
+Concatenating the blast file
+Parsing blast results
+blastparser cmd: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts/blastparser.pl /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blastout5 > /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/output5.xls
+blastcull cmd: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts/blastcull.pl < /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/output5.xls > /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/output1.xls
+Making hit spreadsheets.
+Making hit statistics.
+hit_statistics cmd: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts/hit_statistics.pl /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/output1.xls /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/hit_statistics.xls
+Getting the unique hits:
+
+S000381982	AB009935 Staphylococcus caprae (T); ATCC 35538T.
+S000413963	D83362 Staphylococcus epidermidis; ATCC 146 (= MAFF 911486).
+S000541936	AB012593 bacterium IFO 15702.
+S000572042	AY358005 Methylobacterium sp. iRIV1.
+S000652934	AM237392 Micrococcus luteus; OS-159.
+S000712428	DQ659146 Bacillus subtilis subsp. subtilis; GR011.
+S000824812	EF420247 Bacillus subtilis subsp. subtilis; B6-1.
+S000824899	EF423589 Bacillus subtilis subsp. subtilis; F121112.
+S000843137	EF459528 Agrococcus citreus; KFC-31.
+S000891119	AB301022 Bacillus amyloliquefaciens; GH48.
+S000965816	EF530208 Bacillus subtilis subsp. subtilis; FS321.
+S000995939	EU379286 Micrococcus luteus; 4RS-9a.
+S000995954	EU379301 Staphylococcus haemolyticus; 6J-8.
+S000995960	EU379307 Staphylococcus hominis subsp. hominis; 6R-J-7c.
+S001044865	EU660368 Bacillus nealsonii; CT18.
+S001046228	EU730941 Micrococcus luteus; 164.
+S001094158	AM990664 Staphylococcus sp. MOLA 387.
+S001096636	EU554434 Staphylococcus sp. Ag08.
+S001097911	EU594552 Bacillus pumilus; 2-1.
+S001170031	FJ006860 Terribacillus sp. WPCB002.
+S001241154	FJ263018 Bacillus subtilis subsp. subtilis; ZHA9.
+S001241195	FJ386541 Bacillus vallismortis; ST47.
+S001265081	FJ554672 Bacillus sp. P308.
+S001574844	FJ976550 Bacillus megaterium; LCR41.
+S001574870	FJ976576 bacterium BQN2Ps-LCR67.
+S001574910	FJ976616 Bacillus megaterium; LCR107.
+S001575619	GQ199588 Bacillus amyloliquefaciens; DL-3-4-1.
+S001575814	GQ203617 Bacillus pumilus; KS-2.
+S001577291	GQ303255 Bacillus subtilis subsp. subtilis; ME-N11.
+S001588580	FJ763645 Bacillus pumilus; X22.
+S001612821	GQ861458 Bacillus subtilis subsp. subtilis; LQB23.
+S001746436	GU143673 Micrococcaceae bacterium FXY35.
+S001793428	EU867328 Macrococcus sp. CCGE2291.
+S001873871	GU292815 Bacillus sp. hdly01.
+S001874781	GU339273 Bacillus pumilus; EH45.
+S002038968	AB550660 Pseudomonas sp. NCCP-143.
+S002166927	GU980963 Bacillus subtilis subsp. subtilis; B-A.
+S002167438	HM012705 Brevibacterium casei; PCSB1.
+S002223007	FR682742 Bacillus idriensis; R-36358.
+S002223582	GQ407170 Bacillus sp. DV9-25.
+S002231048	HM566764 Bacillus sp. SGE64(2010).
+S002231893	HM587902 Staphylococcus sp. m1-20.
+S002233023	HM776394 Bacillus sp. JMP-B.
+S002233314	HM992829 Bacillus amyloliquefaciens; NB-07.
+S002233924	HQ141278 Staphylococcus sp. DAKA65.
+S002235636	HQ433577 Bacillus sp. 29(2010).
+S002304555	FR695446 Bacillus thioparans; CCMM B649.
+S002305411	HQ317148 Bacillus subtilis subsp. subtilis; DYJL5.
+S002305413	HQ317150 Bacillus sp. DYJL7.
+S002350860	FR750272 Micrococcus sp. MG-2010-D12.
+S002382780	HM461161 Bacillus sp. enrichment culture clone HSL38.
+S002411306	HQ908659 Staphylococcus epidermidis; F71028.
+S002411337	HQ908690 Staphylococcus epidermidis; F71055.
+S002411377	HQ908730 Staphylococcus hominis subsp. hominis; F71020.
+
+
+Fetching the hit sequences from the database
+Fetching /mnt/home/cblair/rdp/species/species:s000381982
+Fetching /mnt/home/cblair/rdp/species/species:s000413963
+Fetching /mnt/home/cblair/rdp/species/species:s000541936
+Fetching /mnt/home/cblair/rdp/species/species:s000572042
+Fetching /mnt/home/cblair/rdp/species/species:s000652934
+Fetching /mnt/home/cblair/rdp/species/species:s000712428
+Fetching /mnt/home/cblair/rdp/species/species:s000824812
+Fetching /mnt/home/cblair/rdp/species/species:s000824899
+Fetching /mnt/home/cblair/rdp/species/species:s000843137
+Fetching /mnt/home/cblair/rdp/species/species:s000891119
+Fetching /mnt/home/cblair/rdp/species/species:s000965816
+Fetching /mnt/home/cblair/rdp/species/species:s000995939
+Fetching /mnt/home/cblair/rdp/species/species:s000995954
+Fetching /mnt/home/cblair/rdp/species/species:s000995960
+Fetching /mnt/home/cblair/rdp/species/species:s001044865
+Fetching /mnt/home/cblair/rdp/species/species:s001046228
+Fetching /mnt/home/cblair/rdp/species/species:s001094158
+Fetching /mnt/home/cblair/rdp/species/species:s001096636
+Fetching /mnt/home/cblair/rdp/species/species:s001097911
+Fetching /mnt/home/cblair/rdp/species/species:s001170031
+Fetching /mnt/home/cblair/rdp/species/species:s001241154
+Fetching /mnt/home/cblair/rdp/species/species:s001241195
+Fetching /mnt/home/cblair/rdp/species/species:s001265081
+Fetching /mnt/home/cblair/rdp/species/species:s001574844
+Fetching /mnt/home/cblair/rdp/species/species:s001574870
+Fetching /mnt/home/cblair/rdp/species/species:s001574910
+Fetching /mnt/home/cblair/rdp/species/species:s001575619
+Fetching /mnt/home/cblair/rdp/species/species:s001575814
+Fetching /mnt/home/cblair/rdp/species/species:s001577291
+Fetching /mnt/home/cblair/rdp/species/species:s001588580
+Fetching /mnt/home/cblair/rdp/species/species:s001612821
+Fetching /mnt/home/cblair/rdp/species/species:s001746436
+Fetching /mnt/home/cblair/rdp/species/species:s001793428
+Fetching /mnt/home/cblair/rdp/species/species:s001873871
+Fetching /mnt/home/cblair/rdp/species/species:s001874781
+Fetching /mnt/home/cblair/rdp/species/species:s002038968
+Fetching /mnt/home/cblair/rdp/species/species:s002166927
+Fetching /mnt/home/cblair/rdp/species/species:s002167438
+Fetching /mnt/home/cblair/rdp/species/species:s002223007
+Fetching /mnt/home/cblair/rdp/species/species:s002223582
+Fetching /mnt/home/cblair/rdp/species/species:s002231048
+Fetching /mnt/home/cblair/rdp/species/species:s002231893
+Fetching /mnt/home/cblair/rdp/species/species:s002233023
+Fetching /mnt/home/cblair/rdp/species/species:s002233314
+Fetching /mnt/home/cblair/rdp/species/species:s002233924
+Fetching /mnt/home/cblair/rdp/species/species:s002235636
+Fetching /mnt/home/cblair/rdp/species/species:s002304555
+Fetching /mnt/home/cblair/rdp/species/species:s002305411
+Fetching /mnt/home/cblair/rdp/species/species:s002305413
+Fetching /mnt/home/cblair/rdp/species/species:s002350860
+Fetching /mnt/home/cblair/rdp/species/species:s002382780
+Fetching /mnt/home/cblair/rdp/species/species:s002411306
+Fetching /mnt/home/cblair/rdp/species/species:s002411337
+Fetching /mnt/home/cblair/rdp/species/species:s002411377

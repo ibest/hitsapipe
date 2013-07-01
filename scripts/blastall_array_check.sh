@@ -30,7 +30,7 @@ echo "Checking to see that all blasts were found."
 if [ ${NUMBLASTS} == 0 ]
 then
   echo "ERROR -- No blasts found!  Exiting."
-  touch {ERROR_FILE}
+  touch ${ERROR_FILE}
   exit 1
 elif [ ${NUMBLASTS} -ne ${NUMSEQS} ] # Could also have NUMBLASTS != NUMSEQS
 then

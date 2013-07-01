@@ -1,0 +1,3402 @@
+BLASTN 2.2.15 [Oct-15-2006]
+
+Reference: 
+Aaron E. Darling, Lucas Carey, and Wu-chun Feng,
+"The design, implementation, and evaluation of mpiBLAST".
+In Proceedings of 4th International Conference on Linux Clusters: The HPC Revolution 2003, 
+June 24-26 2003, San Jose, CA
+
+Heshan Lin, Xiaosong Ma, Praveen Chandramohan, Al Geist, and Nagiza Samatova,
+"Efficient Data Access for Parallel BLAST".
+In Proceedings of 19th International Parallel & Distributed Processing Symposium 2005, 
+April 3-8 2005, Denver, CO
+
+Query= lb102.fasta
+         (1685 letters)
+
+Database: species 
+           127,888 sequences; 184,271,921 total letters
+
+
+
+                                                                 Score    E
+Sequences producing significant alignments:                      (bits) Value
+
+S000413963 D83362 Staphylococcus epidermidis; ATCC 146 (= MAFF 9...  2413   0.0  
+S000345154 AF397060 Staphylococcus epidermidis; AB111112; C4.        2413   0.0  
+S001155358 EU861983 Staphylococcus capitis subsp. capitis; ICIRC...  2413   0.0  
+S000926528 EU071603 Staphylococcus capitis subsp. capitis; EHFS2...  2413   0.0  
+S001263934 FJ380964 Staphylococcus epidermidis; BQN1N-02d.           2413   0.0  
+S001153262 EU660426 bacterium ID4393.                                2409   0.0  
+S000653747 DQ448767 Staphylococcus sp. CNJ924 PL04.                  2405   0.0  
+S001263897 FJ357599 Staphylococcus capitis subsp. capitis; BBN2R...  2405   0.0  
+S000381982 AB009935 Staphylococcus caprae (T); ATCC 35538T.          2405   0.0  
+S000381984 AB009937 Staphylococcus capitis (T); ATCC 49326T.         2405   0.0  
+S001263925 FJ380955 Staphylococcus capitis subsp. capitis; BQEN3...  2405   0.0  
+S001263912 FJ357614 Staphylococcus capitis subsp. capitis; BBN3T...  2405   0.0  
+S000727743 AB233325 Staphylococcus capitis subsp. urealyticus; G...  2405   0.0  
+S001263883 FJ357585 Staphylococcus capitis subsp. capitis; BBER-...  2405   0.0  
+S000414713 L37599 Staphylococcus capitis (T).                        2405   0.0  
+S001263878 FJ357580 Staphylococcus capitis subsp. capitis; BBEC-1d.  2405   0.0  
+S001263906 FJ357608 Staphylococcus capitis subsp. capitis; BBN3P...  2405   0.0  
+S000367525 AY057450 Staphylococcus sp. YSS/2001-5.                   2405   0.0  
+S002032954 FN556566 Staphylococcus sp. JW21.2a.                      2401   0.0  
+S001263926 FJ380956 Staphylococcus capitis subsp. capitis; BQEP2...  2401   0.0  
+S002228850 HM355630 Staphylococcus caprae; BAC2039.                  2397   0.0  
+S001264066 FJ492844 Staphylococcus sp. SIIA 2055.                    2397   0.0  
+S001264058 FJ492836 Staphylococcus sp. SIIA 16437.                   2397   0.0  
+S001263894 FJ357596 Staphylococcus capitis subsp. capitis; BBN2P...  2391   0.0  
+S000434638 AY030321 Staphylococcus capitis subsp. capitis; JPL-2.    2389   0.0  
+
+>S000413963 D83362 Staphylococcus epidermidis; ATCC 146 (= MAFF 911486).
+          Length = 1475
+
+ Score = 2413 bits (1217), Expect = 0.0
+ Identities = 1303/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 55   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 114
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 115  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 174
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 175  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 234
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 235  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 294
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 295  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 354
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 355  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 414
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 415  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 474
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 475  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 534
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 535  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 594
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 595  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 654
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 655  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 714
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 715  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 774
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 775  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 834
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 835  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 894
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 895  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 954
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 955  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1014
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1015 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1074
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1075 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1134
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1135 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1193
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1194 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1252
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1253 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1312
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1313 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1371
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1372 tcttg 1376
+
+
+>S000345154 AF397060 Staphylococcus epidermidis; AB111112; C4.
+          Length = 1503
+
+ Score = 2413 bits (1217), Expect = 0.0
+ Identities = 1303/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 53   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 112
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 113  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 172
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 173  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 232
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 233  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 292
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 293  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 352
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 353  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 412
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 413  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 472
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 473  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 532
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 533  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 592
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 593  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 652
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 653  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 712
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 713  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 772
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 773  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 832
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 833  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 892
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 893  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 952
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 953  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1012
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1013 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1072
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1073 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1132
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1133 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1191
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1192 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcraaa-ccgcg 1250
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1251 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1310
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1311 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1369
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1370 tcttg 1374
+
+
+>S001155358 EU861983 Staphylococcus capitis subsp. capitis; ICIRC114.
+          Length = 1471
+
+ Score = 2413 bits (1217), Expect = 0.0
+ Identities = 1303/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 51   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 110
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 111  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 170
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 171  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 230
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 231  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 290
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 291  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 350
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 351  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 410
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 411  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 470
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 471  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 530
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 531  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 590
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 591  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 650
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 651  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 710
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 711  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 770
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 771  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 830
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 831  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 890
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 891  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 950
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 951  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1010
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1011 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1070
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1071 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1130
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1131 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1189
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1190 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1248
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1249 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1308
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1309 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1367
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1368 tcttg 1372
+
+
+>S000926528 EU071603 Staphylococcus capitis subsp. capitis; EHFS2_AU1Hc.
+          Length = 1412
+
+ Score = 2413 bits (1217), Expect = 0.0
+ Identities = 1303/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 22   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 81
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 82   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 141
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 142  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 201
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 202  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 261
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 262  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 321
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 322  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 381
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 382  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 441
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 442  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 501
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 502  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 561
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 562  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 621
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 622  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 681
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 682  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 741
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 742  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 801
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 802  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 861
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 862  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 921
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 922  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 981
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 982  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1041
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1042 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1101
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1102 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1160
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1161 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1219
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1220 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1279
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1280 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1338
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1339 tcttg 1343
+
+
+>S001263934 FJ380964 Staphylococcus epidermidis; BQN1N-02d.
+          Length = 1439
+
+ Score = 2413 bits (1217), Expect = 0.0
+ Identities = 1303/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 38   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 97
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 98   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 157
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 158  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 217
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 218  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 277
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 278  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 337
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 338  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 397
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 398  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 457
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 458  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 517
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 518  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 577
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 578  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 637
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 638  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 697
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 698  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 757
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 758  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 817
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 818  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 877
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 878  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 937
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 938  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 997
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 998  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1057
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1058 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1117
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1118 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1176
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1177 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1235
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1236 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1295
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1296 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1354
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1355 tcttg 1359
+
+
+>S001153262 EU660426 bacterium ID4393.
+          Length = 1503
+
+ Score = 2409 bits (1215), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 53   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 112
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 113  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 172
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 173  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 232
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 233  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 292
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 293  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 352
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 353  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 412
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 413  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 472
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 473  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 532
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 533  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 592
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 593  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 652
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 653  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 712
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 713  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 772
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 773  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 832
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 833  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 892
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 893  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 952
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 953  cgaagaaccttaccaaatcttgacatcctctgayccctctagagatagagttttcccctt 1012
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1013 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1072
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1073 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1132
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1133 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1191
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1192 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1250
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1251 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1310
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1311 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1369
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1370 tcttg 1374
+
+
+>S000653747 DQ448767 Staphylococcus sp. CNJ924 PL04.
+          Length = 1515
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 73   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 132
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 133  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 192
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 193  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 252
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 253  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 312
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 313  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 372
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 373  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 432
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 433  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 492
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 493  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 552
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 553  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 612
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 613  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 672
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 673  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 732
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 733  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 792
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 793  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 852
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 853  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 912
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 913  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 972
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 973  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1032
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1033 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1092
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1093 ttaggtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1152
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1153 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1211
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1212 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1270
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1271 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1330
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1331 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1389
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1390 tcttg 1394
+
+
+>S001263897 FJ357599 Staphylococcus capitis subsp. capitis; BBN2R-02d.
+          Length = 1437
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 40   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 99
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 100  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 159
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 160  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 219
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 220  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 279
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 280  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 339
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 340  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 399
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 400  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 459
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 460  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 519
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 520  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 579
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 580  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 639
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 640  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 699
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 700  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 759
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 760  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 819
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 820  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 879
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 880  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 939
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 940  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 999
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1000 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1059
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1060 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1119
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1120 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1178
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1179 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1237
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1238 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1297
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1298 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1356
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1357 tcttg 1361
+
+
+>S000381982 AB009935 Staphylococcus caprae (T); ATCC 35538T.
+          Length = 1492
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 73   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 132
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 133  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 192
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 193  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 252
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 253  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 312
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 313  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 372
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 373  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 432
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 433  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 492
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 493  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 552
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 553  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 612
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 613  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 672
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 673  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 732
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 733  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 792
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 793  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 852
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 853  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 912
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 913  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 972
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 973  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1032
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1033 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1092
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1093 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1152
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1153 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1211
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||| ||| ||| |||||
+Sbjct: 1212 cttatgatttgggctacacacgtgctacaatggacaatacaaagggcagcgaaa-ccgcg 1270
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1271 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1330
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1331 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1389
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1390 tcttg 1394
+
+
+>S000381984 AB009937 Staphylococcus capitis (T); ATCC 49326T.
+          Length = 1492
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 73   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 132
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 133  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 192
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 193  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 252
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 253  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 312
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 313  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 372
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct: 373  aatgggcgaaagcctgacggagcaacgccgcgtgagtgatgaaggtcttcggatcgtaaa 432
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 433  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 492
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 493  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 552
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 553  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 612
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 613  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 672
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 673  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 732
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 733  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 792
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 793  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 852
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 853  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 912
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 913  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 972
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 973  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1032
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1033 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1092
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1093 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1152
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1153 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1211
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1212 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1270
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1271 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1330
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1331 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1389
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1390 tcttg 1394
+
+
+>S001263925 FJ380955 Staphylococcus capitis subsp. capitis; BQEN3-03.
+          Length = 1433
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 33   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 92
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 93   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 152
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 153  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 212
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 213  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 272
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 273  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 332
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 333  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 392
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 393  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 452
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 453  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 512
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 513  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 572
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 573  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 632
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 633  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 692
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 693  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 752
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 753  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 812
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 813  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 872
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 873  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 932
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 933  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 992
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 993  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1052
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1053 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1112
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1113 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1171
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1172 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1230
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1231 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1290
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1291 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1349
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1350 tcttg 1354
+
+
+>S001263912 FJ357614 Staphylococcus capitis subsp. capitis; BBN3T-04d.
+          Length = 1436
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 38   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 97
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 98   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 157
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 158  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 217
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 218  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 277
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 278  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 337
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 338  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 397
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 398  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 457
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 458  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 517
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 518  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 577
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 578  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 637
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 638  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 697
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 698  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 757
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 758  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 817
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 818  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 877
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 878  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 937
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 938  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 997
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 998  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1057
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1058 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1117
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1118 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1176
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1177 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1235
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1236 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1295
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1296 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1354
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1355 tcttg 1359
+
+
+>S000727743 AB233325 Staphylococcus capitis subsp. urealyticus; GTC 727.
+          Length = 1454
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 44   agcttgctcttctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 103
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 104  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 163
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 164  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 223
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 224  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 283
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 284  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 343
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 344  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 403
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 404  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 463
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 464  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 523
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 524  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 583
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 584  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 643
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 644  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 703
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 704  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 763
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 764  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 823
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 824  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 883
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 884  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 943
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 944  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1003
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1004 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1063
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1064 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1123
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1124 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1182
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1183 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1241
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1242 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1301
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1302 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1360
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1361 tcttg 1365
+
+
+>S001263883 FJ357585 Staphylococcus capitis subsp. capitis; BBER-01d.
+          Length = 1434
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 36   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 95
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 96   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 155
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 156  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 215
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 216  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 275
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 276  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 335
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 336  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 395
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 396  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 455
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 456  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 515
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 516  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 575
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 576  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 635
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 636  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 695
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 696  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 755
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 756  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 815
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 816  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 875
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 876  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 935
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 936  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 995
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 996  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1055
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1056 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1115
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1116 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1174
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1175 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1233
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1234 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1293
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1294 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1352
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1353 tcttg 1357
+
+
+>S000414713 L37599 Staphylococcus capitis (T).
+          Length = 1469
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 53   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 112
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 113  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 172
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 173  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 232
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 233  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 292
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 293  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 352
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 353  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 412
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 413  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 472
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 473  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 532
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 533  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 592
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 593  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 652
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 653  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 712
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 713  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 772
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 773  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 832
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 833  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 892
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 893  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 952
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 953  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 1012
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1013 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1072
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1073 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1132
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1133 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1191
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1192 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1250
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1251 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1310
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1311 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1369
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1370 tcttg 1374
+
+
+>S001263878 FJ357580 Staphylococcus capitis subsp. capitis; BBEC-1d.
+          Length = 1439
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 42   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 101
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 102  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 161
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 162  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 221
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 222  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 281
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 282  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 341
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 342  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 401
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 402  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 461
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 462  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 521
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 522  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 581
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 582  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 641
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 642  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 701
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 702  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 761
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 762  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 821
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 822  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 881
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 882  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 941
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 942  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 1001
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1002 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1061
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1062 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1121
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1122 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1180
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1181 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1239
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1240 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1299
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1300 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1358
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1359 tcttg 1363
+
+
+>S001263906 FJ357608 Staphylococcus capitis subsp. capitis; BBN3P-01d.
+          Length = 1432
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 33   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 92
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 93   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 152
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 153  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 212
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 213  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 272
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 273  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 332
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 333  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 392
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 393  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 452
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 453  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 512
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 513  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 572
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 573  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 632
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 633  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 692
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 693  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 752
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 753  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 812
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 813  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 872
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 873  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 932
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 933  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 992
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 993  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1052
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1053 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1112
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1113 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1171
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1172 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1230
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1231 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1290
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1291 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1349
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1350 tcttg 1354
+
+
+>S000367525 AY057450 Staphylococcus sp. YSS/2001-5.
+          Length = 1447
+
+ Score = 2405 bits (1213), Expect = 0.0
+ Identities = 1302/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 29   agcttgctcctttgacgttagcggcggacgggtgagtaacacgtggataacctacctata 88
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 89   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 148
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 149  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 208
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 209  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 268
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 269  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 328
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 329  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 388
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 389  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 448
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 449  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 508
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 509  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 568
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 569  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 628
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 629  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 688
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 689  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 748
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 749  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 808
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 809  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 868
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 869  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 928
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 929  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 988
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 989  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1048
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1049 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1108
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1109 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1167
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1168 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1226
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1227 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1286
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1287 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1345
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1346 tcttg 1350
+
+
+>S002032954 FN556566 Staphylococcus sp. JW21.2a.
+          Length = 1400
+
+ Score = 2401 bits (1211), Expect = 0.0
+ Identities = 1301/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 20   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 79
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 80   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 139
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 140  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 199
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 200  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 259
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 260  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 319
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 320  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 379
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 380  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 439
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 440  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 499
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            |||||||||||||||||||||||||||||||||||| ||||||| |||||||||||||||
+Sbjct: 500  atccggaattattgggcgtaaagcgcgcgtaggcggntttttaantctgatgtgaaagcc 559
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 560  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 619
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 620  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 679
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 680  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 739
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 740  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 799
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 800  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 859
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 860  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 919
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 920  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 979
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 980  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1039
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1040 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1099
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1100 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1158
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1159 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1217
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1218 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1277
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1278 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1336
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1337 tcttg 1341
+
+
+>S001263926 FJ380956 Staphylococcus capitis subsp. capitis; BQEP2-01d.
+          Length = 1433
+
+ Score = 2401 bits (1211), Expect = 0.0
+ Identities = 1301/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 37   agcttgctcctytgacgttagcggcggacgggtgagtaacacgtggataacctacctata 96
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 97   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 156
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 157  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 216
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 217  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 276
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 277  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 336
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 337  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 396
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 397  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 456
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 457  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 516
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 517  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 576
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 577  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 636
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 637  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 696
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 697  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 756
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 757  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 816
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 817  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 876
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 877  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 936
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 937  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 996
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 997  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1056
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1057 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1116
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1117 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1175
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   ||||||||||||||||||||||||||||| |||| |||||
+Sbjct: 1176 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtag-caaaaccgcg 1234
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1235 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1294
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1295 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1353
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1354 tcttg 1358
+
+
+>S002228850 HM355630 Staphylococcus caprae; BAC2039.
+          Length = 1259
+
+ Score = 2397 bits (1209), Expect = 0.0
+ Identities = 1235/1241 (99%), Gaps = 2/1241 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 9    agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 68
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 69   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 128
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 129  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 188
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 189  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 248
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 249  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 308
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 309  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 368
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 369  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 428
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 429  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 488
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 489  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 548
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 549  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 608
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 609  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 668
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 669  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 728
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 729  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 788
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 789  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 848
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 849  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 908
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 909  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 968
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 969  cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1028
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1029 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1088
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1089 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1147
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   |||||||||||||||||||||||||||||| ||| |||||
+Sbjct: 1148 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgcg 1206
+
+                                                     
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattg 1298
+            |||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1207 aggtcaagcaaatcccataaagttgttctcagttcggattg 1247
+
+
+>S001264066 FJ492844 Staphylococcus sp. SIIA 2055.
+          Length = 1478
+
+ Score = 2397 bits (1209), Expect = 0.0
+ Identities = 1301/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 40   agcttgctcctttgacgttagcggcggacgggtgagtaacacgtggataacctacctata 99
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 100  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 159
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 160  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 219
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 220  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 279
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 280  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 339
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 340  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 399
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 400  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 459
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 460  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 519
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 520  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 579
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 580  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 639
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 640  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 699
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 700  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 759
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 760  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 819
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 820  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 879
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 880  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 939
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 940  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 999
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1000 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1059
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1060 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1119
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1120 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1178
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   ||||||||||||||||||||||||||||| |||| |||||
+Sbjct: 1179 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtag-caaaaccgcg 1237
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1238 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1297
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1298 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1356
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1357 tcttg 1361
+
+
+>S001264058 FJ492836 Staphylococcus sp. SIIA 16437.
+          Length = 1478
+
+ Score = 2397 bits (1209), Expect = 0.0
+ Identities = 1301/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 40   agcttgctcctttgacgttagcggcggacgggtgagtaacacgtggataacctacctata 99
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 100  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 159
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 160  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 219
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 220  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 279
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 280  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 339
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 340  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 399
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 400  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 459
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 460  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 519
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 520  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 579
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 580  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 639
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 640  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 699
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 700  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 759
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 760  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 819
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 820  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 879
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 880  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 939
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 940  cgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccctt 999
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1000 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1059
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1060 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1119
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1120 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1178
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   ||||||||||||||||||||||||||||| |||| |||||
+Sbjct: 1179 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtag-caaaaccgcg 1237
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1238 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1297
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1298 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1356
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1357 tcttg 1361
+
+
+>S001263894 FJ357596 Staphylococcus capitis subsp. capitis; BBN2P-01d.
+          Length = 1436
+
+ Score = 2391 bits (1206), Expect = 0.0
+ Identities = 1302/1326 (98%), Gaps = 6/1326 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 37   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 96
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 97   agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 156
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 157  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 216
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 217  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 276
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 277  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 336
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 337  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 396
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 397  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 456
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 457  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 516
+
+                                                                        
+Query: 538  atccgg-aattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagc 596
+            |||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 517  atccgggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagc 576
+
+                                                                        
+Query: 597  ccacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaag 656
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 577  ccacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaag 636
+
+                                                                        
+Query: 657  tggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaagg 716
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 637  tggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaagg 696
+
+                                                                        
+Query: 717  cgactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattag 776
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 697  cgactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattag 756
+
+                                                                        
+Query: 777  ataccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccct 836
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 757  ataccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccct 816
+
+                                                                        
+Query: 837  tagtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaac 896
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 817  tagtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaac 876
+
+                                                                        
+Query: 897  tcaaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaac 956
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 877  tcaaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaac 936
+
+                                                                        
+Query: 957  gcgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccct 1016
+            |||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||
+Sbjct: 937  gcgaagaaccttaccaaatcttgacatcctctgatccctctagagatagagttttcccct 996
+
+                                                                        
+Query: 1017 tcgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttgg 1076
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 997  tcgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttgg 1056
+
+                                                                        
+Query: 1077 gttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactc 1136
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1057 gttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactc 1116
+
+                                                                        
+Query: 1137 taagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgcc 1196
+            |||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||
+Sbjct: 1117 taagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgcc 1175
+
+                                                                        
+Query: 1197 ccttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgc 1256
+            ||||||||||||||||||   |||||||||||||||||||||||||||||| ||| ||||
+Sbjct: 1176 ccttatgatttgggctacacacgtgctacaatggacaatacaaagggtagcgaaa-ccgc 1234
+
+                                                                        
+Query: 1257 gaggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgctt 1315
+            |||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || 
+Sbjct: 1235 gaggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgacta 1294
+
+                                                                        
+Query: 1316 catggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccgg 1374
+            |||| |||| ||||||||||| || || | ||||  ||||||||| ||||||||||||||
+Sbjct: 1295 catgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccgg 1353
+
+                  
+Query: 1375 gtcttg 1380
+            ||||||
+Sbjct: 1354 gtcttg 1359
+
+
+>S000434638 AY030321 Staphylococcus capitis subsp. capitis; JPL-2.
+          Length = 1477
+
+ Score = 2389 bits (1205), Expect = 0.0
+ Identities = 1300/1325 (98%), Gaps = 5/1325 (0%)
+ Strand = Plus / Plus
+
+                                                                        
+Query: 58   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 117
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 57   agcttgctcctctgacgttagcggcggacgggtgagtaacacgtggataacctacctata 116
+
+                                                                        
+Query: 118  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 177
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 117  agactgggataacttcgggaaaccggagctaataccggataacatgttgaaccgcatggt 176
+
+                                                                        
+Query: 178  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 237
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 177  tcaacagtgaaagacggtcttgctgtcacttatagatggatccgcgccgcattagctagt 236
+
+                                                                        
+Query: 238  tggtaaggtaacggcttaccaaggcaacgatgcgtagccgacctgagagggtgatcggcc 297
+            |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 237  tggtaaggtaacggcttaccaaggcaacgacgcgtagccgacctgagagggtgatcggcc 296
+
+                                                                        
+Query: 298  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 357
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 297  acactggaactgagacacggtccagactcctacgggaggcagcagtagggaatcttccgc 356
+
+                                                                        
+Query: 358  aatgggcgaaagcctgacggagcaacgccgcgtgagtgaagaaggtcttcggatcgtaaa 417
+            ||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||
+Sbjct: 357  aatgggcgaaagcctgacggagcaacgccgcgtgagtaaagaaggtcttcggatcgtaaa 416
+
+                                                                        
+Query: 418  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgacggtacctaa 477
+            |||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||
+Sbjct: 417  actctgttattagggaagaacaaatgtgtaagtaactatgcacgtcttgatggtacctaa 476
+
+                                                                        
+Query: 478  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 537
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 477  tcagaaagccacggctaactacgtgccagcagccgcggtaatacgtaggtggcaagcgtt 536
+
+                                                                        
+Query: 538  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 597
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 537  atccggaattattgggcgtaaagcgcgcgtaggcggttttttaagtctgatgtgaaagcc 596
+
+                                                                        
+Query: 598  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 657
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 597  cacggctcaaccgtggagggtcattggaaactggaaaacttgagtgcagaagaggaaagt 656
+
+                                                                        
+Query: 658  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 717
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 657  ggaattccatgtgtagcggtgaaatgcgcagagatatggaggaacaccagtggcgaaggc 716
+
+                                                                        
+Query: 718  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 777
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 717  gactttctggtctgtaactgacgctgatgtgcgaaagcgtggggatcaaacaggattaga 776
+
+                                                                        
+Query: 778  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 837
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 777  taccctggtagtccacgccgtaaacgatgagtgctaagtgttagggggtttccgcccctt 836
+
+                                                                        
+Query: 838  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 897
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 837  agtgctgcagctaacgcattaagcactccgcctggggagtacgaccgcaaggttgaaact 896
+
+                                                                        
+Query: 898  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 957
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 897  caaaggaattgacggggacccgcacaagcggtggagcatgtggtttaattcgaagcaacg 956
+
+                                                                        
+Query: 958  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1017
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 957  cgaagaaccttaccaaatcttgacatcctctgacccctctagagatagagttttcccctt 1016
+
+                                                                        
+Query: 1018 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1077
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1017 cgggggacagagtgacaggtggtgcatggttgtcgtcagctcgtgtcgtgagatgttggg 1076
+
+                                                                        
+Query: 1078 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1137
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 1077 ttaagtcccgcaacgagcgcaacccttaagcttagttgccatcattaagttgggcactct 1136
+
+                                                                        
+Query: 1138 aagttgactgccggtgacaaaccggaggaaggtgggggatgacgtcaaatcatcatgccc 1197
+            ||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||
+Sbjct: 1137 aagttgactgccggtgacaaaccggaggaaggt-ggggatgacgtcaaatcatcatgccc 1195
+
+                                                                        
+Query: 1198 cttatgatttgggctaccaccgtgctacaatggacaatacaaagggtagccaaacccgcg 1257
+            |||||||||||||||||   ||||||||||||||||||||||||||||| |||| |||||
+Sbjct: 1196 cttatgatttgggctacacacgtgctacaatggacaatacaaagggtag-caaaaccgcg 1254
+
+                                                                        
+Query: 1258 aggtcaagcaaatcccataaagttgttctcagttcggattggagcttgc-actccgcttc 1316
+            ||||||||||||||||||||||||||||||||||||||||| ||  ||| ||||  || |
+Sbjct: 1255 aggtcaagcaaatcccataaagttgttctcagttcggattgtagtctgcaactcgactac 1314
+
+                                                                        
+Query: 1317 atggagctgggaatcgctagaaaccgga-atcacgatgctacggggaatacgttcccggg 1375
+            ||| |||| ||||||||||| || || | ||||  ||||||||| |||||||||||||||
+Sbjct: 1315 atgaagct-ggaatcgctagtaatcgtagatcagcatgctacggtgaatacgttcccggg 1373
+
+                 
+Query: 1376 tcttg 1380
+            |||||
+Sbjct: 1374 tcttg 1378
+
+
+  Database: species
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,432
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.001
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,059
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.002
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,889
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.003
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,060
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.004
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,433
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.005
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,529
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.006
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,020
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.007
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,409
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.008
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,141
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.009
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,300
+  Number of sequences in database:  2668
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.010
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,315
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.011
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,161
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.012
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,882
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.013
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,873
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.014
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,709
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.015
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,095
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.016
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,466
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.017
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,869
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.018
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,506
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.019
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,954
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.020
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,447
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.021
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,046
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.022
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,435
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.023
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,076
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.024
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,039
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.025
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,781
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.026
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,993
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.027
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,807
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.028
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,879
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.029
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,410
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.030
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,454
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.031
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,095
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.032
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,892
+  Number of sequences in database:  2669
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.033
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,099
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.034
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,473
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.035
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,988
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.036
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,880
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.037
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,882
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.038
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,134
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.039
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,010
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.040
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,515
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.041
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,044
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.042
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,790
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.043
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,561
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.044
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,168
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.045
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,835
+  Number of sequences in database:  2668
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.046
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,916
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.047
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,170
+  Number of sequences in database:  2663
+  

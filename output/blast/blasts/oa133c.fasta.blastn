@@ -1,0 +1,2287 @@
+BLASTN 2.2.15 [Oct-15-2006]
+
+Reference: 
+Aaron E. Darling, Lucas Carey, and Wu-chun Feng,
+"The design, implementation, and evaluation of mpiBLAST".
+In Proceedings of 4th International Conference on Linux Clusters: The HPC Revolution 2003, 
+June 24-26 2003, San Jose, CA
+
+Heshan Lin, Xiaosong Ma, Praveen Chandramohan, Al Geist, and Nagiza Samatova,
+"Efficient Data Access for Parallel BLAST".
+In Proceedings of 19th International Parallel & Distributed Processing Symposium 2005, 
+April 3-8 2005, Denver, CO
+
+Query= oa133c.fasta
+         (904 letters)
+
+Database: species 
+           127,888 sequences; 184,271,921 total letters
+
+
+
+                                                                 Score    E
+Sequences producing significant alignments:                      (bits) Value
+
+S001044865 EU660368 Bacillus nealsonii; CT18.                        1554   0.0  
+S001044890 EU683686 Bacillus sp. OSS 25.                             1554   0.0  
+S002305680 HQ425300 Bacillus sp. T7-4-1.                             1554   0.0  
+S000927642 EU124560 Bacillus circulans; OSS 25.                      1554   0.0  
+S002034538 GU471201 Bacillus sp. Q2CJ3.                              1554   0.0  
+S000649847 DQ374636 Bacillus sp. CBD 118.                            1554   0.0  
+S000434840 AY043085 Bacillus benzoevorans.                           1546   0.0  
+S001265081 FJ554672 Bacillus sp. P308.                               1546   0.0  
+S001189422 FJ373035 Bacillus sp. S5-1.                               1546   0.0  
+S001549402 FJ943257 Bacillus sp. ADP4II.                             1546   0.0  
+S001264946 FJ544393 Bacillus nealsonii; tu10.                        1546   0.0  
+S000824462 DQ981456 Bacillus circulans; SB1.                         1546   0.0  
+S001549405 FJ943260 Bacillus sp. P307.                               1546   0.0  
+S002038751 AB425363 Bacillus sp. S209.                               1546   0.0  
+S001549404 FJ943259 Bacillus sp. IAFILS6.                            1546   0.0  
+S001014540 DQ416782 Bacillus sp. G1DM-10.                            1546   0.0  
+S001549403 FJ943258 Bacillus sp. C4T1F3B3.                           1546   0.0  
+S000966996 EU221341 Bacillus nealsonii; PAB1C3.                      1546   0.0  
+S000942184 EF100968 Bacillus circulans; WZ12.                        1546   0.0  
+S001549401 FJ943256 Bacillus sp. AD5A.                               1546   0.0  
+S001549406 FJ943261 Bacillus sp. U4A.                                1546   0.0  
+S002410155 HQ703894 Bacillus nealsonii; NBM23.                       1530   0.0  
+S002228246 HM224478 Bacillus sp. TPD28.                              1524   0.0  
+S002304604 FR727718 Bacillus sp. IMT13.                              1518   0.0  
+S000434839 AY043084 Bacillus circulans (T).                          1515   0.0  
+
+>S001044865 EU660368 Bacillus nealsonii; CT18.
+          Length = 1512
+
+ Score = 1554 bits (784), Expect = 0.0
+ Identities = 822/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||
+Sbjct: 157 taataccggataatccttttctactcatgtaggaaagctgaaagacggtttacgctgtca 216
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 217 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 276
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 277 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 336
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 337 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 396
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 397 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 456
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 457 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 516
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 517 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 576
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 577 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 636
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 637 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 695
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 696 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 755
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 756 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 815
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 816 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 875
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 876 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 935
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 936 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 988
+
+
+>S001044890 EU683686 Bacillus sp. OSS 25.
+          Length = 1494
+
+ Score = 1554 bits (784), Expect = 0.0
+ Identities = 822/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||
+Sbjct: 144 taataccggataatccttttctactcatgtaggaaagctgaaagacggtttacgctgtca 203
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 204 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 263
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 264 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 323
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 324 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 383
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 384 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 443
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 444 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 503
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 504 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 563
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 564 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 623
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 624 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 682
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 683 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 742
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 743 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 802
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 803 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 862
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 863 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 922
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 923 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 975
+
+
+>S002305680 HQ425300 Bacillus sp. T7-4-1.
+          Length = 1355
+
+ Score = 1554 bits (784), Expect = 0.0
+ Identities = 822/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||
+Sbjct: 74  taataccggataatccttttctactcatgtaggaaagctgaaagacggtttacgctgtca 133
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 134 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 193
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 194 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 253
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 254 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 313
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 314 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 373
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 374 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 433
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 434 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 493
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 494 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 553
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 554 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 612
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 613 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 672
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 673 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 732
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 733 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 792
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 793 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 852
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 853 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 905
+
+
+>S000927642 EU124560 Bacillus circulans; OSS 25.
+          Length = 1469
+
+ Score = 1554 bits (784), Expect = 0.0
+ Identities = 822/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||
+Sbjct: 138 taataccggataatccttttctactcatgtaggaaagctgaaagacggtttacgctgtca 197
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 198 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 257
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 258 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 317
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 318 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 377
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 378 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 437
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 438 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 497
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 498 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 557
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 558 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 617
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 618 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 676
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 677 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 736
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 737 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 796
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 797 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 856
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 857 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 916
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 917 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 969
+
+
+>S002034538 GU471201 Bacillus sp. Q2CJ3.
+          Length = 1425
+
+ Score = 1554 bits (784), Expect = 0.0
+ Identities = 822/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||
+Sbjct: 114 taataccggataatccttttctactcatgtaggaaagctgaaagacggtttacgctgtca 173
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 174 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 233
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 234 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 293
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 294 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 353
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 354 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 413
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 414 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 473
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 474 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 533
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 534 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 593
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 594 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 652
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 653 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 712
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 713 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 772
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 773 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 832
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 833 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 892
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 893 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 945
+
+
+>S000649847 DQ374636 Bacillus sp. CBD 118.
+          Length = 1495
+
+ Score = 1554 bits (784), Expect = 0.0
+ Identities = 822/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||
+Sbjct: 145 taataccggataatccttttctactcatgtaggaaagctgaaagacggtttacgctgtca 204
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 205 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 264
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 265 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 324
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 325 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 384
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 385 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 444
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 445 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 504
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 505 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 564
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 565 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 624
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 625 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 683
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 684 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 743
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 744 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 803
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 804 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 863
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 864 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 923
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 924 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 976
+
+
+>S000434840 AY043085 Bacillus benzoevorans.
+          Length = 1481
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 121 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 180
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 181 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 240
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 241 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 300
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 301 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 360
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 361 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 420
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 421 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 480
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 481 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 540
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 541 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 600
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 601 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 659
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 660 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 719
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 720 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 779
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 780 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 839
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 840 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 899
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 900 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 952
+
+
+>S001265081 FJ554672 Bacillus sp. P308.
+          Length = 1499
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           ||||||||||||||||||| |||||||||||||| |||||||||||||||||||||||||
+Sbjct: 149 taataccggataatcctttcctactcatgtaggaaagctgaaagacggtttacgctgtca 208
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 209 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 268
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 269 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 328
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 329 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 388
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 389 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 448
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 449 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 508
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 509 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 568
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 569 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 628
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 629 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 687
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 688 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 747
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 748 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 807
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 808 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 867
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 868 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 927
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 928 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 980
+
+
+>S001189422 FJ373035 Bacillus sp. S5-1.
+          Length = 1430
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 118 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 177
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 178 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 237
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 238 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 297
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 298 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 357
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 358 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 417
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 418 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 477
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 478 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 537
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 538 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 597
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 598 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 656
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 657 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 716
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 717 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 776
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 777 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 836
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 837 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 896
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 897 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 949
+
+
+>S001549402 FJ943257 Bacillus sp. ADP4II.
+          Length = 1507
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 158 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 217
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 218 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 277
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 278 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 337
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 338 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 397
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 398 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 457
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 458 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 517
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 518 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 577
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 578 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 637
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 638 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 696
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 697 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 756
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 757 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 816
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 817 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 876
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 877 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 936
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 937 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 989
+
+
+>S001264946 FJ544393 Bacillus nealsonii; tu10.
+          Length = 1456
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 129 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 188
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 189 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 248
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 249 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 308
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 309 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 368
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 369 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 428
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 429 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 488
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 489 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 548
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 549 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 608
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 609 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 667
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 668 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 727
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 728 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 787
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 788 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 847
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 848 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 907
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 908 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 960
+
+
+>S000824462 DQ981456 Bacillus circulans; SB1.
+          Length = 1371
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           ||||||||||||||||||| |||||||||||||| |||||||||||||||||||||||||
+Sbjct: 76  taataccggataatcctttcctactcatgtaggaaagctgaaagacggtttacgctgtca 135
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 136 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 195
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 196 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 255
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 256 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 315
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 316 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 375
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 376 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 435
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 436 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 495
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 496 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 555
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 556 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 614
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 615 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 674
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 675 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 734
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 735 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 794
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 795 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 854
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 855 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 907
+
+
+>S001549405 FJ943260 Bacillus sp. P307.
+          Length = 1497
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           ||||||||||||||||||| |||||||||||||| |||||||||||||||||||||||||
+Sbjct: 148 taataccggataatcctttcctactcatgtaggaaagctgaaagacggtttacgctgtca 207
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 208 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 267
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 268 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 327
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 328 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 387
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 388 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 447
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 448 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 507
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 508 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 567
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 568 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 627
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 628 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 686
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 687 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 746
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 747 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 806
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 807 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 866
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 867 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 926
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 927 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 979
+
+
+>S002038751 AB425363 Bacillus sp. S209.
+          Length = 1475
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 138 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 197
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 198 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 257
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 258 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 317
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 318 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 377
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 378 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 437
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 438 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 497
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 498 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 557
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 558 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 617
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 618 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 676
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 677 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 736
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 737 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 796
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 797 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 856
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 857 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 916
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 917 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 969
+
+
+>S001549404 FJ943259 Bacillus sp. IAFILS6.
+          Length = 1494
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 148 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 207
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 208 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 267
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 268 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 327
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 328 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 387
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 388 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 447
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 448 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 507
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 508 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 567
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 568 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 627
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 628 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 686
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 687 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 746
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 747 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 806
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 807 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 866
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 867 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 926
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 927 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 979
+
+
+>S001014540 DQ416782 Bacillus sp. G1DM-10.
+          Length = 1530
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 161 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 220
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 221 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 280
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 281 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 340
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 341 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 400
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 401 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 460
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 461 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 520
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 521 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 580
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 581 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 640
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 641 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 699
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 700 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 759
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 760 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 819
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 820 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 879
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 880 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 939
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 940 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 992
+
+
+>S001549403 FJ943258 Bacillus sp. C4T1F3B3.
+          Length = 1504
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           ||||||||||||||||||| |||||||||||||| |||||||||||||||||||||||||
+Sbjct: 147 taataccggataatcctttcctactcatgtaggaaagctgaaagacggtttacgctgtca 206
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 207 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 266
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 267 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 326
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 327 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 386
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 387 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 446
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 447 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 506
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 507 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 566
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 567 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 626
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 627 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 685
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 686 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 745
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 746 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 805
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 806 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 865
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 866 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 925
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 926 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 978
+
+
+>S000966996 EU221341 Bacillus nealsonii; PAB1C3.
+          Length = 1521
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 161 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 220
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 221 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 280
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 281 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 340
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 341 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 400
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 401 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 460
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 461 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 520
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 521 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 580
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 581 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 640
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 641 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 699
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 700 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 759
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 760 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 819
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 820 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 879
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 880 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 939
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 940 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 992
+
+
+>S000942184 EF100968 Bacillus circulans; WZ12.
+          Length = 1490
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           ||||||||||||||||||| |||||||||||||| |||||||||||||||||||||||||
+Sbjct: 148 taataccggataatcctttcctactcatgtaggaaagctgaaagacggtttacgctgtca 207
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 208 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 267
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 268 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 327
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 328 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 387
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 388 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 447
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 448 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 507
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 508 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 567
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 568 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 627
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 628 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 686
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 687 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 746
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 747 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 806
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 807 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 866
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 867 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 926
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 927 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 979
+
+
+>S001549401 FJ943256 Bacillus sp. AD5A.
+          Length = 1505
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 158 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 217
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 218 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 277
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 278 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 337
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 338 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 397
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 398 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 457
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 458 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 517
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 518 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 577
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 578 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 637
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 638 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 696
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 697 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 756
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 757 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 816
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 817 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 876
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 877 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 936
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 937 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 989
+
+
+>S001549406 FJ943261 Bacillus sp. U4A.
+          Length = 1507
+
+ Score = 1546 bits (780), Expect = 0.0
+ Identities = 821/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 154 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 213
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 214 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 273
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 274 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 333
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 334 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 393
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 394 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 453
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 454 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 513
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 514 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 573
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 574 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 633
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 634 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 692
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 693 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 752
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 753 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 812
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 813 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 872
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 873 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 932
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 933 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 985
+
+
+>S002410155 HQ703894 Bacillus nealsonii; NBM23.
+          Length = 1521
+
+ Score = 1530 bits (772), Expect = 0.0
+ Identities = 819/834 (98%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||||||||||| | |||||||||||||||||||||||||
+Sbjct: 161 taataccggataatccttttctactcatgtagaaaagctgaaagacggtttacgctgtca 220
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 221 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 280
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||
+Sbjct: 281 gatgcgtagccgacctgagagcgtgatcggccacactgggactgagacacggcccagact 340
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 341 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 400
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 401 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 460
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||
+Sbjct: 461 agagtaactgctcgtaccttgacggtacctaaccagacagccacggctaactacgtgcca 520
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 521 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 580
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 581 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 640
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 641 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 699
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 700 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 759
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 760 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 819
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 820 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 879
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 880 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 939
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 940 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 992
+
+
+>S002228246 HM224478 Bacillus sp. TPD28.
+          Length = 1442
+
+ Score = 1524 bits (769), Expect = 0.0
+ Identities = 821/837 (98%), Gaps = 5/837 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           ||||||||||||||||||| |||||||||||||| |||||||||||||||||||||||||
+Sbjct: 109 taataccggataatcctttcctactcatgtaggaaagctgaaagacggtttacgctgtca 168
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||||||
+Sbjct: 169 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcgac 228
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 229 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 288
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 289 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 348
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 349 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 408
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 409 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 468
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggc---aagcgttgtccggaattattgggcgtaaagcg 481
+           |||||||||||||||||||||||||   ||||||||||||||||||||||||||||||||
+Sbjct: 469 gcagccgcggtaatacgtaggtggccttaagcgttgtccggaattattgggcgtaaagcg 528
+
+                                                                       
+Query: 482 cgcgcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcatt 541
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 529 cgcgcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcatt 588
+
+                                                                       
+Query: 542 ggaaactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaa 601
+           ||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 589 ggaaact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaa 647
+
+                                                                       
+Query: 602 tgcgtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgc 661
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 648 tgcgtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgc 707
+
+                                                                       
+Query: 662 tgangcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaa 721
+           ||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 708 tgaggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaa 767
+
+                                                                       
+Query: 722 cgatgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagc 781
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 768 cgatgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagc 827
+
+                                                                       
+Query: 782 actccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgca 841
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 828 actccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgca 887
+
+                                                                    
+Query: 842 caagcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           ||||||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 888 caagcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 943
+
+
+>S002304604 FR727718 Bacillus sp. IMT13.
+          Length = 1434
+
+ Score = 1518 bits (766), Expect = 0.0
+ Identities = 817/834 (97%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||| ||||||| | |||||||||||||||||||||||||
+Sbjct: 119 taataccggataatccttttctacwcatgtagaaaagctgaaagacggtttacgctgtca 178
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||| ||
+Sbjct: 179 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcaac 238
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 239 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 298
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 299 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 358
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| 
+Sbjct: 359 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtaca 418
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           |||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 419 agagtaactgcttgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 478
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 479 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 538
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 539 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 598
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 599 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 657
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 658 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 717
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 718 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 777
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 778 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 837
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 838 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 897
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 898 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 950
+
+
+>S000434839 AY043084 Bacillus circulans (T).
+          Length = 1496
+
+ Score = 1515 bits (764), Expect = 0.0
+ Identities = 817/834 (97%), Gaps = 2/834 (0%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 65  taataccggataatccttttctactcatgtaggacagctgaaagacggtttacgctgtca 124
+           |||||||||||||||||||||||| ||||||| | |||||||||||||||||||||||||
+Sbjct: 134 taataccggataatccttttctacacatgtagaaaagctgaaagacggtttacgctgtca 193
+
+                                                                       
+Query: 125 cttacagatgggcccgcggcgcattagctagttggggaggtaacgtttcaccaaggcgac 184
+           ||||||||||||||||||||||||||||||||||| |||||||||  |||||||||| ||
+Sbjct: 194 cttacagatgggcccgcggcgcattagctagttggtgaggtaacggctcaccaaggcaac 253
+
+                                                                       
+Query: 185 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 244
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 254 gatgcgtagccgacctgagagggtgatcggccacactgggactgagacacggcccagact 313
+
+                                                                       
+Query: 245 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 304
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 314 cctacgggaggcagcagtagggaatcttccgcaatggacgaaagtctgacggagcaacgc 373
+
+                                                                       
+Query: 305 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtacg 364
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| 
+Sbjct: 374 cgcgtgagtgatgaaggttttcggatcgtaaaactctgttgttagggaagaacaagtaca 433
+
+                                                                       
+Query: 365 agagtaactgctcgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 424
+           |||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 434 agagtaactgcttgtaccttgacggtacctaaccagaaagccacggctaactacgtgcca 493
+
+                                                                       
+Query: 425 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 484
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 494 gcagccgcggtaatacgtaggtggcaagcgttgtccggaattattgggcgtaaagcgcgc 553
+
+                                                                       
+Query: 485 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 544
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 554 gcaggcggtcctttaagtctgatgtgaaagcccacggctcaaccgtggagggtcattgga 613
+
+                                                                       
+Query: 545 aactggggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 604
+           |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 614 aact-gggggacttgagtgcagaagagaagagtggaattccacgtgtagcggtgaaatgc 672
+
+                                                                       
+Query: 605 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 664
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 673 gtagagatgtggaggaacaccagtggcgaaggcgactctttggtctgtaactgacgctga 732
+
+                                                                       
+Query: 665 ngcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 724
+            |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 733 ggcgcgaaagcgtggggagcaaacaggattagataccctggtagtccacgccgtaaacga 792
+
+                                                                       
+Query: 725 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 784
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 793 tgagtgctaagtgttagagggtttccgccctttagtgctgcagcaaacgcattaagcact 852
+
+                                                                       
+Query: 785 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 844
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 853 ccgcctggggagtacggccgcaaggctgaaactcaaaggaattgacgggggcccgcacaa 912
+
+                                                                 
+Query: 845 gcggnggagcatgtggtttaanttcgnagcaacncnnagaaccttaccaggtct 898
+           |||| |||||||||||||||| |||| |||||| |  |||||||||||||||||
+Sbjct: 913 gcggtggagcatgtggtttaa-ttcgaagcaacgcgaagaaccttaccaggtct 965
+
+
+  Database: species
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,432
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.001
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,059
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.002
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,889
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.003
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,060
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.004
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,433
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.005
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,529
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.006
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,020
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.007
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,409
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.008
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,141
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.009
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,300
+  Number of sequences in database:  2668
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.010
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,315
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.011
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,161
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.012
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,882
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.013
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,873
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.014
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,709
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.015
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,095
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.016
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,466
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.017
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,869
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.018
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,506
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.019
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,954
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.020
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,447
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.021
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,046
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.022
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,435
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.023
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,076
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.024
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,039
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.025
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,781
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.026
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,993
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.027
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,807
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.028
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,879
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.029
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,410
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.030
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,454
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.031
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,095
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.032
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,892
+  Number of sequences in database:  2669
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.033
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,099
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.034
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,473
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.035
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,988
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.036
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,880
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.037
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,882
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.038
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,134
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.039
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,010
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.040
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,515
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.041
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,044
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.042
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,790
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.043
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,561
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.044
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,168
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.045
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,835
+  Number of sequences in database:  2668
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.046
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,916
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.047
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,170
+  Number of sequences in database:  2663
+  

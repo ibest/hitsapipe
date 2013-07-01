@@ -1,0 +1,1787 @@
+BLASTN 2.2.15 [Oct-15-2006]
+
+Reference: 
+Aaron E. Darling, Lucas Carey, and Wu-chun Feng,
+"The design, implementation, and evaluation of mpiBLAST".
+In Proceedings of 4th International Conference on Linux Clusters: The HPC Revolution 2003, 
+June 24-26 2003, San Jose, CA
+
+Heshan Lin, Xiaosong Ma, Praveen Chandramohan, Al Geist, and Nagiza Samatova,
+"Efficient Data Access for Parallel BLAST".
+In Proceedings of 19th International Parallel & Distributed Processing Symposium 2005, 
+April 3-8 2005, Denver, CO
+
+Query= la398.fasta
+         (736 letters)
+
+Database: species 
+           127,888 sequences; 184,271,921 total letters
+
+
+
+                                                                 Score    E
+Sequences producing significant alignments:                      (bits) Value
+
+S001046228 EU730941 Micrococcus luteus; 164.                         1166   0.0  
+S002350860 FR750272 Micrococcus sp. MG-2010-D12.                     1166   0.0  
+S002232690 HM748940 Micrococcus sp. GNUM-4.                          1166   0.0  
+S000842764 EF194088 Micrococcus sp. UFLA 11-LS.                      1166   0.0  
+S001614074 GU073283 Micrococcus sp. HB-1.                            1166   0.0  
+S001610892 AB526326 Micrococcus sp. JAM-AC11.                        1166   0.0  
+S000926517 EU071592 Micrococcus luteus; EHFS1_S02Hd.                 1166   0.0  
+S001094236 AM990799 Micrococcus sp. MOLA 23.                         1166   0.0  
+S001418773 FN393768 Micrococcus luteus; ES-140-2.                    1166   0.0  
+S001418766 FN393761 Micrococcus luteus; ES-122.                      1166   0.0  
+S002228815 HM355595 Micrococcus luteus; BAC1004.                     1166   0.0  
+S001020104 EU438932 Micrococcus luteus; INBI-1.                      1166   0.0  
+S001418784 FN393779 Micrococcus luteus; ES-305-7.                    1166   0.0  
+S002229637 HM449702 Micrococcus luteus; PCSB6.                       1166   0.0  
+S002304593 FR727707 Micrococcus sp. IMM08.                           1166   0.0  
+S001793427 EU867327 Micrococcus luteus; CCGE3064.                    1166   0.0  
+S001418771 FN393766 Micrococcus luteus; ES-135.                      1166   0.0  
+S002151756 GU213502 Micrococcus sp. HB241.                           1166   0.0  
+S001418779 FN393774 Micrococcus luteus; ES-179F.                     1166   0.0  
+S001199093 FJ267555 Micrococcus sp. I_Gauze_K_6_4.                   1166   0.0  
+S002151633 GQ246727 Micrococcus sp. M3T3B2.                          1166   0.0  
+S002304415 FJ233852 Micrococcus sp. PA-E028.                         1166   0.0  
+S001746488 GU143803 Micrococcus luteus; SV21.                        1166   0.0  
+S001418769 FN393764 Micrococcus luteus; ES-134F.                     1166   0.0  
+S001239251 AM913979 Micrococcus sp. LD4.                             1166   0.0  
+
+>S001046228 EU730941 Micrococcus luteus; 164.
+          Length = 1417
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 49  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 108
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 109 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 168
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 169 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 228
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 229 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 288
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 289 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 348
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 349 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 408
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 409 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 468
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 469 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 528
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 529 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 588
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 589 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 648
+
+
+>S002350860 FR750272 Micrococcus sp. MG-2010-D12.
+          Length = 1396
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 31  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 90
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 91  taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 150
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 151 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 210
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 211 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 270
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 271 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 330
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 331 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 390
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 391 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 450
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 451 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 510
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 511 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 570
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 571 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 630
+
+
+>S002232690 HM748940 Micrococcus sp. GNUM-4.
+          Length = 1392
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 64  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 123
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 124 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 183
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 184 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 243
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 244 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 303
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 304 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 363
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 364 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 423
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 424 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 483
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 484 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 543
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 544 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 603
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 604 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 663
+
+
+>S000842764 EF194088 Micrococcus sp. UFLA 11-LS.
+          Length = 1435
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 56  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 115
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 116 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 175
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 176 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 235
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 236 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 295
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 296 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 355
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 356 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 415
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 416 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 475
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 476 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 535
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 536 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 595
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 596 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 655
+
+
+>S001614074 GU073283 Micrococcus sp. HB-1.
+          Length = 1432
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 53  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 112
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 113 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 172
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 173 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 232
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 233 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 292
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 293 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 352
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 353 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 412
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 413 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 472
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 473 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 532
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 533 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 592
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 593 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 652
+
+
+>S001610892 AB526326 Micrococcus sp. JAM-AC11.
+          Length = 1450
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 58  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 117
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 118 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 177
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 178 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 237
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 238 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 297
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 298 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 357
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 358 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 417
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 418 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 477
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 478 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 537
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 538 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 597
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 598 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 657
+
+
+>S000926517 EU071592 Micrococcus luteus; EHFS1_S02Hd.
+          Length = 1383
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 28  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 87
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 88  taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 147
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 148 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 207
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 208 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 267
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 268 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 327
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 328 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 387
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 388 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 447
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 448 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 507
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 508 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 567
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 568 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 627
+
+
+>S001094236 AM990799 Micrococcus sp. MOLA 23.
+          Length = 1444
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 49  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 108
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 109 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 168
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 169 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 228
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 229 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 288
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 289 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 348
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 349 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 408
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 409 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 468
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 469 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 528
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 529 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 588
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 589 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 648
+
+
+>S001418773 FN393768 Micrococcus luteus; ES-140-2.
+          Length = 1361
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 74  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 133
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 134 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 193
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 194 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 253
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 254 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 313
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 314 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 373
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 374 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 433
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 434 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 493
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 494 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 553
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 554 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 613
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 614 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 673
+
+
+>S001418766 FN393761 Micrococcus luteus; ES-122.
+          Length = 1355
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 70  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 129
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 130 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 189
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 190 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 249
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 250 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 309
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 310 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 369
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 370 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 429
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 430 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 489
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 490 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 549
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 550 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 609
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 610 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 669
+
+
+>S002228815 HM355595 Micrococcus luteus; BAC1004.
+          Length = 1210
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 4   tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 63
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 64  taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 123
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 124 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 183
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 184 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 243
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 244 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 303
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 304 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 363
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 364 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 423
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 424 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 483
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 484 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 543
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 544 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 603
+
+
+>S001020104 EU438932 Micrococcus luteus; INBI-1.
+          Length = 1492
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 78  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 137
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 138 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 197
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 198 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 257
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 258 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 317
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 318 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 377
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 378 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 437
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 438 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 497
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 498 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 557
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 558 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 617
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 618 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 677
+
+
+>S001418784 FN393779 Micrococcus luteus; ES-305-7.
+          Length = 1355
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 70  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 129
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 130 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 189
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 190 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 249
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 250 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 309
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 310 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 369
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 370 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 429
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 430 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 489
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 490 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 549
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 550 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 609
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 610 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 669
+
+
+>S002229637 HM449702 Micrococcus luteus; PCSB6.
+          Length = 1428
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 49  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 108
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 109 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 168
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 169 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 228
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 229 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 288
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 289 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 348
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 349 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 408
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 409 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 468
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 469 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 528
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 529 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 588
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 589 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 648
+
+
+>S002304593 FR727707 Micrococcus sp. IMM08.
+          Length = 1409
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 40  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 99
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 100 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 159
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 160 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 219
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 220 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 279
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 280 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 339
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 340 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 399
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 400 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 459
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 460 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 519
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 520 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 579
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 580 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 639
+
+
+>S001793427 EU867327 Micrococcus luteus; CCGE3064.
+          Length = 1356
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 6   tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 65
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 66  taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 125
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 126 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 185
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 186 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 245
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 246 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 305
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 306 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 365
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 366 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 425
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 426 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 485
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 486 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 545
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 546 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 605
+
+
+>S001418771 FN393766 Micrococcus luteus; ES-135.
+          Length = 1358
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 70  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 129
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 130 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 189
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 190 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 249
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 250 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 309
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 310 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 369
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 370 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 429
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 430 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 489
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 490 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 549
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 550 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 609
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 610 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 669
+
+
+>S002151756 GU213502 Micrococcus sp. HB241.
+          Length = 1474
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 77  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 136
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 137 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 196
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 197 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 256
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 257 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 316
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 317 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 376
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 377 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 436
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 437 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 496
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 497 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 556
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 557 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 616
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 617 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 676
+
+
+>S001418779 FN393774 Micrococcus luteus; ES-179F.
+          Length = 1360
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 73  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 132
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 133 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 192
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 193 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 252
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 253 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 312
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 313 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 372
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 373 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 432
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 433 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 492
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 493 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 552
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 553 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 612
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 613 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 672
+
+
+>S001199093 FJ267555 Micrococcus sp. I_Gauze_K_6_4.
+          Length = 1391
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 25  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 84
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 85  taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 144
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 145 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 204
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 205 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 264
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 265 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 324
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 325 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 384
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 385 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 444
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 445 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 504
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 505 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 564
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 565 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 624
+
+
+>S002151633 GQ246727 Micrococcus sp. M3T3B2.
+          Length = 1432
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 65  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 124
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 125 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 184
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 185 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 244
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 245 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 304
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 305 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 364
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 365 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 424
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 425 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 484
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 485 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 544
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 545 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 604
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 605 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 664
+
+
+>S002304415 FJ233852 Micrococcus sp. PA-E028.
+          Length = 1431
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 53  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 112
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 113 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 172
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 173 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 232
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 233 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 292
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 293 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 352
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 353 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 412
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 413 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 472
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 473 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 532
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 533 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 592
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 593 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 652
+
+
+>S001746488 GU143803 Micrococcus luteus; SV21.
+          Length = 1350
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 7   tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 66
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 67  taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 126
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 127 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 186
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 187 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 246
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 247 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 306
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 307 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 366
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 367 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 426
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 427 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 486
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 487 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 546
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 547 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 606
+
+
+>S001418769 FN393764 Micrococcus luteus; ES-134F.
+          Length = 1362
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 73  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 132
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 133 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 192
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 193 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 252
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 253 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 312
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 313 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 372
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 373 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 432
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 433 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 492
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 493 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 552
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 553 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 612
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 613 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 672
+
+
+>S001239251 AM913979 Micrococcus sp. LD4.
+          Length = 1363
+
+ Score = 1166 bits (588), Expect = 0.0
+ Identities = 597/600 (99%)
+ Strand = Plus / Plus
+
+                                                                       
+Query: 57  tgggtggattagtggcgaacgggtgagtaatacgtgagtaacctgcccttaactctggga 116
+           |||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||
+Sbjct: 71  tgggtggattagtggcgaacgggtgagtaacacgtgagtaacctgcccttaactctggga 130
+
+                                                                       
+Query: 117 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 176
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 131 taagcctgggaaactgggtctaataccggataggagcgtccaccgcatggtgggtgttgg 190
+
+                                                                       
+Query: 177 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 236
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 191 aaagatttatcggttttggatggactcgcggcctatcagcttgttggtgaggtaatggct 250
+
+                                                                       
+Query: 237 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 296
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 251 caccaaggcgacgacgggtagccggcctgagagggtgaccggccacactgggactgagac 310
+
+                                                                       
+Query: 297 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 356
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 311 acggcccagactcctacgggaggcagcagtggggaatattgcacaatgggcgcaagcctg 370
+
+                                                                       
+Query: 357 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 416
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 371 atgcagcgacgccgcgtgagggatgacggccttcgggttgtaaacctctttcagtaggga 430
+
+                                                                       
+Query: 417 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 476
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 431 agaagcgaaagtgacggtacctgcagaagaagcaccggctaactacgtgccagcagccgc 490
+
+                                                                       
+Query: 477 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 536
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 491 ggtaatacgtagggtgcgagcgttatccggaattattgggcgtaaagagctcgtaggcgg 550
+
+                                                                       
+Query: 537 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 596
+           ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct: 551 tttgtcgcgtctgtcgtgaaagtccggggcttaaccccggatctgcggtgggtacgggca 610
+
+                                                                       
+Query: 597 gactacagtgcagtaggggagactggaattcctggtgtagcgctggaatgcgcagatatc 656
+           ||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||
+Sbjct: 611 gactagagtgcagtaggggagactggaattcctggtgtagcggtggaatgcgcagatatc 670
+
+
+  Database: species
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,432
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.001
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,059
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.002
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,889
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.003
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,060
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.004
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,433
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.005
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,529
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.006
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,020
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.007
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,409
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.008
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,141
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.009
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,300
+  Number of sequences in database:  2668
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.010
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,315
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.011
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,161
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.012
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,882
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.013
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,873
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.014
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,709
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.015
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,095
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.016
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,466
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.017
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,869
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.018
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,506
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.019
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,954
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.020
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,447
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.021
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,046
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.022
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,435
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.023
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,076
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.024
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,039
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.025
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,781
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.026
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,993
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.027
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,807
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.028
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,879
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.029
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,410
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.030
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,454
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.031
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,095
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.032
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,892
+  Number of sequences in database:  2669
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.033
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,099
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.034
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,473
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.035
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,988
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.036
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,880
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.037
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,882
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.038
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,134
+  Number of sequences in database:  2662
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.039
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,010
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.040
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,515
+  Number of sequences in database:  2663
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.041
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,044
+  Number of sequences in database:  2664
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.042
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,790
+  Number of sequences in database:  2661
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.043
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,561
+  Number of sequences in database:  2667
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.044
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,168
+  Number of sequences in database:  2666
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.045
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,835
+  Number of sequences in database:  2668
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.046
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,838,916
+  Number of sequences in database:  2665
+  
+  Database: /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-
+  staging/output/blast/formatdb/species.047
+    Posted date:  Jul 1, 2013  1:38 PM
+  Number of letters in database: 3,839,170
+  Number of sequences in database:  2663
+  
