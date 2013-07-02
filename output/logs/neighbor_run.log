@@ -1,0 +1,194 @@
+### DEBUG OUTPUT START ###
+	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
+	NEIGHBOR_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal
+	NEIGHBOR_ROOT: 
+	NEIGHBOR_SCRIPT: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/neighbor_script
+	CLUSTAL_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal
+	TREE_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/tree
+### DEBUG OUTPUT END ###
+Number of  in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/distances: 14 for SEQ0000001
+Created the script for neighbor to use.
+Making the tree...
+[2J[Hneighbor: can't find input file "infile"
+Please enter a new file name> 
+[2J[H
+Neighbor-Joining/UPGMA method version 3.68
+
+Settings for this run:
+  N       Neighbor-joining or UPGMA tree?  Neighbor-joining
+  O                        Outgroup root?  No, use as outgroup species  1
+  L         Lower-triangular data matrix?  No
+  R         Upper-triangular data matrix?  No
+  S                        Subreplicates?  No
+  J     Randomize input order of species?  No. Use input order
+  M           Analyze multiple data sets?  No
+  0   Terminal type (IBM PC, ANSI, none)?  ANSI
+  1    Print out the data at start of run  No
+  2  Print indications of progress of run  Yes
+  3                        Print out tree  Yes
+  4       Write out trees onto tree file?  Yes
+
+
+  Y to accept these or type the letter for one to change
+Type number of the outgroup:
+[2J[H
+Neighbor-Joining/UPGMA method version 3.68
+
+Settings for this run:
+  N       Neighbor-joining or UPGMA tree?  Neighbor-joining
+  O                        Outgroup root?  Yes, at species number 14
+  L         Lower-triangular data matrix?  No
+  R         Upper-triangular data matrix?  No
+  S                        Subreplicates?  No
+  J     Randomize input order of species?  No. Use input order
+  M           Analyze multiple data sets?  No
+  0   Terminal type (IBM PC, ANSI, none)?  ANSI
+  1    Print out the data at start of run  No
+  2  Print indications of progress of run  Yes
+  3                        Print out tree  Yes
+  4       Write out trees onto tree file?  Yes
+
+
+  Y to accept these or type the letter for one to change
+
+Cycle 130: species 111 (   0.00000) joins species 112 (   0.00000)
+Cycle 129: species 113 (   0.00350) joins species 114 (   0.00345)
+Cycle 128: species 109 (   0.03188) joins species 110 (  -0.00180)
+Cycle 127: species 115 (   0.00000) joins species 116 (   0.00000)
+Cycle 126: species 117 (  -0.00059) joins species 121 (   0.00523)
+Cycle 125: node 117 (   0.00030) joins species 118 (  -0.00030)
+Cycle 124: node 117 (   0.00015) joins species 119 (  -0.00015)
+Cycle 123: species 124 (   0.00000) joins species 127 (   0.00000)
+Cycle 122: species 120 (  -0.00032) joins species 122 (   0.00262)
+Cycle 121: node 120 (   0.00016) joins species 128 (  -0.00016)
+Cycle 120: node 120 (   0.00008) joins species 130 (  -0.00008)
+Cycle 119: node 120 (   0.00004) joins species 131 (  -0.00004)
+Cycle 118: node 120 (   0.00270) joins species 126 (  -0.00039)
+Cycle 117: species 123 (  -0.00011) joins species 124 (   0.00473)
+Cycle 116: node 120 (   0.00020) joins species 132 (  -0.00020)
+Cycle 115: node 123 (   0.00006) joins species 129 (  -0.00006)
+Cycle 114: node 120 (   0.00116) joins node 123 (   0.00115)
+Cycle 113: node 120 (   0.00309) joins species 125 (   0.01090)
+Cycle 112: node 113 (   0.06025) joins species 115 (   0.04334)
+Cycle 111: node 120 (   0.00729) joins species 133 (   0.14372)
+Cycle 110: node 113 (   0.01285) joins node 120 (   0.00764)
+Cycle 109: node 109 (   0.04973) joins species 111 (   0.15614)
+Cycle 108: node 113 (   0.02500) joins node 117 (   0.04474)
+Cycle 107: species 56 (   0.11705) joins species 57 (   0.08731)
+Cycle 106: node 109 (   0.06009) joins node 113 (   0.03780)
+Cycle 105: species 3 (   0.03439) joins species 4 (   0.03116)
+Cycle 104: species 107 (   0.00000) joins species 108 (   0.00000)
+Cycle 103: species 8 (   0.00078) joins species 9 (   0.00139)
+Cycle 102: species 10 (   0.00000) joins species 11 (   0.00000)
+Cycle 101: species 10 (   0.00000) joins species 12 (   0.00000)
+Cycle 100: species 10 (   0.00312) joins species 13 (   0.08888)
+Cycle  99: node 3 (   0.01849) joins species 6 (  -0.00085)
+Cycle  98: species 1 (   0.00000) joins species 2 (   0.00000)
+Cycle  97: species 1 (   0.00000) joins species 5 (   0.00000)
+Cycle  96: species 1 (   0.00000) joins species 7 (   0.00000)
+Cycle  95: species 1 (   0.00067) joins node 3 (   0.00158)
+Cycle  94: species 90 (   0.00000) joins species 94 (   0.00000)
+Cycle  93: species 90 (   0.00000) joins species 95 (   0.00000)
+Cycle  92: species 90 (   0.00000) joins species 96 (   0.00000)
+Cycle  91: species 83 (   0.00087) joins species 104 (   0.00348)
+Cycle  90: species 80 (  -0.00022) joins node 83 (   0.00131)
+Cycle  89: node 80 (   0.00011) joins species 82 (  -0.00011)
+Cycle  88: node 80 (   0.00006) joins species 85 (  -0.00006)
+Cycle  87: node 80 (   0.00003) joins species 86 (  -0.00003)
+Cycle  86: node 80 (   0.00001) joins species 97 (  -0.00001)
+Cycle  85: node 80 (   0.00234) joins species 84 (  -0.00017)
+Cycle  84: node 80 (   0.00009) joins species 87 (  -0.00009)
+Cycle  83: node 80 (   0.00004) joins species 103 (  -0.00004)
+Cycle  82: node 80 (   0.00002) joins species 105 (  -0.00002)
+Cycle  81: node 80 (   0.00001) joins species 106 (  -0.00001)
+Cycle  80: species 81 (  -0.00011) joins species 101 (   0.00011)
+Cycle  79: species 81 (   0.00006) joins species 93 (  -0.00006)
+Cycle  78: species 81 (   0.00003) joins species 102 (  -0.00003)
+Cycle  77: species 88 (   0.00000) joins species 89 (   0.00000)
+Cycle  76: species 88 (   0.00000) joins species 91 (   0.00000)
+Cycle  75: species 88 (   0.00000) joins species 92 (   0.00000)
+Cycle  74: species 88 (   0.00000) joins species 98 (   0.00000)
+Cycle  73: species 88 (   0.00000) joins species 99 (   0.00000)
+Cycle  72: species 88 (   0.00000) joins species 100 (   0.00000)
+Cycle  71: species 88 (   0.00156) joins species 90 (   0.00937)
+Cycle  70: node 80 (   0.00778) joins species 81 (   0.00315)
+Cycle  69: node 56 (   0.06084) joins node 80 (   0.00493)
+Cycle  68: node 56 (   0.01015) joins node 88 (   0.01530)
+Cycle  67: node 1 (   0.02312) joins node 8 (   0.02475)
+Cycle  66: node 10 (   0.02611) joins species 107 (   0.04109)
+Cycle  65: species 78 (   0.00000) joins species 79 (   0.00000)
+Cycle  64: species 66 (   0.03124) joins species 78 (   0.00004)
+Cycle  63: node 1 (   0.00888) joins node 10 (   0.00681)
+Cycle  62: node 56 (   0.03897) joins node 109 (   0.08877)
+Cycle  61: node 1 (   0.01377) joins node 66 (   0.01530)
+Cycle  60: species 14 (  -0.00013) joins species 15 (   0.00447)
+Cycle  59: node 14 (   0.00007) joins species 16 (  -0.00007)
+Cycle  58: node 14 (   0.00003) joins species 17 (  -0.00003)
+Cycle  57: node 14 (   0.00002) joins species 18 (  -0.00002)
+Cycle  56: node 14 (   0.00001) joins species 19 (  -0.00001)
+Cycle  55: node 14 (   0.00000) joins species 20 (  -0.00000)
+Cycle  54: node 14 (   0.00000) joins species 21 (  -0.00000)
+Cycle  53: node 14 (   0.00000) joins species 22 (  -0.00000)
+Cycle  52: node 14 (   0.00000) joins species 23 (  -0.00000)
+Cycle  51: node 14 (   0.00000) joins species 24 (  -0.00000)
+Cycle  50: node 1 (   0.00864) joins node 14 (   0.00836)
+Cycle  49: node 1 (   0.00990) joins node 56 (   0.02377)
+Cycle  48: species 55 (   0.00336) joins species 77 (   0.00315)
+Cycle  47: species 59 (   0.16519) joins species 62 (   0.02655)
+Cycle  46: species 58 (   0.02220) joins node 59 (   0.00559)
+Cycle  45: node 1 (   0.02786) joins node 55 (   0.01397)
+Cycle  44: species 48 (   0.03810) joins species 50 (  -0.00037)
+Cycle  43: species 60 (   0.00181) joins species 61 (   0.00252)
+Cycle  42: node 60 (   0.00133) joins species 63 (   0.00301)
+Cycle  41: species 26 (   0.00000) joins species 51 (   0.00000)
+Cycle  40: species 26 (   0.00013) joins species 49 (   0.01295)
+Cycle  39: species 32 (   0.00000) joins species 35 (   0.00000)
+Cycle  38: species 32 (   0.00001) joins species 74 (  -0.00001)
+Cycle  37: node 26 (   0.00212) joins species 32 (   0.00007)
+Cycle  36: node 58 (   0.00918) joins node 60 (   0.00307)
+Cycle  35: node 1 (   0.00719) joins node 26 (   0.00291)
+Cycle  34: node 58 (   0.00646) joins species 64 (   0.00677)
+Cycle  33: node 1 (   0.00645) joins node 48 (   0.01116)
+Cycle  32: species 29 (   0.00000) joins species 34 (   0.00000)
+Cycle  31: species 29 (   0.00000) joins species 39 (   0.00000)
+Cycle  30: species 29 (   0.00000) joins species 40 (   0.00000)
+Cycle  29: species 29 (   0.00000) joins species 46 (   0.00000)
+Cycle  28: species 28 (  -0.00000) joins species 29 (   0.00000)
+Cycle  27: node 1 (   0.00081) joins species 28 (   0.00104)
+Cycle  26: node 1 (   0.00090) joins species 25 (  -0.00023)
+Cycle  25: node 58 (   0.00190) joins species 65 (  -0.00004)
+Cycle  24: species 52 (  -0.00002) joins node 58 (   0.00002)
+Cycle  23: node 52 (   0.00001) joins species 53 (  -0.00001)
+Cycle  22: node 52 (   0.00001) joins species 54 (  -0.00001)
+Cycle  21: node 52 (   0.00000) joins species 67 (  -0.00000)
+Cycle  20: node 52 (   0.00000) joins species 68 (  -0.00000)
+Cycle  19: node 52 (   0.00000) joins species 69 (  -0.00000)
+Cycle  18: node 1 (   0.00023) joins species 70 (  -0.00000)
+Cycle  17: node 1 (   0.00000) joins node 52 (   0.00000)
+Cycle  16: node 1 (   0.00000) joins species 71 (  -0.00000)
+Cycle  15: node 1 (   0.00000) joins species 72 (  -0.00000)
+Cycle  14: node 1 (   0.00000) joins species 73 (  -0.00000)
+Cycle  13: node 1 (   0.00000) joins species 75 (  -0.00000)
+Cycle  12: node 1 (   0.00000) joins species 76 (  -0.00000)
+Cycle  11: node 1 (   0.00000) joins species 27 (   0.00000)
+Cycle  10: species 30 (   0.00000) joins species 31 (   0.00000)
+Cycle   9: species 30 (   0.00000) joins species 33 (   0.00000)
+Cycle   8: species 30 (   0.00000) joins species 36 (   0.00000)
+Cycle   7: species 30 (   0.00000) joins species 37 (   0.00000)
+Cycle   6: species 30 (   0.00000) joins species 38 (   0.00000)
+Cycle   5: species 30 (   0.00000) joins species 41 (   0.00000)
+Cycle   4: species 30 (   0.00000) joins species 42 (   0.00000)
+Cycle   3: node 1 (   0.00000) joins species 30 (   0.00000)
+Cycle   2: node 1 (   0.00000) joins species 43 (   0.00000)
+Cycle   1: species 44 (   0.00000) joins species 45 (   0.00000)
+last cycle:
+ node 1  (   0.00000) joins species 44  (   0.00000) joins species 47  (   0.00000)
+
+Output written on file "outfile"
+
+Tree written on file "outtree"
+
+Done.
+
+Changing back to full names...
+Moving "final" output to /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/tree

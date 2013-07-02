@@ -1,0 +1,11 @@
+### DEBUG OUTPUT START ###
+	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
+	CLUSTAL_OUTPUT_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal
+	CLUTAL_ALIGNMENT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/clustal_all.aln
+	PHYLIP_IN_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/infile
+### DEBUG OUTPUT END ###
+Getting alignment start and end
+START: 154
+END: 640
+Clipping the alignment
+Reads and writes (returns) sequences

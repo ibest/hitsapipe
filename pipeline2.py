@@ -26,6 +26,8 @@ class Pipeline:
         self.static_vars = self.__get_static_vars()
         self.qsub_options = self.__get_qsub_options()
         self.type = self.preferences['Execution']
+        self.debug = self.params['debug']
+        self.verbose = self.params['verbose']
 
         if self.params['debug']:        
             print "Directories:"
@@ -318,24 +320,23 @@ class Pipeline:
         return self.execute_job(cmd_options)
     def execute_job_array_prep(self, job_name, hold_filepath, error_filepath):
         arr_count = -1
-        if self.type == "Parallel":
-            while os.path.exists(hold_filepath) is not True:
-                time.sleep(10)
-                if os.path.exists(error_filepath):
-                    os.remove(error_filepath)
-                    self.__set_fatal_error(True, 
-                                           err_msg="a job prior to the array "
-                                           "failed and the pipeline "
-                                           "cannot recover")
-                    
-            file = open(hold_filepath, "r")
-            arr_count = file.readline()
-            arr_count = str(arr_count).strip()
+        while os.path.exists(hold_filepath) is not True:
+            time.sleep(10)
+            if os.path.exists(error_filepath):
+                os.remove(error_filepath)
+                self.__set_fatal_error(True, 
+                                       err_msg="a job prior to the array "
+                                       "failed and the pipeline "
+                                       "cannot recover")
+                
+        file = open(hold_filepath, "r")
+        arr_count = file.readline()
+        arr_count = str(arr_count).strip()
+    
+        os.remove(hold_filepath)
         
-            os.remove(hold_filepath)
-            
-            if self.params['debug']:
-                print "Number of array items: "+str(int(arr_count))
+        if self.params['debug']:
+            print "Number of array items: "+str(int(arr_count))
     
         return int(arr_count)  
     def execute_job_array_check(self, job_name, array_count, base_id):
@@ -371,7 +372,81 @@ class Pipeline:
                         break
             devnull.close()
         return True
-
+    def execute_job_split(self, options):
+        # Gets the command and executes based on if in parallel or standalone
+        # modes.
+        
+        id = None
+        if self.type == "Parallel":
+            if options.has_key('array'):
+                if self.params['verbose'] or self.params['debug']:
+                    msg = "Job \""+str(options['name'])+"\" is an array job "\
+                            "and will not be executed until the previous job "\
+                            "is complete."
+                    print msg
+                options['arr_count'] = self.execute_job_array_prep(
+                                       options['name'], 
+                                       self.static_vars['Array_Output_File'], 
+                                       self.static_vars['Error_File'])
+                
+                # We know the job is complete and so we don't want to have
+                # a job dependency.
+                options['previous_id'] = None
+                if self.params['verbose'] or self.params['debug']:
+                    msg = "Number of array items in job: "\
+                            +str(options['arr_count'])
+                    print msg
+                    
+                cmd = self.__get_command(options)
+                if self.params['debug'] and options.has_key('arr_count'): # Only want to see this right now on array jobs.
+                    print "===================Executing==================="
+                    print "\t"+str(cmd)
+                    print "==============================================="
+                
+                process = subprocess.Popen(cmd, shell=True,
+                                            stdout=subprocess.PIPE, 
+                                            stderr=subprocess.STDOUT)
+                out, err = process.communicate()
+                    
+                id = re.split('[[\.]{1}',out)[0]
+                if self.params['verbose'] or self.params['debug']:
+                    print options['name'] + " submitted. ID: "+str(id)
+                if options.has_key('arr_count') and options['arr_count'] >= 0:
+                    if self.verbose or self.debug:
+                        msg = "Waiting for the array job \""\
+                                +str(options['name'])\
+                                +"\" to finish before continuing ("\
+                                +str(options['arr_count'])+" jobs in array)."
+                        print msg
+                
+                self.execute_job_array_check(options['name'], 
+                                             options['arr_count'], 
+                                             id)
+                id = None # We don't want the next job to have a dependency
+                    
+        else: # Standalone
+            if options.has_key('array'):
+                arr_count = self.execute_job_array_prep(
+                                       options['name'], 
+                                       self.static_vars['Array_Output_File'], 
+                                       self.static_vars['Error_File'])
+                for i in xrange(arr_count):
+                    options['array_id'] = i
+                    cmd = self.__get_command(options)
+                    if self.params['debug']: # Only want to see this right now on array jobs.
+                        print "===================Executing==================="
+                        print "\t"+str(cmd)
+                        print "==============================================="
+                    process = subprocess.Popen(cmd, shell=True,
+                                              stdout=subprocess.PIPE, 
+                                              stderr=subprocess.STDOUT)
+                    out, err = process.communicate()
+                    if out is not None:
+                        print str(out) # stderr is redirected to stdout
+        
+        return id
+    def execute_job_nonsplit(self, options):
+        pass
     def execute_job(self, options):
         # Calls subprocess.Popen to execute the command.
         # If in standalone mode, it directly outputs stdout
@@ -379,6 +454,8 @@ class Pipeline:
         # stdout and instead prints its own messages.  The script
         # output will be sent to a log file by qsub when it executes
         # the script.
+        
+        return self.execute_job_split(options)
         
         id = None
         
@@ -400,8 +477,8 @@ class Pipeline:
                     msg = "Number of array items in job: "\
                             +str(options['arr_count'])
                     print msg
-        else:
-                # Set the number of times to loop.
+            else: # Not parallel
+                
                 pass
         
         cmd = self.__get_command(options)
