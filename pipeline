@@ -987,6 +987,11 @@ def main():
             error_message += arg+"\n"
         error_message += "Please see the usage above and try again."
         parser.error(error_message)
+        
+    # Handle user input    
+    options.scripts_dir = p.abspath(p.expanduser(options.scripts_dir))
+    options.work_dir = p.abspath(p.expanduser(options.work_dir))
+    options.config_file = p.abspath(p.expanduser(options.config_file))
     
     pipeline = Pipeline(options)
     sys.exit(pipeline.run())
