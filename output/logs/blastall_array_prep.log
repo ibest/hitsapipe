@@ -1,7 +1,0 @@
-### DEBUG OUTPUT START ###
-	BLAST_TEMP_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp
-	BLAST_INPUT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/blast_input
-	ARRAY_OUTPUT_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/arrayjob.tmp
-### DEBUG OUTPUT END ###
-mv la090.fasta la090.fasta.0
-mv la091.fasta la091.fasta.1

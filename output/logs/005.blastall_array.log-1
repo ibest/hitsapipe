@@ -1,4 +1,0 @@
-Blasting file /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/tmp/la091.fasta.1 against the database /mnt/home/data/db/rdp/species
-	Storing the output in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/blasts/la091.fasta.blastn
-Total Execution Time: 4.7881
-Blast successful. Removing PBS array file extension.

@@ -1,9 +1,0 @@
-This is coming from stagingTest.pbs
-MBASHDIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/bash
-ECHOSTUFF: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/bin/bash/echostuff.bash
-Attemping to call using MBASHDIR:
-/var/spool/torque/mom_priv/jobs/1121816.fortytwo.ibest.uidaho.edu.SC: line 12: This: command not found
-/var/spool/torque/mom_priv/jobs/1121816.fortytwo.ibest.uidaho.edu.SC: line 13: This: command not found
-This is coming from echostuff.bash - Danger Zone!
-Finished.
-Sun Jun  2 15:19:44 PDT 2013
