@@ -43,7 +43,7 @@ fi
 # If this is to be run in parallel, call mpiformatdb
 # If not, call formatdb
 
- if [ ${EXECUTION} == "Parallel" ]
+ if [ "${EXECUTION}" == "Parallel" ]
  then
  	DBNODES=$((NNODES - 2))
  	DBNAME=$(echo "${GOOD_SEQUENCES_FILE##*/}")
@@ -75,7 +75,7 @@ fi
 	fi
 fi
 
- if [ ${EXECUTION} == "Parallel" ]
+ if [ "${EXECUTION}" == "Parallel" ]
  then
  	#GOOD_SEQUENCES_SHARED=$(echo "${MPIBLAST_SHARED}/${GOOD_SEQUENCES_FILE##*/}")
  	GOOD_SEQUENCES_SHARED=$(echo "${GOOD_SEQUENCES_FILE##*/}")

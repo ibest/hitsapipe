@@ -1,13 +1,13 @@
-Debug option is: True
 ### DEBUG OUTPUT START ###
-	SEQUENCE_DIR: 
+	INPUT_SEQUENCES: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/sequences.two
 	PERL_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/scripts
 	ORIGINALS_DIR: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/references/originals
-	INPUT_SEQUENCE_LIST: 
+	INPUT_SEQUENCES_LIST: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/input_sequences_list
 	SUFFIX: .fasta
 ### DEBUG OUTPUT END ###
 Collating all .fasta files into list
-/var/spool/torque/mom_priv/jobs/1123839.fortytwo.ibest.uidaho.edu.SC: line 25: ${INPUT_SEQUENCE_LIST}: ambiguous redirect
 Ensuring Unix endlines on all files
+perl cmd: perl -p -i.orig -e 's/\r\n|\r/\n/g' /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/sequences.two/la091.fasta
+perl cmd: perl -p -i.orig -e 's/\r\n|\r/\n/g' /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/sequences.two/la090.fasta
 Backing up original sequences.
 Making sure all filenames are the FASTA sequences names.

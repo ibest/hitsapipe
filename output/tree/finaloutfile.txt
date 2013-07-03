@@ -1,5 +1,5 @@
 
- 133 Populations
+  44 Populations
 
 Neighbor-Joining/UPGMA method version 3.68
 
@@ -9,539 +9,183 @@ Neighbor-Joining/UPGMA method version 3.68
  Negative branch lengths allowed
 
 
-  +ob152.fasta
-  !  
-  !  +oa022.fasta
+  +-------Aquifex_aeolicus_VF5_VF5
+  ! 
+  !     +-----Thermotoga_maritima_T
+  !  +-14  
+  !  !  +-----uc_Thermodesulfobacterium_sp._BSpN50
   !  !  
- 71-72  +lb130a.fasta
-  !  !  !  
-  !  +-73  +la219.fasta
-  !     !  !  
-  !     !  !  +la223b.fasta
-  !     +-74  !  
-  !        !  !  +oa363.fasta
-  !        !  !  !  
-  !        +-75  !  +lcl|S001097911_EU594552_Bacillus_pumilus_2-1
-  !           !  !  !  
-  !           !  !  !  +lcl|S001588580_FJ763645_Bacillus_pumilus_X22
-  !           !  !  !  !  
-  !           +-76  !  !  +lcl|S001575814_GQ203617_Bacillus_pumilus_KS-2
-  !              !  !  !  !  
-  !              !  !  !  !  +lcl|S001874781_GU339273_Bacillus_pumilus_EH45
-  !              !  !  !  !  !  
-  !              !  !  !  !  !                  +------la374.fasta
-  !              !  !  !  !  !              +--24  
-  !              !  !  !  !  !              !   +----la123.fasta
-  !              +-77  !  !  !              !  
-  !                 !  !  !  !              !                                +la140.fasta
-  !                 !  !  !  !              !                             +-41  
-  !                 !  !  !  !              !                             !  !  +la143.fasta
-  !                 !  !  !  !              !                          +-42  +-40  
-  !                 !  !  !  !              !                          !  !     +lcl|S002411377_HQ908730_Staphylococcus_hominis_subsp._hominis_F71020
-  !                 !  !  !  !              !                       +-43  !  
-  !                 !  !  !  !              !                       !  !  +oa248.fasta
-  !                 !  !  !  !              !                    +-44  !  
-  !                 !  !  !  !              !                    !  !  +oa244.fasta
-  !                 !  !  !  !              !                 +-45  !  
-  !                 !  !  !  !           +-62                 !  !  +la403.fasta
-  !                 +-78  !  !           !  !              +-46  !  
-  !                    !  !  !           !  !              !  !  +lcl|S002231893_HM587902_Staphylococcus_sp._m1-20
-  !                    !  !  !           !  !           +-47  !  
-  !                    !  !  !           !  !           !  !  +lb105.fasta
-  !                    !  !  !           !  !        +-48  !  
-  !                    !  !  !           !  !        !  !  +la354.fasta
-  !                    !  !  !           !  !     +-49  !  
-  !                    !  !  !           !  !     !  !  +lcl|S000995960_EU379307_Staphylococcus_hominis_subsp._hominis_6R-J-7c
-  !                    !  !  !           !  !  +-50  !  
-  !                    !  !  !           !  !  !  !  +lcl|S001574870_FJ976576_bacterium_BQN2Ps-LCR67
-  !                    !  !  !           !  !  !  !  
-  !                    !  !  !           !  !  !  +lcl|S002233924_HQ141278_Staphylococcus_sp._DAKA65
-  !                    !  !  !           !  !  !  
-  !                    !  !  !           !  +-61        +ob252.fasta
-  !                    !  !  !           !     !     +-51  
-  !                    !  !  !           !     !  +-52  +lcl|S000995954_EU379301_Staphylococcus_haemolyticus_6J-8
-  !                    !  !  !           !     !  !  !  
-  !                    !  !  !        +-63     +-53  +lb100.fasta
-  !                    !  !  !        !  !        !  
-  !                    !  !  !        !  !        +lcl|S001096636_EU554434_Staphylococcus_sp._Ag08
-  !                    !  !  !        !  !  
-  !                    !  !  !        !  !                    +la211.fasta
-  !                    +-79  !        !  !                 +-54  
-  !                       !  !        !  !              +-55  +la090.fasta
-  !                       !  !        !  !              !  !  
-  !                       !  !        !  !           +-56  +sa059.fasta
-  !                       !  !        !  !           !  !  
-  !                       !  !        !  !        +-57  +la091.fasta
-  !                       !  !        !  !        !  !  
-  !                       !  !        !  !     +-58  +lcl|S002411306_HQ908659_Staphylococcus_epidermidis_F71028
-  !                       !  !        !  !     !  !  
-  !                       !  !        !  !  +-59  +lcl|S002411337_HQ908690_Staphylococcus_epidermidis_F71055
-  !                       !  !        !  !  !  !  
-  !                       !  !        !  !  !  +lcl|S001094158_AM990664_Staphylococcus_sp._MOLA_387
-  !                       !  !        !  !  !  
-  !                       !  !        !  +-60        +la119.fasta
-  !                       !  !        !     !     +-37  
-  !                       !  !        !     !  +-38  +lb102.fasta
-  !                       !  !        !     !  !  !  
-  !                       !  !     +-69     +-39  +lcl|S000381982_AB009935_Staphylococcus_caprae_T_ATCC_35538T
-  !                       !  !     !  !        !  
-  !                       !  !     !  !        +lcl|S000413963_D83362_Staphylococcus_epidermidis_ATCC_146_=_MAFF_911486
-  !                       !  !     !  !  
-  !                       !  !     !  !          +-la225b.fasta
-  !                       !  !     !  !       +--3 
-  !                       !  !     !  !       !  +lcl|S000572042_AY358005_Methylobacterium_sp._iRIV1
-  !                       !  !     !  !    +-22  
-  !                       !  !     !  !    !  !         +ob150.fasta
-  !                       !  !     !  !    !  +---------1 
-  !                       !  !     !  !    !            +lcl|S002038968_AB550660_Pseudomonas_sp._NCCP-143
-  !                       !  !     !  !    !  
-  !                       !  !     !  !    !            +oa267.fasta
-  !                       !  !     !  !    !        +---2 
-  !                       !  !     !  !    !        !   +lcl|S002167438_HM012705_Brevibacterium_casei_PCSB1
-  !                       !  !     !  !    !     +-19  
-  !                       !  !     !  !    !     !  !  +la199.fasta
-  !                       !  !     !  !    !     !  +--4 
-  !                       !  !     !  !    !     !     +lcl|S000843137_EF459528_Agrococcus_citreus_KFC-31
-  !                       !  !     !  !    !     !  
-  !                       !  !     !  !    !     !                         +la398.fasta
-  !                       !  !     !  !    !     !                       +-9 
-  !                       !  !     !  !    !     !                    +-10 +la419.fasta
-  !                       !  !     !  +---25     !                    !  !  
-  !                       +-80     !       !     !                 +-11  +lcl|S000995939_EU379286_Micrococcus_luteus_4RS-9a
-  !                          !     !       !     !                 !  !  
-  !                          !     !       !     !              +-12  +lcl|S002350860_FR750272_Micrococcus_sp._MG-2010-D12
-  !                          !     !       !  +-21              !  !  
-  !                          !     !       !  !  !           +-13  +lcl|S001046228_EU730941_Micrococcus_luteus_164
-  !                          !     !       !  !  !           !  !  
-  !                          !     !       !  !  !        +-15  +lcl|S000652934_AM237392_Micrococcus_luteus_OS-159
-  !                          !  +-82       !  !  !        !  !  
-  !                          !  !  !       !  !  !        !  +la404.fasta
-  !                          !  !  !       !  !  !     +-17  
-  !                          !  !  !       !  !  !     !  !     +la401.fasta
-  !                          !  !  !       !  !  !     !  !  +-14  
-  !                          !  !  !       !  !  !     !  !  !  ! +la371.fasta
-  !                          !  !  !       !  !  !  +-18  +-16  +-8 
-  !                          !  !  !       !  !  !  !  !     !    +lcl|S001793428_EU867328_Macrococcus_sp._CCGE2291
-  !                          !  !  !       +-23  !  !  !     !  
-  !                          !  !  !          !  +-20  !     +lcl|S001746436_GU143673_Micrococcaceae_bacterium_FXY35
-  !                          !  !  !          !     !  !  
-  !                          !  !  !          !     !  +la406.fasta
-  !                          !  !  !          !     !  
-  !                          !  !  !          !     +--------la370.fasta
-  !                          !  !  !          !  
-  !                          !  !  !          !      +oa250.fasta
-  !                          !  !  !          !    +-5 
-  !                          !  !  !          !  +-6 +oa243a.fasta
-  !                          !  !  !          !  ! ! 
-  !                          !  !  !          +--7 +lcl|S000541936_AB012593_bacterium_IFO_15702
-  !                          !  !  !             ! 
-  !                          !  !  !             +oa240.fasta
-  !                          !  !  !  
-  !                          !  !  !     +ob121.fasta
-  !                          !  !  !  +-83  
-  !                          !  !  !  !  +lcl|S002223582_GQ407170_Bacillus_sp._DV9-25
-  !                          !  !  !  !  
-  !                          !  !  !  !           +lcl|S001577291_GQ303255_Bacillus_subtilis_subsp._subtilis_ME-N11
-  !                          !  !  !  !        +-90  
-  !                          !  !  !  !     +-91  +la162.fasta
-  !                          !  !  !  !     !  !  
-  !                          !  !  !  !     !  +oa188b.fasta
-  !                          !  !  +-86  +-94  
-  !                          !  !     !  !  !     +lcl|S000965816_EF530208_Bacillus_subtilis_subsp._subtilis_FS321
-  !                          !  !     !  !  !  +-92  
-  !                          !  !     !  !  +-93  +lcl|S001241154_FJ263018_Bacillus_subtilis_subsp._subtilis_ZHA9
-  !                          !  !     !  !     !  
-  !                          !  !     !  !     +la109.fasta
-  !                          !  !     !  !  
-  !                          !  !     !  !     +--oa161.fasta
-  !                          !  !     +-96  +-87  
-  !                          !  !        !  !  +la126.fasta
-  !                          !  !        !  !  
-  !                          !  !        !  !     +lcl|S000824812_EF420247_Bacillus_subtilis_subsp._subtilis_B6-1
-  !                          !  !        !  !     !  
-  !                          !  !        !  !     !           +lcl|S002382780_HM461161_Bacillus_sp._enrichment_culture_clone_HSL38
-  !                          !  !        !  !     !        +-99  
-  !                          !  !        +-98  +-103     +-100  +lcl|S002233023_HM776394_Bacillus_sp._JMP-B
-  !                          !  !           !  !  !     !  !  
-  !                          !  !           !  !  !  +-101  +lcl|S002235636_HQ433577_Bacillus_sp._292010
-  !                          !  !           !  !  !  !  !  
-  !                          !  !           !  !  +-102  +lcl|S002233314_HM992829_Bacillus_amyloliquefaciens_NB-07
-  !                          !  !           !  !     !  
-  !                          !  !           !  !     +sb048.fasta
-  !                          !  !           !  !  
-  !                          !  !           +-104  +lcl|S000712428_DQ659146_Bacillus_subtilis_subsp._subtilis_GR011
-  !                          !  !              !  !  
-  !                          !  !              !  !  +oa246a.fasta
-  !                          !  !              !  !  !  
-  !                          !  !              !  !  !                    +la124.fasta
-  !                          !  !              !  !  !                    !  
-  !                          !  !              !  !  !                    !           +oa245.fasta
-  !                          !  !              !  !  !                    !        +-85  
-  !                          !  !              +-105  !                    !        !  !  +---------la342.fasta
-  !                          !  !                 !  !                    !        !  +-84  
-  !                          !  !                 !  !                 +-107        !     +-ob171.fasta
-  !                          !  !                 !  !                 !  !     +-95  
-  !                          !  !                 !  !                 !  !     !  !     +la397.fasta
-  !                          !  !                 !  !                 !  !     !  !  +-88  
-  !                          !  !                 !  !                 !  !  +-97  +-89  +la147.fasta
-  !                          !  !                 !  !                 !  !  !  !     !  
-  !                          !  !                 +-113              +-108  !  !  !     +oa246b.fasta
-  !                          !  !                    !              !  !  +-106  !  
-  !                          !  !                    !              !  !     !  +la223a.fasta
-  !                          +-81                    !              !  !     !  
-  !                             !                    !           +-109  !     +la094.fasta
-  !                             !                    !           !  !  !  
-  !                             !                    !           !  !  +la072.fasta
-  !                             !                    !        +-110  !  
-  !                             !                    !        !  !  +oa247.fasta
-  !                             !                    !     +-111  !  
-  !                             !                    !     !  !  +oa268.fasta
-  !                             !                    !  +-112  !  
-  !                             !                    !  !  !  +la198.fasta
-  !                             !                    !  !  !  
-  !                             !                    +-114  +la405.fasta
-  !                             !                       !  
-  !                             !                       !  +la174.fasta
-  !                             !                       !  !  
-  !                             !                       +-115  +ob254.fasta
-  !                             !                          !  !  
-  !                             !                          +-116  +ob006.fasta
-  !                             !                             !  !  
-  !                             !                             +-117  +ob145.fasta
-  !                             !                                !  !  
-  !                             !                                !  !  +ob164.fasta
-  !                             !                                +-118  !  
-  !                             !                                   !  !  +lcl|S000891119_AB301022_Bacillus_amyloliquefaciens_GH48
-  !                             !                                   !  !  !  
-  !                             !                                   !  !  !                       +lcl|S001575619_GQ199588_Bacillus_amyloliquefaciens_DL-3-4-1
-  !                             !                                   +-119  !                    +-121  
-  !                             !                                      !  !                 +-122  +lcl|S000824899_EF423589_Bacillus_subtilis_subsp._subtilis_F121112
-  !                             !                                      !  !                 !  !  
-  !                             !                                      !  !              +-123  +lcl|S001873871_GU292815_Bacillus_sp._hdly01
-  !                             !                                      !  !              !  !  
-  !                             !                                      +-120           +-124  +lcl|S002166927_GU980963_Bacillus_subtilis_subsp._subtilis_B-A
-  !                             !                                         !           !  !  
-  !                             !                                         !        +-125  +lcl|S002231048_HM566764_Bacillus_sp._SGE642010
-  !                             !                                         !        !  !  
-  !                             !                                         !     +-126  +lcl|S001612821_GQ861458_Bacillus_subtilis_subsp._subtilis_LQB23
-  !                             !                                         !     !  !  
-  !                             !                                         !  +-127  +lcl|S002305413_HQ317150_Bacillus_sp._DYJL7
-  !                             !                                         !  !  !  
-  !                             !                                         !  !  +lcl|S001241195_FJ386541_Bacillus_vallismortis_ST47
-  !                             !                                         +-128  
-  !                             !                                            !  +lcl|S002305411_HQ317148_Bacillus_subtilis_subsp._subtilis_DYJL5
-  !                             !                                            !  !  
-  !                             !                                            +-129     +la361b.fasta
-  !                             !                                               !  +-130  
-  !                             !                                               +-131  +la160.fasta
-  !                             !                                                  !  
-  !                             !                                                  +la173.fasta
-  !                             !  
-  !                             !                    +sb060.fasta
-  !                             !                 +-33  
-  !                             !              +-34  +la217.fasta
-  !                             !              !  !  
-  !                             !           +-35  +la372.fasta
-  !                             !           !  !  
-  !                             !           !  +lcl|S001265081_FJ554672_Bacillus_sp._P308
-  !                             !        +-36  
-  !                             !        !  !     +-oa133c.fasta
-  !                             !        !  !  +-26  
-  !                             !        !  +-32  +-lb089.fasta
-  !                             !     +-64     !  
-  !                             !     !  !     +lcl|S001044865_EU660368_Bacillus_nealsonii_CT18
-  !                             !     !  !  
-  !                             !     !  !  +ob146a.fasta
-  !                             !     !  +-28  
-  !                             !     !     +lcl|S002304555_FR695446_Bacillus_thioparans_CCMM_B649
-  !                             !  +-68  
-  !                             !  !  !           +lcl|S001574844_FJ976550_Bacillus_megaterium_LCR41
-  !                             !  !  !        +-29  
-  !                             !  !  !     +-30  +lcl|S001574910_FJ976616_Bacillus_megaterium_LCR107
-  !                             !  !  !     !  !  
-  !                             !  !  !  +-31  +lb249a.fasta
-  !                             !  !  !  !  !  
-  !                             +-70  +-65  +----lb241a.fasta
-  !                                !     !  
-  !                                !     !  +oa375a.fasta
-  !                                !     +-27  
-  !                                !        +lcl|S001170031_FJ006860_Terribacillus_sp._WPCB002
-  !                                !  
-  !                                !  +-oa257.fasta
-  !                                +-67  
-  !                                   !  +oa253.fasta
-  !                                   +-66  
-  !                                      +lcl|S002223007_FR682742_Bacillus_idriensis_R-36358
-  !  
-  +oa016.fasta
+  !  !     +--------Deferribacter_thermophilus_T_BMA1
+  !  !     !  
+  !  !     !              +----------Bacteroides_fragilis
+  !  !     !           +-28  
+  !  !     !        +-29  +--------Chlorobium_limicola_M1
+  !  !     !        !  !  
+  !  !     !        !  +-------Helicobacter_pylori_T_ATCC_43504
+  !  !     !        !  
+  !  !     !        !     +-------Borrelia_burgdorferi_BbMS
+  !  !     !        !  +-16  
+  !  !     !     +-39  !  +------Treponema_sp._ovine_footrot
+  !  !     !     !  !  !  
+  !  !     !     !  !  !              +la090.fasta
+  !  !     !     !  !  !              ! 
+  !  !     !     !  !  !           +--3   +la091.fasta
+  !  !     !     !  !  !           !  ! +-1 
+  !  !     !     !  +-37           !  +-2 +lcl|S002411337_HQ908690_Staphylococcus_epidermidis_F71055
+  !  !     !     !     !        +-10    ! 
+  !  !     !     !     !        !  !    +lcl|S001094158_AM990664_Staphylococcus_sp._MOLA_387
+  !  !     !     !     !     +-17  !  
+  !  !     !     !     !     !  !  +--Bacillus_subtilis_subsp._subtilis_str._168_168
+  !  !     !     !     !  +-26  !  
+  !  !     !     !     !  !  !  +-----Lactobacillus_jensenii_KC13
+  9-19     !     !     +-33  !  
+  !  !  +-36     !        !  +----Clostridium_botulinum_E
+  !  !  !  !     !        !  
+  !  !  !  !     !        +---------Fusobacterium_nucleatum_subsp._nucleatum_ATCC_25586_ATCC_25586
+  !  !  !  !     !  
+  !  !  !  !     !           +----Agrobacterium_sanguineum_ATCC_25660
+  !  !  !  !  +-42        +-22  
+  !  !  !  !  !  !        !  +----Paracoccus_denitrificans_IAM12479
+  !  !  !  !  !  !        !  
+  !  !  !  !  !  !     +-30     +--Burkholderia_cepacia_DSM_50181
+  !  !  !  !  !  !     !  !  +--7 
+  !  !  !  !  !  !     !  !  !  +---Neisseria_meningitidis_MC58_MC58
+  !  !  !  !  !  !     !  !  !  
+  !  !  !  !  !  !     !  +-23     +-Pseudomonas_aeruginosa_T_DSM50071
+  !  !  !  !  !  !     !     !  +--5 
+  !  !  !  !  !  !  +-34     !  !  +-Pseudomonas_putida_IAM_1236
+  !  !  !  !  !  !  !  !     +-18  
+  !  !  !  !  !  !  !  !        !   +Escherichia_coli_CFT073_CFT073
+  !  !  !  !  !  !  !  !        +---4 
+  !  !  !  !  !  !  !  !            +-Klebsiella_pneumoniae_F-5-2
+  !  !  !  !  !  !  !  !  
+  !  !  !  !  !  !  !  !  +-------Myxococcus_macrosporus_125-10-1
+  !  !  !  !  !  !  !  +-31  
+  !  !  !  !  !  !  !     +--------Leptospirillum_ferrooxidans_49879
+  !  !  !  !  !  !  !  
+  !  !  !  !  !  +-40                +-Anabaena_circinalis_123
+  !  !  !  +-41     !              +-6 
+  !  +-35     !     !           +-11 +-Nostoc_sp._TDI_AR94_TDI_AR94
+  !     !     !     !           !  !  
+  !     !     !     !        +-12  +---Planktothrix_agardhii_CCAP
+  !     !     !     !        !  !  
+  !     !     !     !     +-13  +----Microcystis_aeruginosa_NIES98
+  !     !     !     !     !  !  
+  !     !     !     !  +-15  +---Oscillatoria_corallinae_CJ1_SAG8.92
+  !     !     !     !  !  !  
+  !     !     !     +-32  +---Synechococcus_sp._MW6C6_MW6C6
+  !     !     !        !  
+  !     !     !        !  +----------Chlamydophila_psittaci_6BC_ATCC_VR-125_M13mp8_M13mp9
+  !     !     !        +-24  
+  !     !     !           +-----------Planctomyces_sp._282_282
+  !     !     !  
+  !     !     !          +-Rhodococcus_equi_T_DSM20307T
+  !     !     !        +-8 
+  !     !     !     +-20 +-Mycobacterium_sp._DhA-55
+  !     !     !     !  !  
+  !     !     !  +-25  +--Streptomyces_sp._EF-93_EF-93
+  !     !     !  !  !  
+  !     !     +-38  +------Bifidobacterium_breve_ATCC_15700
+  !     !        !  
+  !     !        +----------Fibrobacter_succinogenes_HM2
+  !     !  
+  !     !     +------Thermus_thermophilus_T
+  !     !  +-21  
+  !     +-27  +--------Chloroflexus_aurantiacus_Y-400-fl
+  !        !  
+  !        +--------Deinococcus_radiodurans_R1
+  ! 
+  +-------------Methanococcus_jannaschii
 
 
 remember: (although rooted by outgroup) this is an unrooted tree!
 
 Between        And            Length
 -------        ---            ------
-  71          ob152.fasta      0.00447
-  71            72            0.00007
-  72          oa022.fasta     -0.00007
-  72            73            0.00003
-  73          lb130a.fasta     -0.00003
-  73            74            0.00002
-  74          la219.fasta     -0.00002
-  74            75            0.00001
-  75          la223b.fasta     -0.00001
-  75            76            0.00000
-  76          oa363.fasta     -0.00000
-  76            77            0.00000
-  77          lcl|S001097911_EU594552_Bacillus_pumilus_2-1     -0.00000
-  77            78            0.00000
-  78          lcl|S001588580_FJ763645_Bacillus_pumilus_X22     -0.00000
-  78            79            0.00000
-  79          lcl|S001575814_GQ203617_Bacillus_pumilus_KS-2     -0.00000
-  79            80            0.00000
-  80          lcl|S001874781_GU339273_Bacillus_pumilus_EH45     -0.00000
-  80            81            0.00836
-  81            82            0.00990
-  82            69            0.02377
-  69            63            0.03897
-  63            62            0.01015
-  62            24            0.06084
-  24          la374.fasta      0.11705
-  24          la123.fasta      0.08731
-  62            61            0.00493
-  61            50            0.00778
-  50            49            0.00001
-  49            48            0.00002
-  48            47            0.00004
-  47            46            0.00009
-  46            45            0.00234
-  45            44            0.00001
-  44            43            0.00003
-  43            42            0.00006
-  42            41            0.00011
-  41          la140.fasta     -0.00022
-  41            40            0.00131
-  40          la143.fasta      0.00087
-  40          lcl|S002411377_HQ908730_Staphylococcus_hominis_subsp._hominis_F71020      0.00348
-  42          oa248.fasta     -0.00011
-  43          oa244.fasta     -0.00006
-  44          la403.fasta     -0.00003
-  45          lcl|S002231893_HM587902_Staphylococcus_sp._m1-20     -0.00001
-  46          lb105.fasta     -0.00017
-  47          la354.fasta     -0.00009
-  48          lcl|S000995960_EU379307_Staphylococcus_hominis_subsp._hominis_6R-J-7c     -0.00004
-  49          lcl|S001574870_FJ976576_bacterium_BQN2Ps-LCR67     -0.00002
-  50          lcl|S002233924_HQ141278_Staphylococcus_sp._DAKA65     -0.00001
-  61            53            0.00315
-  53            52            0.00003
-  52            51            0.00006
-  51          ob252.fasta     -0.00011
-  51          lcl|S000995954_EU379301_Staphylococcus_haemolyticus_6J-8      0.00011
-  52          lb100.fasta     -0.00006
-  53          lcl|S001096636_EU554434_Staphylococcus_sp._Ag08     -0.00003
-  63            60            0.01530
-  60            59            0.00156
-  59            58            0.00000
-  58            57            0.00000
-  57            56            0.00000
-  56            55            0.00000
-  55            54            0.00000
-  54          la211.fasta      0.00000
-  54          la090.fasta      0.00000
-  55          sa059.fasta      0.00000
-  56          la091.fasta      0.00000
-  57          lcl|S002411306_HQ908659_Staphylococcus_epidermidis_F71028      0.00000
-  58          lcl|S002411337_HQ908690_Staphylococcus_epidermidis_F71055      0.00000
-  59          lcl|S001094158_AM990664_Staphylococcus_sp._MOLA_387      0.00000
-  60            39            0.00937
-  39            38            0.00000
-  38            37            0.00000
-  37          la119.fasta      0.00000
-  37          lb102.fasta      0.00000
-  38          lcl|S000381982_AB009935_Staphylococcus_caprae_T_ATCC_35538T      0.00000
-  39          lcl|S000413963_D83362_Staphylococcus_epidermidis_ATCC_146_=_MAFF_911486      0.00000
-  69            25            0.08877
-  25            22            0.06009
-  22             3            0.04973
-   3          la225b.fasta      0.03188
-   3          lcl|S000572042_AY358005_Methylobacterium_sp._iRIV1     -0.00180
-  22             1            0.15614
-   1          ob150.fasta      0.00000
-   1          lcl|S002038968_AB550660_Pseudomonas_sp._NCCP-143      0.00000
-  25            23            0.03780
-  23            21            0.02500
-  21            19            0.01285
-  19             2            0.06025
-   2          oa267.fasta      0.00350
-   2          lcl|S002167438_HM012705_Brevibacterium_casei_PCSB1      0.00345
-  19             4            0.04334
-   4          la199.fasta      0.00000
-   4          lcl|S000843137_EF459528_Agrococcus_citreus_KFC-31      0.00000
-  21            20            0.00764
-  20            18            0.00729
-  18            17            0.00309
-  17            15            0.00116
-  15            13            0.00020
-  13            12            0.00270
-  12            11            0.00004
-  11            10            0.00008
-  10             9            0.00016
-   9          la398.fasta     -0.00032
-   9          la419.fasta      0.00262
-  10          lcl|S000995939_EU379286_Micrococcus_luteus_4RS-9a     -0.00016
-  11          lcl|S002350860_FR750272_Micrococcus_sp._MG-2010-D12     -0.00008
-  12          lcl|S001046228_EU730941_Micrococcus_luteus_164     -0.00004
-  13          lcl|S000652934_AM237392_Micrococcus_luteus_OS-159     -0.00039
-  15          la404.fasta     -0.00020
-  17            16            0.00115
-  16            14            0.00006
-  14          la401.fasta     -0.00011
-  14             8            0.00473
-   8          la371.fasta      0.00000
-   8          lcl|S001793428_EU867328_Macrococcus_sp._CCGE2291      0.00000
-  16          lcl|S001746436_GU143673_Micrococcaceae_bacterium_FXY35     -0.00006
-  18          la406.fasta      0.01090
-  20          la370.fasta      0.14372
-  23             7            0.04474
-   7             6            0.00015
-   6             5            0.00030
-   5          oa250.fasta     -0.00059
-   5          oa243a.fasta      0.00523
-   6          lcl|S000541936_AB012593_bacterium_IFO_15702     -0.00030
-   7          oa240.fasta     -0.00015
-  82            86            0.02786
-  86            83            0.01397
-  83          ob121.fasta      0.00336
-  83          lcl|S002223582_GQ407170_Bacillus_sp._DV9-25      0.00315
-  86            96            0.00719
-  96            94            0.00291
-  94            91            0.00212
-  91            90            0.00013
-  90          lcl|S001577291_GQ303255_Bacillus_subtilis_subsp._subtilis_ME-N11      0.00000
-  90          la162.fasta      0.00000
-  91          oa188b.fasta      0.01295
-  94            93            0.00007
-  93            92            0.00001
-  92          lcl|S000965816_EF530208_Bacillus_subtilis_subsp._subtilis_FS321      0.00000
-  92          lcl|S001241154_FJ263018_Bacillus_subtilis_subsp._subtilis_ZHA9      0.00000
-  93          la109.fasta     -0.00001
-  96            98            0.00645
-  98            87            0.01116
-  87          oa161.fasta      0.03810
-  87          la126.fasta     -0.00037
-  98           104            0.00081
- 104           103            0.00104
- 103          lcl|S000824812_EF420247_Bacillus_subtilis_subsp._subtilis_B6-1     -0.00000
- 103           102            0.00000
- 102           101            0.00000
- 101           100            0.00000
- 100            99            0.00000
-  99          lcl|S002382780_HM461161_Bacillus_sp._enrichment_culture_clone_HSL38      0.00000
-  99          lcl|S002233023_HM776394_Bacillus_sp._JMP-B      0.00000
- 100          lcl|S002235636_HQ433577_Bacillus_sp._292010      0.00000
- 101          lcl|S002233314_HM992829_Bacillus_amyloliquefaciens_NB-07      0.00000
- 102          sb048.fasta      0.00000
- 104           105            0.00090
- 105          lcl|S000712428_DQ659146_Bacillus_subtilis_subsp._subtilis_GR011     -0.00023
- 105           113            0.00023
- 113          oa246a.fasta     -0.00000
- 113           114            0.00000
- 114           112            0.00000
- 112           111            0.00000
- 111           110            0.00000
- 110           109            0.00000
- 109           108            0.00001
- 108           107            0.00001
- 107          la124.fasta     -0.00002
- 107           106            0.00002
- 106            97            0.00190
-  97            95            0.00646
-  95            85            0.00918
-  85          oa245.fasta      0.02220
-  85            84            0.00559
-  84          la342.fasta      0.16519
-  84          ob171.fasta      0.02655
-  95            89            0.00307
-  89            88            0.00133
-  88          la397.fasta      0.00181
-  88          la147.fasta      0.00252
-  89          oa246b.fasta      0.00301
-  97          la223a.fasta      0.00677
- 106          la094.fasta     -0.00004
- 108          la072.fasta     -0.00001
- 109          oa247.fasta     -0.00001
- 110          oa268.fasta     -0.00000
- 111          la198.fasta     -0.00000
- 112          la405.fasta     -0.00000
- 114           115            0.00000
- 115          la174.fasta     -0.00000
- 115           116            0.00000
- 116          ob254.fasta     -0.00000
- 116           117            0.00000
- 117          ob006.fasta     -0.00000
- 117           118            0.00000
- 118          ob145.fasta     -0.00000
- 118           119            0.00000
- 119          ob164.fasta     -0.00000
- 119           120            0.00000
- 120          lcl|S000891119_AB301022_Bacillus_amyloliquefaciens_GH48      0.00000
- 120           128            0.00000
- 128           127            0.00000
- 127           126            0.00000
- 126           125            0.00000
- 125           124            0.00000
- 124           123            0.00000
- 123           122            0.00000
- 122           121            0.00000
- 121          lcl|S001575619_GQ199588_Bacillus_amyloliquefaciens_DL-3-4-1      0.00000
- 121          lcl|S000824899_EF423589_Bacillus_subtilis_subsp._subtilis_F121112      0.00000
- 122          lcl|S001873871_GU292815_Bacillus_sp._hdly01      0.00000
- 123          lcl|S002166927_GU980963_Bacillus_subtilis_subsp._subtilis_B-A      0.00000
- 124          lcl|S002231048_HM566764_Bacillus_sp._SGE642010      0.00000
- 125          lcl|S001612821_GQ861458_Bacillus_subtilis_subsp._subtilis_LQB23      0.00000
- 126          lcl|S002305413_HQ317150_Bacillus_sp._DYJL7      0.00000
- 127          lcl|S001241195_FJ386541_Bacillus_vallismortis_ST47      0.00000
- 128           129            0.00000
- 129          lcl|S002305411_HQ317148_Bacillus_subtilis_subsp._subtilis_DYJL5      0.00000
- 129           131            0.00000
- 131           130            0.00000
- 130          la361b.fasta      0.00000
- 130          la160.fasta      0.00000
- 131          la173.fasta      0.00000
-  81            70            0.00864
-  70            68            0.01377
-  68            64            0.00888
-  64            36            0.02312
-  36            35            0.00067
-  35            34            0.00000
-  34            33            0.00000
-  33          sb060.fasta      0.00000
-  33          la217.fasta      0.00000
-  34          la372.fasta      0.00000
-  35          lcl|S001265081_FJ554672_Bacillus_sp._P308      0.00000
-  36            32            0.00158
-  32            26            0.01849
-  26          oa133c.fasta      0.03439
-  26          lb089.fasta      0.03116
-  32          lcl|S001044865_EU660368_Bacillus_nealsonii_CT18     -0.00085
-  64            28            0.02475
-  28          ob146a.fasta      0.00078
-  28          lcl|S002304555_FR695446_Bacillus_thioparans_CCMM_B649      0.00139
-  68            65            0.00681
-  65            31            0.02611
-  31            30            0.00312
-  30            29            0.00000
-  29          lcl|S001574844_FJ976550_Bacillus_megaterium_LCR41      0.00000
-  29          lcl|S001574910_FJ976616_Bacillus_megaterium_LCR107      0.00000
-  30          lb249a.fasta      0.00000
-  31          lb241a.fasta      0.08888
-  65            27            0.04109
-  27          oa375a.fasta      0.00000
-  27          lcl|S001170031_FJ006860_Terribacillus_sp._WPCB002      0.00000
-  70            67            0.01530
-  67          oa257.fasta      0.03124
-  67            66            0.00004
-  66          oa253.fasta      0.00000
-  66          lcl|S002223007_FR682742_Bacillus_idriensis_R-36358      0.00000
-  71          oa016.fasta     -0.00013
+   9          Aquifex_aeolicus_VF5_VF5      0.12746
+   9            19            0.03773
+  19            14            0.01377
+  14          Thermotoga_maritima_T      0.10235
+  14          uc_Thermodesulfobacterium_sp._BSpN50      0.10102
+  19            35            0.04680
+  35            36            0.00646
+  36          Deferribacter_thermophilus_T_BMA1      0.13846
+  36            41            0.01007
+  41            42            0.00495
+  42            39            0.00664
+  39            29            0.01974
+  29            28            0.00622
+  28          Bacteroides_fragilis      0.18376
+  28          Chlorobium_limicola_M1      0.14181
+  29          Helicobacter_pylori_T_ATCC_43504      0.12732
+  39            37            0.00622
+  37            16            0.05439
+  16          Borrelia_burgdorferi_BbMS      0.13310
+  16          Treponema_sp._ovine_footrot      0.11250
+  37            33            0.00941
+  33            26            0.02083
+  26            17            0.03124
+  17            10            0.02405
+  10             3            0.05180
+   3          la090.fasta      0.00370
+   3             2            0.00150
+   2             1            0.00000
+   1          la091.fasta      0.00000
+   1          lcl|S002411337_HQ908690_Staphylococcus_epidermidis_F71055      0.00000
+   2          lcl|S001094158_AM990664_Staphylococcus_sp._MOLA_387      0.00000
+  10          Bacillus_subtilis_subsp._subtilis_str._168_168      0.05006
+  17          Lactobacillus_jensenii_KC13      0.10097
+  26          Clostridium_botulinum_E      0.09115
+  33          Fusobacterium_nucleatum_subsp._nucleatum_ATCC_25586_ATCC_25586      0.16374
+  42            40            0.00533
+  40            34            0.01141
+  34            30            0.01554
+  30            22            0.02907
+  22          Agrobacterium_sanguineum_ATCC_25660      0.07555
+  22          Paracoccus_denitrificans_IAM12479      0.08234
+  30            23            0.02611
+  23             7            0.05099
+   7          Burkholderia_cepacia_DSM_50181      0.05932
+   7          Neisseria_meningitidis_MC58_MC58      0.07129
+  23            18            0.01889
+  18             5            0.04945
+   5          Pseudomonas_aeruginosa_T_DSM50071      0.03484
+   5          Pseudomonas_putida_IAM_1236      0.03367
+  18             4            0.06545
+   4          Escherichia_coli_CFT073_CFT073      0.02530
+   4          Klebsiella_pneumoniae_F-5-2      0.02690
+  34            31            0.01231
+  31          Myxococcus_macrosporus_125-10-1      0.12443
+  31          Leptospirillum_ferrooxidans_49879      0.14735
+  40            32            0.02146
+  32            15            0.04912
+  15            13            0.01665
+  13            12            0.00308
+  12            11            0.00430
+  11             6            0.03104
+   6          Anabaena_circinalis_123      0.02887
+   6          Nostoc_sp._TDI_AR94_TDI_AR94      0.03337
+  11          Planktothrix_agardhii_CCAP      0.06208
+  12          Microcystis_aeruginosa_NIES98      0.08502
+  13          Oscillatoria_corallinae_CJ1_SAG8.92      0.06878
+  15          Synechococcus_sp._MW6C6_MW6C6      0.06942
+  32            24            0.02138
+  24          Chlamydophila_psittaci_6BC_ATCC_VR-125_M13mp8_M13mp9      0.17283
+  24          Planctomyces_sp._282_282      0.19573
+  41            38            0.00566
+  38            25            0.03053
+  25            20            0.02419
+  20             8            0.03509
+   8          Rhodococcus_equi_T_DSM20307T      0.03639
+   8          Mycobacterium_sp._DhA-55      0.04302
+  20          Streptomyces_sp._EF-93_EF-93      0.05982
+  25          Bifidobacterium_breve_ATCC_15700      0.12089
+  38          Fibrobacter_succinogenes_HM2      0.18170
+  35            27            0.01376
+  27            21            0.02214
+  21          Thermus_thermophilus_T      0.11419
+  21          Chloroflexus_aurantiacus_Y-400-fl      0.14523
+  27          Deinococcus_radiodurans_R1      0.14441
+   9          Methanococcus_jannaschii      0.23042
 
 

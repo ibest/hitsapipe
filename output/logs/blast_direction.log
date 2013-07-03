@@ -9,19 +9,9 @@
 	BLAST_SEQUENCES: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/af243169.for
 	CUTOFF_LENGTH: 50
 ### DEBUG OUTPUT END ###
-Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence.
-mpiformatdb cmd: mpiformatdb -N 48 -i /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/good_sequences -p F -o T -l /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/logs/mpiformatdb_direction.log
-Reading input file
-1e+02%Done, read 224 lines
-Reordering 79 sequence entries
-13%25%38%51%63%76%89%1e+02%Breaking good_sequences into 48 fragments
-Executing: formatdb -p F -l /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/logs/mpiformatdb_direction.log -i /tmp/reorderAhr38V -N 48 -n /mnt/home/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/formatdb/good_sequences -o T 
-Removed /tmp/reorderAhr38V
-Created 48 fragments.
-GOOD_SEQ_SHARED: good_sequences
+Running formatdb to format the good sequences into a database to blast against with our sample sequence.
 
-BLASTing /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/af243169.for against good_sequences to find direction.
-Total Execution Time: 8.22161
-79 good sequences were found.
+BLASTing /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/input/af243169.for against sequences to find direction.
+2 good sequences were found.
 Pulling match names and placing in /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/blast/input/blast_input
 Splitting up the good sequence file.

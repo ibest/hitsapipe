@@ -44,16 +44,10 @@ cd ${INPUT_SEQUENCES}
 ${PERL_DIR}/countN2.pl ${NPERCENT} ${PRIMER3} ${PRIMER5} ${MIN_SEQUENCE_LENGTH} < ${INPUT_SEQUENCES_FILE} > ${GOOD_SEQUENCES_FILE}
 cd ${PBS_O_WORKDIR}
 
-if [ ! -e ${GOOD_SEQUENCE_FILE} ]
+if [ ! -e ${GOOD_SEQUENCES_FILE} ] || [ ! -s ${GOOD_SEQUENCES_FILE} ]
 then
 	echo "No good sequences found!  Exiting."
 	touch ${ERROR_FILE}
-	exit 1
-fi
-
-if [ ! -s ${GOOD_SEQEUNCE_FILE} ]
-then
-  echo "No good sequences found!  Exiting."
 	exit 1
 fi
 
@@ -67,9 +61,9 @@ case ${DIRECTION} in
      mv ${BLASTDIR}/revseqs ${GOOD_SEQUENCES_FILE}
 esac
 
-if [ ! -e ${GOOD_SEQUENCES_FILE} ]
+if [ ! -e ${GOOD_SEQUENCES_FILE} ] || [ ! -s ${GOOD_SEQUENCES_FILE} ]
 then
-	echo "No good sequences found!  Exiting."
+	echo "No good sequences found after reversing!  Exiting."
 	touch ${ERROR_FILE}
 	exit 1
 fi

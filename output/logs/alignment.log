@@ -5,7 +5,7 @@
 	PHYLIP_IN_FILE: /mnt/lfs/walt2178/Projects/rna-pipeline-python-qsub-staging/output/clustal/infile
 ### DEBUG OUTPUT END ###
 Getting alignment start and end
-START: 154
-END: 640
+START: 165
+END: 1191
 Clipping the alignment
 Reads and writes (returns) sequences

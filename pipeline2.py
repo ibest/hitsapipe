@@ -4,6 +4,7 @@ import ConfigParser
 from optparse import OptionParser
 from optparse import OptionGroup
 import os
+import os.path as p
 import shutil
 import subprocess
 import re
@@ -47,7 +48,9 @@ class Pipeline:
     def run(self):
         if not self.__check_for_fatal():
             print "Pipeline successfully configured."
-            print "Preparing to execute."      
+            print "Preparing to execute."
+            
+        #print "Execution status: " +str(self.type)      
         
         self.__backup_configuration()
         
@@ -75,254 +78,250 @@ class Pipeline:
         
         cmd_options = {
             'name':             "pipeline_prep",
-            'log':              os.path.join(self.directories['logs'], 
+            'log':              p.join(self.directories['logs'], 
                                              "pipeline_prep.log"),
             'variables':        variables,
-            'script_location':  os.path.join(self.directories['scripts'], 
+            'script_location':  p.join(self.directories['scripts'], 
                                              "pipeline_prep.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_fasta_prep(self, id=None, options=None):
         variables = {
-            'Input_Sequences_List':         os.path.join(
+            'Input_Sequences_List':         p.join(
                                                 self.directories['blast_input'],
                                                 "input_sequences_list")
         }
         
         cmd_options = {
             'name':                         "fasta_prep",
-            'log':                          os.path.join(
+            'log':                          p.join(
                                                 self.directories['logs'], 
                                                 "fasta_prep.log"),
             'variables':                    variables,
             'previous_id':                  id,
-            'script_location':              os.path.join(
+            'script_location':              p.join(
                                                 self.directories['scripts'], 
                                                 "fasta_files_prep.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
+    
     def run_get_good_seqs(self, id=None, options=None):
         variables = {
-#            'Good_Sequences_File':              os.path.join(
-#                                                self.directories['blast_input'],
-#                                                "good_sequences"),
-            'Input_Sequences_File':             os.path.join(
-                                                self.directories['blast_input'],
-                                                "input_sequences")
+            'Input_Sequences_File':        p.join(
+                                               self.directories['blast_input'],
+                                               "input_sequences")
         }
         
         cmd_options = {
             'name':                         "get_good_seqs",
-            'log':                          os.path.join(
+            'log':                          p.join(
                                                 self.directories['logs'], 
                                                 "get_good_sequences.log"),
             'variables':                    variables,
             'previous_id':                  id,
-            'script_location':              os.path.join(
+            'script_location':              p.join(
                                                 self.directories['scripts'], 
                                                 "get_good_sequences.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_blast_dir(self, id=None, options=None):
         variables = {
-            'Direction_Blast_File':         os.path.join(
+            'Direction_Blast_File':         p.join(
                                                 self.directories['blast'],
                                                 "direction_blast")
         }
         
         cmd_options = {
             'name':                         "blast_direction",
-            'log':                          os.path.join(
+            'log':                          p.join(
                                                 self.directories['logs'], 
                                                 "blast_direction.log"),
             'variables':                    variables,
             'previous_id':                  id,
             'parallel':                     True,
-            'script_location':              os.path.join(
+            'script_location':              p.join(
                                                 self.directories['scripts'], 
                                                 "blast_direction.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_blast_arr_prep(self, id=None, options=None):
-        if self.type != "Parallel":
-            return id # Or return None
         # No local variables to pass
         variables = {}
         cmd_options = {
             'name':                 "blast_arr_prep",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "blastall_array_prep.log"),
             'variables':            variables,
             'parallel':             True,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "blastall_array_prep.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_blast_arr(self, id=None, options=None):
         # No local variables to pass
         variables = {}
         cmd_options = {
             'name':                 "blast_arr",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "blastall_array.log"),
             'variables':            variables,
             'array':                True,
             'parallel':             True,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "blastall_array.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_blast_arr_check(self, id=None, options=None):
         # No local variables to pass
         variables = {}
         cmd_options = {
             'name':                 "blast_arr_check",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "blastall_array_check.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "blastall_array_check.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_blastall_hits(self, id=None, options=None):
         variables = {
-            'Blast_Out_5_File':     os.path.join(self.directories['blast'],
+            'Blast_Out_5_File':     p.join(self.directories['blast'],
                                                  "blastout5"),
-            'Hit_Seqs_File':        os.path.join(self.directories['clustal'],
+            'Hit_Seqs_File':        p.join(self.directories['clustal'],
                                                  "hitseqs")                     
         }
         cmd_options = {
             'name':                 "blast_hits",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "blastall_hits.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "blastall_hits.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_clustal_prep(self, id=None, options=None):
         variables = {
-            'Clustal_File':         os.path.join(self.directories['clustal'],
+            'Clustal_File':         p.join(self.directories['clustal'],
                                                  "clustal")                    
         }
         cmd_options = {
             'name':                 "clustal_prep",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "clustal_prep.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "clustal_prep.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_clustal(self, id=None, options=None):
         # No local variables to pass
         variables = {}
         cmd_options = {
             'name':                 "clustal_run",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "clustal_run.log"),
             'variables':            variables,
             'parallel':             True,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "clustal_run.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_clustal_check(self, id=None, options=None):
         # No local variables to pass
         variables = {}
         cmd_options = {
             'name':                 "clustal_check",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "clustal_check.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "clustal_check.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_alignment(self, id=None, options=None):
         variables = {}
         cmd_options = {
             'name':                 "alignment",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "alignment.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "alignment.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_dist_matrix(self, id=None, options=None):
         variables = {
-            'DNADist_Script':       os.path.join(self.directories['scripts'],
+            'DNADist_Script':       p.join(self.directories['scripts'],
                                                  "dnadist_script"),
-            'Distances_File':       os.path.join(self.directories['clustal'],
+            'Distances_File':       p.join(self.directories['clustal'],
                                                  "distances")
         }
         cmd_options = {
             'name':                 "dist_matrix",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "distance_matrix.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "distance_matrix.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_neighbor(self, id=None, options=None):
         # No local variables to pass
         variables = {}
         cmd_options = {
             'name':                 "neighbor",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "neighbor_run.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "neighbor_run.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def run_finalize(self, id=None, options=None):
         variables = {
-            'Final_Log':            os.path.join(self.directories['output'],
+            'Final_Log':            p.join(self.directories['output'],
                                                  "pipeline.log")
         }
         cmd_options = {
             'name':                 "finalize",
-            'log':                  os.path.join(self.directories['logs'], 
+            'log':                  p.join(self.directories['logs'], 
                                                 "finalize.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      os.path.join(self.directories['scripts'], 
+            'script_location':      p.join(self.directories['scripts'], 
                                                 "final_cleanup.sh")
         }
-        cmd = self.__get_command(cmd_options)
+        
         return self.execute_job(cmd_options)
     def execute_job_array_prep(self, job_name, hold_filepath, error_filepath):
         arr_count = -1
-        while os.path.exists(hold_filepath) is not True:
+        while p.exists(hold_filepath) is not True:
             time.sleep(10)
-            if os.path.exists(error_filepath):
+            if p.exists(error_filepath):
                 os.remove(error_filepath)
                 self.__set_fatal_error(True, 
                                        err_msg="a job prior to the array "
@@ -354,18 +353,21 @@ class Pipeline:
                 print "Number of jobs in list: "+str(array_count)
                 print "Printing completed_list[]:"
                 print "\t"+str(completed_list)+"\n"
-            
-            print "Waiting for \""+job_name+"\" to finish before continuing..."
+            if self.verbose or self.debug:
+                msg = "Waiting for \""+job_name+"\" to finish..." 
+                print msg
             while completed_list:
                 for (index,value) in enumerate(completed_list):
-                    cmd = "qstat -f " + str(base_id) + "[" + str(value) + "] | grep \"job_state = C\""
-                    #if self.params['debug']:
-                     #   print "finish_exec cmd: " + str(cmd) 
-                    process = subprocess.Popen(cmd, shell=True, stdout=devnull, stderr=devnull)
+                    cmd = "qstat -f " + str(base_id) \
+                            + "[" + str(value) + "] | grep \"job_state = C\""
+                    process = subprocess.Popen(cmd, shell=True, 
+                                               stdout=devnull, stderr=devnull)
                     out, err = process.communicate()
                     if process.returncode == 0:
-                        if self.params['debug']:
-                            print "array["+str(value)+"] completed. removing..."
+                        if self.debug:
+                            msg = "array["+str(value)+"] completed, " \
+                                    "removing from list."
+                            print msg
                         completed_list.remove(value)
                     else:
                         time.sleep(10)
@@ -378,6 +380,7 @@ class Pipeline:
         
         id = None
         if self.type == "Parallel":
+            
             if options.has_key('array'):
                 if self.params['verbose'] or self.params['debug']:
                     msg = "Job \""+str(options['name'])+"\" is an array job "\
@@ -397,27 +400,27 @@ class Pipeline:
                             +str(options['arr_count'])
                     print msg
                     
-                cmd = self.__get_command(options)
-                if self.params['debug'] and options.has_key('arr_count'): # Only want to see this right now on array jobs.
-                    print "===================Executing==================="
-                    print "\t"+str(cmd)
-                    print "==============================================="
+            cmd = self.__get_command(options)
+            if self.params['debug']:
+                print "===================Executing==================="
+                print "\t"+str(cmd)
+                print "==============================================="
                 
-                process = subprocess.Popen(cmd, shell=True,
-                                            stdout=subprocess.PIPE, 
-                                            stderr=subprocess.STDOUT)
-                out, err = process.communicate()
+            process = subprocess.Popen(cmd, shell=True,
+                                        stdout=subprocess.PIPE, 
+                                        stderr=subprocess.STDOUT)
+            out, err = process.communicate()
                     
-                id = re.split('[[\.]{1}',out)[0]
-                if self.params['verbose'] or self.params['debug']:
-                    print options['name'] + " submitted. ID: "+str(id)
-                if options.has_key('arr_count') and options['arr_count'] >= 0:
-                    if self.verbose or self.debug:
-                        msg = "Waiting for the array job \""\
-                                +str(options['name'])\
-                                +"\" to finish before continuing ("\
-                                +str(options['arr_count'])+" jobs in array)."
-                        print msg
+            id = re.split('[[\.]{1}',out)[0]
+            if self.params['verbose'] or self.params['debug']:
+                print options['name'] + " submitted. ID: "+str(id)
+            if options.has_key('arr_count') and options['arr_count'] >= 0:
+                if self.verbose or self.debug:
+                    msg = "Waiting for the array job \""\
+                            +str(options['name'])\
+                            +"\" to finish before continuing ("\
+                            +str(options['arr_count'])+" jobs in array)."
+                    print msg
                 
                 self.execute_job_array_check(options['name'], 
                                              options['arr_count'], 
@@ -425,28 +428,118 @@ class Pipeline:
                 id = None # We don't want the next job to have a dependency
                     
         else: # Standalone
+            loop_count = 1
             if options.has_key('array'):
-                arr_count = self.execute_job_array_prep(
+                loop_count = self.execute_job_array_prep(
                                        options['name'], 
                                        self.static_vars['Array_Output_File'], 
                                        self.static_vars['Error_File'])
-                for i in xrange(arr_count):
-                    options['array_id'] = i
-                    cmd = self.__get_command(options)
-                    if self.params['debug']: # Only want to see this right now on array jobs.
-                        print "===================Executing==================="
-                        print "\t"+str(cmd)
-                        print "==============================================="
-                    process = subprocess.Popen(cmd, shell=True,
-                                              stdout=subprocess.PIPE, 
-                                              stderr=subprocess.STDOUT)
-                    out, err = process.communicate()
-                    if out is not None:
+            for i in xrange(loop_count):
+                options['array_id'] = i
+                cmd = self.__get_command(options)
+                if self.params['debug']:
+                    print "===================Executing==================="
+                    print "\t"+str(cmd)
+                    print "==============================================="
+                
+                # Doesn't log anything.    
+                #return_code = subprocess.call(cmd, shell=True)
+                #if return_code != 0:
+                #    msg = "The job "+str(options['name'])+" failed"
+                #    self.__set_fatal_error(True, msg)
+                        
+                process = subprocess.Popen(cmd, shell=True,
+                                          stdout=subprocess.PIPE, 
+                                          stderr=subprocess.STDOUT)
+                out, err = process.communicate()
+                if out is not None:
+                    if self.verbose or self.debug:
                         print str(out) # stderr is redirected to stdout
-        
+                    
+                    logname = str(options['log'])
+                    
+                    # Mimic qsub's log naming convention
+                    if options.has_key('array'):
+                        logname += "-" + str(options['array_id'])
+                        
+                    # Write the log file
+                    fp = open(logname,"w")
+                    fp.write(out)
+                    fp.close()
+                if process.returncode != 0:
+                    msg = "The job "+str(options['name'])+" failed"
+                    self.__set_fatal_error(True, msg)
         return id
     def execute_job_nonsplit(self, options):
-        pass
+        id = None
+        loop_count = 1
+        
+        if options.has_key('array'):
+            if (self.type == "Parallel") and (self.verbose or self.debug):
+                msg = "Job \""+str(options['name'])+"\" is an array job "\
+                        "and will not be executed until the previous job "\
+                        "is complete."
+                print msg
+            options['arr_count'] = self.execute_job_array_prep(
+                       options['name'], 
+                       self.static_vars['Array_Output_File'], 
+                       self.static_vars['Error_File'])
+            if self.type == "Parallel":
+                options['previous_id'] = None
+                if self.verbose or self.debug:
+                    msg = "Number of array items in job: "\
+                            +str(options['arr_count'])
+                    print msg
+            else:
+                loop_count = options['arr_count']
+        for i in xrange(loop_count):
+            if self.type != "Parallel":
+                options['array_id'] = i
+            cmd = self.__get_command(options)
+            if self.debug:
+                print "===================Executing==================="
+                print "\t"+str(cmd)
+                print "==============================================="                        
+            process = subprocess.Popen(cmd, shell=True,
+                                      stdout=subprocess.PIPE, 
+                                      stderr=subprocess.STDOUT)
+            out, err = process.communicate()
+                
+            if self.type == "Parallel":
+                id = re.split('[[\.]{1}',out)[0]
+                if self.verbose or self.debug:
+                    print options['name'] + " submitted. ID: "+str(id)
+                    if options.has_key('arr_count'):
+                        msg = "Waiting for the array job \""\
+                                +str(options['name'])+"\" to finish before "\
+                                "continuing ("+str(options['arr_count'])\
+                                +" jobs in array)."
+                        print msg
+                        self.execute_job_array_check(options['name'], 
+                                                 options['arr_count'], 
+                                                 id)
+                        id = None # Next job has no dependency
+            else: # Standalone
+                if out is not None:
+                    if self.verbose or self.debug:
+                        print str(out) # stderr is redirected to stdout
+                    
+                    logname = str(options['log'])
+                    
+                    # Mimic qsub's log name
+                    if options.has_key('array'):
+                        logname += "-" + str(options['array_id'])
+                    fp = open(logname,"w")
+                    fp.write(out)
+                    fp.close()
+            if process.returncode != 0:
+                if self.type == "Parallel":
+                    msg = "qsub failed to submit: "+str(options['name'])
+                else:
+                    msg = "The job "+str(options['name'])+" failed"
+                self.__set_fatal_error(True, msg)
+        return id
+    
     def execute_job(self, options):
         # Calls subprocess.Popen to execute the command.
         # If in standalone mode, it directly outputs stdout
@@ -455,7 +548,16 @@ class Pipeline:
         # output will be sent to a log file by qsub when it executes
         # the script.
         
-        return self.execute_job_split(options)
+       # print "Redirecting "+str(options['name'])+" to split function..."
+        #id = self.execute_job_split(options)
+        id = self.execute_job_nonsplit(options)
+        #msg = "Finished redirecting. "
+        #if id is not None:
+        #    msg += "ID returned was: "+str(id)
+        #else:
+        #    msg += "No ID returned."
+        #print msg
+        return id
         
         id = None
         
@@ -482,7 +584,7 @@ class Pipeline:
                 pass
         
         cmd = self.__get_command(options)
-        if self.params['debug'] and options.has_key('arr_count'): # Only want to see this right now on array jobs.
+        if self.params['debug']:
             print "=====================Executing====================="
             print cmd
             print "==================================================="
@@ -517,20 +619,20 @@ class Pipeline:
              'work':                    self.params['work_dir'],
              'scripts':                 self.params['scripts_dir']
         }
-        d['output']         =           os.path.join(d['work'],'output')
-        d['logs']           =           os.path.join(d['output'],'logs')
-        d['references']     =           os.path.join(d['output'],'references')
-        d['blast']          =           os.path.join(d['output'],'blast')
-        d['clustal']        =           os.path.join(d['output'],'clustal')
-        d['tree']           =           os.path.join(d['output'],'tree')
+        d['output']         =           p.join(d['work'],'output')
+        d['logs']           =           p.join(d['output'],'logs')
+        d['references']     =           p.join(d['output'],'references')
+        d['blast']          =           p.join(d['output'],'blast')
+        d['clustal']        =           p.join(d['output'],'clustal')
+        d['tree']           =           p.join(d['output'],'tree')
         
-        d['originals']      =           os.path.join(d['references'],
+        d['originals']      =           p.join(d['references'],
                                                      'originals')
         
-        d['blast_input']    =           os.path.join(d['blast'],'input')
-        d['blast_temp']     =           os.path.join(d['blast'],'tmp')
-        d['blast_db']       =           os.path.join(d['blast'],'formatdb')
-        d['blast_output']   =           os.path.join(d['blast'],'blasts') 
+        d['blast_input']    =           p.join(d['blast'],'input')
+        d['blast_temp']     =           p.join(d['blast'],'tmp')
+        d['blast_db']       =           p.join(d['blast'],'formatdb')
+        d['blast_output']   =           p.join(d['blast'],'blasts') 
         
         return d
     def __get_preferences(self):
@@ -555,7 +657,8 @@ class Pipeline:
              'Root':                    self.params['Root'],
              'Primer3':                 self.params['Primer3'],
              'Primer5':                 self.params['Primer5'],
-             'Debug':                   self.params['debug']                          
+             #'Debug':                   self.params['debug']
+             'Debug':                   True                          
         }
         # Make sure qsub exists on the system
         if p['Execution'] == 'Parallel':
@@ -587,22 +690,22 @@ class Pipeline:
             'Neighbor_Dir':             self.directories['clustal'],
             'Tree_Dir':                 self.directories['tree']
         }
-        s['Good_Sequences_File'] = os.path.join(self.directories['blast_input'],
+        s['Good_Sequences_File'] = p.join(self.directories['blast_input'],
                                                 "good_sequences")
-        s['Numseqs_Temp_File'] = os.path.join(s['Blast_Temp_Dir'],
+        s['Numseqs_Temp_File'] = p.join(s['Blast_Temp_Dir'],
                                               "numseqs.tmp")
-        s['Blast_Input_File'] = os.path.join(self.directories['blast_input'],
+        s['Blast_Input_File'] = p.join(self.directories['blast_input'],
                                              "blast_input")
-        s['Hit_File'] = os.path.join(s['Clustal_Output_Dir'], "hitfiles")
-        s['Clustal_All_File'] = os.path.join(s['Clustal_Output_Dir'],
+        s['Hit_File'] = p.join(s['Clustal_Output_Dir'], "hitfiles")
+        s['Clustal_All_File'] = p.join(s['Clustal_Output_Dir'],
                                              "clustal_all")
-        s['Clustal_Alignment_File'] = os.path.join(s['Clustal_Output_Dir'],
+        s['Clustal_Alignment_File'] = p.join(s['Clustal_Output_Dir'],
                                                    "clustal_all.aln")
-        s['Phylip_In_File'] = os.path.join(s['Clustal_Output_Dir'],
+        s['Phylip_In_File'] = p.join(s['Clustal_Output_Dir'],
                                             "infile")
-        s['Array_Output_File'] = os.path.join(self.directories['output'],
+        s['Array_Output_File'] = p.join(self.directories['output'],
                                               "arrayjob.tmp")
-        s['Error_File'] = os.path.join(self.directories['output'], "error.tmp")
+        s['Error_File'] = p.join(self.directories['output'], "error.tmp")
         return s
     def __get_qsub_options(self):
         # Return a dictionary of the options to be passed to qsub, based
@@ -674,10 +777,10 @@ class Pipeline:
         # Perform keyword substitution
         for (key, value) in options.iteritems():        
             if str(value).find("$scripts_dir") != -1:
-                value = os.path.abspath(
+                value = p.abspath(
                         value.replace("$scripts_dir", options['scripts_dir'])) 
             if str(value).find("$work_dir") != -1:
-                value = os.path.abspath(
+                value = p.abspath(
                         value.replace("$work_dir", options['work_dir']))
             if (str(value)).find("None") != -1:
                 value = None
@@ -698,7 +801,7 @@ class Pipeline:
         is_valid = set(self.params).issuperset(self.__required_params())
         self.__set_fatal_error(is_fatal=not is_valid,
                                err_msg="A missing configuration was detected.")
-        is_valid = os.path.exists(self.params['scripts_dir'])
+        is_valid = p.exists(self.params['scripts_dir'])
         self.__set_fatal_error(is_fatal=not is_valid,
                                err_msg="The scripts directory doesn't exist.")
     def __required_params(self):
@@ -727,7 +830,8 @@ class Pipeline:
         # an ordered dictionary (not avail in Python 2.6.6), we can't
         # loop through the dictionary easily to create the subdirectories.
         
-        shutil.rmtree(self.directories['output'])
+        if p.exists(self.directories['output']):
+            shutil.rmtree(self.directories['output'])
         
         os.mkdir(self.directories['output'])
         
@@ -757,7 +861,7 @@ class Pipeline:
             for (option, value) in var.iteritems():
                 parser.set(section, option, value)
         
-        filename = os.path.join(self.directories['references'],
+        filename = p.join(self.directories['references'],
                                 'used_preferences.conf')
         fp = open(filename,"w")
         parser.write(fp)
@@ -822,39 +926,61 @@ class Pipeline:
              if var_list is not None:
                  cmd += "-v "+var_list+" "
              cmd += cmd_options['script_location']
-         return cmd
-             
+         return cmd             
 def main():
     # Set up an OptionParser object to make the command line arguments easy.
     # NOTE:  optparse has been deprecated since Python 2.7, but as of May 2013,
     #        the cluster is using Python 2.4.3. argparse should be used once
     #        a newer version of Python is in use.
+    
     parser = OptionParser(usage="%prog [options] \n"
-                          "Put a better description of what is required here.")
-    parser.add_option("-p", "--pref", action="store", dest="config_file", help="the file where the your preferences are located (not the defaults) [default: %default]")
-    parser.add_option("-w", "--work", action="store", dest="work_dir", help="the working directory where all output will be stored [default: %default]")
-    parser.add_option("-v", "--verbose", action="store_true", dest="verbose", help="output basic information [default: %default]")
-    adv_group = OptionGroup(parser, "Advanced Options", "Use these options at your own risk. Changing these options could cause the program to fail.")
-    adv_group.add_option("-s", "--scripts", action="store", dest="scripts_dir", help="the directory where the script directories are located [default: %default]")
+                          "HiTSA Pipeline for Beowulf cluster using TORQUE\n"
+                          "Results may differ between standalone and parallel "
+                          "executions due to different versions of blastall "
+                          "and clustalw being used.")
+    parser.add_option("-p", "--pref", action="store", dest="config_file",
+                      help="the file where the your preferences are "\
+                            "located[default: %default]")
+    parser.add_option("-w", "--work", action="store", dest="work_dir",
+                      help="the working directory where all output will be "\
+                            "placed [default: %default]")
+    parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
+                      help="show basic output [default: %default]")
+    parser.add_option("-q", "--quiet", action="store_false", dest="verbose",
+                      help="hide basic output [default: %default]")
+    
+    adv_group = OptionGroup(parser, "Advanced Options", 
+                            "Use these options at your own risk. "\
+                            "Changing these options could cause "\
+                            "the program to fail.")
+    adv_group.add_option("-s", "--scripts", action="store", dest="scripts_dir",
+                         help="the directory where the script directories "
+                                "are located [default: %default]")
     parser.add_option_group(adv_group)
-    debug_group = OptionGroup(parser, "Debug Options", "Use this to get additional output about the variables used in each of the modules.")
-    debug_group.add_option("-d", "--debug", action="store_true", dest="debug", help="will output variable values in log files [default: %default]")
+    debug_group = OptionGroup(parser, "Debug Options",
+                              "Use this to get additional output about the "\
+                              "variables used in each of the modules.")
+    debug_group.add_option("-d", "--debug", action="store_true", dest="debug",
+                           help="will display additional output for "\
+                           "debugging purposes both in the pipeline and "\
+                           "individual jobs as well [default: %default]")
     parser.add_option_group(debug_group)
     
     # Set up the defaults
-    parser.set_default("scripts_dir", os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"scripts")))
-    parser.set_default("work_dir", os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),".")))
-    parser.set_default("verbose", True) # Set to False by default?
-    parser.set_default("config_file", os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"./preferences/preferences.conf")))
-    #parser.set_default("debug", False)
-    parser.set_default("debug", True) # Temporary for easy testing
+    parser.set_default("scripts_dir", p.abspath(p.join(
+                               p.dirname(__file__),"scripts")))
+    parser.set_default("work_dir", p.abspath(p.join(p.dirname(__file__),".")))
+    parser.set_default("verbose", True)
+    parser.set_default("config_file", p.abspath(p.join(
+                               p.dirname(__file__),
+                               "./preferences/preferences.conf")))
+    parser.set_default("debug", False)
     (options, remaining_arguments) = parser.parse_args()
     
     if len(remaining_arguments) > 0:
-        # An incorrect number of arguments was given.  In this situation we can
-        # either use the parser's built in error method that inevitably exits
-        # or use our own.  Currently using the built in because I believe that it
-        # would be better to error out now instead of after jobs have been queued.
+        # An incorrect number of arguments was given.
+        # Pass an error message to the parser's error function that will
+        # display the error, proper usage and then exit.
         error_message = "There were an incorrect number of arguments passed.\n"
         error_message += "The argument(s) that couldn't be parsed were:\n"
         for arg in remaining_arguments:

@@ -36,7 +36,7 @@ do
 	((ITER++))
 done
 
-if [ ${EXECUTION} == "Parallel" ]
+if [ "${EXECUTION}" == "Parallel" ]
 then
 	DBNODES=$((NNODES - 2))
 	DBNAME=$(echo "${DATABASE##*/}")

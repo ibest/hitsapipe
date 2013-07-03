@@ -18,7 +18,7 @@ then
 	echo -e "\tCLUSTAL_OUTPUT_DIR: ${CLUSTAL_OUTPUT_DIR}"
 	echo -e "\tBLAST_TEMP_DIR: ${BLAST_TEMP_DIR}"
 	echo -e "\tARRAY_OUTPUT_FILE: ${ARRAY_OUTPUT_FILE}"
-	echo -e "\tREF_STRAINS_FILE: ${REF_STRAINS_FILE}"
+	echo -e "\tREFERENCE_STRAINS: ${REFERENCE_STRAINS}"
 	echo -e "\tCLUSTAL_FILE: ${CLUSTAL_FILE}"
 	echo -e "\tCLUSTAL_ALL_FILE: ${CLUSTAL_ALL_FILE}"
 	echo -e "\tBLAST_INPUT_FILE: ${BLAST_INPUT_FILE}"
@@ -32,7 +32,7 @@ fi
 # rm -f clustal
 echo "Collating all sequences"
 cd ${CLUSTAL_OUTPUT_DIR}
-cat ${REF_STRAINS_FILE} > ${CLUSTAL_FILE}
+cat ${REFERENCE_STRAINS} > ${CLUSTAL_FILE}
 
 
 for FILE in `cat ${BLAST_INPUT_FILE}`

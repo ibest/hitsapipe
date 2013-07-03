@@ -33,7 +33,7 @@ BLAST_OUTPUT_NAME=$(echo "${BLAST_OUTPUT_NAME}.blastn")
 echo "Blasting file ${TO_BLAST} against the database ${DATABASE}"
 echo -e "\tStoring the output in ${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}"
 
-if [ ${EXECUTION} == "Parallel" ]
+if [ "${EXECUTION}" == "Parallel" ]
 then
 	DBNAME=$(echo "${DATABASE##*/}")  
 
