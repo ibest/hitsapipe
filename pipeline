@@ -10,6 +10,7 @@ import os.path as p
 from optparse import OptionParser
 from optparse import OptionGroup
 
+
 class Pipeline:
     '''
     This class will construct a pipeline object
@@ -21,7 +22,6 @@ class Pipeline:
     # Current shortcomings of this class include:
     #    Not validating that the .ncbirc file is setup and that
     #        the shared and local directories exist.
-    #    Handling fatal errors
     #    Which method of executing jobs to use
     def __init__(self, cli_options):
         # Initializing the Pipeline class includes getting configuring and 
@@ -716,6 +716,17 @@ class Pipeline:
             elif (str(value)).find("False") != -1:
                 value = False
             options[key] = value
+        
+        # Check to make sure that the .ncbirc file exists
+        if options['Execution'] == "Parallel":    
+            ncbi_parser = ConfigParser.ConfigParser()
+            ncbi_parser.optionxform = str
+            ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
+            if ncbi_parser.has_section("mpiBLAST"):
+                if ncbi_parser.has_option("mpiBLAST", "Shared"):
+                    options['MPIBlastDB'] = ncbi_parser.get("mpiBLAST",
+                                                            "Shared")
+                    
                 
         return options
     def __validate(self):
@@ -732,6 +743,13 @@ class Pipeline:
         is_valid = p.exists(self.params['work_dir'])
         self.__set_fatal_error(is_fatal=not is_valid,
                                err_msg="The working directory doesn't exist.")
+        if self.params['Execution'] == "Parallel":
+            is_valid = self.params.has_key('MPIBlastDB')
+            self.__set_fatal_error(is_fatal=not is_valid,
+                               err_msg="'Shared' variable in .ncbirc file "\
+                               "is not set")
+        
+        
     def __get_directories(self):
         # Return a dictionary of the directories, based on the parameters
         # that were configured.
@@ -752,8 +770,10 @@ class Pipeline:
         
         d['blast_input']    =           p.join(d['blast'],'input')
         d['blast_temp']     =           p.join(d['blast'],'tmp')
-        d['blast_db']       =           p.join(d['blast'],'formatdb')
-        d['blast_output']   =           p.join(d['blast'],'blasts') 
+        d['blast_output']   =           p.join(d['blast'],'blasts')
+        
+        if self.params['Execution'] == "Parallel":
+            d['blast_db']   =           self.params['MPIBlastDB'] 
         
         return d
     def __get_preferences(self):
@@ -870,12 +890,11 @@ class Pipeline:
         os.mkdir(self.directories['blast_temp'])
         os.mkdir(self.directories['blast_output'])
         
-        # !!! This needs to be addressed!!!
-        # In practice, this directory needs to be defined in the
-        # .ncbirc file so that mpiformatdb knows where to put the databases
-        # that have been prepared for mpiBLAST
+        # Make sure that the folder specified in the .ncbirc
+        # exists and create it otherwise.
         if self.type == "Parallel":
-            os.mkdir(self.directories['blast_db'])
+            if not os.path.exists(self.directories['blast_db']):
+                os.mkdir(self.directories['blast_db'])
     def __backup_configuration(self):
         backup_list = {
            'qsub Options':              self.qsub_options,
@@ -945,11 +964,12 @@ def main():
     
     # Set up the defaults
     parser.set_default("scripts_dir", p.abspath(p.join(
-                               p.dirname(__file__),"scripts")))
+                               p.dirname(p.expanduser(__file__)),"scripts")))
     parser.set_default("work_dir", p.abspath(p.join(p.dirname(__file__),".")))
     parser.set_default("verbose", True)
     parser.set_default("config_file", p.abspath(p.join(
-                               p.dirname(__file__), "./preferences.conf")))
+                               p.dirname(p.expanduser(__file__)),
+                                            "./preferences.conf")))
     parser.set_default("debug", False)
     
     # Parse the arguments and return a tuple of the options and the

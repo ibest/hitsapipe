@@ -14,7 +14,7 @@ then
 fi
 
 echo "Running clustalw2"
-if [ ${PARALLEL} == "True" ]
+if [ ${EXECUTION} == "Parallel" ]
 then
 	echo "mpiexec/clustalw-mpi cmd: mpiexec -np ${NNODES} clustalw-mpi -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}""
 	mpiexec -np ${NNODES} clustalw-mpi -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}"
