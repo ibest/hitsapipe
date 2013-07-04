@@ -740,14 +740,14 @@ class Pipeline:
         # doesn't exist, then __validate() will flag it and fail (if 
         # running in parallel).
         # Check to make sure that the .ncbirc file exists
-        #if options['Execution'] == "Parallel":    
-        #    ncbi_parser = ConfigParser.ConfigParser()
-        #    ncbi_parser.optionxform = str
-        #    ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
-        #    if ncbi_parser.has_section("mpiBLAST"):
-        #        if ncbi_parser.has_option("mpiBLAST", "Shared"):
-        #            options['MPIBlastDB'] = ncbi_parser.get("mpiBLAST",
-        #                                                    "Shared")
+        if options['Execution'] == "Parallel":    
+            ncbi_parser = ConfigParser.ConfigParser()
+            ncbi_parser.optionxform = str
+            ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
+            if ncbi_parser.has_section("mpiBLAST"):
+                if ncbi_parser.has_option("mpiBLAST", "Shared"):
+                    options['MPIBlastDB'] = ncbi_parser.get("mpiBLAST",
+                                                            "Shared")
                     
                 
         return options
@@ -769,11 +769,11 @@ class Pipeline:
         # Omitting this for now.  In a future version this portion will
         # check to see if the 'MPIBlastDB' variable has been set and error
         # if not (if running in parallel).
-        #if self.params['Execution'] == "Parallel":
-        #    is_valid = self.params.has_key('MPIBlastDB')
-        #    self.__set_fatal_error(is_fatal=not is_valid,
-        #                       err_msg="'Shared' variable in .ncbirc file "\
-        #                       "is not set")
+        if self.params['Execution'] == "Parallel":
+            is_valid = self.params.has_key('MPIBlastDB')
+            self.__set_fatal_error(is_fatal=not is_valid,
+                               err_msg="'Shared' variable in .ncbirc file "\
+                               "is not set")
         
         
     def __get_directories(self):
@@ -801,8 +801,8 @@ class Pipeline:
         # Omitting this for now.  Uncomment once 'MPIBlastDB' portion
         # is implemented.  For now, we are assuming that the user
         # has their environment variable/.ncbirc file set up correctly.
-        #if self.params['Execution'] == "Parallel":
-        #    d['blast_db']   =           self.params['MPIBlastDB'] 
+        if self.params['Execution'] == "Parallel":
+            d['blast_db']   =           self.params['MPIBlastDB'] 
         
         return d
     def __get_preferences(self):
