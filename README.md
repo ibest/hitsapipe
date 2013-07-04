@@ -10,13 +10,12 @@ the user.
 
 The script itself must be sitting on the headnode of a Beowulf cluster utilizing TORQUE.
 
-HiTSAPipe uses the !!LICENSE!!
+HiTSAPipe uses the Apache License, Version 2.0 unless otherwise stated.  Old versions of the HiTSA Pipeline were licensed under MPL 1.1
 
 ## SYSTEM REQUIREMENTS
 
 - Python 2.6.6 (May possibly run on Python 2.4)
-- Beowulf Cluster
-- TORQUE 2.5.9 
+- TORQUE 2.5.9+ 
 
 ### SOFTWARE REQUIREMENTS
 
@@ -27,35 +26,46 @@ HiTSAPipe requires the following additional software packages to run:
 	- clustalw (Tested with clustalw 2.0.12)
 
 - Parallel
-	- mpiexec for Open MPI (Tested with mpiexec (OpenRTE) 1.3.2)
-	- mpiBLAST (Tested with mpiBLAST 1.4.0)
-	- mpiformatdb (Tested with mpiBLAST/mpiformatdb 1.4.0)
-	- clustalw-mpi (Tested with 1.82)
+	- mpiexec for Open MPI
+	- mpiBLAST
+	- mpiformatdb
+	- clustalw-mpi
 
 
 ## INSTALLATION
 
-Currently, installation is just copying the python pipeline file and the scripts directory and pointing the pipeline to the scripts directory (either with a command line option or by modifying the OptionParser in the Python script).
+Installation is as simple as cloning the git repository and running the `pipeline` python script inside.  The script comes with sample input sequences and a sample configuration file.
 
 ## RUNNING
 
-Simply run HiTSAPipe by running the python script `pipeline`.
+HiTSAPipe can be run by just executing the `pipeline` Python script as long as the following conditions are met:
 
-### ARGUMENTS
+- The configuration file is:
+	* set up correctly
+	* sitting in the same directory as the Python script
+	* is named `preferences.conf`
+
+- The scripts directory is in the same directory as the Python script
+	
+- The working directory is the same directory that the Python script sits in (a folder named output will be created in the working directory)
+
+Otherwise, please see the arguments section to set up these options.
+
+## ARGUMENTS
 
 HiTSAPipe takes a number of different arguements that either control the location of certain critical files or the amount of output shown.
 
-- 	`--work /path/to/working/dir` is the path where the output will be stored. A folder named output will be created inside 	this directory.
-- 	`--config /path/to/config/file` is the path where the configuration file is located.  HiTSAPipe uses a configuration 		file that follows the style of IETF's RFC 822 (see section 3.1.1, “LONG HEADER FIELDS”).  An online version of this RFC 	is available on [the IETF RFC 822 page](http://tools.ietf.org/html/rfc822.html "IETF RFC 822").  By default, the 			pipeline looks for a configuration file named `preferences.conf` in the same directory as the pipeline script.
-- 	`--scripts /path/to/scripts/dir` is the path to where the scripts that HiTSAPipe needs in order to run.  By default this 		is in a directory called scripts located in the same directory as the pipeline script.
+- 	`--work=/path/to/working/dir` is the path where the output will be stored. A folder named output will be created inside 	this directory.
+- 	`--config=/path/to/config/file` is the path where the configuration file is located.  By default, the pipeline looks for 		a configuration file named `preferences.conf` in the same directory as the pipeline script.  See the config file 			section for more details on the syntax of the configuration file.
+- 	`--scripts=/path/to/scripts/dir` is the path to where the scripts that HiTSAPipe needs in order to run.  By default this 		is in a directory called scripts located in the same directory as the pipeline script.
 - 	`--verbose` displays basic information of the python script itself to the screen.  By default this option is enabled and 	 is here to help distinguish between quiet mode.
 - 	`--quiet` hides all output from the pipeline script itself.  If running in standalone mode however, the individual 			scripts that HiTSAPipe calls will still display their output.
-- 	`--debug` enables additional output in both the HiTSAPipe script and in the scripts that it runs.  If this flag is set 		in addition to the --quiet flag, the --quiet flag will be ignored.
+- 	`--debug` enables additional output in both the HiTSAPipe script and in the scripts that it runs.  If this flag is set 		in addition to the `--quiet` flag, the `--quiet` flag will be ignored.
 
 
 ## CONFIG FILE
 
-HiTSAPipe optionally takes a `--config file` flag.  See the sample preferences file as an example.
+HiTSAPipe optionally takes a `--config=file` flag.  If there is no configuration file found, the default options (which can be found/modified in the `pipeline` script) are used.  If any options are missing from the configuration file, the default option is used in its place.  HiTSAPipe uses the Python ConfigParser class in order to parse the configuration file and follows the style of RFC 822 (specifically section 3.1.1, "LONG HEADER FIELDS").  This RFC can be viewed online on [the IETF RFC 822 page](http://tools.ietf.org/html/rfc822.html "RFC 822").
 
 ## CONTRIBUTE
 
@@ -64,3 +74,17 @@ To be finished.
 ## RELEASING
 
 To be finished.
+
+## LICENSE
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
