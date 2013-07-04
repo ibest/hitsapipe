@@ -413,7 +413,12 @@ class Pipeline:
         return True
     def __get_command(self, cmd_options):
          if self.type != "Parallel":
-             # Execute in standalone
+             # Execute in standalone.
+             # By executing the command in the form of:
+             # `var1=foo var2=bar /path/to/script`
+             # var1 and var2 are passed to the script as variables
+             # just like qsub would pass them.
+             
              var_list = ""
              for (key,value) in self.preferences.iteritems():
                  var_list += str(key).upper()+"=\""+str(value)+"\" "
@@ -421,6 +426,11 @@ class Pipeline:
                  var_list += str(key).upper()+"=\""+str(value)+"\" "
              for (key,value) in cmd_options['variables'].iteritems():
                  var_list += str(key).upper()+"=\""+str(value)+"\" "
+             
+             # Because these scripts are made to be called by qsub,
+             # we need to fake some of the variables that get passed
+             # in from qsub.  Currently the only variables used are
+             # PBS_O_WORKDIR and PBS_ARRAYID.
              var_list += "PBS_O_WORKDIR=\""
              var_list += str(self.directories['output'])+"\" "
              
@@ -432,6 +442,7 @@ class Pipeline:
              cmd = var_list + " " + str(cmd_options['script_location'])
          else:
              # Execute in parallel
+             # Add all of the options that qsub needs.
              cmd = "qsub "
              cmd += "-N "+str(cmd_options['name'])+" "
              cmd += "-j oe "
@@ -456,12 +467,16 @@ class Pipeline:
              for (key,value) in cmd_options['variables'].iteritems():
                  var_list += str(key).upper()+"="+str(value)+","
              
+             # Give the script the number of nodes to use.  This should
+             # eventually become a static variable.
              if cmd_options.has_key('parallel'):
                  var_list += "NNODES="+str(self.qsub_options['Nodes'])+","
              
              var_list = var_list.rstrip(", ")
              if var_list is not None:
                  cmd += "-v "+var_list+" "
+                 
+             # Add the actual script to execute to the end.
              cmd += cmd_options['script_location']
          return cmd 
     def execute_job_split(self, options):
@@ -717,15 +732,22 @@ class Pipeline:
                 value = False
             options[key] = value
         
+        
+        # Omitting this for now.  In a future version this portion will
+        # check to see if the environment variables that mpiBLAST needs
+        # are set and if not, then check to see if the .ncbirc file exists
+        # and extract the information from there.  If the 'MPIBlastDB' key
+        # doesn't exist, then __validate() will flag it and fail (if 
+        # running in parallel).
         # Check to make sure that the .ncbirc file exists
-        if options['Execution'] == "Parallel":    
-            ncbi_parser = ConfigParser.ConfigParser()
-            ncbi_parser.optionxform = str
-            ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
-            if ncbi_parser.has_section("mpiBLAST"):
-                if ncbi_parser.has_option("mpiBLAST", "Shared"):
-                    options['MPIBlastDB'] = ncbi_parser.get("mpiBLAST",
-                                                            "Shared")
+        #if options['Execution'] == "Parallel":    
+        #    ncbi_parser = ConfigParser.ConfigParser()
+        #    ncbi_parser.optionxform = str
+        #    ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
+        #    if ncbi_parser.has_section("mpiBLAST"):
+        #        if ncbi_parser.has_option("mpiBLAST", "Shared"):
+        #            options['MPIBlastDB'] = ncbi_parser.get("mpiBLAST",
+        #                                                    "Shared")
                     
                 
         return options
@@ -743,11 +765,15 @@ class Pipeline:
         is_valid = p.exists(self.params['work_dir'])
         self.__set_fatal_error(is_fatal=not is_valid,
                                err_msg="The working directory doesn't exist.")
-        if self.params['Execution'] == "Parallel":
-            is_valid = self.params.has_key('MPIBlastDB')
-            self.__set_fatal_error(is_fatal=not is_valid,
-                               err_msg="'Shared' variable in .ncbirc file "\
-                               "is not set")
+        
+        # Omitting this for now.  In a future version this portion will
+        # check to see if the 'MPIBlastDB' variable has been set and error
+        # if not (if running in parallel).
+        #if self.params['Execution'] == "Parallel":
+        #    is_valid = self.params.has_key('MPIBlastDB')
+        #    self.__set_fatal_error(is_fatal=not is_valid,
+        #                       err_msg="'Shared' variable in .ncbirc file "\
+        #                       "is not set")
         
         
     def __get_directories(self):
@@ -772,8 +798,11 @@ class Pipeline:
         d['blast_temp']     =           p.join(d['blast'],'tmp')
         d['blast_output']   =           p.join(d['blast'],'blasts')
         
-        if self.params['Execution'] == "Parallel":
-            d['blast_db']   =           self.params['MPIBlastDB'] 
+        # Omitting this for now.  Uncomment once 'MPIBlastDB' portion
+        # is implemented.  For now, we are assuming that the user
+        # has their environment variable/.ncbirc file set up correctly.
+        #if self.params['Execution'] == "Parallel":
+        #    d['blast_db']   =           self.params['MPIBlastDB'] 
         
         return d
     def __get_preferences(self):
