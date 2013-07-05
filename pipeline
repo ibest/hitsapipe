@@ -24,10 +24,6 @@ class Pipeline:
     
     '''
     
-    # Current shortcomings of this class include:
-    #    Not validating that the .ncbirc file is setup and that
-    #        the shared and local directories exist.
-    #    Which method of executing jobs to use
     def __init__(self, cli_options):
         # Initializing the Pipeline class includes getting configuring and 
         # validating the parameters from the configuration file, setting up 
@@ -38,6 +34,10 @@ class Pipeline:
         self.params = {}
         
         self.params = self.__configure(cli_options)
+        
+        self.debug = self.params['debug']
+        self.verbose = self.params['verbose']
+        
         self.__validate()
         
         self.directories = self.__get_directories()
@@ -46,8 +46,7 @@ class Pipeline:
         self.qsub_options = self.__get_qsub_options()
         
         self.type = self.preferences['Execution']
-        self.debug = self.params['debug']
-        self.verbose = self.params['verbose']
+
         
                 
         self.__setup_directory_structure()
@@ -106,7 +105,7 @@ class Pipeline:
                                              "pipeline_prep.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_fasta_prep(self, id=None):
         variables = {
             'Input_Sequences_List':         p.join(
@@ -126,7 +125,7 @@ class Pipeline:
                                                 "fasta_files_prep.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_get_good_seqs(self, id=None):
         variables = {
             'Input_Sequences_File':        p.join(
@@ -146,7 +145,7 @@ class Pipeline:
                                                 "get_good_sequences.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_blast_dir(self, id=None):
         variables = {
             'Direction_Blast_File':         p.join(
@@ -167,7 +166,7 @@ class Pipeline:
                                                 "blast_direction.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_blast_arr_prep(self, id=None):
         # No local variables to pass
         variables = {}
@@ -182,7 +181,7 @@ class Pipeline:
                                                 "blastall_array_prep.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_blast_arr(self, id=None):
         # No local variables to pass
         variables = {}
@@ -198,7 +197,7 @@ class Pipeline:
                                                 "blastall_array.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_blast_arr_check(self, id=None):
         # No local variables to pass
         variables = {}
@@ -212,7 +211,7 @@ class Pipeline:
                                                 "blastall_array_check.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_blastall_hits(self, id=None):
         variables = {
             'Blast_Out_5_File':     p.join(self.directories['blast'],
@@ -230,7 +229,7 @@ class Pipeline:
                                                 "blastall_hits.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_clustal_prep(self, id=None):
         variables = {
             'Clustal_File':         p.join(self.directories['clustal'],
@@ -246,7 +245,7 @@ class Pipeline:
                                                 "clustal_prep.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_clustal(self, id=None):
         # No local variables to pass
         variables = {}
@@ -261,7 +260,7 @@ class Pipeline:
                                                 "clustal_run.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_clustal_check(self, id=None):
         # No local variables to pass
         variables = {}
@@ -275,7 +274,7 @@ class Pipeline:
                                                 "clustal_check.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_alignment(self, id=None):
         variables = {}
         cmd_options = {
@@ -288,7 +287,7 @@ class Pipeline:
                                                 "alignment.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_dist_matrix(self, id=None):
         variables = {
             'DNADist_Script':       p.join(self.directories['scripts'],
@@ -306,7 +305,7 @@ class Pipeline:
                                                 "distance_matrix.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_neighbor(self, id=None):
         # No local variables to pass
         variables = {}
@@ -320,7 +319,7 @@ class Pipeline:
                                                 "neighbor_run.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
     def __run_finalize(self, id=None):
         variables = {
             'Final_Log':            p.join(self.directories['output'],
@@ -336,24 +335,107 @@ class Pipeline:
                                                 "final_cleanup.sh")
         }
         
-        return self.execute_job(cmd_options)
+        return self.__execute_job(cmd_options)
 
 
-    def execute_job(self, options):
-        # Calls subprocess.Popen to execute the command.
-        # If in standalone mode, it directly outputs stdout
-        # to the screen.  If running in parallel mode, it suppresses
-        # stdout and instead prints its own messages.  The script
-        # output will be sent to a log file by qsub when it executes
-        # the script.
+    def __execute_job(self, options):
+        # Gets the command and executes based on if in parallel or standalone
+        # modes.  The parallel and standalone portions are completely
+        # separated from each other, so if code needs to be modified, it will
+        # more than likely need to be modified in two locations.
+        # The up side, is that the code is a bit easier to read.
         
-        # This currently points to one of two functions, either
-        # execute_job_split() or execute_job_nonsplit().
-        # These are poor names and are just placeholders while deciding
-        # which function to actually use, which will then get cut and pasted
-        # into this section.
-        
-        id = self.execute_job_nonsplit(options)
+        id = None
+        if self.type == "Parallel":
+            
+            if options.has_key('array'):
+                if self.params['verbose'] or self.params['debug']:
+                    msg = "Job \""+str(options['name'])+"\" is an array job "\
+                            "and will not be executed until the previous job "\
+                            "is complete."
+                    print msg
+                options['arr_count'] = self.__execute_job_array_prep(
+                                       options['name'], 
+                                       self.static_vars['Array_Output_File'], 
+                                       self.static_vars['Error_File'])
+                
+                # We know the job is complete and so we don't want to have
+                # a job dependency.
+                options['previous_id'] = None
+                if self.params['verbose'] or self.params['debug']:
+                    msg = "Number of array items in job: "\
+                            +str(options['arr_count'])
+                    print msg
+                    
+            cmd = self.__get_command(options)
+            if self.params['debug']:
+                print "===================Executing==================="
+                print "\t"+str(cmd)
+                print "==============================================="
+                
+            process = subprocess.Popen(cmd, shell=True,
+                                        stdout=subprocess.PIPE, 
+                                        stderr=subprocess.STDOUT)
+            out, err = process.communicate()
+                    
+            id = re.split('[[\.]{1}',out)[0]
+            if self.params['verbose'] or self.params['debug']:
+                print options['name'] + " submitted. ID: "+str(id)
+            if options.has_key('arr_count') and options['arr_count'] >= 0:
+                if self.verbose or self.debug:
+                    msg = "Waiting for the array job \""\
+                            +str(options['name'])\
+                            +"\" to finish before continuing ("\
+                            +str(options['arr_count'])+" jobs in array)."
+                    print msg
+                
+                self.__execute_job_array_check(options['name'], 
+                                             options['arr_count'], 
+                                             id)
+                id = None # We don't want the next job to have a dependency
+                    
+        else: # Standalone
+            loop_count = 1
+            if options.has_key('array'):
+                loop_count = self.__execute_job_array_prep(
+                                       options['name'], 
+                                       self.static_vars['Array_Output_File'], 
+                                       self.static_vars['Error_File'])
+            for i in xrange(loop_count):
+                options['array_id'] = i
+                cmd = self.__get_command(options)
+                if self.params['debug']:
+                    print "===================Executing==================="
+                    print "\t"+str(cmd)
+                    print "==============================================="
+                
+                # Doesn't log anything.    
+                #return_code = subprocess.call(cmd, shell=True)
+                #if return_code != 0:
+                #    msg = "The job "+str(options['name'])+" failed"
+                #    self.__set_fatal_error(True, msg)
+                        
+                process = subprocess.Popen(cmd, shell=True,
+                                          stdout=subprocess.PIPE, 
+                                          stderr=subprocess.STDOUT)
+                out, err = process.communicate()
+                if out is not None:
+                    if self.verbose or self.debug:
+                        print str(out) # stderr is redirected to stdout
+                    
+                    logname = str(options['log'])
+                    
+                    # Mimic qsub's log naming convention
+                    if options.has_key('array'):
+                        logname += "-" + str(options['array_id'])
+                        
+                    # Write the log file
+                    fp = open(logname,"w")
+                    fp.write(out)
+                    fp.close()
+                if process.returncode != 0:
+                    msg = "The job "+str(options['name'])+" failed"
+                    self.__set_fatal_error(True, msg)
         return id
     def __execute_job_array_prep(self, job_name, hold_filepath, error_filepath):
         arr_count = -1
@@ -474,8 +556,8 @@ class Pipeline:
              
              # Give the script the number of nodes to use.  This should
              # eventually become a static variable.
-             if cmd_options.has_key('parallel'):
-                 var_list += "NNODES="+str(self.qsub_options['Nodes'])+","
+             #if cmd_options.has_key('parallel'):
+             #    var_list += "NNODES="+str(self.qsub_options['Nodes'])+","
              
              var_list = var_list.rstrip(", ")
              if var_list is not None:
@@ -483,183 +565,7 @@ class Pipeline:
                  
              # Add the actual script to execute to the end.
              cmd += cmd_options['script_location']
-         return cmd 
-    def execute_job_split(self, options):
-        # Gets the command and executes based on if in parallel or standalone
-        # modes.  The parallel and standalone portions are completely
-        # separated from each other, so if code needs to be modified, it will
-        # more than likely need to be modified in two locations.
-        # The up side, is that the code is a bit easier to read.
-        
-        id = None
-        if self.type == "Parallel":
-            
-            if options.has_key('array'):
-                if self.params['verbose'] or self.params['debug']:
-                    msg = "Job \""+str(options['name'])+"\" is an array job "\
-                            "and will not be executed until the previous job "\
-                            "is complete."
-                    print msg
-                options['arr_count'] = self.__execute_job_array_prep(
-                                       options['name'], 
-                                       self.static_vars['Array_Output_File'], 
-                                       self.static_vars['Error_File'])
-                
-                # We know the job is complete and so we don't want to have
-                # a job dependency.
-                options['previous_id'] = None
-                if self.params['verbose'] or self.params['debug']:
-                    msg = "Number of array items in job: "\
-                            +str(options['arr_count'])
-                    print msg
-                    
-            cmd = self.__get_command(options)
-            if self.params['debug']:
-                print "===================Executing==================="
-                print "\t"+str(cmd)
-                print "==============================================="
-                
-            process = subprocess.Popen(cmd, shell=True,
-                                        stdout=subprocess.PIPE, 
-                                        stderr=subprocess.STDOUT)
-            out, err = process.communicate()
-                    
-            id = re.split('[[\.]{1}',out)[0]
-            if self.params['verbose'] or self.params['debug']:
-                print options['name'] + " submitted. ID: "+str(id)
-            if options.has_key('arr_count') and options['arr_count'] >= 0:
-                if self.verbose or self.debug:
-                    msg = "Waiting for the array job \""\
-                            +str(options['name'])\
-                            +"\" to finish before continuing ("\
-                            +str(options['arr_count'])+" jobs in array)."
-                    print msg
-                
-                self.__execute_job_array_check(options['name'], 
-                                             options['arr_count'], 
-                                             id)
-                id = None # We don't want the next job to have a dependency
-                    
-        else: # Standalone
-            loop_count = 1
-            if options.has_key('array'):
-                loop_count = self.__execute_job_array_prep(
-                                       options['name'], 
-                                       self.static_vars['Array_Output_File'], 
-                                       self.static_vars['Error_File'])
-            for i in xrange(loop_count):
-                options['array_id'] = i
-                cmd = self.__get_command(options)
-                if self.params['debug']:
-                    print "===================Executing==================="
-                    print "\t"+str(cmd)
-                    print "==============================================="
-                
-                # Doesn't log anything.    
-                #return_code = subprocess.call(cmd, shell=True)
-                #if return_code != 0:
-                #    msg = "The job "+str(options['name'])+" failed"
-                #    self.__set_fatal_error(True, msg)
-                        
-                process = subprocess.Popen(cmd, shell=True,
-                                          stdout=subprocess.PIPE, 
-                                          stderr=subprocess.STDOUT)
-                out, err = process.communicate()
-                if out is not None:
-                    if self.verbose or self.debug:
-                        print str(out) # stderr is redirected to stdout
-                    
-                    logname = str(options['log'])
-                    
-                    # Mimic qsub's log naming convention
-                    if options.has_key('array'):
-                        logname += "-" + str(options['array_id'])
-                        
-                    # Write the log file
-                    fp = open(logname,"w")
-                    fp.write(out)
-                    fp.close()
-                if process.returncode != 0:
-                    msg = "The job "+str(options['name'])+" failed"
-                    self.__set_fatal_error(True, msg)
-        return id
-    def execute_job_nonsplit(self, options):
-        # Gets the command and executes based on if in parallel or standalone
-        # modes.  The parallel and standalone portions are mixed in with 
-        # each other, so if code needs to be modified, it will only need to
-        # be modified in one location.  This however, makes the code harder
-        # to read.
-        # The up side, is that the code isn't repeated, which can cut down
-        # on errors during maintenance.
-        
-        id = None
-        loop_count = 1
-        
-        if options.has_key('array'):
-            if (self.type == "Parallel") and (self.verbose or self.debug):
-                msg = "Job \""+str(options['name'])+"\" is an array job "\
-                        "and will not be executed until the previous job "\
-                        "is complete."
-                print msg
-            options['arr_count'] = self.__execute_job_array_prep(
-                       options['name'], 
-                       self.static_vars['Array_Output_File'], 
-                       self.static_vars['Error_File'])
-            if self.type == "Parallel":
-                options['previous_id'] = None
-                if self.verbose or self.debug:
-                    msg = "Number of array items in job: "\
-                            +str(options['arr_count'])
-                    print msg
-            else:
-                loop_count = options['arr_count']
-        for i in xrange(loop_count):
-            if self.type != "Parallel":
-                options['array_id'] = i
-            cmd = self.__get_command(options)
-            if self.debug:
-                print "===================Executing==================="
-                print "\t"+str(cmd)
-                print "==============================================="                        
-            process = subprocess.Popen(cmd, shell=True,
-                                      stdout=subprocess.PIPE, 
-                                      stderr=subprocess.STDOUT)
-            out, err = process.communicate()
-                
-            if self.type == "Parallel":
-                id = re.split('[[\.]{1}',out)[0]
-                if self.verbose or self.debug:
-                    print options['name'] + " submitted. ID: "+str(id)
-                    if options.has_key('arr_count'):
-                        msg = "Waiting for the array job \""\
-                                +str(options['name'])+"\" to finish before "\
-                                "continuing ("+str(options['arr_count'])\
-                                +" jobs in array)."
-                        print msg
-                        self.__execute_job_array_check(options['name'], 
-                                                 options['arr_count'], 
-                                                 id)
-                        id = None # Next job has no dependency
-            else: # Standalone
-                if out is not None:
-                    if self.verbose or self.debug:
-                        print str(out) # stderr is redirected to stdout
-                    
-                    logname = str(options['log'])
-                    
-                    # Mimic qsub's log name
-                    if options.has_key('array'):
-                        logname += "-" + str(options['array_id'])
-                    fp = open(logname,"w")
-                    fp.write(out)
-                    fp.close()
-            if process.returncode != 0:
-                if self.type == "Parallel":
-                    msg = "qsub failed to submit: "+str(options['name'])
-                else:
-                    msg = "The job "+str(options['name'])+" failed"
-                self.__set_fatal_error(True, msg)
-        return id
+         return cmd
 
 
     def __configure(self, cli_options):
@@ -746,14 +652,16 @@ class Pipeline:
         # running in parallel).
         # Check to make sure that the .ncbirc file exists
         if options['Execution'] == "Parallel":    
-            ncbi_parser = ConfigParser.ConfigParser()
-            ncbi_parser.optionxform = str
-            ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
-            if ncbi_parser.has_section("mpiBLAST"):
-                if ncbi_parser.has_option("mpiBLAST", "Shared"):
-                    options['MPIBlastDB'] = ncbi_parser.get("mpiBLAST",
+            mpiblastdb = os.getenv("Shared", default=None)
+            if mpiblastdb is None:
+                ncbi_parser = ConfigParser.ConfigParser()
+                ncbi_parser.optionxform = str
+                ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
+                if ncbi_parser.has_section("mpiBLAST"):
+                    if ncbi_parser.has_option("mpiBLAST", "Shared"):
+                        mpiblastdb = ncbi_parser.get("mpiBLAST",
                                                             "Shared")
-                    
+            options['MPIBlastDB'] = mpiblastdb
                 
         return options
     def __validate(self):
@@ -775,12 +683,14 @@ class Pipeline:
         # check to see if the 'MPIBlastDB' variable has been set and error
         # if not (if running in parallel).
         if self.params['Execution'] == "Parallel":
-            is_valid = self.params.has_key('MPIBlastDB')
-            self.__set_fatal_error(is_fatal=not is_valid,
-                               err_msg="'Shared' variable in .ncbirc file "\
-                               "is not set")
-        
-        
+            if self.params['MPIBlastDB'] is None:
+                if self.verbose or self.debug:
+                    print "WARNING: mpiBLAST needs variable 'Shared' in "\
+                            "order to execute.  Check that this variable is "\
+                            "set (usually in ~/.ncbirc).  Will run in "\
+                            "Standalone mode."
+                            
+                                 
     def __get_directories(self):
         # Return a dictionary of the directories, based on the parameters
         # that were configured.
@@ -848,7 +758,10 @@ class Pipeline:
                                                shell=False)
             does_qsub_exist.communicate() # Don't care about output.
             if does_qsub_exist.returncode != 0:
-                p['Execution'] = "Forced Standalone"
+                p['Execution'] = "Forced Standalone - qsub not found"
+            if self.params['MPIBlastDB'] is None:
+                p['Execution'] = "Forced Standalone - mpiBLAST "\
+                                 "configuration error"
                 
         return p
     def __get_static_vars(self):
@@ -868,7 +781,8 @@ class Pipeline:
             'Hit_Output_Dir':           self.directories['clustal'],
             'Clustal_Output_Dir':       self.directories['clustal'],
             'Neighbor_Dir':             self.directories['clustal'],
-            'Tree_Dir':                 self.directories['tree']
+            'Tree_Dir':                 self.directories['tree'],
+            'NNodes':                   self.params['Nodes']
         }
         s['Good_Sequences_File'] = p.join(self.directories['blast_input'],
                                                 "good_sequences")
