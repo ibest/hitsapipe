@@ -1,9 +1,7 @@
 # Sample input #
 ################
-./input
-./input/*
+input/
 
 # Default output directory #
 ############################
-./output
-./output/*
+output/
