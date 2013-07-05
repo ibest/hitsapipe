@@ -8,10 +8,6 @@ HiTSAPipe identifies and groups closely related sequences.
 Configuration is done by a single configuration file that can be specified by
 the user.
 
-The script itself must be sitting on the headnode of a Beowulf cluster utilizing TORQUE.
-
-HiTSAPipe uses the Apache License, Version 2.0 unless otherwise stated.  Old versions of the HiTSA Pipeline were licensed under MPL 1.1
-
 ## SYSTEM REQUIREMENTS
 
   * Python 2.6.6 (May possibly run on Python 2.4)
@@ -30,7 +26,6 @@ HiTSAPipe requires the following additional software packages to run:
 	  * mpiBLAST
 	  * mpiformatdb
 	  * clustalw-mpi
-
 
 ## INSTALLATION
 
@@ -59,7 +54,6 @@ HiTSAPipe takes a number of different arguements that either control the locatio
   * `--verbose` displays basic information of the python script itself to the screen.  By default this option is enabled and 	 is here to help distinguish between quiet mode.
   * `--quiet` hides all output from the pipeline script itself.  If running in standalone mode however, the individual 			scripts that HiTSAPipe calls will still display their output.
   * `--debug` enables additional output in both the HiTSAPipe script and in the scripts that it runs.  If this flag is set 		in addition to the `--quiet` flag, the `--quiet` flag will be ignored.
-
 
 ## CONFIG FILE
 
@@ -98,14 +92,7 @@ The goal is to make any dependency conflicts easier to handle and more important
 
 ## LICENSE
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+HiTSAPipe uses the Mozilla Public License 2.0 (MPL 2.0) unless otherwise stated.  Old versions of the HiTSA Pipeline were licensed under MPL 1.1.
 
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+You may obtain a copy of the MPLv2.0 at http://mozilla.org/MPL/2.0/
+You may obtain a copy of the MPLv1.1 at http://www.mozilla.org/MPL/1.1/
