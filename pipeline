@@ -939,7 +939,7 @@ class Pipeline:
         if not self.__check_for_fatal():
             self.__fatal_error = is_fatal
         if self.__check_for_fatal():
-            print >> sys.stderr, "ERROR: "+err_msg+" Exiting."
+            print >> sys.stderr, "HiTSAPipe ERROR: "+err_msg+" Exiting."
             sys.exit(1)
 
             
