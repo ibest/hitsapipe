@@ -954,7 +954,7 @@ def main():
                           "Results may differ between standalone and parallel "
                           "executions due to different versions of blastall "
                           "and clustalw being used.",
-                          version="%prog (HiTSAPipe) v0.3.1")
+                          version="%prog (HiTSAPipe) v0.4.0")
     parser.add_option("-c", "--config", action="store", dest="config_file",
                       help="the file where the your preferences are "
                             "located [default: %default]")
