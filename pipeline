@@ -109,30 +109,30 @@ class Pipeline:
         
         cmd_options = {
             'name':             "pipeline_prep",
-            'log':              p.join(self.directories['logs'], 
+            'log':              expan(self.directories['logs'], 
                                              "pipeline_prep.log"),
             'variables':        variables,
             'first_script':     True,
-            'script_location':  p.join(self.directories['scripts'], 
+            'script_location':  expan(self.directories['scripts'], 
                                              "pipeline_prep.sh")
         }
         
         return self.__execute_job(cmd_options)
     def __run_fasta_prep(self, id=None):
         variables = {
-            'Input_Sequences_List':         p.join(
+            'Input_Sequences_List':         expan(
                                                 self.directories['blast_input'],
                                                 "input_sequences_list")
         }
         
         cmd_options = {
             'name':                         "fasta_prep",
-            'log':                          p.join(
+            'log':                          expan(
                                                 self.directories['logs'], 
                                                 "fasta_prep.log"),
             'variables':                    variables,
             'previous_id':                  id,
-            'script_location':              p.join(
+            'script_location':              expan(
                                                 self.directories['scripts'], 
                                                 "fasta_files_prep.sh")
         }
@@ -140,19 +140,19 @@ class Pipeline:
         return self.__execute_job(cmd_options)
     def __run_get_good_seqs(self, id=None):
         variables = {
-            'Input_Sequences_File':        p.join(
+            'Input_Sequences_File':        expan(
                                                self.directories['blast_input'],
                                                "input_sequences")
         }
         
         cmd_options = {
             'name':                         "get_good_seqs",
-            'log':                          p.join(
+            'log':                          expan(
                                                 self.directories['logs'], 
                                                 "get_good_sequences.log"),
             'variables':                    variables,
             'previous_id':                  id,
-            'script_location':              p.join(
+            'script_location':              expan(
                                                 self.directories['scripts'], 
                                                 "get_good_sequences.sh")
         }
@@ -160,20 +160,20 @@ class Pipeline:
         return self.__execute_job(cmd_options)
     def __run_blast_dir(self, id=None):
         variables = {
-            'Direction_Blast_File':         p.join(
+            'Direction_Blast_File':         expan(
                                                 self.directories['blast'],
                                                 "direction_blast")
         }
         
         cmd_options = {
             'name':                         "blast_direction",
-            'log':                          p.join(
+            'log':                          expan(
                                                 self.directories['logs'], 
                                                 "blast_direction.log"),
             'variables':                    variables,
             'previous_id':                  id,
             'parallel':                     True,
-            'script_location':              p.join(
+            'script_location':              expan(
                                                 self.directories['scripts'], 
                                                 "blast_direction.sh")
         }
@@ -184,12 +184,12 @@ class Pipeline:
         variables = {}
         cmd_options = {
             'name':                 "blast_arr_prep",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "blastall_array_prep.log"),
             'variables':            variables,
             'parallel':             True,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "blastall_array_prep.sh")
         }
         
@@ -199,13 +199,13 @@ class Pipeline:
         variables = {}
         cmd_options = {
             'name':                 "blast_arr",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "blastall_array.log"),
             'variables':            variables,
             'array':                True,
             'parallel':             True,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "blastall_array.sh")
         }
         
@@ -215,45 +215,45 @@ class Pipeline:
         variables = {}
         cmd_options = {
             'name':                 "blast_arr_check",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "blastall_array_check.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "blastall_array_check.sh")
         }
         
         return self.__execute_job(cmd_options)
     def __run_blastall_hits(self, id=None):
         variables = {
-            'Blast_Out_5_File':     p.join(self.directories['blast'],
+            'Blast_Out_5_File':     expan(self.directories['blast'],
                                                  "blastout5"),
-            'Hit_Seqs_File':        p.join(self.directories['clustal'],
+            'Hit_Seqs_File':        expan(self.directories['clustal'],
                                                  "hitseqs")                     
         }
         cmd_options = {
             'name':                 "blast_hits",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "blastall_hits.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "blastall_hits.sh")
         }
         
         return self.__execute_job(cmd_options)
     def __run_clustal_prep(self, id=None):
         variables = {
-            'Clustal_File':         p.join(self.directories['clustal'],
+            'Clustal_File':         expan(self.directories['clustal'],
                                                  "clustal")                    
         }
         cmd_options = {
             'name':                 "clustal_prep",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "clustal_prep.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "clustal_prep.sh")
         }
         
@@ -263,12 +263,12 @@ class Pipeline:
         variables = {}
         cmd_options = {
             'name':                 "clustal_run",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "clustal_run.log"),
             'variables':            variables,
             'parallel':             True,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "clustal_run.sh")
         }
         
@@ -278,11 +278,11 @@ class Pipeline:
         variables = {}
         cmd_options = {
             'name':                 "clustal_check",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "clustal_check.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "clustal_check.sh")
         }
         
@@ -291,29 +291,29 @@ class Pipeline:
         variables = {}
         cmd_options = {
             'name':                 "alignment",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "alignment.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "alignment.sh")
         }
         
         return self.__execute_job(cmd_options)
     def __run_dist_matrix(self, id=None):
         variables = {
-            'DNADist_Script':       p.join(self.directories['scripts'],
+            'DNADist_Script':       expan(self.directories['scripts'],
                                                  "dnadist_script"),
-            'Distances_File':       p.join(self.directories['clustal'],
+            'Distances_File':       expan(self.directories['clustal'],
                                                  "distances")
         }
         cmd_options = {
             'name':                 "dist_matrix",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "distance_matrix.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "distance_matrix.sh")
         }
         
@@ -323,28 +323,28 @@ class Pipeline:
         variables = {}
         cmd_options = {
             'name':                 "neighbor",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "neighbor_run.log"),
             'variables':            variables,
             'previous_id':          id,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "neighbor_run.sh")
         }
         
         return self.__execute_job(cmd_options)
     def __run_finalize(self, id=None):
         variables = {
-            'Final_Log':            p.join(self.directories['output'],
+            'Final_Log':            expan(self.directories['output'],
                                                  "pipeline.log")
         }
         cmd_options = {
             'name':                 "finalize",
-            'log':                  p.join(self.directories['logs'], 
+            'log':                  expan(self.directories['logs'], 
                                                 "finalize.log"),
             'variables':            variables,
             'previous_id':          id,
             'final_script':         True,
-            'script_location':      p.join(self.directories['scripts'], 
+            'script_location':      expan(self.directories['scripts'], 
                                                 "final_cleanup.sh")
         }
         
@@ -771,19 +771,19 @@ class Pipeline:
              'work':                    self.params['WorkDir'],
              'scripts':                 self.params['ScriptsDir']
         }
-        d['output']         =           p.join(d['work'],'output')
-        d['logs']           =           p.join(d['output'],'logs')
-        d['references']     =           p.join(d['output'],'references')
-        d['blast']          =           p.join(d['output'],'blast')
-        d['clustal']        =           p.join(d['output'],'clustal')
-        d['tree']           =           p.join(d['output'],'tree')
+        d['output']         =           expan(d['work'],'output')
+        d['logs']           =           expan(d['output'],'logs')
+        d['references']     =           expan(d['output'],'references')
+        d['blast']          =           expan(d['output'],'blast')
+        d['clustal']        =           expan(d['output'],'clustal')
+        d['tree']           =           expan(d['output'],'tree')
         
-        d['originals']      =           p.join(d['references'],
+        d['originals']      =           expan(d['references'],
                                                      'originals')
         
-        d['blast_input']    =           p.join(d['blast'],'input')
-        d['blast_temp']     =           p.join(d['blast'],'tmp')
-        d['blast_output']   =           p.join(d['blast'],'blasts')
+        d['blast_input']    =           expan(d['blast'],'input')
+        d['blast_temp']     =           expan(d['blast'],'tmp')
+        d['blast_output']   =           expan(d['blast'],'blasts')
         
         # If not in parallel, this will be None
         d['blast_db']   =           self.params['MPIBlastDB'] 
@@ -853,22 +853,22 @@ class Pipeline:
             'Tree_Dir':                 self.directories['tree'],
             'NNodes':                   self.params['Nodes']
         }
-        s['Good_Sequences_File'] = p.join(self.directories['blast_input'],
+        s['Good_Sequences_File'] = expan(self.directories['blast_input'],
                                                 "good_sequences")
-        s['Numseqs_Temp_File'] = p.join(s['Blast_Temp_Dir'],
+        s['Numseqs_Temp_File'] = expan(s['Blast_Temp_Dir'],
                                               "numseqs.tmp")
-        s['Blast_Input_File'] = p.join(self.directories['blast_input'],
+        s['Blast_Input_File'] = expan(self.directories['blast_input'],
                                              "blast_input")
-        s['Hit_File'] = p.join(s['Clustal_Output_Dir'], "hitfiles")
-        s['Clustal_All_File'] = p.join(s['Clustal_Output_Dir'],
+        s['Hit_File'] = expan(s['Clustal_Output_Dir'], "hitfiles")
+        s['Clustal_All_File'] = expan(s['Clustal_Output_Dir'],
                                              "clustal_all")
-        s['Clustal_Alignment_File'] = p.join(s['Clustal_Output_Dir'],
+        s['Clustal_Alignment_File'] = expan(s['Clustal_Output_Dir'],
                                                    "clustal_all.aln")
-        s['Phylip_In_File'] = p.join(s['Clustal_Output_Dir'],
+        s['Phylip_In_File'] = expan(s['Clustal_Output_Dir'],
                                             "infile")
-        s['Array_Output_File'] = p.join(self.directories['output'],
+        s['Array_Output_File'] = expan(self.directories['output'],
                                               "arrayjob.tmp")
-        s['Error_File'] = p.join(self.directories['output'], "error.tmp")
+        s['Error_File'] = expan(self.directories['output'], "error.tmp")
         return s
     def __get_qsub_options(self):
         # Return a dictionary of the options to be passed to qsub, based
@@ -925,7 +925,7 @@ class Pipeline:
             for (option, value) in var.iteritems():
                 parser.set(section, option, value)
         
-        filename = p.join(self.directories['references'],
+        filename = expan(self.directories['references'],
                                 'used_preferences.conf')
         fp = open(filename,"w")
         parser.write(fp)
