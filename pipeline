@@ -98,6 +98,7 @@ class Pipeline:
             'log':              p.join(self.directories['logs'], 
                                              "pipeline_prep.log"),
             'variables':        variables,
+            'first_script':     True,
             'script_location':  p.join(self.directories['scripts'], 
                                              "pipeline_prep.sh")
         }
@@ -328,6 +329,7 @@ class Pipeline:
                                                 "finalize.log"),
             'variables':            variables,
             'previous_id':          id,
+            'final_script':         True,
             'script_location':      p.join(self.directories['scripts'], 
                                                 "final_cleanup.sh")
         }
@@ -368,8 +370,7 @@ class Pipeline:
             if self.debug:
                 print "===================Executing==================="
                 print "\t"+str(cmd)
-                print "==============================================="
-                
+                print "==============================================="   
             process = subprocess.Popen(cmd, shell=True,
                                         stdout=subprocess.PIPE, 
                                         stderr=subprocess.STDOUT)
@@ -530,6 +531,7 @@ class Pipeline:
              cmd = "qsub "
              cmd += "-N "+str(cmd_options['name'])+" "
              cmd += "-j oe "
+             cmd += self.__get_command_qsub_email(cmd_options)
              cmd += "-o "+str(cmd_options['log'])+" "
              cmd += "-d "+str(self.directories['output'])+" "
              cmd += "-q "+str(self.qsub_options['Queue'])+" "
@@ -551,11 +553,6 @@ class Pipeline:
              for (key,value) in cmd_options['variables'].iteritems():
                  var_list += str(key).upper()+"="+str(value)+","
              
-             # Give the script the number of nodes to use.  This should
-             # eventually become a static variable.
-             #if cmd_options.has_key('parallel'):
-             #    var_list += "NNODES="+str(self.qsub_options['Nodes'])+","
-             
              var_list = var_list.rstrip(", ")
              if var_list is not None:
                  cmd += "-v "+var_list+" "
@@ -563,7 +560,30 @@ class Pipeline:
              # Add the actual script to execute to the end.
              cmd += cmd_options['script_location']
          return cmd
-
+    def __get_command_qsub_email(self, cmd_options):
+        email = ""
+        notify = ""
+        if self.qsub_options['Email'] is not None:
+            email += "-M "+str(self.qsub_options['Email'])+" "
+        if self.qsub_options['NotifyOnAbort']:
+            notify += "a"
+        if (self.qsub_options['NotifyOnBegin'] and
+            cmd_options.has_key('first_script') and 
+            cmd_options['first_script']):
+            notify += "b"
+        if (self.qsub_options['NotifyOnEnd'] and 
+            cmd_options.has_key('final_script') and 
+            cmd_options['final_script']):
+            notify += "e"
+        if not notify:
+            notify = "n"
+            
+        # Create the final string.  Insert the space here as opposed to
+        # in __get_command() in order to make spacing look nice if nothing
+        # is returned.
+        final_string = email+"-m "+notify+" "
+        return final_string        
+        
 
     def __configure(self, cli_options):
         # Given the location of the configuration file and the
@@ -675,7 +695,7 @@ class Pipeline:
         # __validate() will check to see if this is set and if not, force
         # standalone mode because mpiBLAST will fail otherwise.
           
-        mpiblast = None
+        mpiblastdb = None
         if final_options['Execution'] == "Parallel":    
             mpiblastdb = os.getenv("Shared", default=None)
             if mpiblastdb is None:
@@ -685,9 +705,17 @@ class Pipeline:
                     if ncbi_parser.has_option("mpiBLAST", "Shared"):
                         mpiblastdb = ncbi_parser.get("mpiBLAST",
                                                     "Shared")
-        if mpiblast is not None:
-            mpiblast = p.abspath(p.expanduser(mpiblastdb))
-        final_options['MPIBlastDB'] = mpiblast
+        if mpiblastdb is not None:
+            mpiblastdb = p.abspath(p.expanduser(mpiblastdb))
+        final_options['MPIBlastDB'] = mpiblastdb
+        
+        # Omitting for now - users should comment out an item in their
+        # configuration file if they don't want it.
+        # Finally, run through the options and make sure anything that
+        # is blank or is "None" is changed to Python's None.
+        #for (key,value) in final_options.items():
+        #    if str(value).lower() == "none":
+        #        final_options[key] = None
                 
         return final_options
     def __validate(self):
