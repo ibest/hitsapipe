@@ -35,8 +35,8 @@ class Pipeline:
         
         self.params = self.__configure(cli_options)
         
-        self.debug = self.params['debug']
-        self.verbose = self.params['verbose']
+        self.debug = self.params['Debug']
+        self.verbose = self.params['Verbose']
         
         self.__validate()
         
@@ -46,12 +46,10 @@ class Pipeline:
         self.qsub_options = self.__get_qsub_options()
         
         self.type = self.preferences['Execution']
-
-        
                 
         self.__setup_directory_structure()
         
-        if self.params['debug']:        
+        if self.debug:        
             print "Directories:"
             for (k,v) in self.directories.iteritems():
                 print "\t"+str(k)+": "+str(v)
@@ -64,7 +62,6 @@ class Pipeline:
             print "qsub Options:"
             for (k,v) in self.qsub_options.iteritems():
                 print "\t"+str(k)+": "+str(v)
-
         
     def run(self):
         # Runs the actual pipeline scripts in the correct order and
@@ -349,7 +346,7 @@ class Pipeline:
         if self.type == "Parallel":
             
             if options.has_key('array'):
-                if self.params['verbose'] or self.params['debug']:
+                if self.verbose or self.debug:
                     msg = "Job \""+str(options['name'])+"\" is an array job "\
                             "and will not be executed until the previous job "\
                             "is complete."
@@ -362,13 +359,13 @@ class Pipeline:
                 # We know the job is complete and so we don't want to have
                 # a job dependency.
                 options['previous_id'] = None
-                if self.params['verbose'] or self.params['debug']:
+                if self.verbose or self.debug:
                     msg = "Number of array items in job: "\
                             +str(options['arr_count'])
                     print msg
                     
             cmd = self.__get_command(options)
-            if self.params['debug']:
+            if self.debug:
                 print "===================Executing==================="
                 print "\t"+str(cmd)
                 print "==============================================="
@@ -379,7 +376,7 @@ class Pipeline:
             out, err = process.communicate()
                     
             id = re.split('[[\.]{1}',out)[0]
-            if self.params['verbose'] or self.params['debug']:
+            if self.verbose or self.debug:
                 print options['name'] + " submitted. ID: "+str(id)
             if options.has_key('arr_count') and options['arr_count'] >= 0:
                 if self.verbose or self.debug:
@@ -404,7 +401,7 @@ class Pipeline:
             for i in xrange(loop_count):
                 options['array_id'] = i
                 cmd = self.__get_command(options)
-                if self.params['debug']:
+                if self.debug:
                     print "===================Executing==================="
                     print "\t"+str(cmd)
                     print "==============================================="
@@ -454,7 +451,7 @@ class Pipeline:
     
         os.remove(hold_filepath)
         
-        if self.params['debug']:
+        if self.debug:
             print "Number of array items: "+str(int(arr_count))
     
         return int(arr_count)  
@@ -473,7 +470,7 @@ class Pipeline:
             for i in xrange(array_count):
                 completed_list.append(i)
             
-            if self.params['debug']:
+            if self.debug:
                 print "Number of jobs in list: "+str(array_count)
                 print "Printing completed_list[]:"
                 print "\t"+str(completed_list)+"\n"
@@ -569,26 +566,30 @@ class Pipeline:
 
 
     def __configure(self, cli_options):
-        # Given the location of the configuration file(s) and the
+        # Given the location of the configuration file and the
         # options passed in from the command line, set up a
-        # a dictionary, 'p', with the parameters that will be used.
+        # a dictionary with the parameters that will be used.
         # This dictionary will be used to set up all of our
         # variables that are used throughout the pipeline.
-        # The ConfigParser object does have a way to do string substitution,
-        # and by moving to that style we could eliminate almost all of the
-        # command line options, leaving us with just the verbose/debug options
-        # and one configuration file.
+        # By using the SafeConfigParser, which is inherited from the
+        # ConfigParser class, we can use string interpolation, which
+        # means that we don't need command line arguments.  However, if
+        # a command line argument is passed, it should overwrite everything
+        # else.
          
-        options = {
-            'scripts_dir':          cli_options.scripts_dir,
-            'work_dir':             cli_options.work_dir,
-            'debug':                cli_options.debug,
-            'verbose':              cli_options.verbose
+        options = {}
+        
+        default_path_options = {
+           'WorkDir':               p.abspath(p.join(
+                                             p.dirname(__file__),".")),
+           "ScriptsDir":            p.abspath(p.join(
+                                             p.dirname(__file__),"scripts"))
         }
         
         default_qsub_options = {
-            'Email':                "None",
-            'NotifyOnAbort':        "True",
+            'Execution':            'Standalone',
+            'Email':                None,
+            'NotifyOnAbort':        'True',
             'NotifyOnBegin':        'True',
             'NotifyOnEnd':          'True',
             'Queue':                'tiny',
@@ -596,11 +597,10 @@ class Pipeline:
         }
         
         default_sequencing_options = {
-            'Execution':            'Standalone',
             'Database':             '/mnt/home/cblair/rdp/species/species',
-            'InputSequences':       '$work_dir/input/sequences',
-            'ReferenceStrains':     '$work_dir/input/RefStrains',
-            'BlastSequences':       '$work_dir/input/af243169.for',
+            'InputSequences':       '%(WorkDir)s/input/sequences',
+            'ReferenceStrains':     '%(WorkDir)s/input/RefStrains',
+            'BlastSequences':       '%(WorkDir)s/input/af243169.for',
             'Suffix':               '.fasta',
             'Direction':            'Forward',
             'CutoffLength':         '50',
@@ -614,56 +614,82 @@ class Pipeline:
         }
         
         # Default options
-        options = dict(options.items() + 
+        defaults = dict(default_path_options.items() +
                        default_qsub_options.items() + 
                        default_sequencing_options.items())
-        parser = ConfigParser.ConfigParser()
-        parser.optionxform = str # Forces case sensitivity
-        parser.read(cli_options.config_file)
         
-        # Parse the sections and add to parameters
-        for sections in parser.sections():
-            items = parser.items(sections)
-            for (key, value) in items:
-                options[key] = value  
-                      
-        # Perform keyword substitution
-        for (key, value) in options.iteritems():        
-            if str(value).find("$scripts_dir") != -1:
-                value = p.abspath(
-                        value.replace("$scripts_dir", options['scripts_dir'])) 
-            if str(value).find("$work_dir") != -1:
-                value = p.abspath(
-                        value.replace("$work_dir", options['work_dir']))
-            if (str(value)).find("None") != -1:
-                value = None
-            if (str(value)).find("True") != -1:
-                value = True
-            elif (str(value)).find("False") != -1:
-                value = False
-            options[key] = value
+        c = ConfigParser.SafeConfigParser(defaults)
+        c.read(cli_options.config_file)
+        
+        if c.has_section("Pipeline") is not True:
+            c.add_section("Pipeline")
+        if c.has_section("qsub") is not True:
+            c.add_section("qsub")
+        
+        if cli_options.work_dir is not None:
+            c.set("Pipeline", "WorkDir", cli_options.work_dir)
+        if cli_options.scripts_dir is not None:
+            c.set("Pipeline", "ScriptsDir", cli_options.scripts_dir)
+        
+        final_options = {
+             'WorkDir':             c.get("Pipeline", "WorkDir"),
+             'ScriptsDir':          c.get("Pipeline", "ScriptsDir"),
+             'Debug':               cli_options.debug,
+             'Verbose':             cli_options.verbose,
+
+             'Execution':           c.get("qsub", "Execution"),        
+             'Email':               c.get("qsub", "Email"),
+             'NotifyOnAbort':       c.getboolean("qsub", "NotifyOnAbort"),
+             'NotifyOnBegin':       c.getboolean("qsub", "NotifyOnBegin"),
+             'NotifyOnEnd':         c.getboolean("qsub", "NotifyOnEnd"),
+             'Queue':               c.get("qsub", "Queue"),
+             'Nodes':               c.get("qsub", "Nodes"),
+        
+             'Database':            c.get("Pipeline", "Database"),
+             'InputSequences':      c.get("Pipeline", "InputSequences"),
+             'ReferenceStrains':    c.get("Pipeline", "ReferenceStrains"),
+             'BlastSequences':      c.get("Pipeline", "BlastSequences"),
+             'Suffix':              c.get("Pipeline", "Suffix"),
+             'Direction':           c.get("Pipeline", "Direction"),
+             'CutoffLength':        c.get("Pipeline", "CutoffLength"),
+             'MaxBlasts':           c.get("Pipeline", "MaxBlasts"),
+             'MinSequenceLength':   c.get("Pipeline", "MinSequenceLength"),
+             'NHits':               c.get("Pipeline", "NHits"),
+             'NPercent':            c.get("Pipeline", "NPercent"),
+             'Root':                c.get("Pipeline", "Root"),
+             'Primer3':             c.get("Pipeline", "Primer3"),
+             'Primer5':             c.get("Pipeline", "Primer5"),
+        }
+        
+        # As clean as this part is, it doesn't take defaults into account.
+        # This is why we use the explicit calls above instead.
+        #for sections in parser.sections():
+        #    for (key,value) in c.items(sections):
+        #        final_options[key] = c.get(sections, key) 
         
         
-        # Omitting this for now.  In a future version this portion will
-        # check to see if the environment variables that mpiBLAST needs
-        # are set and if not, then check to see if the .ncbirc file exists
-        # and extract the information from there.  If the 'MPIBlastDB' key
-        # doesn't exist, then __validate() will flag it and fail (if 
-        # running in parallel).
-        # Check to make sure that the .ncbirc file exists
-        if options['Execution'] == "Parallel":    
+        # Check to make sure that the "Shared" environment variable
+        # is set.  If it isn't, check to see if there is a .ncbirc file
+        # in the user's home directory.  If either of these conditions
+        # are met, set MPIBlastDB to the directory in that variable.
+        # __validate() will check to see if this is set and if not, force
+        # standalone mode because mpiBLAST will fail otherwise.
+          
+        mpiblast = None
+        if final_options['Execution'] == "Parallel":    
             mpiblastdb = os.getenv("Shared", default=None)
             if mpiblastdb is None:
-                ncbi_parser = ConfigParser.ConfigParser()
-                ncbi_parser.optionxform = str
+                ncbi_parser = ConfigParser.SafeConfigParser()
                 ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
                 if ncbi_parser.has_section("mpiBLAST"):
                     if ncbi_parser.has_option("mpiBLAST", "Shared"):
                         mpiblastdb = ncbi_parser.get("mpiBLAST",
-                                                            "Shared")
-            options['MPIBlastDB'] = mpiblastdb
+                                                    "Shared")
+        if mpiblast is not None:
+            mpiblast = p.abspath(p.expanduser(mpiblastdb))
+        final_options['MPIBlastDB'] = mpiblast
                 
-        return options
+        return final_options
     def __validate(self):
         # Because the configuration parser has default values built in, the
         # only validation that's currently necessary is that the scripts
@@ -671,17 +697,14 @@ class Pipeline:
         # This should check to make sure the .ncbirc file exists and that
         # the local and shared directories under mpiBLAST exist.
 
-        is_valid = p.exists(self.params['scripts_dir'])
+        is_valid = p.exists(self.params['ScriptsDir'])
         self.__set_fatal_error(is_fatal=not is_valid,
                                err_msg="The scripts directory doesn't exist.")
         
-        is_valid = p.exists(self.params['work_dir'])
+        is_valid = p.exists(self.params['WorkDir'])
         self.__set_fatal_error(is_fatal=not is_valid,
                                err_msg="The working directory doesn't exist.")
         
-        # Omitting this for now.  In a future version this portion will
-        # check to see if the 'MPIBlastDB' variable has been set and error
-        # if not (if running in parallel).
         if self.params['Execution'] == "Parallel":
             if self.params['MPIBlastDB'] is None:
                 if self.verbose or self.debug:
@@ -696,8 +719,8 @@ class Pipeline:
         # that were configured.
         
         d = {
-             'work':                    self.params['work_dir'],
-             'scripts':                 self.params['scripts_dir']
+             'work':                    self.params['WorkDir'],
+             'scripts':                 self.params['ScriptsDir']
         }
         d['output']         =           p.join(d['work'],'output')
         d['logs']           =           p.join(d['output'],'logs')
@@ -713,11 +736,8 @@ class Pipeline:
         d['blast_temp']     =           p.join(d['blast'],'tmp')
         d['blast_output']   =           p.join(d['blast'],'blasts')
         
-        # Omitting this for now.  Uncomment once 'MPIBlastDB' portion
-        # is implemented.  For now, we are assuming that the user
-        # has their environment variable/.ncbirc file set up correctly.
-        if self.params['Execution'] == "Parallel":
-            d['blast_db']   =           self.params['MPIBlastDB'] 
+        # If not in parallel, this will be None
+        d['blast_db']   =           self.params['MPIBlastDB'] 
         
         return d
     def __get_preferences(self):
@@ -747,7 +767,7 @@ class Pipeline:
              'Root':                    self.params['Root'],
              'Primer3':                 self.params['Primer3'],
              'Primer5':                 self.params['Primer5'],
-             'Debug':                   self.params['debug']                          
+             'Debug':                   self.params['Debug']                          
         }
         # Make sure qsub exists on the system
         if p['Execution'] == 'Parallel':
@@ -881,39 +901,42 @@ def main():
                           "HiTSA Pipeline for Beowulf cluster using TORQUE\n"
                           "Results may differ between standalone and parallel "
                           "executions due to different versions of blastall "
-                          "and clustalw being used.")
+                          "and clustalw being used.",
+                          version="%prog (HiTSAPipe) v0.3.1")
     parser.add_option("-c", "--config", action="store", dest="config_file",
-                      help="the file where the your preferences are "\
-                            "located[default: %default]")
+                      help="the file where the your preferences are "
+                            "located [default: %default]")
     parser.add_option("-w", "--work", action="store", dest="work_dir",
-                      help="the working directory where all output will be "\
-                            "placed [default: %default]")
+                      help="the working directory where all output will be "
+                            "placed - this will overwrite the configuration "
+                            "file [default: %default]")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
                       help="show basic output [default: %default]")
     parser.add_option("-q", "--quiet", action="store_false", dest="verbose",
-                      help="hide basic output [default: %default]")
+                      help="hide basic output") #[default: %default]")
     
     adv_group = OptionGroup(parser, "Advanced Options", 
-                            "Use these options at your own risk. "\
-                            "Changing these options could cause "\
+                            "Use these options at your own risk. "
+                            "Changing these options could cause "
                             "the program to fail.")
     adv_group.add_option("-s", "--scripts", action="store", dest="scripts_dir",
-                         help="the directory where the script directories "
-                                "are located [default: %default]")
+                         help="the directory where the scripts are located - "
+                         "this will overwrite the configuration file "
+                         "[default: %default]")
     parser.add_option_group(adv_group)
     debug_group = OptionGroup(parser, "Debug Options",
-                              "Use this to get additional output about the "\
+                              "Use this to get additional output about the "
                               "variables used in each of the modules.")
     debug_group.add_option("-d", "--debug", action="store_true", dest="debug",
-                           help="will display additional output for "\
-                           "debugging purposes both in the pipeline and "\
+                           help="will display additional output for "
+                           "debugging purposes both in the pipeline and "
                            "individual jobs as well [default: %default]")
     parser.add_option_group(debug_group)
     
     # Set up the defaults
-    parser.set_default("scripts_dir", p.abspath(p.join(
-                               p.dirname(p.expanduser(__file__)),"scripts")))
-    parser.set_default("work_dir", p.abspath(p.join(p.dirname(__file__),".")))
+    #parser.set_default("scripts_dir", p.abspath(p.join(
+    #                           p.dirname(p.expanduser(__file__)),"scripts")))
+    #parser.set_default("work_dir", p.abspath(p.join(p.dirname(__file__),".")))
     parser.set_default("verbose", True)
     parser.set_default("config_file", p.abspath(p.join(
                                p.dirname(p.expanduser(__file__)),
@@ -935,10 +958,13 @@ def main():
             error_message += arg+"\n"
         error_message += "Please see the usage above and try again."
         parser.error(error_message)
-        
-    # Handle user input    
-    options.scripts_dir = p.abspath(p.expanduser(options.scripts_dir))
-    options.work_dir = p.abspath(p.expanduser(options.work_dir))
+    
+    # Handle user input
+    if options.scripts_dir is not None:    
+        options.scripts_dir = p.abspath(p.expanduser(options.scripts_dir))
+    if options.work_dir is not None:
+        options.work_dir = p.abspath(p.expanduser(options.work_dir))
+    # Can't be none    
     options.config_file = p.abspath(p.expanduser(options.config_file))
     
     pipeline = Pipeline(options)
