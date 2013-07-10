@@ -27,7 +27,7 @@ def expan(filepath=None, joinpath=None):
     if f is not None: 
         f = p.abspath(p.expanduser(f))
         if j is not None:
-            f = p.join(f,j)
+            f = p.abspath(p.join(f,j))
     return f
 
 class Pipeline:
@@ -49,8 +49,9 @@ class Pipeline:
         
         self.params = self.__configure(cli_options)
         
-        self.debug = self.params['Debug']
+        #self.debug = self.params['Debug']
         self.verbose = self.params['Verbose']
+        self.quiet = self.params['Quiet']
         
         self.__validate()
         
@@ -59,11 +60,7 @@ class Pipeline:
         self.static_vars = self.__get_static_vars()
         self.qsub_options = self.__get_qsub_options()
         
-        self.type = self.preferences['Execution']
-                
-        self.__setup_directory_structure()
-        
-        if self.debug:        
+        if self.verbose:        
             print "Directories:"
             for (k,v) in self.directories.iteritems():
                 print "\t"+str(k)+": "+str(v)
@@ -75,7 +72,13 @@ class Pipeline:
                 print "\t"+str(k)+": "+str(v)
             print "qsub Options:"
             for (k,v) in self.qsub_options.iteritems():
-                print "\t"+str(k)+": "+str(v)
+                print "\t"+str(k)+": "+str(v)      
+        
+        self.type = self.preferences['Execution']
+                
+        self.__setup_directory_structure()
+        
+
         
     def run(self):
         # Runs the actual pipeline scripts in the correct order and
@@ -362,7 +365,7 @@ class Pipeline:
         if self.type == "Parallel":
             
             if options.has_key('array'):
-                if self.verbose or self.debug:
+                if not self.quiet or self.verbose:
                     msg = "Job \""+str(options['name'])+"\" is an array job "\
                             "and will not be executed until the previous job "\
                             "is complete."
@@ -375,13 +378,13 @@ class Pipeline:
                 # We know the job is complete and so we don't want to have
                 # a job dependency.
                 options['previous_id'] = None
-                if self.verbose or self.debug:
+                if not self.quiet or self.verbose:
                     msg = "Number of array items in job: "\
                             +str(options['arr_count'])
                     print msg
                     
             cmd = self.__get_command(options)
-            if self.debug:
+            if self.verbose:
                 print "===================Executing==================="
                 print "\t"+str(cmd)
                 print "==============================================="   
@@ -398,10 +401,10 @@ class Pipeline:
                 self.__set_fatal_error(True, "qsub failed to submit job")
             
             id = re.split('[[\.]{1}',out)[0]
-            if self.verbose or self.debug:
+            if not self.quiet or self.verbose:
                 print options['name'] + " submitted. ID: "+str(id)
             if options.has_key('arr_count') and options['arr_count'] >= 0:
-                if self.verbose or self.debug:
+                if not self.quiet or self.verbose:
                     msg = "Waiting for the array job \""\
                             +str(options['name'])\
                             +"\" to finish before continuing ("\
@@ -423,7 +426,7 @@ class Pipeline:
             for i in xrange(loop_count):
                 options['array_id'] = i
                 cmd = self.__get_command(options)
-                if self.debug:
+                if self.verbose:
                     print "===================Executing==================="
                     print "\t"+str(cmd)
                     print "==============================================="
@@ -439,7 +442,7 @@ class Pipeline:
                                           stderr=subprocess.STDOUT)
                 out, err = process.communicate()
                 if out is not None:
-                    if self.verbose or self.debug:
+                    if not self.quiet or self.verbose:
                         print str(out) # stderr is redirected to stdout
                     
                     logname = str(options['log'])
@@ -473,7 +476,7 @@ class Pipeline:
     
         os.remove(hold_filepath)
         
-        if self.debug:
+        if self.verbose:
             print "Number of array items: "+str(int(arr_count))
     
         return int(arr_count)  
@@ -492,11 +495,11 @@ class Pipeline:
             for i in xrange(array_count):
                 completed_list.append(i)
             
-            if self.debug:
+            if self.verbose:
                 print "Number of jobs in list: "+str(array_count)
                 print "Printing completed_list[]:"
                 print "\t"+str(completed_list)+"\n"
-            if self.verbose or self.debug:
+            if not self.quiet or self.verbose:
                 msg = "Waiting for \""+job_name+"\" to finish..." 
                 print msg
             while completed_list:
@@ -507,7 +510,7 @@ class Pipeline:
                                                stdout=devnull, stderr=devnull)
                     out, err = process.communicate()
                     if process.returncode == 0:
-                        if self.debug:
+                        if self.verbose:
                             msg = "array["+str(value)+"] completed, " \
                                     "removing from list."
                             print msg
@@ -677,6 +680,7 @@ class Pipeline:
              'ScriptsDir':          c.get("Pipeline", "ScriptsDir"),
              'Debug':               cli_options.debug,
              'Verbose':             cli_options.verbose,
+             'Quiet':               cli_options.quiet,
 
              'Execution':           c.get("qsub", "Execution"),        
              'Email':               c.get("qsub", "Email"),
@@ -756,11 +760,10 @@ class Pipeline:
         
         if self.params['Execution'] == "Parallel":
             if self.params['MPIBlastDB'] is None:
-                if self.verbose or self.debug:
-                    print "WARNING: mpiBLAST needs variable 'Shared' in "\
-                            "order to execute.  Check that this variable is "\
-                            "set (usually in ~/.ncbirc).  Will run in "\
-                            "Standalone mode."
+                #if not self.quiet or self.verbose:
+                print "WARNING: mpiBLAST needs variable 'Shared' in order "\
+                "to execute.  Check that this variable is set (usually in "\
+                "~/.ncbirc).  Will run in Standalone mode."
                             
                                  
     def __get_directories(self):
@@ -832,7 +835,7 @@ class Pipeline:
                 c['Execution'] = "Forced Standalone - mpiBLAST "\
                                  "configuration error"
                 
-        return p
+        return c
     def __get_static_vars(self):
         # Returns a dictionary of variables that are used between the scripts
         # to make sure that anything that uses the same variable is
@@ -955,10 +958,6 @@ def main():
     parser.add_option("-c", "--config", action="store", dest="config_file",
                       help="the file where the your preferences are "
                             "located [default: %default]")
-    parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
-                      help="show basic output [default: %default]")
-    parser.add_option("-q", "--quiet", action="store_false", dest="verbose",
-                      help="hide basic output") #[default: %default]")
     
     adv_group = OptionGroup(parser, "Advanced Options", 
                             "Use these options at your own risk. "
@@ -973,17 +972,32 @@ def main():
                          "this will overwrite the configuration file "
                          "[default: %default]")
     parser.add_option_group(adv_group)
-    debug_group = OptionGroup(parser, "Debug Options",
-                              "Use this to get additional output about the "
-                              "variables used in each of the modules.")
-    debug_group.add_option("-d", "--debug", action="store_true", dest="debug",
-                           help="will display additional output for "
-                           "debugging purposes both in the pipeline and "
-                           "individual jobs as well [default: %default]")
-    parser.add_option_group(debug_group)
+    
+    
+    output_group = OptionGroup(parser, "Output Options",
+                               "Use these to change what output is displayed "
+                               "in from HiTSAPipe or from the individual jobs")
+    output_group.add_option("-v", "--verbose",
+                            action="store_true",
+                            dest="verbose",
+                            help="show additional, more detailed output "
+                            "that HiTSAPipe generates - overrides quiet mode "
+                            "[default: %default]")
+    output_group.add_option("-q", "--quiet",
+                            action="store_true",
+                            dest="quiet",
+                            help="hides all output, except for errors, "
+                            "that HiTSAPipe generates [default: %default]")
+    output_group.add_option("-d", "--debug",
+                            action="store_true",
+                            dest="debug",
+                            help="show additional, more detailed output "
+                            "that the jobs generate [default: %default]")
+    parser.add_option_group(output_group)
     
     # Set up the defaults
-    parser.set_default("verbose", True)
+    parser.set_default("verbose", False)
+    parser.set_default("quiet", False)
     parser.set_default("debug", False)
     parser.set_default("config_file", expan(p.dirname(__file__),
                                             "./preferences.conf"))
