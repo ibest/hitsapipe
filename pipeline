@@ -800,7 +800,7 @@ class Pipeline:
         # scripts it executes be set by the same flag.  The script's debug
         # option could instead come from the configuration file.
          
-        p = {
+        c = {
              'Execution':               self.params['Execution'],
              'Database':                self.params['Database'],
              'Input_Sequences':         self.params['InputSequences'],
@@ -819,7 +819,7 @@ class Pipeline:
              'Debug':                   self.params['Debug']                          
         }
         # Make sure qsub exists on the system
-        if p['Execution'] == 'Parallel':
+        if c['Execution'] == 'Parallel':
             does_qsub_exist = subprocess.Popen(["which","qsub"],
                                                stdout=subprocess.PIPE,
                                                stdin=subprocess.PIPE,
@@ -827,9 +827,9 @@ class Pipeline:
                                                shell=False)
             does_qsub_exist.communicate() # Don't care about output.
             if does_qsub_exist.returncode != 0:
-                p['Execution'] = "Forced Standalone - qsub not found"
+                c['Execution'] = "Forced Standalone - qsub not found"
             if self.params['MPIBlastDB'] is None:
-                p['Execution'] = "Forced Standalone - mpiBLAST "\
+                c['Execution'] = "Forced Standalone - mpiBLAST "\
                                  "configuration error"
                 
         return p
@@ -955,10 +955,6 @@ def main():
     parser.add_option("-c", "--config", action="store", dest="config_file",
                       help="the file where the your preferences are "
                             "located [default: %default]")
-    parser.add_option("-w", "--work", action="store", dest="work_dir",
-                      help="the working directory where all output will be "
-                            "placed - this will overwrite the configuration "
-                            "file [default: %default]")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
                       help="show basic output [default: %default]")
     parser.add_option("-q", "--quiet", action="store_false", dest="verbose",
@@ -968,6 +964,10 @@ def main():
                             "Use these options at your own risk. "
                             "Changing these options could cause "
                             "the program to fail.")
+    adv_group.add_option("-w", "--work", action="store", dest="work_dir",
+                         help="the working directory where all output will be "
+                         "placed - this will overwrite the configuration "
+                         "file [default: %default]")
     adv_group.add_option("-s", "--scripts", action="store", dest="scripts_dir",
                          help="the directory where the scripts are located - "
                          "this will overwrite the configuration file "
@@ -983,14 +983,10 @@ def main():
     parser.add_option_group(debug_group)
     
     # Set up the defaults
-    #parser.set_default("scripts_dir", p.abspath(p.join(
-    #                           p.dirname(p.expanduser(__file__)),"scripts")))
-    #parser.set_default("work_dir", p.abspath(p.join(p.dirname(__file__),".")))
     parser.set_default("verbose", True)
-    parser.set_default("config_file", p.abspath(p.join(
-                               p.dirname(p.expanduser(__file__)),
-                                            "./preferences.conf")))
     parser.set_default("debug", False)
+    parser.set_default("config_file", expan(p.dirname(__file__),
+                                            "./preferences.conf"))
     
     # Parse the arguments and return a tuple of the options and the
     # any leftover arguments.  If there are any leftover arguments, we
@@ -1013,6 +1009,7 @@ def main():
     options.work_dir = expan(options.work_dir)   
     options.config_file = expan(options.config_file)
     
+    # Create a Pipeline object, run it and exit.
     pipeline = Pipeline(options)
     sys.exit(pipeline.run())
 
