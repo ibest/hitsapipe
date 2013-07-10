@@ -15,6 +15,20 @@ import os.path as p
 from optparse import OptionParser
 from optparse import OptionGroup
 
+def expan(filepath=None, joinpath=None):
+    # Returns the absolute path of filepath.  If joinpath 
+    # was specified, join the files as well.  If filepath
+    # is None, just return None.  This lets us not have
+    # to check for None everywhere in the Pipeline
+    
+    f = filepath
+    j = joinpath
+    
+    if f is not None: 
+        f = p.abspath(p.expanduser(f))
+        if j is not None:
+            f = p.join(f,j)
+    return f
 
 class Pipeline:
     '''
@@ -375,7 +389,14 @@ class Pipeline:
                                         stdout=subprocess.PIPE, 
                                         stderr=subprocess.STDOUT)
             out, err = process.communicate()
-                    
+            
+            if process.returncode != 0:
+                if out is not None:
+                    print out
+                if err is not None:
+                    print err
+                self.__set_fatal_error(True, "qsub failed to submit job")
+            
             id = re.split('[[\.]{1}',out)[0]
             if self.verbose or self.debug:
                 print options['name'] + " submitted. ID: "+str(id)
@@ -531,7 +552,7 @@ class Pipeline:
              cmd = "qsub "
              cmd += "-N "+str(cmd_options['name'])+" "
              cmd += "-j oe "
-             cmd += self.__get_command_qsub_email(cmd_options)
+             cmd += self.__get_command_qsub_mail(cmd_options)
              cmd += "-o "+str(cmd_options['log'])+" "
              cmd += "-d "+str(self.directories['output'])+" "
              cmd += "-q "+str(self.qsub_options['Queue'])+" "
@@ -560,7 +581,7 @@ class Pipeline:
              # Add the actual script to execute to the end.
              cmd += cmd_options['script_location']
          return cmd
-    def __get_command_qsub_email(self, cmd_options):
+    def __get_command_qsub_mail(self, cmd_options):
         email = ""
         notify = ""
         if self.qsub_options['Email'] is not None:
@@ -582,6 +603,7 @@ class Pipeline:
         # in __get_command() in order to make spacing look nice if nothing
         # is returned.
         final_string = email+"-m "+notify+" "
+        
         return final_string        
         
 
@@ -600,11 +622,10 @@ class Pipeline:
         options = {}
         
         default_path_options = {
-           'WorkDir':               p.abspath(p.join(
-                                             p.dirname(__file__),".")),
-           "ScriptsDir":            p.abspath(p.join(
-                                             p.dirname(__file__),"scripts"))
+           'WorkDir':               expan(p.dirname(__file__)),
+           "ScriptsDir":            expan(p.dirname(__file__), "scripts")
         }
+        
         
         default_qsub_options = {
             'Execution':            'Standalone',
@@ -700,23 +721,23 @@ class Pipeline:
             mpiblastdb = os.getenv("Shared", default=None)
             if mpiblastdb is None:
                 ncbi_parser = ConfigParser.SafeConfigParser()
-                ncbi_parser.read(p.abspath(p.expanduser("~/.ncbirc")))
+                ncbi_parser.read(expan("~/.ncbirc"))
                 if ncbi_parser.has_section("mpiBLAST"):
                     if ncbi_parser.has_option("mpiBLAST", "Shared"):
                         mpiblastdb = ncbi_parser.get("mpiBLAST",
                                                     "Shared")
         if mpiblastdb is not None:
-            mpiblastdb = p.abspath(p.expanduser(mpiblastdb))
+            mpiblastdb = expan(mpiblastdb)
         final_options['MPIBlastDB'] = mpiblastdb
         
-        # Omitting for now - users should comment out an item in their
-        # configuration file if they don't want it.
         # Finally, run through the options and make sure anything that
-        # is blank or is "None" is changed to Python's None.
-        #for (key,value) in final_options.items():
-        #    if str(value).lower() == "none":
-        #        final_options[key] = None
-                
+        # anything that is blank is set to None.  This is because the
+        # ConfigParser converts everything to strings.
+        for (key,value) in final_options.items():
+            #if str(value).lower() == "none" or not value:
+            if not value:
+                final_options[key] = None
+
         return final_options
     def __validate(self):
         # Because the configuration parser has default values built in, the
@@ -987,13 +1008,10 @@ def main():
         error_message += "Please see the usage above and try again."
         parser.error(error_message)
     
-    # Handle user input
-    if options.scripts_dir is not None:    
-        options.scripts_dir = p.abspath(p.expanduser(options.scripts_dir))
-    if options.work_dir is not None:
-        options.work_dir = p.abspath(p.expanduser(options.work_dir))
-    # Can't be none    
-    options.config_file = p.abspath(p.expanduser(options.config_file))
+    # Handle user input   
+    options.scripts_dir = expan(options.scripts_dir)
+    options.work_dir = expan(options.work_dir)   
+    options.config_file = expan(options.config_file)
     
     pipeline = Pipeline(options)
     sys.exit(pipeline.run())
