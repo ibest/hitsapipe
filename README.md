@@ -19,8 +19,8 @@ the user.
 HiTSAPipe requires the following additional software packages to run:
 
 -	Standalone
-	-	blastall (Tested with blastall 2.2.24)
-	-	clustalw (Tested with clustalw 2.0.12)
+	-	blastall
+	-	clustalw
 -	Parallel
 	-	mpiexec for Open MPI
 	-	mpiBLAST
