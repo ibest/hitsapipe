@@ -11,6 +11,14 @@
 #	REFERENCES_DIR: 			Backup directory
 #####
 
+# Get helper functions for filenames
+source helpers
+
+# Get filenames
+SUCCESS_FILE=$(get_success_name)
+FAILURE_FILE=$(get_failure_name)
+
+
 echo "Copying the reference strains and blast sequences to backup directory."
 if [ ${DEBUG} == "True" ]
 	then
@@ -19,4 +27,5 @@ if [ ${DEBUG} == "True" ]
 fi
 
 cp ${REFERENCE_STRAINS} ${REFERENCES_DIR}/
+
 cp ${BLAST_SEQUENCES} ${REFERENCES_DIR}/

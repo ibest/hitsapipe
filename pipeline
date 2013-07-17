@@ -378,26 +378,22 @@ class Pipeline:
                 # We know the job is complete and so we don't want to have
                 # a job dependency.
                 options['previous_id'] = None
-                if not self.quiet or self.verbose:
-                    msg = "Number of array items in job: "\
-                            +str(options['arr_count'])
-                    print msg
+                #if not self.quiet or self.verbose:
+                #    msg = "Number of array items in job: "\
+                #            +str(options['arr_count'])
+                #    print msg
                     
             cmd = self.__get_command(options)
-            if self.verbose:
-                print "===================Executing==================="
-                print "\t"+str(cmd)
-                print "==============================================="   
+            #if self.verbose:
+            #    print "===================Executing==================="
+            #    print "\t"+str(cmd)
+            #    print "==============================================="   
             process = subprocess.Popen(cmd, shell=True,
                                         stdout=subprocess.PIPE, 
                                         stderr=subprocess.STDOUT)
             out, err = process.communicate()
             
             if process.returncode != 0:
-                if out is not None:
-                    print out
-                if err is not None:
-                    print err
                 self.__set_fatal_error(True, "qsub failed to submit job")
             
             id = re.split('[[\.]{1}',out)[0]
@@ -406,14 +402,14 @@ class Pipeline:
             if options.has_key('arr_count') and options['arr_count'] >= 0:
                 if not self.quiet or self.verbose:
                     msg = "Waiting for the array job \""\
-                            +str(options['name'])\
-                            +"\" to finish before continuing ("\
-                            +str(options['arr_count'])+" jobs in array)."
+                            +str(options['name'])+"\" to finish "\
+                            "before continuing ("+str(options['arr_count'])\
+                            +" jobs)..."
                     print msg
                 
-                self.__execute_job_array_check(options['name'], 
-                                             options['arr_count'], 
-                                             id)
+                self.__execute_job_array_check(id, 
+                                               options['arr_count'], 
+                                               self.static_vars['Error_File'])
                 id = None # We don't want the next job to have a dependency
                     
         else: # Standalone
@@ -476,11 +472,11 @@ class Pipeline:
     
         os.remove(hold_filepath)
         
-        if self.verbose:
-            print "Number of array items: "+str(int(arr_count))
+        #if self.verbose:
+        #    print "Number of array items: "+str(int(arr_count))
     
         return int(arr_count)  
-    def __execute_job_array_check(self, job_name, array_count, base_id):
+    def __execute_job_array_check(self, base_id, array_count, error_filepath):
         # This is not the best way to check the status of the job array
         # because if any of the jobs leave qstat's scope before it is
         # checked, this will cause a world of hurt.
@@ -489,37 +485,32 @@ class Pipeline:
         # May want to look at changing subprocess.Popen() to subprocess.call()
         # since we're using /dev/null.
         if self.type == "Parallel":
-            array_count += 1 # xrange is exclusive
-            devnull = open('/dev/null', 'w')
             completed_list = []
+            devnull = open('/dev/null', 'w')
+
             for i in xrange(array_count):
                 completed_list.append(i)
             
-            if self.verbose:
-                print "Number of jobs in list: "+str(array_count)
-                print "Printing completed_list[]:"
-                print "\t"+str(completed_list)+"\n"
-            if not self.quiet or self.verbose:
-                msg = "Waiting for \""+job_name+"\" to finish..." 
-                print msg
             while completed_list:
                 for (index,value) in enumerate(completed_list):
                     cmd = "qstat -f " + str(base_id) \
                             + "[" + str(value) + "] | grep \"job_state = C\""
-                    process = subprocess.Popen(cmd, shell=True, 
+                    process = subprocess.Popen(cmd, shell=True,
                                                stdout=devnull, stderr=devnull)
                     out, err = process.communicate()
                     if process.returncode == 0:
                         if self.verbose:
-                            msg = "array["+str(value)+"] completed, " \
-                                    "removing from list."
-                            print msg
+                            print "\tArray "+str(value)+" completed..."
                         completed_list.remove(value)
-                    else:
-                        time.sleep(10)
-                        break
+                if p.exists(error_filepath):
+                    os.remove(error_filepath)
+                    self.__set_fatal_error(True, 
+                                       err_msg="a job prior to the array "
+                                       "failed and the pipeline "
+                                       "cannot recover")
+                time.sleep(10)  
             devnull.close()
-        return True
+        return True         
     def __get_command(self, cmd_options):
          if self.type != "Parallel":
              # Execute in standalone.
@@ -539,7 +530,10 @@ class Pipeline:
              # Because these scripts are made to be called by qsub,
              # we need to fake some of the variables that get passed
              # in from qsub.  Currently the only variables used are
-             # PBS_O_WORKDIR and PBS_ARRAYID.
+             # PBS_JOBNAME, PBS_O_WORKDIR and PBS_ARRAYID.
+             var_list += "PBS_JOBNAME=\""
+             var_list += str(cmd_options['name'])+"\" "
+             
              var_list += "PBS_O_WORKDIR=\""
              var_list += str(self.directories['output'])+"\" "
              
@@ -565,6 +559,7 @@ class Pipeline:
              if cmd_options.has_key('arr_count'):
                  cmd_options['arr_count'] -= 1
                  cmd += "-t 0-"+str(cmd_options['arr_count'])+" "
+                 cmd_options['arr_count'] += 1
              if cmd_options.has_key('previous_id'):
                  if cmd_options['previous_id'] is not None:
                      cmd += "-W depend=afterok:"
@@ -676,8 +671,8 @@ class Pipeline:
             c.set("Pipeline", "ScriptsDir", cli_options.scripts_dir)
         
         final_options = {
-             'WorkDir':             c.get("Pipeline", "WorkDir"),
-             'ScriptsDir':          c.get("Pipeline", "ScriptsDir"),
+             'WorkDir':             expan(c.get("Pipeline", "WorkDir")),
+             'ScriptsDir':          expan(c.get("Pipeline", "ScriptsDir")),
              'Debug':               cli_options.debug,
              'Verbose':             cli_options.verbose,
              'Quiet':               cli_options.quiet,
@@ -690,10 +685,11 @@ class Pipeline:
              'Queue':               c.get("qsub", "Queue"),
              'Nodes':               c.get("qsub", "Nodes"),
         
-             'Database':            c.get("Pipeline", "Database"),
-             'InputSequences':      c.get("Pipeline", "InputSequences"),
-             'ReferenceStrains':    c.get("Pipeline", "ReferenceStrains"),
-             'BlastSequences':      c.get("Pipeline", "BlastSequences"),
+             'Database':            expan(c.get("Pipeline", "Database")),
+             'InputSequences':      expan(c.get("Pipeline", "InputSequences")),
+             'ReferenceStrains':    expan(c.get("Pipeline",
+                                                "ReferenceStrains")),
+             'BlastSequences':      expan(c.get("Pipeline", "BlastSequences")),
              'Suffix':              c.get("Pipeline", "Suffix"),
              'Direction':           c.get("Pipeline", "Direction"),
              'CutoffLength':        c.get("Pipeline", "CutoffLength"),
@@ -741,7 +737,7 @@ class Pipeline:
             #if str(value).lower() == "none" or not value:
             if not value:
                 final_options[key] = None
-
+        
         return final_options
     def __validate(self):
         # Because the configuration parser has default values built in, the
@@ -776,6 +772,7 @@ class Pipeline:
         }
         d['output']         =           expan(d['work'],'output')
         d['logs']           =           expan(d['output'],'logs')
+        d['job_status']     =           expan(d['output'], 'tmp')
         d['references']     =           expan(d['output'],'references')
         d['blast']          =           expan(d['output'],'blast')
         d['clustal']        =           expan(d['output'],'clustal')
@@ -869,6 +866,7 @@ class Pipeline:
                                                    "clustal_all.aln")
         s['Phylip_In_File'] = expan(s['Clustal_Output_Dir'],
                                             "infile")
+        s['Job_Status_Path'] = expan(self.directories['job_status'])
         s['Array_Output_File'] = expan(self.directories['output'],
                                               "arrayjob.tmp")
         s['Error_File'] = expan(self.directories['output'], "error.tmp")
@@ -900,6 +898,7 @@ class Pipeline:
         
         # Subdirectories of 'output'
         os.mkdir(self.directories['logs'])
+        os.mkdir(self.directories['job_status'])
         os.mkdir(self.directories['references'])
         os.mkdir(self.directories['blast'])
         os.mkdir(self.directories['clustal'])
