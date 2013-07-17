@@ -866,7 +866,7 @@ class Pipeline:
                                                    "clustal_all.aln")
         s['Phylip_In_File'] = expan(s['Clustal_Output_Dir'],
                                             "infile")
-        s['Job_Status_Path'] = expan(self.directories['job_status'])
+        s['Job_Status_Dir'] = expan(self.directories['job_status'])
         s['Array_Output_File'] = expan(self.directories['output'],
                                               "arrayjob.tmp")
         s['Error_File'] = expan(self.directories['output'], "error.tmp")

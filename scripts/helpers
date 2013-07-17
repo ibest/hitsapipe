@@ -1,0 +1,66 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# These helper functions are used in most of the
+# job scripts.  They help determine the filenames
+# of the jobs so that HiTSAPipe can determine if
+# everything finished properly.
+
+# These scripts rely on specific variables being
+# set.
+#
+# Required:
+#	JOB_STATUS_DIR
+#	PBS_JOBNAME
+#	RETVAL
+#	SUCCESS_FILE
+#	FAILURE_FILE
+# Optional:
+#	PBS_O_ARRAYID
+#	ERROR_MSG
+
+# RETVAL, SUCCESS_FILE, FAILURE_FILE and ERROR_MSG
+# must be the variables used in the job scripts 
+# in order for everything to work properly.
+# PBS_JOBNAME and PBS_O_ARRAYID will be set by
+# qsub if running in parallel, otherwise HiTSAPipe
+# will mimic these variables if running in
+# standalone.  PBS_O_ARRAYID will only be set
+# if the job is an array job however.
+# JOB_STATUS_DIR is a static variable set by
+# HiTSAPipe
+
+get_base() {
+	if [ ! -z ${PBS_O_ARRAYID} ]
+		then
+			append="-${PBS_O_ARRAYID}"
+	fi
+	echo "${JOB_STATUS_DIR}/${PBS_JOBNAME}${append}"
+}
+
+get_success() {
+	echo "$(get_base).success"
+}
+
+get_failure() {
+	echo "$(get_base).failure"
+}
+
+exit_if_error() {
+	if [ ${RETVAL} != 0 ]
+		then
+			echo "${PBS_JOBNAME}: ERROR! ${ERROR_MSG}"
+			echo "Exiting (status code: ${RETVAL})"
+			echo "Will actually touch ${FAILURE_FILE}"
+			exit ${RETVAL}
+	else
+		# Blank ERROR_MSG since there was no error
+		ERROR_MSG=""
+	fi
+}
+
+exit_success() {
+	echo "Will actually touch ${SUCCESS_FILE}"
+	exit 0
+}
