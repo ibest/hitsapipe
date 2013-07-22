@@ -29,6 +29,15 @@
 #	ITER: 						Simple iterator for renaming files.
 #####
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
+
 if [ ${DEBUG} == "True" ]
 then
 	echo -e "### DEBUG OUTPUT START ###"
@@ -62,15 +71,20 @@ then
 	#fastacmd -D 1 -d ${DATABASE} | mpiformatdb -N ${DBNODES} -i stdin -t ${DBNAME} -n ${DBNAME} --skip-reorder -p F -l "${LOG_DIR}/mpiformatdb_blastall.log"
 	mpiformatdb -N ${DBNODES} -i ${DATABASE} -t ${DBNAME} -n ${DBNAME} --skip-reorder -p F -l "${LOG_DIR}/mpiformatdb_blastall.log"
 	RETVAL=$?
-	
-	if [ ${RETVAL} != 0 ]
-	then
-		#echo -e "\nERROR: fastacmd/mpiformatdb could not complete."
-		echo -e "\nERROR: mpiformatdb could not complete."
-		echo -e "\tmpiformatdb exit code: ${RETVAL}"
-		touch ${ERROR_FILE}
-		exit 1
-	fi	
+	ERROR_MSG="fastacmd/mpiformatdb could not complete."
+	exit_if_error
+	#if [ ${RETVAL} != 0 ]
+	#then
+	#	#echo -e "\nERROR: fastacmd/mpiformatdb could not complete."
+	#	echo -e "\nERROR: mpiformatdb could not complete."
+	#	echo -e "\tmpiformatdb exit code: ${RETVAL}"
+	#	touch ${ERROR_FILE}
+	#	exit 1
+	#fi	
 fi
 
+# Set ITER to TO_LOG so that it logs to the success file
+TO_LOG="${ITER}"
 echo "${ITER}" > ${ARRAY_OUTPUT_FILE}
+
+exit_success

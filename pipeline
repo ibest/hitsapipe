@@ -46,10 +46,8 @@ class Pipeline:
         
         self.__fatal_error = False
         self.params = {}
-        
         self.params = self.__configure(cli_options)
         
-        #self.debug = self.params['Debug']
         self.verbose = self.params['Verbose']
         self.quiet = self.params['Quiet']
         
@@ -78,7 +76,6 @@ class Pipeline:
                 
         self.__setup_directory_structure()
         
-
         
     def run(self):
         # Runs the actual pipeline scripts in the correct order and
@@ -362,8 +359,8 @@ class Pipeline:
         # The up side, is that the code is a bit easier to read.
         
         id = None
+        to_return = {}
         if self.type == "Parallel":
-            
             if options.has_key('array'):
                 if not self.quiet or self.verbose:
                     msg = "Job \""+str(options['name'])+"\" is an array job "\
@@ -409,7 +406,7 @@ class Pipeline:
                 
                 self.__execute_job_array_check(id, 
                                                options['arr_count'], 
-                                               self.static_vars['Error_File'])
+                                               options)
                 id = None # We don't want the next job to have a dependency
                     
         else: # Standalone
@@ -454,6 +451,7 @@ class Pipeline:
                 if process.returncode != 0:
                     msg = "The job "+str(options['name'])+" failed"
                     self.__set_fatal_error(True, msg)
+
         return id
     def __execute_job_array_prep(self, job_name, hold_filepath, error_filepath):
         arr_count = -1
@@ -464,8 +462,7 @@ class Pipeline:
                 self.__set_fatal_error(True, 
                                        err_msg="a job prior to the array "
                                        "failed and the pipeline "
-                                       "cannot recover")
-                
+                                       "cannot recover")        
         file = open(hold_filepath, "r")
         arr_count = file.readline()
         arr_count = str(arr_count).strip()
@@ -476,41 +473,64 @@ class Pipeline:
         #    print "Number of array items: "+str(int(arr_count))
     
         return int(arr_count)  
-    def __execute_job_array_check(self, base_id, array_count, error_filepath):
-        # This is not the best way to check the status of the job array
-        # because if any of the jobs leave qstat's scope before it is
-        # checked, this will cause a world of hurt.
-        # This pipes all output to devnull so that we don't end up in
-        # deadlock from trying to read or write to a blocked pipe.
-        # May want to look at changing subprocess.Popen() to subprocess.call()
-        # since we're using /dev/null.
+    def __execute_job_array_check(self, base_id, array_count, cmd_options):
+        # This creates a list of files that should exist by the end of the
+        # array job (every individual job will create either a success file
+        # or a failure file).  This creates a list of those filenames and
+        # then checks to see if each of them exists.  If a successful one 
+        # does, it is remove from the list.  If a failure one does, the 
+        # pipeline errors and exits.  Once it checks through the list, 
+        # HiTSAPipe sleeps and then checks again until the entire list has
+        # been deleted.  
         if self.type == "Parallel":
-            completed_list = []
-            devnull = open('/dev/null', 'w')
+            complete = []
 
             for i in xrange(array_count):
-                completed_list.append(i)
-            
-            while completed_list:
-                for (index,value) in enumerate(completed_list):
-                    cmd = "qstat -f " + str(base_id) \
-                            + "[" + str(value) + "] | grep \"job_state = C\""
-                    process = subprocess.Popen(cmd, shell=True,
-                                               stdout=devnull, stderr=devnull)
-                    out, err = process.communicate()
-                    if process.returncode == 0:
+                s, f = self.__execute_job_array_filename(cmd_options, i)
+                complete.append(i)
+                complete[i] = {
+                    'success':    s,
+                    'failure':    f
+                }
+            while complete:
+                for (id, files) in enumerate(complete):
+                    if p.exists(files['success']):
                         if self.verbose:
-                            print "\tArray "+str(value)+" completed..."
-                        completed_list.remove(value)
-                if p.exists(error_filepath):
-                    os.remove(error_filepath)
-                    self.__set_fatal_error(True, 
-                                       err_msg="a job prior to the array "
-                                       "failed and the pipeline "
-                                       "cannot recover")
-                time.sleep(10)  
-            devnull.close()
-        return True         
+                            msg = str(cmd_options['name'])\
+                            +"["+str(complete[id])+"] completed."
+                            print msg
+                        del complete[id]
+                    elif p.exists(files['failure']):
+                        error_msg = str(cmd_options['name'])\
+                        +"["+str(complete[id])+"] failed!"
+                        self.__set_fatal_error(True, error_msg)
+                time.sleep(10)
+        return True 
+    def __execute_job_array_filename(self, options, array_id=None):
+        # This creates a file name in the same format as the job
+        # scripts that lets us determine if a job has completed
+        # successfully or not.
+        # The final filename depends on whether the job was
+        # submitted as an array of not.  A standalone job would
+        # look like:
+        #    jobname.success
+        #    jobname.failure
+        # An array job would look like:
+        #    jobname-array_id.success
+        #    jobname-array_id.failure
+        
+        array_filename = ""
+        if array_id is not None:
+            array_filename = "-"+str(array_id)
+        base_filename = options['name']
+        base_filename = base_filename + array_filename
+        base_filename = expan(self.directories['job_status'], base_filename)
+        
+        success = str(base_filename)+".success"
+        failure = str(base_filename)+".failure"
+        
+        return success, failure
+                
     def __get_command(self, cmd_options):
          if self.type != "Parallel":
              # Execute in standalone.
@@ -632,7 +652,7 @@ class Pipeline:
             'NotifyOnBegin':        'True',
             'NotifyOnEnd':          'True',
             'Queue':                'tiny',
-            'Nodes':                '50'
+            'Nodes':                '10'
         }
         
         default_sequencing_options = {
@@ -840,6 +860,7 @@ class Pipeline:
         
         s = {
             'Perl_Dir':                 self.directories['scripts'],
+            'Scripts_Dir':              self.directories['scripts'],
             'References_Dir':           self.directories['references'],
             'Originals_Dir':            self.directories['originals'],
             'Log_Dir':                  self.directories['logs'],
@@ -850,7 +871,7 @@ class Pipeline:
             'Hit_Output_Dir':           self.directories['clustal'],
             'Clustal_Output_Dir':       self.directories['clustal'],
             'Neighbor_Dir':             self.directories['clustal'],
-            'Tree_Dir':                 self.directories['tree'],
+            'Final_Dir':                self.directories['final'],
             'NNodes':                   self.params['Nodes']
         }
         s['Good_Sequences_File'] = expan(self.directories['blast_input'],
@@ -863,10 +884,13 @@ class Pipeline:
         s['Clustal_All_File'] = expan(s['Clustal_Output_Dir'],
                                              "clustal_all")
         s['Clustal_Alignment_File'] = expan(s['Clustal_Output_Dir'],
-                                                   "clustal_all.aln")
+                                                   "clustalall.aln"),
+        s['Clustal_Phylip_File'] = expan(s['Clustal_Output_Dir'],
+                                                   "clustalall.aln"),                                                   
         s['Phylip_In_File'] = expan(s['Clustal_Output_Dir'],
                                             "infile")
         s['Job_Status_Dir'] = expan(self.directories['job_status'])
+        s['Helper_Functions'] = expan(s['Scripts_Dir'], "helpers")
         s['Array_Output_File'] = expan(self.directories['output'],
                                               "arrayjob.tmp")
         s['Error_File'] = expan(self.directories['output'], "error.tmp")
@@ -931,7 +955,7 @@ class Pipeline:
                                 'used_preferences.conf')
         fp = open(filename,"w")
         parser.write(fp)
-        fp.close() 
+        fp.close()
     def __check_for_fatal(self):
         return self.__fatal_error
     def __set_fatal_error(self, is_fatal, err_msg=""):

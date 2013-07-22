@@ -29,6 +29,15 @@
 #	BLAST_OUTPUT_NAME: 		The output name of the file
 #####
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
+
 if [ ${DEBUG} == "True" ]
 then
 	echo -e "### DEBUG OUTPUT START ###"
@@ -57,25 +66,27 @@ then
 
 	mpiexec -np ${NNODES} mpiblast -p blastn -d ${DBNAME}  -b ${NHITS} -v ${NHITS} -i "${TO_BLAST}" -S 1 -o "${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}" --removedb
 	RETVAL=$?
-	
-	if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: mpiexec/mpiBLAST could not complete."
-		echo -e "\tmpiexec exit code: ${RETVAL}"
-		touch ${ERROR_FILE}
-		exit 1
-	fi
+	ERROR_MSG="mpiexec/mpiBLAST could not complete."
+	exit_if_error
+	#if [ ${RETVAL} != 0 ]
+	#then
+	#	echo -e "\nERROR: mpiexec/mpiBLAST could not complete."
+	#	echo -e "\tmpiexec exit code: ${RETVAL}"
+	#	touch ${ERROR_FILE}
+	#	exit 1
+	#fi
 else
 	blastall -p blastn -d ${DATABASE}  -b ${NHITS} -v ${NHITS} -i "${TO_BLAST}" -S 1 -o "${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}"
 	RETVAL=$?
-	
-	if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Blastall could not complete."
-		echo -e "\tblastall exit code: ${RETVAL}"
-		touch ${ERROR_FILE}
-		exit 1
-	fi
+	ERROR_MSG="Blastall could not complete."
+	exit_if_error
+	#if [ ${RETVAL} != 0 ]
+	#then
+	#	echo -e "\nERROR: Blastall could not complete."
+	#	echo -e "\tblastall exit code: ${RETVAL}"
+	#	touch ${ERROR_FILE}
+	#	exit 1
+	#fi
 fi
 
 
@@ -84,4 +95,8 @@ echo "Blast successful. Removing PBS array file extension."
 RENAME=$(echo "${TO_BLAST%.*}")
 mv ${TO_BLAST} ${RENAME}
 RETVAL=$?
-exit ${RETVAL}
+ERROR_MSG="Could not remove PBS array file extension."
+exit_if_error
+
+# If everything went well, exit.
+exit_success

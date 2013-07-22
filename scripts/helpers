@@ -19,10 +19,11 @@
 # Optional:
 #	PBS_O_ARRAYID
 #	ERROR_MSG
+#	TO_LOG
 
-# RETVAL, SUCCESS_FILE, FAILURE_FILE and ERROR_MSG
-# must be the variables used in the job scripts 
-# in order for everything to work properly.
+# RETVAL, SUCCESS_FILE, FAILURE_FILE, TO_LOG and 
+# ERROR_MSG must be the variables used in the job 
+# scripts in order for everything to work properly.
 # PBS_JOBNAME and PBS_O_ARRAYID will be set by
 # qsub if running in parallel, otherwise HiTSAPipe
 # will mimic these variables if running in
@@ -52,15 +53,24 @@ exit_if_error() {
 		then
 			echo "${PBS_JOBNAME}: ERROR! ${ERROR_MSG}"
 			echo "Exiting (status code: ${RETVAL})"
-			echo "Will actually touch ${FAILURE_FILE}"
+			#echo "Will actually touch ${FAILURE_FILE}"
+			touch ${FAILURE_FILE}
 			exit ${RETVAL}
 	else
-		# Blank ERROR_MSG since there was no error
+		# Blank ERROR_MSG and RETVAL so that values
+		# don't get mixed up between calls
 		ERROR_MSG=""
+		RETVAL=""
+		
 	fi
 }
 
 exit_success() {
-	echo "Will actually touch ${SUCCESS_FILE}"
+	#echo "Will actually touch ${SUCCESS_FILE}"
+	touch ${SUCCESS_FILE}
+	if [ ! -z ${TO_LOG} ]
+		then
+			echo "${TO_LOG}" > ${SUCCESS_FILE}
+	fi 
 	exit 0
 }
