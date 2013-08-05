@@ -40,9 +40,15 @@
 #	MPINODES: 				If parallel, how many nodes mpiformatdb should use.
 #####
 
+STRAND_FILE="${BLAST_TEMP_DIR}/strands"
+STRAND_IN_FILE="${BLAST_TEMP_DIR}/strandin"
+DBNODES=$((NNODES - 2))
+DBNAME=$(echo "${GOOD_SEQUENCES_FILE##*/}")
+GOOD_SEQUENCES_SHARED=$(echo "${GOOD_SEQUENCES_FILE##*/}")
+
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "### DEBUG OUTPUT START ###"
+	echo -e "Debug: Variable List"
 	echo -e "\tPERL_DIR: ${PERL_DIR}"
 	echo -e "\tLOG_DIR: ${LOG_DIR}"
 	echo -e "\tBLAST_TEMP_DIR: ${BLAST_TEMP_DIR}"
@@ -52,116 +58,112 @@ then
 	echo -e "\tNUMSEQS_TEMP_FILE: ${NUMSEQS_TEMP_FILE}"
 	echo -e "\tBLAST_SEQUENCES: ${BLAST_SEQUENCES}"
 	echo -e "\tCUTOFF_LENGTH: ${CUTOFF_LENGTH}"
-	echo -e "### DEBUG OUTPUT END ###"
+	if [ "${EXECUTION}" == "Parallel" ]
+	then
+		echo -e "Debug: Parallel Variables"
+		echo -e "\tSTRAND_FILE: ${STRAND_FILE}"
+		echo -e "\tSTRAND_IN_FILE: ${STRAND_IN_FILE}"
+		echo -e "\tDBNODES: ${DBNODES}"
+		echo -e "\tDBNAME: ${DBNAME}"
+		echo -e "\tGOOD_SEQUENCES_SHARED: ${GOOD_SEQUENCES_SHARED}"
+	fi
 fi
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
 
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
 # Format the good sequences into a database to blast against 
 # with our sample sequence.
 # If this is to be run in parallel, call mpiformatdb
 # If not, call formatdb
 
- if [ "${EXECUTION}" == "Parallel" ]
- then
- 	DBNODES=$((NNODES - 2))
- 	DBNAME=$(echo "${GOOD_SEQUENCES_FILE##*/}")
- 	echo "Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence."
+if [ "${EXECUTION}" == "Parallel" ]
+then
+
+ 	#echo "Running mpiformatdb to format the good sequences into a database to blast against with out sample sequence."
  	#fastacmd -D 1 -d ${GOOD_SEQUENCES_FILE} | mpiformatdb -N ${DBNODES} -i stdin --skip-reorder -n ${DBNAME} -t ${DBNAME} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
- 	echo "mpiformatdb cmd: mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log"
+ 	#echo "mpiformatdb cmd: mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log"
  	mpiformatdb -N ${DBNODES} -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/mpiformatdb_direction.log
  	RETVAL=$?
+	ERROR_MSG="mpiformatdb could not format the good sequences."
+	NORMAL_MSG="Formatted the good sequences for mpiblast."
+	exit_if_error
 	
- 	if [ ${RETVAL} != 0 ]
- 	then
- 		echo -e "\nERROR: Unknown mpiformatdb error."
- 		echo -e "\tmpiformatdb exit code: ${RETVAL}"
- 		touch ${ERROR_FILE}
- 		exit 1
- 	fi
- else
-	echo "Running formatdb to format the good sequences into a database to blast against with our sample sequence."
-	
+
+	cd ${MPIBLAST_SHARED}
+	mpiexec -v -np ${NNODES} mpiblast -p blastn -d ${GOOD_SEQUENCES_SHARED} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000 --removedb
+	RETVAL=$?
+	ERROR_MSG="mpiblast encountered an error while determining the direction."
+	NORMAL_MSG="mpiBLAST was able to determine direction of blast sequences."
+	DEBUG_MSG="BLASTed ${BLAST_SEQUENCES} against ${GOOD_SEQUENCES_SHARED}"
+	exit_if_error
+else
 	formatdb -i ${GOOD_SEQUENCES_FILE} -p F -o T -l ${LOG_DIR}/formatdb_direction.log
 	RETVAL=$?
+	ERROR_MSG="formatdb could not format the good sequences."
+	NORMAL_MSG="Formatted the good sequences for blastall."
+	exit_if_error
 	
-	if [ ${RETVAL} != 0 ]
-		then
-			echo -e "\nERROR: Unknown formatdb error."
-			echo -e "\tformatdb exit code: ${RETVAL}"
-			touch ${ERROR_FILE}
-			exit 1
-	fi
-fi
-
- if [ "${EXECUTION}" == "Parallel" ]
- then
- 	#GOOD_SEQUENCES_SHARED=$(echo "${MPIBLAST_SHARED}/${GOOD_SEQUENCES_FILE##*/}")
- 	GOOD_SEQUENCES_SHARED=$(echo "${GOOD_SEQUENCES_FILE##*/}")
- 	echo "GOOD_SEQ_SHARED: ${GOOD_SEQUENCES_SHARED}"
-# 	# Make sure there is read/write access to the shared folder and its contents
- 	#chmod -R 777 ${MPIBLAST_SHARED}
- 	cd ${MPIBLAST_SHARED}
- 	echo -e "\nBLASTing ${BLAST_SEQUENCES} against ${GOOD_SEQUENCES_SHARED} to find direction."
- 	mpiexec -v -np ${NNODES} mpiblast -p blastn -d ${GOOD_SEQUENCES_SHARED} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000 --removedb
- 	RETVAL=$?
-
- 	if [ ${RETVAL} != 0 ]
- 	then
- 		echo -e "\nERROR: Unknown mpiexec/mpiBLAST error."
- 		echo -e "\tmpiexec exit code: ${RETVAL}"
- 		touch ${ERROR_FILE}
- 		exit 1
- 	fi
-
-else
-	echo -e "\nBLASTing ${BLAST_SEQUENCES} against sequences to find direction."
 	blastall -p blastn -d ${GOOD_SEQUENCES_FILE} -i ${BLAST_SEQUENCES} -S 1 -o ${DIRECTION_BLAST_FILE} -z 53,000,000 -b 10000
 	RETVAL=$?
-	
-	if [ ${RETVAL} != 0 ]
-		then
-			echo -e "\nERROR: blastall could not finish."
-			echo -e "\tblastall exit code: ${RETVAL}"
-			touch ${ERROR_FILE}
-			exit 1
-	fi
+	ERROR_MSG="blastall encountered an error while determining the direction."
+	NORMAL_MSG="blastall was able to determine direction of blast sequences."
+	DEBUG_MSG="BLASTed ${BLAST_SEQUENCES} against ${GOOD_SEQUENCES_FILE}."
+	exit_if_error
 fi
 
-
-
-
-STRAND_FILE="${BLAST_TEMP_DIR}/strands"
-STRAND_IN_FILE="${BLAST_TEMP_DIR}/strandin"
-
 ${PERL_DIR}/blastpicks.pl ${DIRECTION_BLAST_FILE} > ${STRAND_FILE}
+RETVAL=$?
+ERROR_MSG="blastpicks.pl encountered an unknown error."
+exit_if_error
+
 ${PERL_DIR}/blastadd.pl ${CUTOFF_LENGTH} < ${STRAND_FILE} > ${STRAND_IN_FILE}
+RETVAL=$?
+ERROR_MSG="blastadd.pl encountered an unknown error."
+exit_if_error
+
 
 if [ ! -e ${STRAND_IN_FILE} ]
 then
-	echo "Error: No sequences in the right direction found. Exiting."
-	touch ${ERROR_FILE}
-	exit 1
+	RETVAL=1
+	ERROR_MSG="No sequences in the correct direction were found."
+	DEBUG_MSG="The strand file does not exist."
+	exit_if_error
 fi
 
 NUMSEQS=$(wc ${STRAND_IN_FILE} | awk '{print $1}')
 
 if [ ! ${NUMSEQS} ] || [ ${NUMSEQS} -eq 0 ]
 then
-	echo "Error: No sequences in the right direction found. Exiting."
-	touch ${ERROR_FILE}
-	exit 1
+	RETVAL=1
+	ERROR_MSG="No sequences in the correct direction were found."
+	DEBUG_MSG="Number of sequences was 0."
+	exit_if_error
 else
-	echo "${NUMSEQS} good sequences were found."
+	RETVAL=0
+	NORMAL_MSG="${NUMSEQS} good sequences were found."
+	exit_if_error
 fi
 
 # Store the number of sequences in a temporary file so that after the blasting
 # has been completed we can compare it to the number of blasts.
 echo "${NUMSEQS}" > ${NUMSEQS_TEMP_FILE}
+RETVAL=$?
+ERROR_MSG="Failed to write sequence count to ${NUMSEQS_TEMP_FILE}"
+exit_if_error
 
 
 #pulls match names
-echo "Pulling match names and placing in ${BLAST_INPUT_FILE}"
-awk '{ print $1 }' ${STRAND_IN_FILE} > ${BLAST_INPUT_FILE} 
+awk '{ print $1 }' ${STRAND_IN_FILE} > ${BLAST_INPUT_FILE}
+RETVAL=$?
+ERROR_MSG="Could not pull the matched names from strand file."
+NORMAL_MSG="Successfully pulled the matched names from strand file."
+DEBUG_MSG="Placed matched names in ${BLAST_INPUT_FILE}"
+exit_if_error
 
 # Split up the good sequence file
 # Move into the BLAST_TEMP_DIR first, because that is where splitgood.pl
@@ -170,15 +172,10 @@ cd ${BLAST_TEMP_DIR}
 echo "Splitting up the good sequence file."
 ${PERL_DIR}/splitgood.pl < ${GOOD_SEQUENCES_FILE}
 RETVAL=$?
+ERROR_MSG="Could not split up the good sequence file."
+NORMAL_MSG="Successfully split the good sequences file."
+DEBUG_MSG="Good sequences file: ${GOOD_SEQUENCES_FILE}"
+exit_if_error
 
-if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Could not split up the good sequence file."
-		echo -e "\tsplitgood.pl exit code: ${RETVAL}"
-		touch ${ERROR_FILE}
-		exit 1
-fi
-
-
-
-exit 0
+NORMAL_MSG="Successfully determined direction for blasting."
+exit_success

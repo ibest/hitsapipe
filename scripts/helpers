@@ -19,14 +19,15 @@
 # Optional:
 #	PBS_O_ARRAYID
 #	ERROR_MSG
+#	NORMAL_MSG
 #	TO_LOG
 
-# RETVAL, SUCCESS_FILE, FAILURE_FILE, TO_LOG and 
-# ERROR_MSG must be the variables used in the job 
-# scripts in order for everything to work properly.
-# PBS_JOBNAME and PBS_O_ARRAYID will be set by
-# qsub if running in parallel, otherwise HiTSAPipe
-# will mimic these variables if running in
+# RETVAL, SUCCESS_FILE, FAILURE_FILE, TO_LOG, ERROR_MSG,  
+# NORMAL_MSG and DEBUG_MSG must be the variables
+# used in the job scripts in order for everything 
+# to work properly. PBS_JOBNAME and PBS_O_ARRAYID will 
+# be set by qsub if running in parallel, otherwise 
+# HiTSAPipe will mimic these variables if running in
 # standalone.  PBS_O_ARRAYID will only be set
 # if the job is an array job however.
 # JOB_STATUS_DIR is a static variable set by
@@ -49,26 +50,65 @@ get_failure() {
 }
 
 exit_if_error() {
-	if [ ${RETVAL} != 0 ]
+	if [ "${RETVAL}" != 0 ]
 		then
-			echo "${PBS_JOBNAME}: ERROR! ${ERROR_MSG}"
-			echo "Exiting (status code: ${RETVAL})"
-			#echo "Will actually touch ${FAILURE_FILE}"
+			echo "${PBS_JOBNAME}: ERROR: ${ERROR_MSG}"
+			if [ -n "${DEBUG_MSG}" ] 
+				then
+					echo "${PBS_JOBNAME}: DEBUG: ${DEBUG_MSG}"
+			fi
+			
+			echo "${PBS_JOBNAME}: EXITING (status code: ${RETVAL})"
 			touch ${FAILURE_FILE}
 			exit ${RETVAL}
 	else
-		# Blank ERROR_MSG and RETVAL so that values
-		# don't get mixed up between calls
+		# If NORMAL_MSG isn't blank then print a message
+		# Blank ERROR_MSG, NORMAL_MSG, DEBUG_MSG and RETVAL 
+		# so that values don't get mixed up between calls.
+		
+		# Eventually check to see if quiet mode is set?
+		if [ -n "${NORMAL_MSG}" ] 
+			then
+					echo "${PBS_JOBNAME}: ${NORMAL_MSG}"
+		fi
+		
+		if [ -n "${DEBUG_MSG}" ] 
+			then
+					echo "${PBS_JOBNAME}: DEBUG: ${DEBUG_MSG}"
+		fi
+		
+		NORMAL_MSG=""
+		DEBUG_MSG=""
 		ERROR_MSG=""
 		RETVAL=""
-		
 	fi
 }
 
 exit_success() {
-	#echo "Will actually touch ${SUCCESS_FILE}"
+	# Print any status message(s) to the screen.
+	# Create the success file and if TO_LOG is set,
+	# then write it to the success file, then exit.
+
+	if [ -n "${DEBUG_MSG}" ] 
+		then
+				echo "${PBS_JOBNAME}: DEBUG: ${DEBUG_MSG}"
+	fi
+	
+	if [ -n "${NORMAL_MSG}" ] 
+		then
+			if [ "${NORMAL_MSG}" != "${DEBUG_MSG}" ]
+				then
+					echo "${PBS_JOBNAME}: SUCCESS: ${NORMAL_MSG}"
+			fi
+	fi
+	
+	NORMAL_MSG=""
+	DEBUG_MSG=""
+	ERROR_MSG=""
+	RETVAL=""
+	
 	touch ${SUCCESS_FILE}
-	if [ ! -z ${TO_LOG} ]
+	if [ -n "${TO_LOG}" ]
 		then
 			echo "${TO_LOG}" > ${SUCCESS_FILE}
 	fi 

@@ -30,6 +30,8 @@
 #####
 
 NEIGHBOR_SCRIPT=${NEIGHBOR_DIR}/neighbor_script
+FINAL_TREE=${CLUSTAL_OUTPUT_DIR}/finaltree.txt
+NAMEREPORT=${CLUSTAL_OUTPUT_DIR}/namereport
 
 if [ ${DEBUG} == "True" ]
 then
@@ -43,19 +45,21 @@ then
 	echo -e "### DEBUG OUTPUT END ###"
 fi
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
 # Make a script for neighbor based on the root we give
 #echo "makeneighbor command: ${PERL_DIR}/makeneighbor.pl ${NEIGHBOR_DIR} ${NEIGHBOR_SCRIPT} ${NEIGHBOR_ROOT} ${PERL_DIR} ${PERL_DIR}/searchnames.pl"
 ${PERL_DIR}/makeneighbor.pl "${NEIGHBOR_DIR}" "${NEIGHBOR_SCRIPT}" "${NEIGHBOR_ROOT}" "${PERL_DIR}" "${PERL_DIR}/searchnames.pl"
 RETVAL=$?
-
-if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Unknown makeneighbor error."
-		echo -e "\tmakeneighbor exit code: ${RETVAL}"
-		touch {ERROR_FILE}
-		exit 1
-fi
-echo "Created the script for neighbor to use."
+ERROR_MSG="makeneighbor encountered an unknown error."
+NORMAL_MSG="makeneighbor has created the script for neighbor."
+exit_if_error
 
 
 # Generate the final tree given neighbor_script, which was created
@@ -66,37 +70,25 @@ echo "Making the tree..."
 
 neighbor < "${NEIGHBOR_SCRIPT}"
 RETVAL=$?
-if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Unknown neighbor error."
-		echo -e "\tneighbor exit code: ${RETVAL}"
-		touch {ERROR_FILE}
-		exit 1
-fi
+ERROR_MSG="neighbor encountered an unknown error."
+NORMAL_MSG="neighbor completed without errors."
+exit_if_error
 
-
-echo "Changing back to full names..."
-#echo "namesback command: ${PERL_DIR}/namesback.pl ${CLUSTAL_OUTPUT_DIR}"
 
 ${PERL_DIR}/namesback.pl ${CLUSTAL_OUTPUT_DIR}
 RETVAL=$?
+ERROR_MSG="namesback.pl encountered an unknown error."
+NORMAL_MSG="Names have been changed back to their full names."
+exit_if_error
 
-if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Unknown namesback.pl error."
-		echo -e "\tnamesback.pl exit code: ${RETVAL}"
-		touch {ERROR_FILE}
-		exit 1
-fi
-
-echo "Moving \"final\" output to ${TREE_DIR}"
-mv ${CLUSTAL_OUTPUT_DIR}/final* ${TREE_DIR}/
+cd ${CLUSTAL_OUTPUT_DIR}
+echo "Copying \"final\" output to ${FINAL_DIR}"
+cp ${FINAL_TREE} ${NAMEREPORT} ${ALIGNMENT_POINTS_FILE} ${OUTPUT_XLS_ONE} ${OUTPUT_XLS_FIVE} ${HIT_NAMES_FILE} ${CLUSTAL_ALIGNMENT_FILE} ${CLUSTAL_PHYLIP_FILE} ${FINAL_DIR}
 RETVAL=$?
+ERROR_MSG="Could not move files to ${FINAL_DIR}"
+NORMAL_MSG="Files moved successfully."
+DEBUG_MSG="Final Directory: ${FINAL_DIR}"
+exit_if_error
 
-if [ ${RETVAL} != 0 ]
-	then
-		echo -e "\nERROR: Cannot move files to ${TREE_DIR}."
-		echo -e "\tmv exit code: ${RETVAL}"
-		touch {ERROR_FILE}
-		exit 1
-fi
+NORMAL_MSG="neighbor has finished."
+exit_success

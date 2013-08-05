@@ -28,6 +28,9 @@
 #	NUMBLASTS: 				Number of sequences actually blasted.
 #####
 
+NUMSEQS=$(cat ${NUMSEQS_TEMP_FILE})
+NUMBLASTS=$(find ${BLASTALL_OUTPUT_DIR} -name "*.blastn" | wc -l)
+
 if [ ${DEBUG} == "True" ]
 then
 	echo -e "### DEBUG OUTPUT START ###"
@@ -37,29 +40,35 @@ then
 	echo -e "### DEBUG OUTPUT END ###"
 fi
 
-NUMSEQS=$(cat ${NUMSEQS_TEMP_FILE})
-NUMBLASTS=$(find ${BLASTALL_OUTPUT_DIR} -name "*.blastn" | wc -l)
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
 
-echo "Number of sequences: ${NUMSEQS}"
-echo "Number of blasts: ${NUMBLASTS}"
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
 
-echo "Checking to see that all blasts were found."
 # preliminary check that we have all the needed blasts
 if [ ${NUMBLASTS} == 0 ]
 then
-  echo "ERROR -- No blasts found!  Exiting."
-  touch ${ERROR_FILE}
-  exit 1
+	RETVAL=1
+	ERROR_MSG="No blasts found!"
+	exit_if_error
 elif [ ${NUMBLASTS} -ne ${NUMSEQS} ] # Could also have NUMBLASTS != NUMSEQS
 then
-  echo "Number of blasts doesn't equal number of good sequences"
-  echo "Checking for missing blasts:"
+	echo "Number of blasts doesn't equal number of good sequences!"
+	echo "Checking for missing blasts."
   
-  for FILE in `cat ${BLAST_INPUT_FILE}` 
-  do
-    if [ ! -e "${FILE}.blastn" ]
-    then
-      echo -e "\tWARNING!  WARNING!  ${FILE} does not have a BLAST output!"
-    fi
-  done
+	for FILE in `cat ${BLAST_INPUT_FILE}` 
+		do
+    	if [ ! -e "${FILE}.blastn" ]
+    	then
+    		RETVAL=0
+    		NORMAL_MSG="WARNING: ${FILE} has no BLAST output!"
+    		exit_if_error
+    	fi
+	done
 fi
+
+NORMAL_MSG="Number of blasts found: ${NUMBLASTS}"
+exit_success

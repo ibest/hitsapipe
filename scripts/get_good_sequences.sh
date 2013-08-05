@@ -34,7 +34,7 @@
 
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "### DEBUG OUTPUT START ###"
+	echo -e "DEBUG: Variable List"
 	echo -e "\tINPUT_SEQUENCES: ${INPUT_SEQUENCES}"
 	echo -e "\tPERL_DIR: ${PERL_DIR}"
 	echo -e "\tBLAST_DIR: ${BLAST_DIR}"
@@ -46,13 +46,23 @@ then
 	echo -e "\tPRIMER3: ${PRIMER3}"
 	echo -e "\tPRIMER5: ${PRIMER5}"
 	echo -e "\tMIN_SEQUENCE_LENGTH: ${MIN_SEQUENCE_LENGTH}"
-	echo -e "### DEBUG OUTPUT END ###"
 fi
 
-echo "Collating sequences..."
-find ${INPUT_SEQUENCES} -maxdepth 1 -name "*${SUFFIX}" -print0 | xargs -i -0 cat {} >> ${INPUT_SEQUENCES_FILE}
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
 
-echo "Finding the good seqs and placing them in ${GOOD_SEQUENCES_FILE}"
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
+find ${INPUT_SEQUENCES} -maxdepth 1 -name "*${SUFFIX}" -print0 | xargs -i -0 cat {} >> ${INPUT_SEQUENCES_FILE}
+RETVAL=$?
+ERROR_MSG="Could not collate sequences."
+NORMAL_MSG="Input sequences collated."
+DEBUG_MSG="Used INPUT_SEQUENCES, SUFFIX and INPUT_SEQUENCES_FILE"
+exit_if_error
+
 
 #This part tries to figure out whether a sequence is valid --
 #make the percentage cutoff for countN2 a parameter and whether to do this
@@ -60,30 +70,55 @@ echo "Finding the good seqs and placing them in ${GOOD_SEQUENCES_FILE}"
 
 cd ${INPUT_SEQUENCES}
 ${PERL_DIR}/countN2.pl ${NPERCENT} ${PRIMER3} ${PRIMER5} ${MIN_SEQUENCE_LENGTH} < ${INPUT_SEQUENCES_FILE} > ${GOOD_SEQUENCES_FILE}
+RETVAL=$?
+ERROR_MSG="countN2.pl encountered an error while finding valid sequences."
+NORMAL_MSG="Finished searching for all valid sequences."
+DEBUG_MSG="Valid sequences placed in ${GOOD_SEQUENCES_FILE}"
+exit_if_error
 cd ${PBS_O_WORKDIR}
+
+
 
 if [ ! -e ${GOOD_SEQUENCES_FILE} ] || [ ! -s ${GOOD_SEQUENCES_FILE} ]
 then
-	echo "No good sequences found!  Exiting."
-	touch ${ERROR_FILE}
-	exit 1
+	RETVAL=1
+	ERROR_MSG="No good sequences were found!"
+	DEBUG_MSG="Good sequences file doesn't exist or is empty."
+	exit_if_error
 fi
 
 #If our direction is REVERSE, then we will reverse the sequences within
 #goodseqs and replace it with the reversed sequences
-case ${DIRECTION} in
-   REVERSE|reverse|R|r)
-     echo "Reverse orientation, reversing sequences"
-     seqret -srev -sequence ${GOOD_SEQUENCES_FILE} -offormat2 fasta -outseq revseqs -auto
-     mv ${GOOD_SEQUENCES_FILE} ${BLAST_DIR}/beforereverse
-     mv ${BLASTDIR}/revseqs ${GOOD_SEQUENCES_FILE}
+case ${DIRECTION} in 
+	REVERSE|reverse|R|r)
+		seqret -srev -sequence ${GOOD_SEQUENCES_FILE} -offormat2 fasta -outseq revseqs -auto
+		RETVAL=$?
+		ERROR_MSG="seqret could not reverse the sequences."
+		NORMAL_MSG="seqret successfully reversed the sequences."
+		DEBUG_MSG="Direction (${DIRECTION})"
+		exit_if_error
+		
+		mv ${GOOD_SEQUENCES_FILE} ${BLAST_DIR}/beforereverse
+		RETVAL=$?
+		ERROR_MSG="Could not reverse sequences (possible permission error?)"
+		DEBUG_MSG="Good sequences file renamed to 'beforereverse'."
+		exit_if_error
+		
+		mv ${BLASTDIR}/revseqs ${GOOD_SEQUENCES_FILE}
+		RETVAL=$?
+		ERROR_MSG="Could not reverse sequences (possible permission error?)."
+		NORMAL_MSG="Sequences reversed successfully."
+		DEBUG_MSG="'revseqs' renamed to good sequences file."
+		exit_if_error
 esac
 
 if [ ! -e ${GOOD_SEQUENCES_FILE} ] || [ ! -s ${GOOD_SEQUENCES_FILE} ]
 then
-	echo "No good sequences found after reversing!  Exiting."
-	touch ${ERROR_FILE}
-	exit 1
+	RETVAL=1
+	ERROR_MSG="No good sequences were found after reversing!"
+	DEBUG_MSG="Good sequences file doesn't exist or is empty."
+	exit_if_error
 fi
 
-exit 0
+NORMAL_MSG="All valid sequences found."
+exit_success

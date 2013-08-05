@@ -35,29 +35,49 @@ then
 	echo -e "### DEBUG OUTPUT END ###"
 fi
 
-CLUSTAL_PHYLIP_FILE="${CLUSTAL_OUTPUT_DIR}/clustal_all.phy"
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
 
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
 
 # Find the alignment start and end
 echo "Getting alignment start and end"
-${PERL_DIR}/findalign.pl < ${CLUSTAL_ALIGNMENT_FILE} > ${CLUSTAL_OUTPUT_DIR}/alignmentpoints
+${PERL_DIR}/findalign.pl < ${CLUSTAL_ALIGNMENT_FILE} > ${ALIGNMENT_POINTS_FILE}
+RETVAL=$?
+ERROR_MSG="Could not get alignment start and end."
+NORMAL_MSG="Alignment found."
+DEBUG_MSG="Alignment points found in ${ALIGNMENT_POINTS_FILE}"
+exit_if_error
 
 #gets start and end from a file
-START=${START:-$(awk '/START/ {print $2}' ${CLUSTAL_OUTPUT_DIR}/alignmentpoints)}
+START=${START:-$(awk '/START/ {print $2}' ${ALIGNMENT_POINTS_FILE})}
 #'
-END=${END:-$(awk '/END/ {print $2}' ${CLUSTAL_OUTPUT_DIR}/alignmentpoints)}
+END=${END:-$(awk '/END/ {print $2}' ${ALIGNMENT_POINTS_FILE})}
 #'
 
-echo "START: $START"
-echo "END: $END"
+echo "START: ${START}"
+echo "END: ${END}"
 
 cd ${CLUSTAL_OUTPUT_DIR}
 
 #Clipping the alignment file to the start and end, converting to phylip format
 echo "Clipping the alignment"
 seqret -sbegin $START -send $END clustal::${CLUSTAL_ALIGNMENT_FILE} phylip::${CLUSTAL_PHYLIP_FILE}
+RETVAL=$?
+ERROR_MSG="seqret could not clip the alignment."
+NORMAL_MSG="Alignment clipped by seqret successfully."
+exit_if_error
 
 ${PERL_DIR}/convert_clustal_to_phylip.pl < ${CLUSTAL_PHYLIP_FILE} > ${PHYLIP_IN_FILE}
+RETVAL=$?
+ERROR_MSG="Could not convert clustal file to phylip format."
+NORMAL_MSG="Converted clustal file to phylip format."
 
 #remove any file named outfile -- dnadist won't know what to do
 rm -rf outfile
+
+NORMAL_MSG="Alignment prepared successfully."
+exit_success

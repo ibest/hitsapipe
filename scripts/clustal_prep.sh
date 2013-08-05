@@ -44,23 +44,40 @@ then
 	echo -e "### DEBUG OUTPUT END ###"
 fi
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
 # Collate all the sequences into one file
 # for clustal in FASTA format. 
 
-# rm -f clustal
-echo "Collating all sequences"
 cd ${CLUSTAL_OUTPUT_DIR}
 cat ${REFERENCE_STRAINS} > ${CLUSTAL_FILE}
+RETVAL=$?
+ERROR_MSG="Could not collate reference strains."
+NORMAL_MSG="Collated sequences for clustal."
+DEBUG_MSG="Copied reference strains into ${CLUSTAL_FILE}"
+exit_if_error
 
 
 for FILE in `cat ${BLAST_INPUT_FILE}`
   do
     cat ${BLAST_TEMP_DIR}/${FILE} >> ${CLUSTAL_FILE}
+    RETVAL=$?
+    ERROR_MSG="Could not copy (from blast input file): ${FILE}"
+    exit_if_error
   done
 
 for FILE in `cat ${HIT_FILE}`
   do
-    cat ${CLUSTAL_OUTPUT_DIR}/${FILE} >> ${CLUSTAL_FILE}
+    cat ${CLUSTAL_TEMP_DIR}/${FILE} >> ${CLUSTAL_FILE}
+    RETVAL=$?
+    ERROR_MSG="Could not copy (from hit file): ${FILE}"
+    exit_if_error
   done
   
 # Give all the sequences a ten character ID which
@@ -68,6 +85,11 @@ for FILE in `cat ${HIT_FILE}`
 # the names are truncated by some of the following
 # programs in a bad way!
 cd ${CLUSTAL_OUTPUT_DIR}
-echo "Shortening names to 10 characters"
-echo "nameshort cmd: ${PERL_DIR}/nameshort.pl < ${CLUSTAL_FILE} > ${CLUSTAL_ALL_FILE}"
 ${PERL_DIR}/nameshort.pl < ${CLUSTAL_FILE} > ${CLUSTAL_ALL_FILE}
+RETVAL=$?
+ERROR_MSG="Could not shorten names."
+NORMAL_MSG="Shortened all names to 10 characters for clustalw."
+exit_if_error
+
+NORMAL_MSG="Successfully prepped for clustalw."
+exit_success

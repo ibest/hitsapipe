@@ -41,30 +41,70 @@ then
 	echo -e "### DEBUG OUTPUT END ###"
 fi
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
 #all the individual blasts into one file
 echo "Concatenating the blast file"
 find ${BLASTALL_OUTPUT_DIR} -name "*.blastn" -print0 | xargs -i -0 cat {} > ${BLAST_OUT_5_FILE}
+RETVAL=$?
+ERROR_MSG="Could not concatenate the blast file."
+NORMAL_MSG="Blast file concatenated."
+exit_if_error
 
 echo "Parsing blast results"
-echo "blastparser cmd: ${PERL_DIR}/blastparser.pl ${BLAST_OUT_5_FILE} > ${HIT_OUTPUT_DIR}/output5.xls"
-echo "blastcull cmd: ${PERL_DIR}/blastcull.pl < ${HIT_OUTPUT_DIR}/output5.xls > ${HIT_OUTPUT_DIR}/output1.xls"
-${PERL_DIR}/blastparser.pl ${BLAST_OUT_5_FILE} > ${HIT_OUTPUT_DIR}/output5.xls
-cd ${HIT_OUTPUT_DIR}
-${PERL_DIR}/blastcull.pl < ${HIT_OUTPUT_DIR}/output5.xls > ${HIT_OUTPUT_DIR}/output1.xls
+#echo "blastparser cmd: ${PERL_DIR}/blastparser.pl ${BLAST_OUT_5_FILE} > ${HIT_OUTPUT_DIR}/output5.xls"
+#echo "blastcull cmd: ${PERL_DIR}/blastcull.pl < ${HIT_OUTPUT_DIR}/output5.xls > ${HIT_OUTPUT_DIR}/output1.xls"
+${PERL_DIR}/blastparser.pl ${BLAST_OUT_5_FILE} > ${OUTPUT_XLS_FIVE}
+RETVAL=$?
+ERROR_MSG="Could not parse blast results."
+NORMAL_MSG="Blast results parsed."
+exit_if_error
 
-echo "Making hit spreadsheets."
 cd ${HIT_OUTPUT_DIR}
-cut -f3,4 output5.xls > ${HIT_OUTPUT_DIR}/hitnames_long5.xls
-cut -f3,4 output1.xls > ${HIT_OUTPUT_DIR}/hitnames_long1.xls
+${PERL_DIR}/blastcull.pl < ${OUTPUT_XLS_FIVE} > ${OUTPUT_XLS_ONE}
+RETVAL=$?
+ERROR_MSG="Could not cull blast results."
+NORMAL_MSG="Blast results culled."
+exit_if_error
+
+
+cd ${HIT_OUTPUT_DIR}
+cut -f3,4 ${OUTPUT_XLS_FIVE} > ${HIT_OUTPUT_DIR}/hitnames_long5.xls
+RETVAL=$?
+ERROR_MSG="Could not create Long5 hit spreadsheet."
+exit_if_error
+
+cut -f3,4 ${OUTPUT_XLS_ONE} > ${HIT_OUTPUT_DIR}/hitnames_long1.xls
+RETVAL=$?
+ERROR_MSG="Could not create Long1 hit spreadsheet."
+NORMAL_MSG="Hit spreadsheets created."
+exit_if_error
+
 
 echo "Making hit statistics."
-echo "hit_statistics cmd: ${PERL_DIR}/hit_statistics.pl ${HIT_OUTPUT_DIR}/output1.xls ${HIT_OUTPUT_DIR}/hit_statistics.xls"
+#echo "hit_statistics cmd: ${PERL_DIR}/hit_statistics.pl ${OUTPUT_XLS_ONE} ${HIT_OUTPUT_DIR}/hit_statistics.xls"
 cd ${HIT_OUTPUT_DIR}
 ${PERL_DIR}/hit_statistics.pl ${HIT_OUTPUT_DIR}/output1.xls ${HIT_OUTPUT_DIR}/hit_statistics.xls
+RETVAL=$?
+ERROR_MSG="Could not create hit statistics."
+NORMAL_MSG="Hit statistics created."
+exit_if_error
 
 echo -e "Getting the unique hits:\n"
-sort -u ${HIT_OUTPUT_DIR}/hitnames_long1.xls > ${HIT_OUTPUT_DIR}/hitnames
-cat ${HIT_OUTPUT_DIR}/hitnames
+sort -u ${HIT_OUTPUT_DIR}/hitnames_long1.xls > ${HIT_NAMES_FILE}
+RETVAL=$?
+ERROR_MSG="Could not get the unique hits."
+NORMAL_MSG="Got the unique hits."
+DEBUG_MSG="Hit names file: ${HIT_NAMES_FILE}"
+exit_if_error
+
+cat ${HIT_NAMES_FILE}
 echo -e "\n"
 
 # Get a list of the lowercase IDs for the sequences.
@@ -79,9 +119,12 @@ echo "Fetching the hit sequences from the database"
 for NAME in `cat ${HIT_SEQS_FILE}`
 	do 
     echo "Fetching ${DATABASE}:${NAME}"
-    fastacmd -d ${DATABASE} -p F -s $NAME > ${HIT_OUTPUT_DIR}/${NAME}.fasta
+    fastacmd -d ${DATABASE} -p F -s $NAME > ${CLUSTAL_TEMP_DIR}/${NAME}.fasta
 		if [ ! -e $NAME.fasta ]
 		then
 			echo "WARNING:  Could not fetch $NAME.fasta!"
 		fi
 	done
+	
+NORMAL_MSG="All hit statistics and spreadsheets created without error."
+exit_success

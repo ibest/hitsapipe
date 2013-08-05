@@ -229,7 +229,7 @@ class Pipeline:
             'Blast_Out_5_File':     expan(self.directories['blast'],
                                                  "blastout5"),
             'Hit_Seqs_File':        expan(self.directories['clustal'],
-                                                 "hitseqs")                     
+                                                 "hitseqs")                   
         }
         cmd_options = {
             'name':                 "blast_hits",
@@ -490,19 +490,20 @@ class Pipeline:
                 complete.append(i)
                 complete[i] = {
                     'success':    s,
-                    'failure':    f
+                    'failure':    f,
+                    'array_id':   i
                 }
             while complete:
                 for (id, files) in enumerate(complete):
                     if p.exists(files['success']):
                         if self.verbose:
                             msg = str(cmd_options['name'])\
-                            +"["+str(complete[id])+"] completed."
+                            +"["+str(files['array_id'])+"] completed."
                             print msg
                         del complete[id]
                     elif p.exists(files['failure']):
                         error_msg = str(cmd_options['name'])\
-                        +"["+str(complete[id])+"] failed!"
+                        +"["+str(files['array_id'])+"] failed!"
                         self.__set_fatal_error(True, error_msg)
                 time.sleep(10)
         return True 
@@ -796,7 +797,7 @@ class Pipeline:
         d['references']     =           expan(d['output'],'references')
         d['blast']          =           expan(d['output'],'blast')
         d['clustal']        =           expan(d['output'],'clustal')
-        d['tree']           =           expan(d['output'],'tree')
+        d['final']           =          expan(d['output'],'final')
         
         d['originals']      =           expan(d['references'],
                                                      'originals')
@@ -805,8 +806,10 @@ class Pipeline:
         d['blast_temp']     =           expan(d['blast'],'tmp')
         d['blast_output']   =           expan(d['blast'],'blasts')
         
+        d['clustal_temp']   =           expan(d['clustal'],'tmp')
+        
         # If not in parallel, this will be None
-        d['blast_db']   =           self.params['MPIBlastDB'] 
+        d['blast_db']       =           self.params['MPIBlastDB'] 
         
         return d
     def __get_preferences(self):
@@ -870,6 +873,7 @@ class Pipeline:
             'MPIBlast_Shared':          self.directories['blast_db'],
             'Hit_Output_Dir':           self.directories['clustal'],
             'Clustal_Output_Dir':       self.directories['clustal'],
+            'Clustal_Temp_Dir':         self.directories['clustal_temp'],
             'Neighbor_Dir':             self.directories['clustal'],
             'Final_Dir':                self.directories['final'],
             'NNodes':                   self.params['Nodes']
@@ -881,14 +885,19 @@ class Pipeline:
         s['Blast_Input_File'] = expan(self.directories['blast_input'],
                                              "blast_input")
         s['Hit_File'] = expan(s['Clustal_Output_Dir'], "hitfiles")
+        s['Hit_Names_File'] = expan(s['Clustal_Output_Dir'], "hitnames")
+        s['Output_XLS_One'] = expan(s['Clustal_Output_Dir'], "output1.xls")
+        s['Output_XLS_Five'] = expan(s['Clustal_Output_Dir'], "output5.xls")
         s['Clustal_All_File'] = expan(s['Clustal_Output_Dir'],
-                                             "clustal_all")
+                                             "clustalall")
         s['Clustal_Alignment_File'] = expan(s['Clustal_Output_Dir'],
-                                                   "clustalall.aln"),
+                                                   "clustalall.aln")
         s['Clustal_Phylip_File'] = expan(s['Clustal_Output_Dir'],
-                                                   "clustalall.aln"),                                                   
+                                                   "clustalall.phy")                                                   
         s['Phylip_In_File'] = expan(s['Clustal_Output_Dir'],
                                             "infile")
+        s['Alignment_Points_File'] = expan(s['Clustal_Output_Dir'],
+                                            "alignmentpoints")
         s['Job_Status_Dir'] = expan(self.directories['job_status'])
         s['Helper_Functions'] = expan(s['Scripts_Dir'], "helpers")
         s['Array_Output_File'] = expan(self.directories['output'],
@@ -926,12 +935,15 @@ class Pipeline:
         os.mkdir(self.directories['references'])
         os.mkdir(self.directories['blast'])
         os.mkdir(self.directories['clustal'])
-        os.mkdir(self.directories['tree'])
+        os.mkdir(self.directories['final'])
         
         # Subdirectories of 'blast'
         os.mkdir(self.directories['blast_input'])
         os.mkdir(self.directories['blast_temp'])
         os.mkdir(self.directories['blast_output'])
+        
+        # Subdirectories of 'clustal'
+        os.mkdir(self.directories['clustal_temp'])
         
         # Make sure that the folder specified in the .ncbirc
         # exists and create it otherwise.

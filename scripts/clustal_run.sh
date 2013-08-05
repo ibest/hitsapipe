@@ -31,30 +31,31 @@ then
 	echo -e "### DEBUG OUTPUT END ###"
 fi
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
 echo "Running clustalw2"
 if [ ${EXECUTION} == "Parallel" ]
 then
-	echo "mpiexec/clustalw-mpi cmd: mpiexec -np ${NNODES} clustalw-mpi -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}""
 	mpiexec -np ${NNODES} clustalw-mpi -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}"
-		RETVAL=$?
-	
-	if [ ${RETVAL} != 0 ]
-		then
-			echo -e "\nERROR: clustalw-mpi could not complete."
-			echo -e "\tclustalw-mpi exit code: ${RETVAL}"
-			touch {ERROR_FILE}
-			exit 1
-	fi
+	RETVAL=$?
+	ERROR_MSG="clustalw-mpi encountered a fatal error."
+	NORMAL_MSG="clustalw-mpi finished running successfully."
+	DEBUG_MSG="clustalw-mpi input file: ${CLUSTAL_ALL_FILE}"
+	exit_if_error
 else
-	echo "clustalw2 cmd: clustalw2 -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}""
 	clustalw2 -align -type=DNA -infile="${CLUSTAL_ALL_FILE}" -outfile="${CLUSTAL_ALIGNMENT_FILE}"
 	RETVAL=$?
-	
-	if [ ${RETVAL} != 0 ]
-		then
-			echo -e "\nERROR: Unknown clustalw2 error."
-			echo -e "\tclustalw2 exit code: ${RETVAL}"
-			touch {ERROR_FILE}
-			exit 1
-	fi
+	ERROR_MSG="clustalw (clustalw2) encountered a fatal error."
+	NORMAL_MSG="clustalw (clustalw2) finished running successfully."
+	DEBUG_MSG="clustalw (clustalw2) input file: ${CLUSTAL_ALL_FILE}"
+	exit_if_error
 fi
+
+NORMAL_MSG="ClustalW2 alignment completed."
+exit_success

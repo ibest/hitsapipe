@@ -28,40 +28,78 @@
 
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "### DEBUG OUTPUT START ###"
-	echo -e "\tINPUT_SEQUENCES: ${INPUT_SEQUENCES}"
+	echo -e "DEBUG: Variable List"
+	echo -e "\tREFERENCES_DIR: ${REFERENCES_DIR}"
 	echo -e "\tPERL_DIR: ${PERL_DIR}"
 	echo -e "\tORIGINALS_DIR: ${ORIGINALS_DIR}"
+	echo -e "\tREFERENCE_STRAINS: ${REFERENCE_STRAINS}"
+	echo -e "\tBLAST_SEQUENCES: ${BLAST_SEQUENCES}"
+	echo -e "\tINPUT_SEQUENCES: ${INPUT_SEQUENCES}"
 	echo -e "\tINPUT_SEQUENCES_LIST: ${INPUT_SEQUENCES_LIST}"
 	echo -e "\tSUFFIX: ${SUFFIX}"
-	echo -e "### DEBUG OUTPUT END ###"
 fi
 
-echo "Collating all ${SUFFIX} files into list"
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
+# Backup the reference strains and blast sequences files.
+cp ${REFERENCE_STRAINS} ${REFERENCES_DIR}/
+RETVAL=$?
+ERROR_MSG="Cannot copy reference strains file."
+NORMAL_MSG="Reference strains file copied to backup directory."
+DEBUG_MSG="Copied REFERENCE_STRAINS to REFERENCES_DIR." 
+exit_if_error
+
+cp ${BLAST_SEQUENCES} ${REFERENCES_DIR}/
+RETVAL=$?
+ERROR_MSG="Cannot copy blast sequences file."
+NORMAL_MSG="Blast sequences file copied to backup directory."
+DEBUG_MSG="Copied BLAST_SEQUENCES to REFERENCES_DIR."
+exit_if_error
+
+
 find ${INPUT_SEQUENCES} -maxdepth 1 -name "*$SUFFIX" -exec basename {} \; > ${INPUT_SEQUENCES_LIST}
+RETVAL=$?
+ERROR_MSG="Could not collate ${SUFFIX} files into list."
+NORMAL_MSG="All ${SUFFIX} files collated into list."
+DEBUG_MSG="Variables used: SUFFIX, INPUT_SEQUENCES and INPUT_SEQUENCES_LIST."
+exit_if_error
+
 
 ## Windows/Mac endlines to Unix endlines
-echo "Ensuring Unix endlines on all files"
 for FILE in $(cat ${INPUT_SEQUENCES_LIST})
   do
-	echo "perl cmd: perl -p -i.orig -e 's/\r\n|\r/\n/g' ${INPUT_SEQUENCES}/${FILE}"
     perl -p -i.orig -e 's/\r\n|\r/\n/g' ${INPUT_SEQUENCES}/${FILE}
+    RETVAL=$?
+    ERROR_MSG="Could not strip endlines from ${FILE}."
+    DEBUG_MSG="Converting to UNIX endlines: ${FILE}"
+    exit_if_error
   done
+echo "All endlines converted to UNIX endlines."
+
 
 #back up original files.
-echo "Backing up original sequences."
 find ${INPUT_SEQUENCES} -maxdepth 1 -name "*.orig" -print0 | xargs -i -0 mv {} ${ORIGINALS_DIR}
+RETVAL=$?
+ERROR_MSG="Could not back up original sequences."
+NORMAL_MSG="Original sequences backed up."
+DEBUG_MSG="Variables used: INPUT_SEQUENCES and ORIGINALS_DIR"
+exit_if_error
 
 #With suffix denoting the suffix of the sequence FASTA files,
 #changes their FASTA names to their filenames 
-echo "Making sure all filenames are the FASTA sequences names."
 cd ${INPUT_SEQUENCES}
-EXITCODE=$(${PERL_DIR}/namechange.pl ${SUFFIX})$?
+${PERL_DIR}/namechange.pl ${SUFFIX}
+RETVAL=$?
+ERROR_MSG="Could not change all filenames to FASTA sequence names."
+NORMAL_MSG="All filenames have been changed to FASTA sequence names."
+DEBUG_MSG="Variables used: INPUT_SEQUENCES, PERL_DIR and SUFFIX"
+exit_if_error
 
-if [ ${EXITCODE} != 0 ]
-then
-	echo "ERROR: Filenames could not be change to FASTA sequence names. Exiting."
-	touch ${ERROR_FILE}
-fi
-
-exit ${EXITCODE}
+NORMAL_MSG="FASTA files have been prepared."
+exit_success

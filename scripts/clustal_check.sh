@@ -22,19 +22,28 @@
 #	CLUSTAL_ALIGNMENT_FILE
 #####
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "### DEBUG OUTPUT START ###"
+	echo -e "Debug: Variable List"
 	echo -e "\tCLUSTAL_ALIGNMENT_FILE: ${CLUSTAL_ALIGNMENT_FILE}"
-	echo -e "### DEBUG OUTPUT END ###"
 fi
 
 #Check that an alignment has been made
 if [ ! -f ${CLUSTAL_ALIGNMENT_FILE} ]
  then
-  echo "Cannot find ${CLUSTAL_ALIGNMENT_FILE}!"
-  echo "ClustalW did not make an alignment!  Exiting."
-  touch {ERROR_FILE}
-  exit 1
+	RETVAL=1
+	ERROR_MSG="ClustalW did not make an alignment!"
+	DEBUG_MSG="Could not find ${CLUSTAL_ALIGNMENT_FILE}"
+	exit_if_error
 fi
-exit 0
+
+NORMAL_MSG="ClustalW successfully made an alignment."
+exit_success

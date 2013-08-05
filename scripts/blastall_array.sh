@@ -38,6 +38,13 @@ SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
 
 
+# Variables
+TO_BLAST=$(find ${BLAST_TEMP_DIR} -maxdepth 1 -name "*.${PBS_ARRAYID}")
+BLAST_OUTPUT_NAME=$(basename ${TO_BLAST%.*})
+BLAST_OUTPUT_NAME=$(echo "${BLAST_OUTPUT_NAME}.blastn")
+DBNAME=$(echo "${DATABASE##*/}")
+
+
 if [ ${DEBUG} == "True" ]
 then
 	echo -e "### DEBUG OUTPUT START ###"
@@ -53,40 +60,24 @@ fi
 # Then get its basename without the array id appended to it for saving the
 # output from blastall.
 
-TO_BLAST=$(find ${BLAST_TEMP_DIR} -maxdepth 1 -name "*.${PBS_ARRAYID}")
-BLAST_OUTPUT_NAME=$(basename ${TO_BLAST%.*})
-BLAST_OUTPUT_NAME=$(echo "${BLAST_OUTPUT_NAME}.blastn")
+
 
 echo "Blasting file ${TO_BLAST} against the database ${DATABASE}"
 echo -e "\tStoring the output in ${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}"
 
 if [ "${EXECUTION}" == "Parallel" ]
 then
-	DBNAME=$(echo "${DATABASE##*/}")  
-
 	mpiexec -np ${NNODES} mpiblast -p blastn -d ${DBNAME}  -b ${NHITS} -v ${NHITS} -i "${TO_BLAST}" -S 1 -o "${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}" --removedb
 	RETVAL=$?
-	ERROR_MSG="mpiexec/mpiBLAST could not complete."
+	ERROR_MSG="mpiBLAST encountered an unknown error."
+	NORMAL_MSG="Successfully blasted ${TO_BLAST}"
 	exit_if_error
-	#if [ ${RETVAL} != 0 ]
-	#then
-	#	echo -e "\nERROR: mpiexec/mpiBLAST could not complete."
-	#	echo -e "\tmpiexec exit code: ${RETVAL}"
-	#	touch ${ERROR_FILE}
-	#	exit 1
-	#fi
 else
 	blastall -p blastn -d ${DATABASE}  -b ${NHITS} -v ${NHITS} -i "${TO_BLAST}" -S 1 -o "${BLASTALL_OUTPUT_DIR}/${BLAST_OUTPUT_NAME}"
 	RETVAL=$?
-	ERROR_MSG="Blastall could not complete."
+	ERROR_MSG="Blastall encountered an unknown error."
+	NORMAL_MSG="Successfully blasted ${TO_BLAST}"
 	exit_if_error
-	#if [ ${RETVAL} != 0 ]
-	#then
-	#	echo -e "\nERROR: Blastall could not complete."
-	#	echo -e "\tblastall exit code: ${RETVAL}"
-	#	touch ${ERROR_FILE}
-	#	exit 1
-	#fi
 fi
 
 
@@ -96,7 +87,10 @@ RENAME=$(echo "${TO_BLAST%.*}")
 mv ${TO_BLAST} ${RENAME}
 RETVAL=$?
 ERROR_MSG="Could not remove PBS array file extension."
+NORMAL_MSG="Removed PBS array file extension."
+DEBUG_MSG="Renamed ${TO_BLAST} to ${RENAME}"
 exit_if_error
 
 # If everything went well, exit.
+NORMAL_MSG="File has been blasted and renamed successfully."
 exit_success

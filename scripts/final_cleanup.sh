@@ -25,17 +25,29 @@ then
 	echo -e "### DEBUG OUTPUT END ###"
 fi
 
-# Simply concatenates all log files and places it into the output folder
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
+# Concatenate all log files and places it into the output folder
 
 for i in $(ls --sort=time -r `find ${PBS_O_WORKDIR} -name "*.log"`)
 do
 	BASE=$(basename $i)
 	echo "From $BASE:" >> $FINAL_LOG
-	#echo "" >> $FINAL_LOG
 	cat $i >> $FINAL_LOG
 	echo "" >> $FINAL_LOG
 done
 
+# Remove Job status directory
+rm -rf ${JOB_STATUS_DIR}
+
+
+# Cheat with the output, just append to concatenated log file.
 if [ ${DEBUG} == "True" ]
 then
 	echo -e "### DEBUG OUTPUT START ###" >> $FINAL_LOG
@@ -44,6 +56,11 @@ then
 	echo -e "### DEBUG OUTPUT END ###" >> $FINAL_LOG
 fi
 
-echo -n "Everything finished at: " >> $FINAL_LOG
-date >> $FINAL_LOG
-echo "" >> $FINAL_LOG
+#echo "Creating final log file..." >> ${FINAL_LOG}
+#echo "Deleting temporary files..." >> ${FINAL_LOG}
+#echo "" >> ${FINAL_LOG}
+echo -n "Everything finished at: $(date)" >> ${FINAL_LOG}
+#date >> ${FINAL_LOG}
+echo "" >> ${FINAL_LOG}
+
+echo "Everything finished at: $(date)"
