@@ -48,7 +48,7 @@ GOOD_SEQUENCES_SHARED=$(echo "${GOOD_SEQUENCES_FILE##*/}")
 
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "Debug: Variable List"
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
 	echo -e "\tPERL_DIR: ${PERL_DIR}"
 	echo -e "\tLOG_DIR: ${LOG_DIR}"
 	echo -e "\tBLAST_TEMP_DIR: ${BLAST_TEMP_DIR}"
@@ -60,7 +60,7 @@ then
 	echo -e "\tCUTOFF_LENGTH: ${CUTOFF_LENGTH}"
 	if [ "${EXECUTION}" == "Parallel" ]
 	then
-		echo -e "Debug: Parallel Variables"
+		echo -e "${PBS_JOBNAME}: DEBUG: Parallel Variables"
 		echo -e "\tSTRAND_FILE: ${STRAND_FILE}"
 		echo -e "\tSTRAND_IN_FILE: ${STRAND_IN_FILE}"
 		echo -e "\tDBNODES: ${DBNODES}"

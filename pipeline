@@ -401,7 +401,7 @@ class Pipeline:
                     msg = "Waiting for the array job \""\
                             +str(options['name'])+"\" to finish "\
                             "before continuing ("+str(options['arr_count'])\
-                            +" jobs)..."
+                            +" jobs)."
                     print msg
                 
                 self.__execute_job_array_check(id, 

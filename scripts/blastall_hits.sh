@@ -28,19 +28,6 @@
 #	HIT_FILE
 #####
 
-if [ ${DEBUG} == "True" ]
-then
-	echo -e "### DEBUG OUTPUT START ###"
-	echo -e "\tPERL_DIR: ${PERL_DIR}"
-	echo -e "\tBLASTALL_OUTPUT_DIR: ${BLASTALL_OUTPUT_DIR}"
-	echo -e "\tHIT_OUTPUT_DIR: ${HIT_OUTPUT_DIR}"
-	echo -e "\tDATABASE: ${DATABASE}"
-	echo -e "\tBLAST_OUT_5_FILE: ${BLAST_OUT_5_FILE}"
-	echo -e "\tHIT_SEQS_FILE: ${HIT_SEQS_FILE}"
-	echo -e "\tHIT_FILE: ${HIT_FILE}"
-	echo -e "### DEBUG OUTPUT END ###"
-fi
-
 # Grab the helper functions to get
 # generate the correct filenames for 
 # HiTSAPipe's error checking.
@@ -48,6 +35,26 @@ source ${HELPER_FUNCTIONS}
 
 SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
+
+if [ ${DEBUG} == "True" ]
+then
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
+	echo -e "\tPERL_DIR: ${PERL_DIR}"
+	echo -e "\tBLASTALL_OUTPUT_DIR: ${BLASTALL_OUTPUT_DIR}"
+	echo -e "\tHIT_OUTPUT_DIR: ${HIT_OUTPUT_DIR}"
+	echo -e "\tCLUSTAL_TEMP_DIR: ${CLUSTAL_TEMP_DIR}"
+	echo -e "\tDATABASE: ${DATABASE}"
+	echo -e "\tBLAST_OUT_5_FILE: ${BLAST_OUT_5_FILE}"
+	echo -e "\tOUTPUT_XLS_ONE: ${OUTPUT_XLS_ONE}"
+	echo -e "\tOUTPUT_XLS_FIVE: ${OUTPUT_XLS_FIVE}"
+	echo -e "\tHIT_SEQS_FILE: ${HIT_SEQS_FILE}"
+	echo -e "\tHIT_FILE: ${HIT_FILE}"
+	echo -e "\tHIT_NAMES_FILE: ${HIT_NAMES_FILE}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+fi
+
+
 
 #all the individual blasts into one file
 echo "Concatenating the blast file"
@@ -101,7 +108,6 @@ sort -u ${HIT_OUTPUT_DIR}/hitnames_long1.xls > ${HIT_NAMES_FILE}
 RETVAL=$?
 ERROR_MSG="Could not get the unique hits."
 NORMAL_MSG="Got the unique hits."
-DEBUG_MSG="Hit names file: ${HIT_NAMES_FILE}"
 exit_if_error
 
 cat ${HIT_NAMES_FILE}
@@ -115,14 +121,17 @@ rm ${HIT_OUTPUT_DIR}/hitseqs1 # Was just a temp file.
 sed "s/$/.fasta/g" ${HIT_SEQS_FILE} > ${HIT_FILE}
 
 # Copy the file from the database sequences folder to the blast directory
-echo "Fetching the hit sequences from the database"
+echo "${PBS_JOBNAME}: Fetching the hit sequences from the database"
 for NAME in `cat ${HIT_SEQS_FILE}`
-	do 
-    echo "Fetching ${DATABASE}:${NAME}"
-    fastacmd -d ${DATABASE} -p F -s $NAME > ${CLUSTAL_TEMP_DIR}/${NAME}.fasta
-		if [ ! -e $NAME.fasta ]
+	do
+	if [ ${DEBUG} == "True" ]
+	then 
+    	echo "${PBS_JOBNAME}: DEBUG: Fetching ${DATABASE}:${NAME}"
+    fi
+	fastacmd -d ${DATABASE} -p F -s $NAME > "${CLUSTAL_TEMP_DIR}/${NAME}.fasta"
+		if [ ! -e "${CLUSTAL_TEMP_DIR}/$NAME.fasta" ]
 		then
-			echo "WARNING:  Could not fetch $NAME.fasta!"
+			echo "${PBS_JOBNAME}: WARNING:  Could not fetch $NAME.fasta!"
 		fi
 	done
 	

@@ -29,9 +29,17 @@
 #	BLAST_INPUT_FILE
 #	HIT_FILE
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "### DEBUG OUTPUT START ###"
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
 	echo -e "\tPERL_DIR: ${PERL_DIR}"
 	echo -e "\tCLUSTAL_OUTPUT_DIR: ${CLUSTAL_OUTPUT_DIR}"
 	echo -e "\tBLAST_TEMP_DIR: ${BLAST_TEMP_DIR}"
@@ -41,16 +49,9 @@ then
 	echo -e "\tCLUSTAL_ALL_FILE: ${CLUSTAL_ALL_FILE}"
 	echo -e "\tBLAST_INPUT_FILE: ${BLAST_INPUT_FILE}"
 	echo -e "\tHIT_FILE: ${HIT_FILE}"
-	echo -e "### DEBUG OUTPUT END ###"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
 fi
-
-# Grab the helper functions to get
-# generate the correct filenames for 
-# HiTSAPipe's error checking.
-source ${HELPER_FUNCTIONS}
-
-SUCCESS_FILE=$(get_success)
-FAILURE_FILE=$(get_failure)
 
 # Collate all the sequences into one file
 # for clustal in FASTA format. 

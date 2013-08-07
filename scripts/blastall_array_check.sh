@@ -28,18 +28,6 @@
 #	NUMBLASTS: 				Number of sequences actually blasted.
 #####
 
-NUMSEQS=$(cat ${NUMSEQS_TEMP_FILE})
-NUMBLASTS=$(find ${BLASTALL_OUTPUT_DIR} -name "*.blastn" | wc -l)
-
-if [ ${DEBUG} == "True" ]
-then
-	echo -e "### DEBUG OUTPUT START ###"
-	echo -e "\tBLASTALL_OUTPUT_DIR: ${BLASTALL_OUTPUT_DIR}"
-	echo -e "\tBLAST_INPUT_FILE: ${BLAST_INPUT_FILE}"
-	echo -e "\tNUMSEQS_TEMP_FILE: ${NUMSEQS_TEMP_FILE}"
-	echo -e "### DEBUG OUTPUT END ###"
-fi
-
 # Grab the helper functions to get
 # generate the correct filenames for 
 # HiTSAPipe's error checking.
@@ -47,6 +35,23 @@ source ${HELPER_FUNCTIONS}
 
 SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
+
+NUMSEQS=$(cat ${NUMSEQS_TEMP_FILE})
+NUMBLASTS=$(find ${BLASTALL_OUTPUT_DIR} -name "*.blastn" | wc -l)
+
+if [ ${DEBUG} == "True" ]
+then
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
+	echo -e "\tBLASTALL_OUTPUT_DIR: ${BLASTALL_OUTPUT_DIR}"
+	echo -e "\tBLAST_INPUT_FILE: ${BLAST_INPUT_FILE}"
+	echo -e "\tNUMSEQS_TEMP_FILE: ${NUMSEQS_TEMP_FILE}"
+	echo -e "\tNUMSEQS: ${NUMSEQS}"
+	echo -e "\tNUMBLASTS: ${NUMBLASTS}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+fi
+
+
 
 # preliminary check that we have all the needed blasts
 if [ ${NUMBLASTS} == 0 ]

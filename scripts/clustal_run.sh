@@ -23,14 +23,6 @@
 #	CLUSTAL_ALIGNMNET_FILE
 #####
 
-if [ ${DEBUG} == "True" ]
-then
-	echo -e "### DEBUG OUTPUT START ###"
-	echo -e "\tCLUSTAL_ALL_FILE: ${CLUSTAL_ALL_FILE}"
-	echo -e "\tCLUSTAL_ALIGNMENT_FILE: ${CLUSTAL_ALIGNMENT_FILE}"
-	echo -e "### DEBUG OUTPUT END ###"
-fi
-
 # Grab the helper functions to get
 # generate the correct filenames for 
 # HiTSAPipe's error checking.
@@ -38,6 +30,21 @@ source ${HELPER_FUNCTIONS}
 
 SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
+
+if [ ${DEBUG} == "True" ]
+then
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
+	echo -e "\tCLUSTAL_ALL_FILE: ${CLUSTAL_ALL_FILE}"
+	echo -e "\tCLUSTAL_ALIGNMENT_FILE: ${CLUSTAL_ALIGNMENT_FILE}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+	
+	if [ "${EXECUTION}" == "Parallel" ]
+	then
+		echo -e "Debug: Parallel Variables"
+		echo -e "\tNNODES: ${NNODES}"
+	fi
+fi
 
 echo "Running clustalw2"
 if [ ${EXECUTION} == "Parallel" ]

@@ -18,18 +18,22 @@
 #	FAILURE_FILE
 # Optional:
 #	PBS_O_ARRAYID
+#	DEBUG
 #	ERROR_MSG
 #	NORMAL_MSG
+#	DEBUG_MSG
 #	TO_LOG
 
 # RETVAL, SUCCESS_FILE, FAILURE_FILE, TO_LOG, ERROR_MSG,  
-# NORMAL_MSG and DEBUG_MSG must be the variables
+# NORMAL_MSG, DEBUG_MSG and DEBUG must be the variables
 # used in the job scripts in order for everything 
 # to work properly. PBS_JOBNAME and PBS_O_ARRAYID will 
 # be set by qsub if running in parallel, otherwise 
 # HiTSAPipe will mimic these variables if running in
 # standalone.  PBS_O_ARRAYID will only be set
 # if the job is an array job however.
+# DEBUG is a flag passed from HiTSAPipe that determines
+# whether or not to display debugging output.
 # JOB_STATUS_DIR is a static variable set by
 # HiTSAPipe
 
@@ -53,7 +57,7 @@ exit_if_error() {
 	if [ "${RETVAL}" != 0 ]
 		then
 			echo "${PBS_JOBNAME}: ERROR: ${ERROR_MSG}"
-			if [ -n "${DEBUG_MSG}" ] 
+			if [ ${DEBUG} == "True" -a -n "${DEBUG_MSG}" ] 
 				then
 					echo "${PBS_JOBNAME}: DEBUG: ${DEBUG_MSG}"
 			fi
@@ -72,7 +76,7 @@ exit_if_error() {
 					echo "${PBS_JOBNAME}: ${NORMAL_MSG}"
 		fi
 		
-		if [ -n "${DEBUG_MSG}" ] 
+		if [ ${DEBUG} == "True" -a -n "${DEBUG_MSG}" ] 
 			then
 					echo "${PBS_JOBNAME}: DEBUG: ${DEBUG_MSG}"
 		fi
@@ -89,7 +93,7 @@ exit_success() {
 	# Create the success file and if TO_LOG is set,
 	# then write it to the success file, then exit.
 
-	if [ -n "${DEBUG_MSG}" ] 
+	if [ ${DEBUG} == "True" -a -n "${DEBUG_MSG}" ] 
 		then
 				echo "${PBS_JOBNAME}: DEBUG: ${DEBUG_MSG}"
 	fi

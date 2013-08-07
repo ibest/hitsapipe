@@ -34,6 +34,14 @@ source ${HELPER_FUNCTIONS}
 SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
 
+if [ ${DEBUG} == "True" ]
+then
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+fi
+
+
 # Checking required programs
 which seqret > /dev/null
 RETVAL=$?

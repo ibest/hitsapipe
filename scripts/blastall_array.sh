@@ -47,13 +47,22 @@ DBNAME=$(echo "${DATABASE##*/}")
 
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "### DEBUG OUTPUT START ###"
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
 	echo -e "\tBLAST_TEMP_DIR: ${BLAST_TEMP_DIR}"
 	echo -e "\tBLASTALL_OUTPUT_DIR: ${BLASTALL_OUTPUT_DIR}"
+	echo -e "\tBLAST_OUTPUT_NAME: ${BLAST_OUTPUT_NAME}"
+	echo -e "\tTO_BLAST: ${TO_BLAST}"
 	echo -e "\tDATABASE: ${DATABASE}"
 	echo -e "\tNHITS: ${NHITS}"
 	echo -e "\tARRAY_ID: ${PBS_ARRAYID}"
-	echo -e "### DEBUG OUTPUT END ###"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+	if [ "${EXECUTION}" == "Parallel" ]
+	then
+		echo -e "${PBS_JOBNAME}: DEBUG: Parallel Variables"
+		echo -e "\tDBNAME: ${DBNAME}"
+		echo -e "\tNNODES: ${NNODES}"
+	fi
 fi
 
 # Run find on the directory to find which file` we are supposed to blast.

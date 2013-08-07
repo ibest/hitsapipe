@@ -17,14 +17,6 @@
 #
 # ***** END LICENSE BLOCK *****
 
-if [ ${DEBUG} == "True" ]
-then
-	echo -e "### DEBUG OUTPUT START ###"
-	echo -e "\tLOG_DIR: ${LOG_DIR}"
-	echo -e "\tFINAL_LOG: ${FINAL_LOG}"
-	echo -e "### DEBUG OUTPUT END ###"
-fi
-
 # Grab the helper functions to get
 # generate the correct filenames for 
 # HiTSAPipe's error checking.
@@ -32,6 +24,17 @@ source ${HELPER_FUNCTIONS}
 
 SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
+
+if [ ${DEBUG} == "True" ]
+then
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
+	echo -e "\tLOG_DIR: ${LOG_DIR}"
+	echo -e "\tFINAL_LOG: ${FINAL_LOG}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+fi
+
+
 
 # Concatenate all log files and places it into the output folder
 
@@ -44,7 +47,9 @@ do
 done
 
 # Remove Job status directory
-rm -rf ${JOB_STATUS_DIR}
+# Not removing this would let us see if there was a failure somewhere - 
+# so should this be omitted and cleaned up on the next run?
+# rm -rf ${JOB_STATUS_DIR}
 
 
 # Cheat with the output, just append to concatenated log file.

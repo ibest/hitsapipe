@@ -29,22 +29,6 @@
 #	DEBUG
 #####
 
-NEIGHBOR_SCRIPT=${NEIGHBOR_DIR}/neighbor_script
-FINAL_TREE=${CLUSTAL_OUTPUT_DIR}/finaltree.txt
-NAMEREPORT=${CLUSTAL_OUTPUT_DIR}/namereport
-
-if [ ${DEBUG} == "True" ]
-then
-	echo -e "### DEBUG OUTPUT START ###"
-	echo -e "\tPERL_DIR: ${PERL_DIR}"
-	echo -e "\tNEIGHBOR_DIR: ${NEIGHBOR_DIR}"
-	echo -e "\tNEIGHBOR_ROOT: ${NEIGHBOR_ROOT}"
-	echo -e "\tNEIGHBOR_SCRIPT: ${NEIGHBOR_SCRIPT}"
-	echo -e "\tCLUSTAL_OUTPUT_DIR: ${CLUSTAL_OUTPUT_DIR}"
-	echo -e "\tTREE_DIR: ${TREE_DIR}"
-	echo -e "### DEBUG OUTPUT END ###"
-fi
-
 # Grab the helper functions to get
 # generate the correct filenames for 
 # HiTSAPipe's error checking.
@@ -52,6 +36,31 @@ source ${HELPER_FUNCTIONS}
 
 SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
+
+NEIGHBOR_SCRIPT=${NEIGHBOR_DIR}/neighbor_script
+FINAL_TREE=${CLUSTAL_OUTPUT_DIR}/finaltree.txt
+NAMEREPORT=${CLUSTAL_OUTPUT_DIR}/namereport
+
+if [ ${DEBUG} == "True" ]
+then
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
+	echo -e "\tPERL_DIR: ${PERL_DIR}"
+	echo -e "\tCLUSTAL_OUTPUT_DIR: ${CLUSTAL_OUTPUT_DIR}"
+	echo -e "\tFINAL_DIR: ${FINAL_DIR}"
+	echo -e "\tNEIGHBOR_DIR: ${NEIGHBOR_DIR}"
+	echo -e "\tNEIGHBOR_ROOT: ${NEIGHBOR_ROOT}"
+	echo -e "\tNEIGHBOR_SCRIPT: ${NEIGHBOR_SCRIPT}"
+	echo -e "\tFINAL_TREE: ${FINAL_TREE}"
+	echo -e "\tNAMEREPORT: ${NAMEREPORT}"
+	echo -e "\tALIGNMENT_POINTS_FILE: ${ALIGNMENT_POINTS_FILE}"
+	echo -e "\tOUTPUT_XLS_ONE: ${OUTPUT_XLS_ONE}"
+	echo -e "\tOUTPUT_XLS_FIVE: ${OUTPUT_XLS_FIVE}"
+	echo -e "\tHIT_NAMES_FILE: ${HIT_NAMES_FILE}"
+	echo -e "\tCLUSTAL_ALIGNMENT_FILE: ${CLUSTAL_ALIGNMENT_FILE}"
+	echo -e "\tCLUSTAL_PHYLIP_FILE: ${CLUSTAL_PHYLIP_FILE}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+fi
 
 # Make a script for neighbor based on the root we give
 #echo "makeneighbor command: ${PERL_DIR}/makeneighbor.pl ${NEIGHBOR_DIR} ${NEIGHBOR_SCRIPT} ${NEIGHBOR_ROOT} ${PERL_DIR} ${PERL_DIR}/searchnames.pl"

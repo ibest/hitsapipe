@@ -32,9 +32,17 @@
 #	MIN_SEQUENCE_LENGTH: 		Minimum length needed for a sequence to be accepted
 #####
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "DEBUG: Variable List"
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
 	echo -e "\tINPUT_SEQUENCES: ${INPUT_SEQUENCES}"
 	echo -e "\tPERL_DIR: ${PERL_DIR}"
 	echo -e "\tBLAST_DIR: ${BLAST_DIR}"
@@ -46,15 +54,11 @@ then
 	echo -e "\tPRIMER3: ${PRIMER3}"
 	echo -e "\tPRIMER5: ${PRIMER5}"
 	echo -e "\tMIN_SEQUENCE_LENGTH: ${MIN_SEQUENCE_LENGTH}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
 fi
 
-# Grab the helper functions to get
-# generate the correct filenames for 
-# HiTSAPipe's error checking.
-source ${HELPER_FUNCTIONS}
 
-SUCCESS_FILE=$(get_success)
-FAILURE_FILE=$(get_failure)
 
 find ${INPUT_SEQUENCES} -maxdepth 1 -name "*${SUFFIX}" -print0 | xargs -i -0 cat {} >> ${INPUT_SEQUENCES_FILE}
 RETVAL=$?

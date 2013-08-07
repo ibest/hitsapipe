@@ -32,8 +32,10 @@ FAILURE_FILE=$(get_failure)
 
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "Debug: Variable List"
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
 	echo -e "\tCLUSTAL_ALIGNMENT_FILE: ${CLUSTAL_ALIGNMENT_FILE}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
 fi
 
 #Check that an alignment has been made

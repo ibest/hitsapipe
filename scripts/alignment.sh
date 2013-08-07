@@ -25,16 +25,6 @@
 #	PHYLIP_IN_FILE
 #####
 
-if [ ${DEBUG} == "True" ]
-then
-	echo -e "### DEBUG OUTPUT START ###"
-	echo -e "\tPERL_DIR: ${PERL_DIR}"
-	echo -e "\tCLUSTAL_OUTPUT_DIR: ${CLUSTAL_OUTPUT_DIR}"
-	echo -e "\tCLUTAL_ALIGNMENT_FILE: ${CLUSTAL_ALIGNMENT_FILE}"
-	echo -e "\tPHYLIP_IN_FILE: ${PHYLIP_IN_FILE}"
-	echo -e "### DEBUG OUTPUT END ###"
-fi
-
 # Grab the helper functions to get
 # generate the correct filenames for 
 # HiTSAPipe's error checking.
@@ -42,6 +32,21 @@ source ${HELPER_FUNCTIONS}
 
 SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
+
+if [ ${DEBUG} == "True" ]
+then
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
+	echo -e "\tPERL_DIR: ${PERL_DIR}"
+	echo -e "\tCLUSTAL_OUTPUT_DIR: ${CLUSTAL_OUTPUT_DIR}"
+	echo -e "\tCLUTAL_ALIGNMENT_FILE: ${CLUSTAL_ALIGNMENT_FILE}"
+	echo -e "\tCLUTAL_PHYLIP_FILE: ${CLUSTAL_PHYLIP_FILE}"
+	echo -e "\tALIGNMENT_POINTS_FILE: ${ALIGNMENT_POINTS_FILE}"
+	echo -e "\tPHYLIP_IN_FILE: ${PHYLIP_IN_FILE}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+fi
+
+
 
 # Find the alignment start and end
 echo "Getting alignment start and end"
@@ -58,8 +63,9 @@ START=${START:-$(awk '/START/ {print $2}' ${ALIGNMENT_POINTS_FILE})}
 END=${END:-$(awk '/END/ {print $2}' ${ALIGNMENT_POINTS_FILE})}
 #'
 
-echo "START: ${START}"
-echo "END: ${END}"
+echo "Alignment points"
+echo -e "\tSTART: ${START}"
+echo -e "\tEND: ${END}"
 
 cd ${CLUSTAL_OUTPUT_DIR}
 

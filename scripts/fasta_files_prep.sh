@@ -26,9 +26,17 @@
 #	SUFFIX: 				The file extension of the sequence files
 #####
 
+# Grab the helper functions to get
+# generate the correct filenames for 
+# HiTSAPipe's error checking.
+source ${HELPER_FUNCTIONS}
+
+SUCCESS_FILE=$(get_success)
+FAILURE_FILE=$(get_failure)
+
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "DEBUG: Variable List"
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
 	echo -e "\tREFERENCES_DIR: ${REFERENCES_DIR}"
 	echo -e "\tPERL_DIR: ${PERL_DIR}"
 	echo -e "\tORIGINALS_DIR: ${ORIGINALS_DIR}"
@@ -37,15 +45,11 @@ then
 	echo -e "\tINPUT_SEQUENCES: ${INPUT_SEQUENCES}"
 	echo -e "\tINPUT_SEQUENCES_LIST: ${INPUT_SEQUENCES_LIST}"
 	echo -e "\tSUFFIX: ${SUFFIX}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
 fi
 
-# Grab the helper functions to get
-# generate the correct filenames for 
-# HiTSAPipe's error checking.
-source ${HELPER_FUNCTIONS}
 
-SUCCESS_FILE=$(get_success)
-FAILURE_FILE=$(get_failure)
 
 # Backup the reference strains and blast sequences files.
 cp ${REFERENCE_STRAINS} ${REFERENCES_DIR}/

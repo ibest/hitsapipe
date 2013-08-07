@@ -44,12 +44,14 @@ DBNAME=$(echo "${DATABASE##*/}")
 	
 if [ ${DEBUG} == "True" ]
 then
-	echo -e "Debug: Variable List"
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
 	echo -e "\tBLAST_TEMP_DIR: ${BLAST_TEMP_DIR}"
 	echo -e "\tBLAST_INPUT_FILE: ${BLAST_INPUT_FILE}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"	
 	if [ "${EXECUTION}" == "Parallel" ]
 	then
-		echo -e "Debug: Parallel Variables"
+		echo -e "${PBS_JOBNAME}: DEBUG: Parallel Variables"
 		echo -e "\tDATABASE: ${DATABASE}"
 		echo -e "\tDBNAME: ${DBNAME}"
 		echo -e "\tNNODES: ${NNODES}"

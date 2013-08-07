@@ -25,16 +25,6 @@
 #	PHYLIP_IN_FILE
 #####
 
-if [ ${DEBUG} == "True" ]
-then
-	echo -e "### DEBUG OUTPUT START ###"
-	echo -e "\tDNADIST_SCRIPT: ${DNADIST_SCRIPT}"
-	echo -e "\tCLUSTAL_OUTPUT_DIR: ${CLUSTAL_OUTPUT_DIR}"
-	echo -e "\tDISTANCES_FILE: ${DISTANCES_FILE}"
-	echo -e "\tPHYLIP_IN_FILE: ${PHYLIP_IN_FILE}"
-	echo -e "### DEBUG OUTPUT END ###"
-fi
-
 # Grab the helper functions to get
 # generate the correct filenames for 
 # HiTSAPipe's error checking.
@@ -42,6 +32,22 @@ source ${HELPER_FUNCTIONS}
 
 SUCCESS_FILE=$(get_success)
 FAILURE_FILE=$(get_failure)
+
+PHYLIP_DNADIST_FILE="${PHYLIP_IN_FILE}.dnadist"
+
+if [ ${DEBUG} == "True" ]
+then
+	echo -e "${PBS_JOBNAME}: DEBUG: Variable List"
+	echo -e "\tDNADIST_SCRIPT: ${DNADIST_SCRIPT}"
+	echo -e "\tCLUSTAL_OUTPUT_DIR: ${CLUSTAL_OUTPUT_DIR}"
+	echo -e "\tDISTANCES_FILE: ${DISTANCES_FILE}"
+	echo -e "\tPHYLIP_IN_FILE: ${PHYLIP_IN_FILE}"
+	echo -e "\tPHYLIP_DNADIST_FILE: ${PHYLIP_DNADIST_FILE}"
+	echo -e "\tSUCCESS_FILE: ${SUCCESS_FILE}"
+	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
+fi
+
+
 
 # Use dnadist to create the distance matrix.
 # Then, move the file it creates where we want it to be
@@ -58,11 +64,11 @@ exit_if_error
 
 
 mv outfile ${DISTANCES_FILE}
-mv "${PHYLIP_IN_FILE}" "${PHYLIP_IN_FILE}.dnadist"
+mv "${PHYLIP_IN_FILE}" "${PHYLIP_DNADIST_FILE}"
 RETVAL=$?
 ERROR_MSG="Could not create .dnadist file."
 NORMAL_MSG=".dandist file created."
-DEBUG_MSG=".dnadist file: ${PHYLIP_IN_FILE}.dnadist"
+DEBUG_MSG=".dnadist file: ${PHYLIP_DNADIST_FILE}"
 exit_if_error
 
 NORMAL_MSG="Distance matrix completed."
