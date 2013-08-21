@@ -41,24 +41,23 @@ then
 	echo -e "\tFAILURE_FILE: ${FAILURE_FILE}"
 fi
 
-
 # Checking required programs
 which seqret > /dev/null
 RETVAL=$?
 ERROR_MSG="seqret could not be found on the system."
-DEBUG_MSG="seqret was found."
+NORMAL_MSG="seqret was found."
 exit_if_error
 
 which dnadist > /dev/null
 RETVAL=$?
 ERROR_MSG="dnadist could not be found on the system."
-DEBUG_MSG="dnadist was found."
+NORMAL_MSG="dnadist was found."
 exit_if_error
 
 which neighbor > /dev/null
 RETVAL=$?
 ERROR_MSG="neighbor could not be found on the system."
-DEBUG_MSG="neighbor was found."
+NORMAL_MSG="neighbor was found."
 exit_if_error
 
 # Checking required standalone programs
@@ -68,13 +67,13 @@ if [ "${EXECUTION}" != "Parallel" ]
 		which blastall > /dev/null
 		RETVAL=$?
 		ERROR_MSG="blastall could not be found on the system."
-		DEBUG_MSG="blastall was found."
+		NORMAL_MSG="blastall was found."
 		exit_if_error
 
 		which clustalw2 > /dev/null
 		RETVAL=$?
 		ERROR_MSG="clustalw (clustalw2) could not be found on the system."
-		DEBUG_MSG="clustalw (clustalw2) was found."
+		NORMAL_MSG="clustalw (clustalw2) was found."
 		exit_if_error
 fi
 # Checking parallel programs
@@ -84,25 +83,25 @@ if [ "${EXECUTION}" == "Parallel" ]
 		which mpiformatdb > /dev/null
 		RETVAL=$?
 		ERROR_MSG="mpiformatdb could not be found on the system."
-		DEBUG_MSG="mpiformatdb was found."
+		NORMAL_MSG="mpiformatdb was found."
 		exit_if_error
 
 		which mpiexec > /dev/null
 		RETVAL=$?
 		ERROR_MSG="mpiexec could not be found on the system."
-		DEBUG_MSG="mpiexec was found."
+		NORMAL_MSG="mpiexec was found."
 		exit_if_error
 
 		which mpiblast > /dev/null
 		RETVAL=$?
 		ERROR_MSG="mpiblast could not be found on the system."
-		DEBUG_MSG="mpiblast was found."
+		NORMAL_MSG="mpiblast was found."
 		exit_if_error
 
 		which clustalw-mpi > /dev/null
 		RETVAL=$?
 		ERROR_MSG="clustalw-mpi could not be found on the system."
-		DEBUG_MSG="clustalw-mpi was found."
+		NORMAL_MSG="clustalw-mpi was found."
 		exit_if_error
 fi
 # If everything went well, call exit

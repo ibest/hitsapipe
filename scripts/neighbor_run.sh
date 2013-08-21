@@ -91,7 +91,7 @@ NORMAL_MSG="Names have been changed back to their full names."
 exit_if_error
 
 cd ${CLUSTAL_OUTPUT_DIR}
-echo "Copying \"final\" output to ${FINAL_DIR}"
+echo "${PBS_JOBNAME}: Copying \"final\" output to ${FINAL_DIR}"
 cp ${FINAL_TREE} ${NAMEREPORT} ${ALIGNMENT_POINTS_FILE} ${OUTPUT_XLS_ONE} ${OUTPUT_XLS_FIVE} ${HIT_NAMES_FILE} ${CLUSTAL_ALIGNMENT_FILE} ${CLUSTAL_PHYLIP_FILE} ${FINAL_DIR}
 RETVAL=$?
 ERROR_MSG="Could not move files to ${FINAL_DIR}"
