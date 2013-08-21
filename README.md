@@ -1,5 +1,5 @@
 # HiTSAPipe -- High Throughput Sequence Analysis Program
-### Version 0.4.0
+### Version 0.5.0
 ***
 
 ## DESCRIPTION
@@ -67,15 +67,12 @@ the location of certain critical files or the amount of output shown.
 	directory called scripts located in the same directory as the pipeline 
 	script.  Setting this option will overwrite anything in the 
 	configuration file.
--	`--verbose` displays basic information of the python script 
-	itself to the screen.  By default this option is enabled and is 
-	here to help distinguish between quiet mode.
+-	`--verbose` displays additional output from the python script 
+	itself to the screen.
 -	`--quiet` hides all output from the pipeline script itself.  If 
 	running in standalone mode however, the individual scripts that 
 	HiTSAPipe calls will still display their output.
--	`--debug` enables additional output in both the HiTSAPipe script 
-	and in the scripts that it runs.  If this flag is set in addition to 
-	the `--quiet` flag, the `--quiet` flag will be ignored.
+-	`--debug` enables additional output in the scripts that HiTSAPipe calls.
 
 ## CONFIG FILE
 
