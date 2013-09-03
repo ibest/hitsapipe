@@ -21,11 +21,13 @@ HiTSAPipe requires the following additional software packages to run:
 -	Standalone
 	-	blastall
 	-	clustalw
+	-	phylip (dnadist, neighbor)
 -	Parallel
 	-	mpiexec for Open MPI
 	-	mpiBLAST
 	-	mpiformatdb
 	-	clustalw-mpi
+	-	phylip (dnadist, neighbor)
 
 ## INSTALLATION
 
